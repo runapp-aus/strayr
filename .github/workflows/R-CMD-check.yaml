@@ -24,6 +24,7 @@ jobs:
         run: |
           install.packages(c("remotes", "rcmdcheck"))
           remotes::install_deps(dependencies = TRUE)
+          remotes::install_github("wfmackey/absmapsdata")
         shell: Rscript {0}
       - name: Check
         run: |
