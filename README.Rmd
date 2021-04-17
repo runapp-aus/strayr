@@ -1,0 +1,56 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# abscorr
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+<!-- badges: end -->
+
+The `abscorr` package provides tidy versions of common structures used by the Australian Bureau of Statistics (ABS).
+
+This package is currently **in development** and subject to change. 
+The lifecycle badge will be changed to `stable` when structures are stable 
+(should be relatively soon).
+
+
+Current structures stored in `abscorr` are:
+
+- `anzsco`: occupation levels of the Australian and New Zealand Standard Classification of Occupations (ANZSCO), First Edition, Revision 1, 2009. Cat. 1220.0.
+- `anzsic`: industry levels of the Australian and New Zealand Standard Industrial Classification (ANZSIC), 2006 (Revision 1.0). Cat. 1292.0.
+- `asced_foe`: field of education levels of the Australian Standard Classification of Education (ASCED), 2001. Cat. 1272.0.
+- `asced_qual`: qualification levels of the Australian Standard Classification of Education (ASCED), 2001. Cat. 1272.0.
+
+## Installation
+
+You can install the current version of `abscorr` with:
+
+``` r
+remotes::install_github("runapp-aus/abscorr")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(abscorr)
+library(dplyr, warn.conflicts = FALSE)
+
+glimpse(anzsco)
+glimpse(anzsic)
+glimpse(asced_foe)
+glimpse(asced_qual)
+```
