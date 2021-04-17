@@ -110,16 +110,17 @@ nfd3 <- comb %>%
          anzsco6 = glue("{anzsco3}, nfd"),
          anzsco6_code = glue("{anzsco3_code}000"))
 
-
 anzsco <- comb %>%
   bind_rows(nfd1, nfd2, nfd3) %>%
   arrange(anzsco1_code, anzsco2_code, anzsco3_code,
           anzsco4_code, anzsco6_code) %>%
-  mutate(anzsco1_f = fct_inorder(anzsco1),
-         anzsco2_f = fct_inorder(anzsco2),
-         anzsco3_f = fct_inorder(anzsco3),
-         anzsco4_f = fct_inorder(anzsco4),
-         anzsco6_f = fct_inorder(anzsco6)) %>%
+  mutate(across(.fns = as.character),
+         anzsco1_f = as_factor(anzsco1),
+         anzsco2_f = as_factor(anzsco2),
+         anzsco3_f = as_factor(anzsco3),
+         anzsco4_f = as_factor(anzsco4),
+         anzsco6_f = as_factor(anzsco6),
+         skill_level = as_factor(skill_level)) %>%
   select(anzsco1_code, anzsco1, anzsco1_f,
          anzsco2_code, anzsco2, anzsco2_f,
          anzsco3_code, anzsco3, anzsco3_f,
