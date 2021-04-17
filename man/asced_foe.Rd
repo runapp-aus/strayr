@@ -10,8 +10,6 @@ A \code{tibble} with 6 variables:
 \item{\code{foe2_code}}{Broad field of education two-digit code, e.g. "09"}
 \item{\code{foe2}}{Broad field of education two-digit name in title case, e.g. "Society and Culture"}
 \item{\code{foe2_f}}{Factor version of \code{foe2}.}
-\item{\code{foe2_short}}{Shorter two-digit field of education names, e.g. "Science", "IT", "Engineering"}
-\item{\code{foe2_short_f}}{Factor version of \code{foe2_short}.}
 \item{\code{foe4_code}}{Narrow field of education four-digit code, e.g. "0921"}
 \item{\code{foe4}}{Narrow field of education four-digit name in title case, e.g. "Sport and Recreation"}
 \item{\code{foe4_f}}{Factor version of \code{foe4}.}
