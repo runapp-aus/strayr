@@ -7,6 +7,8 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![R build
+status](https://github.com/runapp-aus/abscorr/workflows/R-CMD-check/badge.svg)](https://github.com/runapp-aus/abscorr/actions)
 <!-- badges: end -->
 
 The `abscorr` package provides tidy versions of common structures used
@@ -15,6 +17,9 @@ by the Australian Bureau of Statistics (ABS).
 This package is currently **in development** and subject to change. The
 lifecycle badge will be changed to `stable` when structures are stable
 (should be relatively soon).
+
+**Contribute to this package**: people are actively encouraged to
+contribute to this package.
 
 Current structures stored in `abscorr` are:
 
