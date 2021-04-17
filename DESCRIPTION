@@ -2,7 +2,7 @@ Package: abscorr
 Type: Package
 Title: A catalogue of ready-to-use ABS coding structures
 Version: 0.1.0
-Author: person("Will", "Mackey", email = "william.mackey@grattaninstitute.edu.au",
+Author: person("Will", "Mackey", email = "wfmackey@gmail.com",
                 role = c("aut", "cre"))
 Maintainer: Will Mackey <wfmackey@gmail.com>
 License: GPL-3
