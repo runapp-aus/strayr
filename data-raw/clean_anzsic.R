@@ -14,7 +14,7 @@ temp_path <- glue("{temp_dir}/anzsic.csv")
 download.file(anzsic_url, temp_path)
 
 # Read
-anzsic_raw <- readr::read_csv(temp_path) %>%
+anzsic_raw <- read_csv(temp_path) %>%
     rename_all(~ glue("anzsic_{.}")) %>%
     mutate_if(is.double, as.integer) %>%
     as_tibble()
@@ -35,11 +35,6 @@ group_nfd <- anzsic_raw %>%
          anzsic_class_title = anzsic_group_title,
          anzsic_class_code = anzsic_group_code * 10)
 
-top_div_codes <- anzsic_raw %>%
-  distinct(anzsic_division_title, anzsic_division_code, anzsic_subdivision_code) %>%
-  group_by(anzsic_division_code, anzsic_division_title) %>%
-  summarise(anzsic_subdivision_code = min(anzsic_subdivision_code))
-
 subdivision_nfd <- anzsic_raw %>%
   group_by(anzsic_division_code, anzsic_division_title) %>%
   summarise(anzsic_subdivision_code = min(anzsic_subdivision_code)) %>%
@@ -49,12 +44,21 @@ subdivision_nfd <- anzsic_raw %>%
          anzsic_class_title = anzsic_group_title,
          anzsic_class_code = anzsic_group_code * 10)
 
+# Finalise data frame; noting that we are avoiding the nfd complication for now
 anzsic <- anzsic_raw %>%
-  bind_rows(subdivision_nfd) %>%
-  bind_rows(group_nfd) %>%
-  bind_rows(class_nfd) %>%
-  arrange(anzsic_class_code)
+  arrange(anzsic_division_code,
+          anzsic_subdivision_code,
+          anzsic_group_code,
+          anzsic_class_code) %>%
+  mutate(across(.fns = as.character),
+         across(ends_with("title"), fct_inorder, .names = "{.col}_f")) %>%
+  rename_with(~ str_remove_all(., "\\_title"), everything()) %>%
+  arrange(anzsic_division_code,
+          anzsic_subdivision_code,
+          anzsic_group_code,
+          anzsic_class_code)
 
 
 # Export
 usethis::use_data(anzsic, overwrite = TRUE)
+
