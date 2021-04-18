@@ -1,0 +1,40 @@
+URL: https://runapp-aus.github.io/abscorr/
+
+navbar:
+  type: default
+  logo:
+    image: logo.png
+    href: https://runapp-aus.github.io/runapp_website/
+  structure:
+    left:  [home, intro, articles, reference, news]
+    right: [github]
+
+repo:
+  url:
+    home: https://github.com/runapp-aus/abscorr/
+    source: https://github.com/runapp-aus/abscorr/blob/master/
+    issue: https://github.com/runapp-aus/abscorr/issues/
+    user: https://github.com/runapp-aus/
+
+development:
+  mode: auto
+
+# template:
+#   params:
+#     bootswatch: cerulean
+
+home:
+  strip_header: false
+
+reference:
+  - title: "Runapp-aus abscorr Package"
+    desc: >
+      Functions for retrieving ABS data
+    contents:
+      - function1
+      - function2
+  - title: "Internal Data"
+    desc: "Data stored within the package."
+    contents:
+      - starts_with("anz")
+      - starts_with("asced")
