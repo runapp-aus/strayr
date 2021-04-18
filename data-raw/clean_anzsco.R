@@ -3,6 +3,9 @@
 library(tidyverse)
 library(glue)
 
+# include factor variants or nah?
+include_factor_variants <- FALSE
+
 # fun for captial -> title case
 to_title <- function(x) str_to_title(x) %>% tools::toTitleCase()
 
@@ -114,20 +117,27 @@ anzsco <- comb %>%
   bind_rows(nfd1, nfd2, nfd3) %>%
   arrange(anzsco1_code, anzsco2_code, anzsco3_code,
           anzsco4_code, anzsco6_code) %>%
-  mutate(across(.fns = as.character),
+  mutate(across(.fns = as.character)) %>%
+  arrange(anzsco6_code)
+
+if (include_factor_variants) {
+  anzsco <- anzsco %>%
+    mutate(
          anzsco1_f = as_factor(anzsco1),
          anzsco2_f = as_factor(anzsco2),
          anzsco3_f = as_factor(anzsco3),
          anzsco4_f = as_factor(anzsco4),
          anzsco6_f = as_factor(anzsco6),
          skill_level = as_factor(skill_level)) %>%
-  select(anzsco1_code, anzsco1, anzsco1_f,
-         anzsco2_code, anzsco2, anzsco2_f,
-         anzsco3_code, anzsco3, anzsco3_f,
-         anzsco4_code, anzsco4, anzsco4_f,
-         anzsco6_code, anzsco6, anzsco6_f,
-         skill_level) %>%
-  arrange(anzsco6_code)
+    # order
+    select(anzsco1_code, anzsco1, anzsco1_f,
+           anzsco2_code, anzsco2, anzsco2_f,
+           anzsco3_code, anzsco3, anzsco3_f,
+           anzsco4_code, anzsco4, anzsco4_f,
+           anzsco6_code, anzsco6, anzsco6_f,
+           skill_level)
+
+}
 
 # Export
 usethis::use_data(anzsco, overwrite = TRUE)
