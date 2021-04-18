@@ -3,6 +3,10 @@
 library(tidyverse)
 library(glue)
 
+
+# include factor variants or nah?
+include_factor_variants <- FALSE
+
 # fun for captial -> title case
 to_title <- function(x) str_to_title(x) %>% tools::toTitleCase()
 
@@ -71,38 +75,20 @@ nfd4 <- comb %>%
   mutate(foe6 = glue("{foe4}, nfd"),
          foe6_code = glue("{foe4_code}00"))
 
-# Short version of foe2 ---- do not implement
-foe2_shortlist <- c(
-  "Science",
-  "IT",
-  "Engineering",
-  "Architecture",
-  "Agriculture",
-  "Health",
-  "Education",
-  "Commerce",
-  "Society & culture",
-  "Creative arts",
-  "Hospitality",
-  "Mixed fields")
-
-foe2_short_join <- tibble(
-  foe2 = foe2_list,
-  foe2_short = foe2_shortlist,
-  foe2_short_f = as_factor(foe2_short)
-)
 
 asced_foe <- bind_rows(comb, nfd2, nfd4) %>%
   arrange(foe2_code, foe4_code, foe6_code) %>%
-  mutate(across(.fns = as.character),
-         foe2_f = fct_inorder(foe2),
-         foe4_f = fct_inorder(foe4),
-         foe6_f = fct_inorder(foe6),
-         ) %>%
-  left_join(foe2_short_join) %>%
+  mutate(across(.fns = as.character))
+
+if (include_factor_variants) {
+  asced_foe <- asced_foe %>%
+    mutate(foe2_f = fct_inorder(foe2),
+           foe4_f = fct_inorder(foe4),
+           foe6_f = fct_inorder(foe6)) %>%
   select(foe2_code, foe2, foe2_f,
          foe4_code, foe4, foe4_f,
          foe6_code, foe6, foe6_f)
+}
 
 
 # Export
