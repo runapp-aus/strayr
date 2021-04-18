@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# abscorr <img src="man/figures/logo.png" align="right" style="height:150px"/>
+# abscorr <img src="man/figures/apple-touch-icon-152x152.png" align="right" style="height:150px"/>
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
