@@ -4,6 +4,8 @@
 library(tidyverse)
 library(glue)
 
+# include factor variants or nah?
+include_factor_variants <- FALSE
 
 # ty asiripanich
 anzsic_url <- "https://raw.githubusercontent.com/asiripanich/anzsic/master/anzsic_2006.csv"
@@ -50,8 +52,14 @@ anzsic <- anzsic_raw %>%
           anzsic_subdivision_code,
           anzsic_group_code,
           anzsic_class_code) %>%
-  mutate(across(.fns = as.character),
-         across(ends_with("title"), fct_inorder, .names = "{.col}_f")) %>%
+  mutate(across(.fns = as.character))
+
+if (include_factor_variants) {
+  anzsic <- anzsic %>%
+    mutate(across(ends_with("title"), fct_inorder, .names = "{.col}_f"))
+}
+
+anzsic <- anzsic %>%
   rename_with(~ str_remove_all(., "\\_title"), everything()) %>%
   arrange(anzsic_division_code,
           anzsic_subdivision_code,
