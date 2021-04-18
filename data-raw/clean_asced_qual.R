@@ -4,6 +4,10 @@ library(tidyverse)
 library(glue)
 
 
+# include factor variants or nah?
+include_factor_variants <- FALSE
+
+# get url
 asced_url <- "https://www.abs.gov.au/AUSSTATS/subscriber.nsf/log?openagent&1272.0%20australian%20standard%20classification%20of%20education%20(asced)%20structures.xls&1272.0&Data%20Cubes&B286FC6C1777688DCA257ECB001657BC&0&2001&29.09.2015&Latest"
 
 
@@ -54,6 +58,13 @@ asced_qual <- qual1 %>%
   left_join(qual3) %>%
   mutate(qual1 = str_to_title(qual1),       # "Natural And Physical Sciences"
          qual1 = tools::toTitleCase(qual1)) # "Natural and Physical Sciences"
+
+if (!include_factor_variants) {
+  asced_qual <- asced_qual %>%
+    select(qual1_code, qual1,
+           qual2_code, qual2,
+           qual3_code, qual3)
+}
 
 
 # Export

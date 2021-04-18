@@ -2,18 +2,20 @@ Package: abscorr
 Type: Package
 Title: A catalogue of ready-to-use ABS coding structures
 Version: 0.1.0
-Author: person("Will", "Mackey", email = "william.mackey@grattaninstitute.edu.au",
+Author: person("Will", "Mackey", email = "wfmackey@gmail.com",
                 role = c("aut", "cre"))
 Maintainer: Will Mackey <wfmackey@gmail.com>
 License: GPL-3
 Description: This package allows the user to access lazily-loaded tables containing common structures used by the Australian Bureau of Statistics (ABS).
-Depends: R (>= 3.5)
+Depends: 
+	R (>= 3.5),
+    absmapsdata
 Imports:
     dplyr (>= 0.7),
     lifecycle
+Suggests: 
+    testthat
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
-Suggests: 
-    testthat
 RdMacros: lifecycle
