@@ -86,10 +86,18 @@ The `abscorr` package also loads [`absmapsdata`](https://github.com/wfmackey/abs
 Loading the package will lazily load the structures listed above.
 Call them with their name:
 
-```{r example}
-library(abscorr)
+```{r actual-load, include=FALSE}
+devtools::load_all()
 library(dplyr, warn.conflicts = FALSE)
+```
 
+```{r fake-load, eval=FALSE}
+library(abscorr)
+#> Loading required package: absmapsdata
+library(dplyr)
+```
+
+```{r glimpse}
 glimpse(anzsco)
 glimpse(anzsic)
 glimpse(asced_foe)
