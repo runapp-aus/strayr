@@ -19,6 +19,8 @@
 #' }
 #'
 #' @importFrom purrr map_dfr
+#' @importFrom utils download.file
+#' @importFrom dplyr starts_with
 #'
 #' @note For All SEIFA spreadsheets go to https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/2033.0.55.0012016?OpenDocument
 #' @export
