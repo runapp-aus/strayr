@@ -17,6 +17,9 @@
 #'   \item{postcode}
 #'   \item{suburb}
 #' }
+#'
+#' @importFrom purrr map_dfr
+#'
 #' @note For All SEIFA spreadsheets go to https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/2033.0.55.0012016?OpenDocument
 #' @export
 seifa_scores <- function(indexes = c('irsed', 'irsead', 'ier', 'ieo'), spatial_area = c('sa1','sa2','sa3','lga','postcode')) {
@@ -44,7 +47,10 @@ seifa_scores <- function(indexes = c('irsed', 'irsead', 'ier', 'ieo'), spatial_a
   url <- urls[spatial_area]
 
   filename <- tempfile(fileext = '.xls')
-  download.file(url, destfile = filename, mode = 'wb')
+
+  try(
+    download.file(url, destfile = filename, mode = 'wb')
+  )
 
   ind <- map_dfr(sheet_names, ~ get_seifa_index_sheet(filename, .x, spatial_area), .id = 'seifa_index')
 
@@ -60,12 +66,17 @@ seifa_scores <- function(indexes = c('irsed', 'irsead', 'ier', 'ieo'), spatial_a
 #'
 #' @param filename character name of temporary file when spreadsheet downloaded
 #' @param sheetname character name of the sheet to be imported
+#' @param spatial_area character
 #'
+#' @import readxl
+#' @importFrom dplyr select mutate relocate
 #' @return data.frame
 #' @export
 #'
 #' @examples
-get_seifa_index_sheet <- function(filename, sheetname, spatial_area) {
+get_seifa_index_sheet <- function(filename, sheetname, spatial_area = c('sa1','sa2','sa3','lga','postcode')) {
+
+  spatial_area <- match.arg(spatial_area, several.ok = FALSE)
 
   column_names <- c('area_code',
                     'area_name',

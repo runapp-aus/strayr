@@ -28,13 +28,13 @@ home:
 
 reference:
   - title: "Runapp-aus abscorr Package"
-    desc: >
-      Functions for retrieving ABS data
-    contents:
-      - function1
-      - function2
-  - title: "Internal Data"
-    desc: "Data stored within the package."
+    desc: "Internal Data Structures."
     contents:
       - starts_with("anz")
       - starts_with("asced")
+  - title: "Importing ABS Data"
+    desc: >
+      Functions for retrieving ABS data
+    contents:
+      - seifa_scores
+      - get_seifa_index_sheet
