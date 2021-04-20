@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ANZSCO — anzsco • abscorr</title>
+<title>Import SEIFA Data from ABS Spreadsheet — get_seifa • abscorr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,9 +48,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="ANZSCO — anzsco" />
-<meta property="og:description" content="Wide table containing all levels of the Australian and New Zealand Standard
-Classification of Occupations (ANZSCO), First Edition, Revision 1, 2009. Cat. 1220.0." />
+<meta property="og:title" content="Import SEIFA Data from ABS Spreadsheet — get_seifa" />
+<meta property="og:description" content="The function will download all LGA SEIFA data to a temporary excel file and merge sheets into a long `data.frame`" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -125,38 +124,54 @@ Classification of Occupations (ANZSCO), First Edition, Revision 1, 2009. Cat. 12
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>ANZSCO</h1>
-    <small class="dont-index">Source: <a href='https://github.com/runapp-aus/abscorr/blob/master/R/data_descriptions.R'><code>R/data_descriptions.R</code></a></small>
-    <div class="hidden name"><code>anzsco.Rd</code></div>
+    <h1>Import SEIFA Data from ABS Spreadsheet</h1>
+    <small class="dont-index">Source: <a href='https://github.com/runapp-aus/abscorr/blob/master/R/seifa.R'><code>R/seifa.R</code></a></small>
+    <div class="hidden name"><code>get_seifa.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Wide table containing all levels of the Australian and New Zealand Standard
-Classification of Occupations (ANZSCO), First Edition, Revision 1, 2009. Cat. 1220.0.</p>
+    <p>The function will download all LGA SEIFA data to a temporary excel file and merge sheets into a long `data.frame`</p>
     </div>
 
-    <pre class="usage"><span class='va'>anzsco</span></pre>
+    <pre class="usage"><span class='fu'>get_seifa</span><span class='op'>(</span>
+  structure <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"sa1"</span>, <span class='st'>"sa2"</span>, <span class='st'>"sa3"</span>, <span class='st'>"lga"</span>, <span class='st'>"postcode"</span><span class='op'>)</span>,
+  data_subclass <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"irsed"</span>, <span class='st'>"irsead"</span>, <span class='st'>"ier"</span>, <span class='st'>"ieo"</span><span class='op'>)</span>
+<span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>structure</th>
+      <td><p>character value for the desired spatial area. Must be one of:</p><ul>
+<li><p>sa1 - download size 51.6 mb</p></li>
+<li><p>sa2 - download size 1.9 mb</p></li>
+<li><p>lga - download size 660 kb</p></li>
+<li><p>postcode</p></li>
+<li><p>suburb</p></li>
+</ul></td>
+    </tr>
+    <tr>
+      <th>data_subclass</th>
+      <td><p>character vector matching available SEIFA indexes:</p><ul>
+<li><p>irsed - Index of Relative Socio-economic Disadvantage</p></li>
+<li><p>irsead - Index of Relative Socio-economic Advantage and Disadvantage</p></li>
+<li><p>ier - Index of Economic Resources</p></li>
+<li><p>ieo - Index of Education and Occupation</p></li>
+</ul></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>A <code>tibble</code> with 11 variables:</p><dl>
-<dt><code>anzsco1_code</code></dt><dd><p>Major ANZSCO group codes, e.g. "4"</p></dd>
-<dt><code>anzsco1</code></dt><dd><p>Major ANZSCO group names in title case, e.g. "Community and Personal Service Workers"</p></dd>
-<dt><code>anzsco2_code</code></dt><dd><p>Sub-major ANZSCO group codes, e.g. "45"</p></dd>
-<dt><code>anzsco2</code></dt><dd><p>Sub-major ANZSCO group names in title case, e.g. "Sports and Personal Service Workers"</p></dd>
-<dt><code>anzsco3_code</code></dt><dd><p>Minor ANZSCO group codes, e.g. "452"</p></dd>
-<dt><code>anzsco3</code></dt><dd><p>Minor ANZSCO group names in title case, e.g. "Sports and Fitness Workers"</p></dd>
-<dt><code>anzsco4_code</code></dt><dd><p>Unit ANZSCO group codes, e.g. "4523"</p></dd>
-<dt><code>anzsco4</code></dt><dd><p>Unit ANZSCO group names in title case, e.g. "Sports Coaches, Instructors and Officials"</p></dd>
-<dt><code>anzsco6_code</code></dt><dd><p>Occupation ANZSCO group codes, e.g. "452311"</p></dd>
-<dt><code>anzsco6</code></dt><dd><p>Occupation ANZSCO group names in title case, e.g. "Diving Instructor (Open Water)"</p></dd>
-<dt><code>skill_level</code></dt><dd><p>Skill level required for occupation, determined by the ABS (1 is highest, 5 is lowest).
-See <a href='https://www.abs.gov.au/ausstats/abs@.nsf/Previousproducts/C4BECE1704987586CA257089001A9181 '>https://www.abs.gov.au/ausstats/abs@.nsf/Previousproducts/C4BECE1704987586CA257089001A9181 </a> for details.</p></dd>
+    <p>For All SEIFA spreadsheets go to https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/2033.0.55.0012016?OpenDocument</p>
 
-</dl>
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>get_seifa</span><span class='op'>(</span>structure <span class='op'>=</span> <span class='st'>'lga'</span>, data_subclass <span class='op'>=</span> <span class='va'>irsed</span><span class='op'>)</span>
+<span class='op'>}</span>
 
-
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

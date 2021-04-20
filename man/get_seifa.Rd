@@ -10,21 +10,21 @@ get_seifa(
 )
 }
 \arguments{
-\item{structure}{character value for the desired spatial area. MUst be one of:
+\item{structure}{character value for the desired spatial area. Must be one of:
 \itemize{
-  \item{sa1}{download size 51.6 mb}
-  \item{sa2}{download size 1.9 mb}
-  \item{lga}{download size 660 kb}
+  \item{sa1}{ - download size 51.6 mb}
+  \item{sa2}{ - download size 1.9 mb}
+  \item{lga}{ - download size 660 kb}
   \item{postcode}
   \item{suburb}
 }}
 
 \item{data_subclass}{character vector matching available SEIFA indexes:
 \itemize{
-  \item{irsed}{Index of Relative Socio-economic Disadvantage}
-  \item{irsead}{Index of Relative Socio-economic Advantage and Disadvantage}
-  \item{ier}{Index of Economic Resources}
-  \item{ieo}{Index of Education and Occupation}
+  \item{irsed}{ - Index of Relative Socio-economic Disadvantage}
+  \item{irsead}{ - Index of Relative Socio-economic Advantage and Disadvantage}
+  \item{ier}{ - Index of Economic Resources}
+  \item{ieo}{ - Index of Education and Occupation}
 }}
 }
 \description{
