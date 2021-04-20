@@ -2,14 +2,14 @@
 
 #' @title Import SEIFA Data from ABS Spreadsheet
 #' @description The function will download all LGA SEIFA data to a temporary excel file and merge sheets into a long `data.frame`
-#' @param indexes character vector matching available SEIFA indexes:
+#' @param data_subclass character vector matching available SEIFA indexes:
 #' \itemize{
 #'   \item{irsed}{Index of Relative Socio-economic Disadvantage}
 #'   \item{irsead}{Index of Relative Socio-economic Advantage and Disadvantage}
 #'   \item{ier}{Index of Economic Resources}
 #'   \item{ieo}{Index of Education and Occupation}
 #' }
-#' @param spatial_area character value for the desired spatial area. MUst be one of:
+#' @param structure character value for the desired spatial area. MUst be one of:
 #' \itemize{
 #'   \item{sa1}{download size 51.6 mb}
 #'   \item{sa2}{download size 1.9 mb}
@@ -24,21 +24,27 @@
 #'
 #' @note For All SEIFA spreadsheets go to https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/2033.0.55.0012016?OpenDocument
 #' @export
-seifa_scores <- function(indexes = c('irsed', 'irsead', 'ier', 'ieo'), spatial_area = c('sa1','sa2','sa3','lga','postcode')) {
+#'
+#' @examples
+#' \dontrun{
+#' get_seifa(structure = 'lga', data_subclass = irsed)
+#' }
+#'
+get_seifa <- function(structure = c('sa1','sa2','sa3','lga','postcode'), data_subclass = c('irsed', 'irsead', 'ier', 'ieo')) {
 
-  # match excel sheet names to indexes
-  stopifnot(all(indexes %in% c('irsed', 'irsead', 'ier', 'ieo')))
+  # match excel sheet names to data_subclass
+  stopifnot(all(data_subclass %in% c('irsed', 'irsead', 'ier', 'ieo')))
 
   sheet_names <- c('irsed'   = 'Table 2',
                    'irsead'  = 'Table 3',
                    'ier'     = 'Table 4',
                    'ieo'     = 'Table 5')
 
-  sheet_names <- sheet_names[indexes]
+  sheet_names <- sheet_names[data_subclass]
 
 
   # match spatial areas to specific urls
-  spatial_area <- match.arg(spatial_area, several.ok = FALSE)
+  structure <- match.arg(structure, several.ok = FALSE)
 
   urls <- c('sa1' = 'https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&2033055001%20-%20sa1%20indexes.xls&2033.0.55.001&Data%20Cubes&40A0EFDE970A1511CA25825D000F8E8D&0&2016&27.03.2018&Latest',
             'sa2' = 'https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&2033055001%20-%20sa2%20indexes.xls&2033.0.55.001&Data%20Cubes&C9F7AD36397CB43DCA25825D000F917C&0&2016&27.03.2018&Latest',
@@ -46,7 +52,7 @@ seifa_scores <- function(indexes = c('irsed', 'irsead', 'ier', 'ieo'), spatial_a
             'postcode' = 'https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&2033055001%20-%20poa%20indexes.xls&2033.0.55.001&Data%20Cubes&DC124D1DAC3D9FDDCA25825D000F9267&0&2016&27.03.2018&Latest',
             'suburb' = 'https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&2033055001%20-%20ssc%20indexes.xls&2033.0.55.001&Data%20Cubes&863031D939DE8105CA25825D000F91D2&0&2016&27.03.2018&Latest')
 
-  url <- urls[spatial_area]
+  url <- urls[structure]
 
   filename <- tempfile(fileext = '.xls')
 
@@ -54,7 +60,7 @@ seifa_scores <- function(indexes = c('irsed', 'irsead', 'ier', 'ieo'), spatial_a
     download.file(url, destfile = filename, mode = 'wb')
   )
 
-  ind <- map_dfr(sheet_names, ~ get_seifa_index_sheet(filename, .x, spatial_area), .id = 'seifa_index')
+  ind <- map_dfr(sheet_names, ~ get_seifa_index_sheet(filename, .x, structure), .id = 'seifa_index')
 
   return(ind)
 
@@ -68,17 +74,16 @@ seifa_scores <- function(indexes = c('irsed', 'irsead', 'ier', 'ieo'), spatial_a
 #'
 #' @param filename character name of temporary file when spreadsheet downloaded
 #' @param sheetname character name of the sheet to be imported
-#' @param spatial_area character
+#' @param structure character
 #'
 #' @import readxl
 #' @importFrom dplyr select mutate relocate
 #' @return data.frame
 #' @export
 #'
-#' @examples
-get_seifa_index_sheet <- function(filename, sheetname, spatial_area = c('sa1','sa2','sa3','lga','postcode')) {
+get_seifa_index_sheet <- function(filename, sheetname, structure = c('sa1','sa2','sa3','lga','postcode')) {
 
-  spatial_area <- match.arg(spatial_area, several.ok = FALSE)
+  structure <- match.arg(structure, several.ok = FALSE)
 
   column_names <- c('area_code',
                     'area_name',
@@ -97,7 +102,7 @@ get_seifa_index_sheet <- function(filename, sheetname, spatial_area = c('sa1','s
                     'max_score_sa1_area',
                     'percent_usual_resident_pop_without_sa1_score')
 
-  if (spatial_area == 'sa1') {
+  if (structure == 'sa1') {
     column_names <- c('sa1_7_code',
                       'sa1_11_code',
                       'population',
@@ -118,8 +123,8 @@ get_seifa_index_sheet <- function(filename, sheetname, spatial_area = c('sa1','s
                    skip = 6,
                    col_names = column_names) %>%
     select(-starts_with('blank')) %>%
-    mutate(spatial_area = spatial_area) %>%
-    relocate(spatial_area)
+    mutate(structure = structure) %>%
+    relocate(structure)
 
   return(df)
 

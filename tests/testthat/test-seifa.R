@@ -1,6 +1,6 @@
 
 column_names <- c("seifa_index",
-                  "spatial_area",
+                  "structure",
                   'area_code',
                   'area_name',
                   'population',
@@ -18,7 +18,7 @@ column_names <- c("seifa_index",
 
 
 test_that("can Import SEIFA LGA scores", {
-  df <- seifa_scores(spatial_area = 'lga')
+  df <- get_seifa(structure = 'lga')
 
   expect_is(df, 'data.frame')
   expect_equal(colnames(df), column_names)
@@ -35,7 +35,7 @@ test_that('sa1 spreadsheet can be parsed', {
                               'sa1')
 
   expect_is(df, 'data.frame')
-  expect_equal(colnames(df), c('spatial_area',
+  expect_equal(colnames(df), c('structure',
                                'sa1_7_code',
                                'sa1_11_code',
                                'population',
