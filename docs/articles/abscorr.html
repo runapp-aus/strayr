@@ -78,12 +78,12 @@
 
       
 
-      </header><script src="abscorr_files/header-attrs-2.6/header-attrs.js"></script><script src="abscorr_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>abscorr</h1>
             
-            <h4 class="date">2021-04-19</h4>
+            <h4 class="date">2021-04-20</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/runapp-aus/abscorr/blob/master/vignettes/abscorr.Rmd"><code>vignettes/abscorr.Rmd</code></a></small>
       <div class="hidden name"><code>abscorr.Rmd</code></div>
@@ -115,9 +115,8 @@
 <h2 class="hasAnchor">
 <a href="#figures" class="anchor"></a>Figures</h2>
 <p>The figure sizes have been customised so that you can easily put two images side-by-side.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fl">10</span><span class="op">:</span><span class="fl">1</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="fl">1</span>:<span class="fl">10</span>)
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(<span class="fl">10</span>:<span class="fl">1</span>)</pre></body></html></div>
 <p><img src="abscorr_files/figure-html/unnamed-chunk-1-1.png" width="700"><img src="abscorr_files/figure-html/unnamed-chunk-1-2.png" width="700"></p>
 <p>You can enable figure captions by <code>fig_caption: yes</code> in YAML:</p>
 <pre><code>output:
@@ -131,7 +130,7 @@
 <p>You can write math expressions, e.g. <span class="math inline">\(Y = X\beta + \epsilon\)</span>, footnotes<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, and tables, e.g. using <code><a href="https://rdrr.io/pkg/knitr/man/kable.html">knitr::kable()</a></code>.</p>
 <table class="table">
 <thead><tr class="header">
-<th align="left"></th>
+<th></th>
 <th align="right">mpg</th>
 <th align="right">cyl</th>
 <th align="right">disp</th>
@@ -146,7 +145,7 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="left">Mazda RX4</td>
+<td>Mazda RX4</td>
 <td align="right">21.0</td>
 <td align="right">6</td>
 <td align="right">160.0</td>
@@ -160,7 +159,7 @@
 <td align="right">4</td>
 </tr>
 <tr class="even">
-<td align="left">Mazda RX4 Wag</td>
+<td>Mazda RX4 Wag</td>
 <td align="right">21.0</td>
 <td align="right">6</td>
 <td align="right">160.0</td>
@@ -174,7 +173,7 @@
 <td align="right">4</td>
 </tr>
 <tr class="odd">
-<td align="left">Datsun 710</td>
+<td>Datsun 710</td>
 <td align="right">22.8</td>
 <td align="right">4</td>
 <td align="right">108.0</td>
@@ -188,7 +187,7 @@
 <td align="right">1</td>
 </tr>
 <tr class="even">
-<td align="left">Hornet 4 Drive</td>
+<td>Hornet 4 Drive</td>
 <td align="right">21.4</td>
 <td align="right">6</td>
 <td align="right">258.0</td>
@@ -202,7 +201,7 @@
 <td align="right">1</td>
 </tr>
 <tr class="odd">
-<td align="left">Hornet Sportabout</td>
+<td>Hornet Sportabout</td>
 <td align="right">18.7</td>
 <td align="right">8</td>
 <td align="right">360.0</td>
@@ -216,7 +215,7 @@
 <td align="right">2</td>
 </tr>
 <tr class="even">
-<td align="left">Valiant</td>
+<td>Valiant</td>
 <td align="right">18.1</td>
 <td align="right">6</td>
 <td align="right">225.0</td>
@@ -230,7 +229,7 @@
 <td align="right">1</td>
 </tr>
 <tr class="odd">
-<td align="left">Duster 360</td>
+<td>Duster 360</td>
 <td align="right">14.3</td>
 <td align="right">8</td>
 <td align="right">360.0</td>
@@ -244,7 +243,7 @@
 <td align="right">4</td>
 </tr>
 <tr class="even">
-<td align="left">Merc 240D</td>
+<td>Merc 240D</td>
 <td align="right">24.4</td>
 <td align="right">4</td>
 <td align="right">146.7</td>
@@ -258,7 +257,7 @@
 <td align="right">2</td>
 </tr>
 <tr class="odd">
-<td align="left">Merc 230</td>
+<td>Merc 230</td>
 <td align="right">22.8</td>
 <td align="right">4</td>
 <td align="right">140.8</td>
@@ -272,7 +271,7 @@
 <td align="right">2</td>
 </tr>
 <tr class="even">
-<td align="left">Merc 280</td>
+<td>Merc 280</td>
 <td align="right">19.2</td>
 <td align="right">6</td>
 <td align="right">167.6</td>
@@ -295,7 +294,7 @@
 <div class="footnotes">
 <hr>
 <ol>
-<li id="fn1"><p>A footnote here.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>A footnote here.<a href="#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
   </div>
@@ -315,7 +314,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
