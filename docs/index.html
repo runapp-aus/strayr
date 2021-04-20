@@ -89,6 +89,15 @@
 <p>The <code>abscorr</code> package provides tidy versions of common structures used by the Australian Bureau of Statistics (ABS).</p>
 <p>This package is currently <strong>in development</strong> and subject to change. The lifecycle badge will be changed to <code>stable</code> when structures are stable (should be relatively soon).</p>
 <p><strong>Contribute to this package</strong>: people are actively encouraged to contribute to this package.</p>
+<div id="installation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h2>
+<p>You can install the current version of <code>abscorr</code> with:</p>
+<div class="sourceCode" id="cb1"><pre class="r"><span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"runapp-aus/abscorr"</span>)</pre></div>
+</div>
+<div id="structures" class="section level2">
+<h2 class="hasAnchor">
+<a href="#structures" class="anchor"></a>Structures</h2>
 <p>Current structures stored in <code>abscorr</code> are:</p>
 <ul>
 <li>
@@ -100,65 +109,135 @@
 <li>
 <code>asced_qual</code>: qualification levels of the <a href="https://www.abs.gov.au/ausstats/abs@.nsf/mf/1272.0">Australian Standard Classification of Education (ASCED), 2001. Cat. 1272.0</a>.</li>
 </ul>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the current version of <code>abscorr</code> with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"runapp-aus/abscorr"</span><span class="op">)</span></code></pre></div>
+<p>The <code>abscorr</code> package also loads <a href="https://github.com/wfmackey/absmapsdata"><code>absmapsdata</code></a>, which contains the following structures <em>and their geometry</em> as <code>sf</code> objects:</p>
+<p><strong>ASGS Main Structures</strong></p>
+<ul>
+<li>
+<code>sa12011</code>: Statistical Area 1 2011</li>
+<li>
+<code>sa12016</code>: Statistical Area 1 2016</li>
+<li>
+<code>sa22011</code>: Statistical Area 2 2011</li>
+<li>
+<code>sa22016</code>: Statistical Area 2 2016</li>
+<li>
+<code>sa32011</code>: Statistical Area 3 2011</li>
+<li>
+<code>sa32016</code>: Statistical Area 3 2016</li>
+<li>
+<code>sa42011</code>: Statistical Area 4 2011</li>
+<li>
+<code>sa42016</code>: Statistical Area 4 2016</li>
+<li>
+<code>gcc2011</code>: Greater Capital Cities 2011</li>
+<li>
+<code>gcc2016</code>: Greater Capital Cities 2016</li>
+<li>
+<code>ra2011</code>: Remoteness Areas 2011</li>
+<li>
+<code>ra2016</code>: Remoteness Areas 2016</li>
+<li>
+<code>state2011</code>: State 2011</li>
+<li>
+<code>state2016</code>: State 2016</li>
+</ul>
+<p><strong>ASGS Non-ABS Structures</strong></p>
+<ul>
+<li>
+<code>ced2018</code>: Commonwealth Electoral Divisions 2018</li>
+<li>
+<code>sed2018</code>: State Electoral Divisions 2018</li>
+<li>
+<code>lga2016</code>: Local Government Areas 2016</li>
+<li>
+<code>lga2018</code>: Local Government Areas 2018</li>
+<li>
+<code>regional_ivi2008</code>: Regions for the Internet Vacancy Index 2008</li>
+<li>
+<code>postcodes2016</code>: Postcodes 2016</li>
+<li>
+<code>dz2011</code>: Census of Population and Housing Destination Zones 2011</li>
+<li>
+<code>dz2016</code>: Census of Population and Housing Destination Zones 2016</li>
+</ul>
 </div>
-<div id="example" class="section level2">
+<div id="using-abscorr" class="section level2">
 <h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">abscorr</span><span class="op">)</span>
+<a href="#using-abscorr" class="anchor"></a>Using <code>abscorr</code>
+</h2>
+<p>Loading the package will lazily load the structures listed above. Call them with their name:</p>
+<div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">abscorr</span>)
 <span class="co">#&gt; Loading required package: absmapsdata</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)</pre></div>
+<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">abscorr</span>)
+<span class="co">#&gt; Loading required package: absmapsdata</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>, <span class="kw">warn.conflicts</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
 
-<span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">anzsco</span><span class="op">)</span>
+<span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">anzsco</span>)
 <span class="co">#&gt; Rows: 1,180</span>
 <span class="co">#&gt; Columns: 11</span>
-<span class="co">#&gt; $ anzsco1_code &lt;chr&gt; "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "…</span>
-<span class="co">#&gt; $ anzsco1      &lt;chr&gt; "Managers", "Managers", "Managers", "Managers", "Manager…</span>
-<span class="co">#&gt; $ anzsco2_code &lt;chr&gt; "10", "11", "11", "11", "11", "11", "11", "11", "11", "1…</span>
-<span class="co">#&gt; $ anzsco2      &lt;chr&gt; "Managers, nfd", "Chief Executives, General Managers and…</span>
-<span class="co">#&gt; $ anzsco3_code &lt;chr&gt; "100", "110", "111", "111", "111", "111", "111", "111", …</span>
-<span class="co">#&gt; $ anzsco3      &lt;chr&gt; "Managers, nfd", "Chief Executives, General Managers and…</span>
-<span class="co">#&gt; $ anzsco4_code &lt;chr&gt; "1000", "1100", "1110", "1111", "1112", "1112", "1113", …</span>
-<span class="co">#&gt; $ anzsco4      &lt;chr&gt; "Managers, nfd", "Chief Executives, General Managers and…</span>
-<span class="co">#&gt; $ anzsco6_code &lt;chr&gt; "100000", "110000", "111000", "111111", "111211", "11121…</span>
-<span class="co">#&gt; $ anzsco6      &lt;chr&gt; "Managers, nfd", "Chief Executives, General Managers and…</span>
-<span class="co">#&gt; $ skill_level  &lt;chr&gt; NA, NA, NA, "1", "1", "1", "1", "1", "1", NA, NA, "1", "…</span>
-<span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">anzsic</span><span class="op">)</span>
+<span class="co">#&gt; $ anzsco1_code &lt;chr&gt; "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1…</span>
+<span class="co">#&gt; $ anzsco1      &lt;chr&gt; "Managers", "Managers", "Managers", "Managers", "Managers…</span>
+<span class="co">#&gt; $ anzsco2_code &lt;chr&gt; "10", "11", "11", "11", "11", "11", "11", "11", "11", "12…</span>
+<span class="co">#&gt; $ anzsco2      &lt;chr&gt; "Managers, nfd", "Chief Executives, General Managers and …</span>
+<span class="co">#&gt; $ anzsco3_code &lt;chr&gt; "100", "110", "111", "111", "111", "111", "111", "111", "…</span>
+<span class="co">#&gt; $ anzsco3      &lt;chr&gt; "Managers, nfd", "Chief Executives, General Managers and …</span>
+<span class="co">#&gt; $ anzsco4_code &lt;chr&gt; "1000", "1100", "1110", "1111", "1112", "1112", "1113", "…</span>
+<span class="co">#&gt; $ anzsco4      &lt;chr&gt; "Managers, nfd", "Chief Executives, General Managers and …</span>
+<span class="co">#&gt; $ anzsco6_code &lt;chr&gt; "100000", "110000", "111000", "111111", "111211", "111212…</span>
+<span class="co">#&gt; $ anzsco6      &lt;chr&gt; "Managers, nfd", "Chief Executives, General Managers and …</span>
+<span class="co">#&gt; $ skill_level  &lt;chr&gt; NA, NA, NA, "1", "1", "1", "1", "1", "1", NA, NA, "1", "1…</span>
+<span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">anzsic</span>)
 <span class="co">#&gt; Rows: 506</span>
 <span class="co">#&gt; Columns: 8</span>
-<span class="co">#&gt; $ anzsic_division_code    &lt;chr&gt; "A", "A", "A", "A", "A", "A", "A", "A", "A", …</span>
-<span class="co">#&gt; $ anzsic_division         &lt;chr&gt; "Agriculture, Forestry and Fishing", "Agricul…</span>
-<span class="co">#&gt; $ anzsic_subdivision_code &lt;chr&gt; "1", "1", "1", "1", "1", "1", "1", "1", "1", …</span>
-<span class="co">#&gt; $ anzsic_subdivision      &lt;chr&gt; "Agriculture", "Agriculture", "Agriculture", …</span>
-<span class="co">#&gt; $ anzsic_group_code       &lt;chr&gt; "11", "11", "11", "11", "11", "12", "12", "12…</span>
-<span class="co">#&gt; $ anzsic_group            &lt;chr&gt; "Nursery and Floriculture Production", "Nurse…</span>
-<span class="co">#&gt; $ anzsic_class_code       &lt;chr&gt; "111", "112", "113", "114", "115", "121", "12…</span>
-<span class="co">#&gt; $ anzsic_class            &lt;chr&gt; "Nursery Production (Under Cover)", "Nursery …</span>
-<span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">asced_foe</span><span class="op">)</span>
+<span class="co">#&gt; $ anzsic_division_code    &lt;chr&gt; "A", "A", "A", "A", "A", "A", "A", "A", "A", "…</span>
+<span class="co">#&gt; $ anzsic_division         &lt;chr&gt; "Agriculture, Forestry and Fishing", "Agricult…</span>
+<span class="co">#&gt; $ anzsic_subdivision_code &lt;chr&gt; "1", "1", "1", "1", "1", "1", "1", "1", "1", "…</span>
+<span class="co">#&gt; $ anzsic_subdivision      &lt;chr&gt; "Agriculture", "Agriculture", "Agriculture", "…</span>
+<span class="co">#&gt; $ anzsic_group_code       &lt;chr&gt; "11", "11", "11", "11", "11", "12", "12", "12"…</span>
+<span class="co">#&gt; $ anzsic_group            &lt;chr&gt; "Nursery and Floriculture Production", "Nurser…</span>
+<span class="co">#&gt; $ anzsic_class_code       &lt;chr&gt; "111", "112", "113", "114", "115", "121", "122…</span>
+<span class="co">#&gt; $ anzsic_class            &lt;chr&gt; "Nursery Production (Under Cover)", "Nursery P…</span>
+<span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">asced_foe</span>)
 <span class="co">#&gt; Rows: 439</span>
 <span class="co">#&gt; Columns: 6</span>
-<span class="co">#&gt; $ foe2_code &lt;chr&gt; "01", "01", "01", "01", "01", "01", "01", "01", "01", "01",…</span>
-<span class="co">#&gt; $ foe2      &lt;chr&gt; "Natural and Physical Sciences", "Natural and Physical Scie…</span>
-<span class="co">#&gt; $ foe4_code &lt;chr&gt; "0100", "0101", "0101", "0101", "0101", "0103", "0103", "01…</span>
-<span class="co">#&gt; $ foe4      &lt;chr&gt; "Natural and Physical Sciences, nfd", "Mathematical Science…</span>
-<span class="co">#&gt; $ foe6_code &lt;chr&gt; "010000", "010100", "010101", "010103", "010199", "010300",…</span>
-<span class="co">#&gt; $ foe6      &lt;chr&gt; "Natural and Physical Sciences, nfd", "Mathematical Science…</span>
-<span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">asced_qual</span><span class="op">)</span>
+<span class="co">#&gt; $ foe2_code &lt;chr&gt; "01", "01", "01", "01", "01", "01", "01", "01", "01", "01", …</span>
+<span class="co">#&gt; $ foe2      &lt;chr&gt; "Natural and Physical Sciences", "Natural and Physical Scien…</span>
+<span class="co">#&gt; $ foe4_code &lt;chr&gt; "0100", "0101", "0101", "0101", "0101", "0103", "0103", "010…</span>
+<span class="co">#&gt; $ foe4      &lt;chr&gt; "Natural and Physical Sciences, nfd", "Mathematical Sciences…</span>
+<span class="co">#&gt; $ foe6_code &lt;chr&gt; "010000", "010100", "010101", "010103", "010199", "010300", …</span>
+<span class="co">#&gt; $ foe6      &lt;chr&gt; "Natural and Physical Sciences, nfd", "Mathematical Sciences…</span>
+<span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">asced_qual</span>)
 <span class="co">#&gt; Rows: 64</span>
 <span class="co">#&gt; Columns: 6</span>
-<span class="co">#&gt; $ qual1_code &lt;chr&gt; "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "2"…</span>
-<span class="co">#&gt; $ qual1      &lt;chr&gt; "Postgraduate Degree Level", "Postgraduate Degree Level", …</span>
-<span class="co">#&gt; $ qual2_code &lt;chr&gt; "11", "11", "11", "11", "11", "11", "12", "12", "12", "12"…</span>
-<span class="co">#&gt; $ qual2      &lt;chr&gt; "Doctoral Degree Level", "Doctoral Degree Level", "Doctora…</span>
-<span class="co">#&gt; $ qual3_code &lt;chr&gt; "111", "112", "113", "114", "115", "116", "121", "122", "1…</span>
-<span class="co">#&gt; $ qual3      &lt;chr&gt; "Higher Doctorate", "Doctorate by Research", "Doctorate by…</span></code></pre></div>
+<span class="co">#&gt; $ qual1_code &lt;chr&gt; "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "2",…</span>
+<span class="co">#&gt; $ qual1      &lt;chr&gt; "Postgraduate Degree Level", "Postgraduate Degree Level", "…</span>
+<span class="co">#&gt; $ qual2_code &lt;chr&gt; "11", "11", "11", "11", "11", "11", "12", "12", "12", "12",…</span>
+<span class="co">#&gt; $ qual2      &lt;chr&gt; "Doctoral Degree Level", "Doctoral Degree Level", "Doctoral…</span>
+<span class="co">#&gt; $ qual3_code &lt;chr&gt; "111", "112", "113", "114", "115", "116", "121", "122", "12…</span>
+<span class="co">#&gt; $ qual3      &lt;chr&gt; "Higher Doctorate", "Doctorate by Research", "Doctorate by …</span>
+<span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">sa42016</span>)
+<span class="co">#&gt; Rows: 107</span>
+<span class="co">#&gt; Columns: 10</span>
+<span class="co">#&gt; $ sa4_code_2016   &lt;chr&gt; "101", "102", "103", "104", "105", "106", "107", "108"…</span>
+<span class="co">#&gt; $ sa4_name_2016   &lt;chr&gt; "Capital Region", "Central Coast", "Central West", "Co…</span>
+<span class="co">#&gt; $ gcc_code_2016   &lt;chr&gt; "1RNSW", "1GSYD", "1RNSW", "1RNSW", "1RNSW", "1RNSW", …</span>
+<span class="co">#&gt; $ gcc_name_2016   &lt;chr&gt; "Rest of NSW", "Greater Sydney", "Rest of NSW", "Rest …</span>
+<span class="co">#&gt; $ state_code_2016 &lt;chr&gt; "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1",…</span>
+<span class="co">#&gt; $ state_name_2016 &lt;chr&gt; "New South Wales", "New South Wales", "New South Wales…</span>
+<span class="co">#&gt; $ areasqkm_2016   &lt;dbl&gt; 51895.5631, 1681.0724, 70297.0604, 13229.7578, 339363.…</span>
+<span class="co">#&gt; $ cent_long       &lt;dbl&gt; 149.2450, 151.2855, 148.3558, 152.7739, 145.0269, 150.…</span>
+<span class="co">#&gt; $ cent_lat        &lt;dbl&gt; -35.56480, -33.30797, -33.21697, -29.81603, -30.98611,…</span>
+<span class="co">#&gt; $ geometry        &lt;list&gt; [150.31133, 150.31258, 150.30964, 150.31133, -35.6658…</span>
+<span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">ced2018</span>)
+<span class="co">#&gt; Rows: 169</span>
+<span class="co">#&gt; Columns: 6</span>
+<span class="co">#&gt; $ ced_code_2018 &lt;chr&gt; "101", "102", "103", "104", "105", "106", "107", "108", …</span>
+<span class="co">#&gt; $ ced_name_2018 &lt;chr&gt; "Banks", "Barton", "Bennelong", "Berowra", "Blaxland", "…</span>
+<span class="co">#&gt; $ areasqkm_2018 &lt;dbl&gt; 49.4460, 39.6466, 58.6052, 749.6359, 61.1166, 98.3974, 3…</span>
+<span class="co">#&gt; $ cent_long     &lt;dbl&gt; 151.0465, 151.1274, 151.0985, 151.0385, 151.0090, 151.15…</span>
+<span class="co">#&gt; $ cent_lat      &lt;dbl&gt; -33.96482, -33.94082, -33.79360, -33.56993, -33.89634, -…</span>
+<span class="co">#&gt; $ geometry      &lt;list&gt; [151.01558, 151.01209, 151.00812, 151.00593, 151.00422,…</span></pre></div>
 </div>
 </div>
   </div>
@@ -175,6 +254,13 @@
 <h2>License</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
+</ul>
+</div>
+<div class="community">
+<h2>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
+<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
 <div class="developers">
@@ -200,7 +286,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

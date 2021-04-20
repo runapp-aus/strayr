@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ASCED Level of Education — asced_qual • abscorr</title>
+<title>Parse SEIFA index Spreadsheet — get_seifa_index_sheet • abscorr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,9 +48,10 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="ASCED Level of Education — asced_qual" />
-<meta property="og:description" content="Wide table containing all levels of qualifications in the Australian Standard
-Classification of Education (ASCED), 2001. Cat. 1272.0." />
+<meta property="og:title" content="Parse SEIFA index Spreadsheet — get_seifa_index_sheet" />
+<meta property="og:description" content="This is a helper function used by seifa_scores. The function can also
+be used independently if you have already downloaded one of the SEIFA index score spreadsheets
+from linkhttps://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/2033.0.55.0012016?OpenDocument" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -125,31 +126,43 @@ Classification of Education (ASCED), 2001. Cat. 1272.0." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>ASCED Level of Education</h1>
-    <small class="dont-index">Source: <a href='https://github.com/runapp-aus/abscorr/blob/master/R/data_descriptions.R'><code>R/data_descriptions.R</code></a></small>
-    <div class="hidden name"><code>asced_qual.Rd</code></div>
+    <h1>Parse SEIFA index Spreadsheet</h1>
+    <small class="dont-index">Source: <a href='https://github.com/runapp-aus/abscorr/blob/master/R/seifa.R'><code>R/seifa.R</code></a></small>
+    <div class="hidden name"><code>get_seifa_index_sheet.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Wide table containing all levels of qualifications in the Australian Standard
-Classification of Education (ASCED), 2001. Cat. 1272.0.</p>
+    <p>This is a helper function used by <code><a href='seifa_scores.html'>seifa_scores</a></code>. The function can also
+be used independently if you have already downloaded one of the SEIFA index score spreadsheets
+from linkhttps://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/2033.0.55.0012016?OpenDocument</p>
     </div>
 
-    <pre class="usage"><span class='no'>asced_qual</span></pre>
+    <pre class="usage"><span class='fu'>get_seifa_index_sheet</span>(
+  <span class='no'>filename</span>,
+  <span class='no'>sheetname</span>,
+  <span class='kw'>spatial_area</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sa1"</span>, <span class='st'>"sa2"</span>, <span class='st'>"sa3"</span>, <span class='st'>"lga"</span>, <span class='st'>"postcode"</span>)
+)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>filename</th>
+      <td><p>character name of temporary file when spreadsheet downloaded</p></td>
+    </tr>
+    <tr>
+      <th>sheetname</th>
+      <td><p>character name of the sheet to be imported</p></td>
+    </tr>
+    <tr>
+      <th>spatial_area</th>
+      <td><p>character</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>tibble</code> with 6 variables:</p><dl'>
-<dt><code>qual1_code</code></dt><dd><p>Broad qualification level one-digit code, e.g. "1"</p></dd>
-<dt><code>qual1</code></dt><dd><p>Broad qualification level one-digit name in title case, e.g. "Postgraduate Degree Level"</p></dd>
-<dt><code>qual2_code</code></dt><dd><p>Narrow qualification level two-digit code, e.g. "12"</p></dd>
-<dt><code>qual2</code></dt><dd><p>Narrow qualification level two-digit name in title case, e.g. "Master Degree Level"</p></dd>
-<dt><code>qual3_code</code></dt><dd><p>Detailed qualification level three-digit code, e.g. "122"</p></dd>
-<dt><code>qual3</code></dt><dd><p>Detailed qualification level three-digit name in title case, e.g. "Master Degree by Coursework"</p></dd>
-
-</dl>
-
+    <p>data.frame</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

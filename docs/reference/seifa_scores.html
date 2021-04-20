@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ASCED Level of Education — asced_qual • abscorr</title>
+<title>Import SEIFA Data from ABS Spreadsheet — seifa_scores • abscorr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,9 +48,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="ASCED Level of Education — asced_qual" />
-<meta property="og:description" content="Wide table containing all levels of qualifications in the Australian Standard
-Classification of Education (ASCED), 2001. Cat. 1272.0." />
+<meta property="og:title" content="Import SEIFA Data from ABS Spreadsheet — seifa_scores" />
+<meta property="og:description" content="The function will download all LGA SEIFA data to a temporary excel file and merge sheets into a long `data.frame`" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -125,31 +124,47 @@ Classification of Education (ASCED), 2001. Cat. 1272.0." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>ASCED Level of Education</h1>
-    <small class="dont-index">Source: <a href='https://github.com/runapp-aus/abscorr/blob/master/R/data_descriptions.R'><code>R/data_descriptions.R</code></a></small>
-    <div class="hidden name"><code>asced_qual.Rd</code></div>
+    <h1>Import SEIFA Data from ABS Spreadsheet</h1>
+    <small class="dont-index">Source: <a href='https://github.com/runapp-aus/abscorr/blob/master/R/seifa.R'><code>R/seifa.R</code></a></small>
+    <div class="hidden name"><code>seifa_scores.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Wide table containing all levels of qualifications in the Australian Standard
-Classification of Education (ASCED), 2001. Cat. 1272.0.</p>
+    <p>The function will download all LGA SEIFA data to a temporary excel file and merge sheets into a long `data.frame`</p>
     </div>
 
-    <pre class="usage"><span class='no'>asced_qual</span></pre>
+    <pre class="usage"><span class='fu'>seifa_scores</span>(
+  <span class='kw'>indexes</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"irsed"</span>, <span class='st'>"irsead"</span>, <span class='st'>"ier"</span>, <span class='st'>"ieo"</span>),
+  <span class='kw'>spatial_area</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"sa1"</span>, <span class='st'>"sa2"</span>, <span class='st'>"sa3"</span>, <span class='st'>"lga"</span>, <span class='st'>"postcode"</span>)
+)</pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>indexes</th>
+      <td><p>character vector matching available SEIFA indexes:</p><ul>
+<li><p>irsedIndex of Relative Socio-economic Disadvantage</p></li>
+<li><p>irseadIndex of Relative Socio-economic Advantage and Disadvantage</p></li>
+<li><p>ierIndex of Economic Resources</p></li>
+<li><p>ieoIndex of Education and Occupation</p></li>
+</ul></td>
+    </tr>
+    <tr>
+      <th>spatial_area</th>
+      <td><p>character value for the desired spatial area. MUst be one of:</p><ul>
+<li><p>sa1download size 51.6 mb</p></li>
+<li><p>sa2download size 1.9 mb</p></li>
+<li><p>lgadownload size 660 kb</p></li>
+<li><p>postcode</p></li>
+<li><p>suburb</p></li>
+</ul></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
 
-    <p>A <code>tibble</code> with 6 variables:</p><dl'>
-<dt><code>qual1_code</code></dt><dd><p>Broad qualification level one-digit code, e.g. "1"</p></dd>
-<dt><code>qual1</code></dt><dd><p>Broad qualification level one-digit name in title case, e.g. "Postgraduate Degree Level"</p></dd>
-<dt><code>qual2_code</code></dt><dd><p>Narrow qualification level two-digit code, e.g. "12"</p></dd>
-<dt><code>qual2</code></dt><dd><p>Narrow qualification level two-digit name in title case, e.g. "Master Degree Level"</p></dd>
-<dt><code>qual3_code</code></dt><dd><p>Detailed qualification level three-digit code, e.g. "122"</p></dd>
-<dt><code>qual3</code></dt><dd><p>Detailed qualification level three-digit name in title case, e.g. "Master Degree by Coursework"</p></dd>
-
-</dl>
-
+    <p>For All SEIFA spreadsheets go to https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/2033.0.55.0012016?OpenDocument</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
