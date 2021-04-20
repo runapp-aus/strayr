@@ -6,8 +6,9 @@ an avenue for people to learn about and improve their R package development skil
 
 ## Contribute Code
 
-To contribute code please fork the project by clicking on the `fork` link in the top 
-right of the github repository. This will create a version of the package that you can 
+To contribute code clone the project into `RStudio` then create a new branch. Include in the branch 
+name your Github user name and a short description of the feature you are working on; for 
+example "add-seifa-import-mrjoh3". In this branch you will have a version of the package that you can 
 work on. Once you have completed your changes they can be submitted via a Pull Request (PR).
 
 New code should follow the tidyverse [style guide](http://style.tidyverse.org).
