@@ -7,7 +7,7 @@
 get_seifa_index_sheet(
   filename,
   sheetname,
-  spatial_area = c("sa1", "sa2", "sa3", "lga", "postcode")
+  structure = c("sa1", "sa2", "sa3", "lga", "postcode")
 )
 }
 \arguments{
@@ -15,7 +15,7 @@ get_seifa_index_sheet(
 
 \item{sheetname}{character name of the sheet to be imported}
 
-\item{spatial_area}{character}
+\item{structure}{character}
 }
 \value{
 data.frame
