@@ -87,6 +87,8 @@ Loading the package will lazily load the structures listed above.
 Call them with their name:
 
 ```{r actual-load, include=FALSE}
+# use this to make sure README runs with current build
+# rather than installed version
 devtools::load_all()
 library(dplyr, warn.conflicts = FALSE)
 ```

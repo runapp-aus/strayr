@@ -33,19 +33,20 @@ remotes::install_github("runapp-aus/abscorr")
 
 Current structures stored in `abscorr` are:
 
-  - `anzsco`: occupation levels of the [Australian and New Zealand
+-   `anzsco`: occupation levels of the [Australian and New Zealand
     Standard Classification of Occupations (ANZSCO), First Edition,
-    Revision 1, 2009.
-    Cat. 1220.0](https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1220.0First%20Edition,%20Revision%201?OpenDocument).
-  - `anzsic`: industry levels of the [Australian and New Zealand
+    Revision 1, 2009. Cat.
+    1220.0](https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1220.0First%20Edition,%20Revision%201?OpenDocument).
+-   `anzsic`: industry levels of the [Australian and New Zealand
     Standard Industrial Classification (ANZSIC), 2006 (Revision 1.0).
-    Cat. 1292.0](https://www.abs.gov.au/ausstats/abs@.nsf/0/20C5B5A4F46DF95BCA25711F00146D75?opendocument).
-  - `asced_foe`: field of education levels of the [Australian Standard
-    Classification of Education (ASCED), 2001.
-    Cat. 1272.0](https://www.abs.gov.au/ausstats/abs@.nsf/mf/1272.0).
-  - `asced_qual`: qualification levels of the [Australian Standard
-    Classification of Education (ASCED), 2001.
-    Cat. 1272.0](https://www.abs.gov.au/ausstats/abs@.nsf/mf/1272.0).
+    Cat.
+    1292.0](https://www.abs.gov.au/ausstats/abs@.nsf/0/20C5B5A4F46DF95BCA25711F00146D75?opendocument).
+-   `asced_foe`: field of education levels of the [Australian Standard
+    Classification of Education (ASCED), 2001. Cat.
+    1272.0](https://www.abs.gov.au/ausstats/abs@.nsf/mf/1272.0).
+-   `asced_qual`: qualification levels of the [Australian Standard
+    Classification of Education (ASCED), 2001. Cat.
+    1272.0](https://www.abs.gov.au/ausstats/abs@.nsf/mf/1272.0).
 
 The `abscorr` package also loads
 [`absmapsdata`](https://github.com/wfmackey/absmapsdata), which contains
@@ -91,10 +92,6 @@ library(dplyr)
 ```
 
 ``` r
-library(abscorr)
-#> Loading required package: absmapsdata
-library(dplyr, warn.conflicts = FALSE)
-
 glimpse(anzsco)
 #> Rows: 1,180
 #> Columns: 11
