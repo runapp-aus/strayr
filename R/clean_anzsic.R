@@ -5,9 +5,6 @@
 #' @param x a (character) vector containing ANZSIC titles or codes.
 #' Note that clean_anzsic always returns a character vector. If no match is found, then NA is returned.
 #'
-#' @param to what form should the ANZSIC names or codes be converted to? Options are
-#' "title" (the default) or "code".
-#'
 #' @param fuzzy_match logical; either TRUE which indicates that
 #' approximate/fuzzy string matching should be used, or FALSE (the default) which indicates that
 #' only exact matches should be used. If FALSE, then if no match is found, then NA is returned.
@@ -33,12 +30,20 @@
 #' @export
 #'
 #'
-clean_anzsic <- function(x,
-                         to = c("title", "code"),
+clean_anzsic <- function(vector,
                          fuzzy_match = FALSE,
                          max_dist = 0.4,
                          method = "jw",
-                         return_na = FALSE)
+                         silent = FALSE) {
+
+  clean_titles(vector,
+               dictionary = anzsic_dictionary,
+               .fuzzy_match = fuzzy_match,
+               .max_dist = max_dist,
+               .method = method,
+               .silent = silent)
+
+}
 
 
 
