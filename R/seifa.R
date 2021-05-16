@@ -11,11 +11,11 @@
 #' }
 #' @param structure character value for the desired spatial area. Must be one of:
 #' \itemize{
-#'   \item{sa1}{ - download size 51.6 mb}
-#'   \item{sa2}{ - download size 1.9 mb}
-#'   \item{lga}{ - download size 660 kb}
-#'   \item{postcode}
-#'   \item{suburb}
+#'   \item{sa1}{ - download size 51.6 MB}
+#'   \item{sa2}{ - download size 1.9 MB}
+#'   \item{lga}{ - download size 660 KB}
+#'   \item{postcode}{ - download size 2.3 MB}
+#'   \item{suburb}{ - download size 11.3 MB}
 #' }
 #'
 #' @importFrom purrr map_dfr
@@ -27,10 +27,10 @@
 #'
 #' @examples
 #' \dontrun{
-#' get_seifa(structure = 'lga', data_subclass = irsed)
+#' get_seifa(structure = 'lga', data_subclass = 'irsed')
 #' }
 #'
-get_seifa <- function(structure = c('sa1','sa2','sa3','lga','postcode'), data_subclass = c('irsed', 'irsead', 'ier', 'ieo')) {
+get_seifa <- function(structure = c('sa1','sa2','lga','postcode','suburb'), data_subclass = c('irsed', 'irsead', 'ier', 'ieo')) {
 
   # match excel sheet names to data_subclass
   stopifnot(all(data_subclass %in% c('irsed', 'irsead', 'ier', 'ieo')))
@@ -81,7 +81,7 @@ get_seifa <- function(structure = c('sa1','sa2','sa3','lga','postcode'), data_su
 #' @return data.frame
 #' @export
 #'
-get_seifa_index_sheet <- function(filename, sheetname, structure = c('sa1','sa2','sa3','lga','postcode')) {
+get_seifa_index_sheet <- function(filename, sheetname, structure = c('sa1','sa2','lga','postcode','suburb')) {
 
   structure <- match.arg(structure, several.ok = FALSE)
 
@@ -102,6 +102,15 @@ get_seifa_index_sheet <- function(filename, sheetname, structure = c('sa1','sa2'
                     'max_score_sa1_area',
                     'percent_usual_resident_pop_without_sa1_score')
 
+  if (structure %in% c('suburb','postcode')) {
+    column_names <- c(column_names, 'caution_poor_sa1_representation')
+  }
+
+  if (structure == 'postcode') {
+    column_names <- column_names[-grep('area_name', column_names)]
+    column_names <- c(column_names, 'postcode_crosses_state_boundary')
+  }
+
   if (structure == 'sa1') {
     column_names <- c('sa1_7_code',
                       'sa1_11_code',
@@ -118,13 +127,16 @@ get_seifa_index_sheet <- function(filename, sheetname, structure = c('sa1','sa2'
                       'percentile_state')
   }
 
-  df <- read_excel(filename,
-                   sheetname,
-                   skip = 6,
-                   col_names = column_names) %>%
-    select(-starts_with('blank')) %>%
-    mutate(structure = structure) %>%
-    relocate(structure)
+  suppressWarnings({
+    df <- read_excel(filename,
+                     sheetname,
+                     skip = 6,
+                     col_names = column_names) %>%
+      filter(across(ends_with('_code'), ~ !is.na(.x))) %>%
+      select(-starts_with('blank')) %>%
+      mutate(structure = structure) %>%
+      relocate(structure)
+  })
 
   return(df)
 
