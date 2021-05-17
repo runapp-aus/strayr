@@ -132,7 +132,7 @@ get_seifa_index_sheet <- function(filename, sheetname, structure = c('sa1','sa2'
                      sheetname,
                      skip = 6,
                      col_names = column_names) %>%
-      filter(across(ends_with('_code'), ~ !is.na(.x))) %>%
+      dplyr::filter(across(ends_with('_code'), ~ !is.na(.x))) %>%
       select(-starts_with('blank')) %>%
       mutate(structure = structure) %>%
       relocate(structure)
@@ -141,3 +141,4 @@ get_seifa_index_sheet <- function(filename, sheetname, structure = c('sa1','sa2'
   return(df)
 
 }
+
