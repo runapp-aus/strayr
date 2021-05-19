@@ -2,21 +2,21 @@
 % Please edit documentation in R/seifa.R
 \name{get_seifa}
 \alias{get_seifa}
-\title{Import SEIFA Data from ABS Spreadsheet}
+\title{Import 2016 SEIFA Data from ABS}
 \usage{
 get_seifa(
-  structure = c("sa1", "sa2", "sa3", "lga", "postcode"),
+  structure = c("sa1", "sa2", "lga", "postcode", "suburb"),
   data_subclass = c("irsed", "irsead", "ier", "ieo")
 )
 }
 \arguments{
 \item{structure}{character value for the desired spatial area. Must be one of:
 \itemize{
-  \item{sa1}{ - download size 51.6 mb}
-  \item{sa2}{ - download size 1.9 mb}
-  \item{lga}{ - download size 660 kb}
-  \item{postcode}
-  \item{suburb}
+  \item{sa1}{ - download size 51.6 MB}
+  \item{sa2}{ - download size 1.9 MB}
+  \item{lga}{ - download size 660 KB}
+  \item{postcode}{ - download size 2.3 MB}
+  \item{suburb}{ - download size 11.3 MB}
 }}
 
 \item{data_subclass}{character vector matching available SEIFA indexes:
@@ -27,15 +27,23 @@ get_seifa(
   \item{ieo}{ - Index of Education and Occupation}
 }}
 }
+\value{
+`data.frame` if file successfully downloaded, else returns `NULL`.
+}
 \description{
-The function will download all LGA SEIFA data to a temporary excel file and merge sheets into a long `data.frame`
+The function will download all SEIFA data, for a specified spatial structure,
+to a temporary excel file and then merge sheets into a single `data.frame`. This `data.frame`
+also includes the ABS population count for the given spatial structure. For more information
+on SEIFA indexes go to
+\url{https://www.abs.gov.au/AUSSTATS/abs@.nsf/Lookup/2033.0.55.001Main+Features12016?OpenDocument}
 }
 \note{
-For All SEIFA spreadsheets go to https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/2033.0.55.0012016?OpenDocument
+For All ABS SEIFA spreadsheets go to \href{https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/2033.0.55.0012016?OpenDocument}{ABS website}
 }
 \examples{
 \dontrun{
-get_seifa(structure = 'lga', data_subclass = irsed)
+
+  get_seifa(structure = 'lga', data_subclass = 'irsed')
 }
 
 }

@@ -7,7 +7,7 @@
 get_seifa_index_sheet(
   filename,
   sheetname,
-  structure = c("sa1", "sa2", "sa3", "lga", "postcode")
+  structure = c("sa1", "sa2", "lga", "postcode", "suburb")
 )
 }
 \arguments{
@@ -15,13 +15,21 @@ get_seifa_index_sheet(
 
 \item{sheetname}{character name of the sheet to be imported}
 
-\item{structure}{character}
+\item{structure}{character spatial structure of the data to be parsed. The spatial structure is
+important as the shape of the data in the ABS spreadsheets if different for some structures.}
 }
 \value{
 data.frame
 }
 \description{
-This is a helper function used by \code{\link{seifa_scores}}. The function can also
+This is a helper function used by \code{\link{get_seifa}}. The function can also
 be used independently if you have already downloaded one of the SEIFA index score spreadsheets
-from link{https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/2033.0.55.0012016?OpenDocument}
+from \url{https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/2033.0.55.0012016?OpenDocument}
+}
+\examples{
+\dontrun{
+
+  get_seifa_index_sheet('downloaded_filename.xls', sheetname = 'Table 2', structure = 'lga')
+}
+
 }

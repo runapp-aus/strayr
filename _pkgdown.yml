@@ -36,5 +36,5 @@ reference:
     desc: >
       Functions for retrieving ABS data
     contents:
-      - seifa_scores
+      - get_seifa
       - get_seifa_index_sheet

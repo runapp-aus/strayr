@@ -49,3 +49,29 @@ test_that('sa1 spreadsheet can be parsed', {
                                'percentile_state'))
 
 })
+
+
+test_that("can Import SEIFA postcode scores", {
+
+  column_names <- c(column_names, 'caution_poor_sa1_representation')
+  column_names <- column_names[-grep('area_name', column_names)]
+  column_names <- c(column_names, 'postcode_crosses_state_boundary')
+
+  df <- get_seifa(structure = 'postcode')
+
+  expect_is(df, 'data.frame')
+  expect_equal(colnames(df), column_names)
+
+})
+
+test_that("can Import SEIFA suburb scores", {
+
+  column_names <- c(column_names, 'caution_poor_sa1_representation')
+
+  df <- get_seifa(structure = 'suburb')
+
+  expect_is(df, 'data.frame')
+  expect_equal(colnames(df), column_names)
+
+})
+
