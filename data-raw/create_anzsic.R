@@ -67,6 +67,14 @@ anzsic <- anzsic %>%
           anzsic_class_code)
 
 
+anzsic_dictionary <- make_dictionary(anzsic)
+
 # Export
 usethis::use_data(anzsic, overwrite = TRUE)
+usethis::use_data(anzsic_dictionary, overwrite = TRUE)
+
+
+
+
+
 

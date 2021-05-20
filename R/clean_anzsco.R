@@ -1,9 +1,9 @@
-#' Convert ANZSIC names and abbreviations into the consistent format used by the Australian Bureau of Statistics.
+#' Convert ANZSCO names and abbreviations into the consistent format used by the Australian Bureau of Statistics.
 #' This function enables both exact (default) and fuzzy matching.
 #' Under exact matching, if no match is found, NA is returned.
 #'
-#' @param x a (character) vector containing ANZSIC titles or codes.
-#' Note that clean_anzsic always returns a character vector. If no match is found, then NA is returned.
+#' @param x a (character) vector containing ANZSCO titles.
+#' Note that clean_anzsco always returns a character vector. If no match is found, then NA is returned.
 #'
 #' @param fuzzy_match logical; either TRUE which indicates that
 #' approximate/fuzzy string matching should be used, or FALSE (the default) which indicates that
@@ -22,20 +22,20 @@
 #'
 #' @examples
 #'
-#' clean_anzsic("Agriculture forestry & Fishing")
+#' clean_anzsco("driving instructor")
 #'
-#' clean_anzsic("Agriculture, Forestry", fuzzy_match = TRUE)
+#' clean_anzsco("Driving", fuzzy_match = TRUE)
 #'
 #' @export
 #'
 #'
-clean_anzsic <- function(vector,
+clean_anzsco <- function(vector,
                          fuzzy_match = FALSE,
                          max_dist = 0.4,
                          method = "jw",
                          silent = FALSE) {
   clean_titles(
-    dictionary = anzsic_dictionary,
+    dictionary = anzsco_dictionary,
     .vector = vector,
     .fuzzy_match = fuzzy_match,
     .max_dist = max_dist,

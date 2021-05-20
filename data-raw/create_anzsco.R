@@ -139,5 +139,9 @@ if (include_factor_variants) {
 
 }
 
+anzsco_dictionary <- make_dictionary(anzsco)
+
+
 # Export
 usethis::use_data(anzsco, overwrite = TRUE)
+usethis::use_data(anzsco_dictionary, overwrite = TRUE)

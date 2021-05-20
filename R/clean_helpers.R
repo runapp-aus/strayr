@@ -1,4 +1,4 @@
-#' Title
+#' clean_titles
 #'
 #' @param dictionary
 #' @param .vector
@@ -8,7 +8,7 @@
 #' @param .silent
 #'
 #' @return
-#' @export
+#' @importFrom stringdist amatch
 #'
 #' @examples
 #'
@@ -62,23 +62,25 @@ clean_titles <- function(dictionary,
 #'
 #' @param string a character vector
 #'
+#' @importFrom stringr str_to_lower str_trim str_replace_all str_remove_all
+
 #' @return a cleaned string with no punctuation, trailing letter s, numbers etc
 #'
 
 clean_string <- function(string) {
   clean_string <- string %>%
     # Replace punctuation with spaces
-    str_replace_all("[:punct:]", " ") %>%
+    stringr::str_replace_all("[:punct:]", " ") %>%
     # Remove numbers
-    str_remove_all("\\d") %>%
+    stringr::str_remove_all("\\d") %>%
     # Remove any capitalised letters at the start of the string
-    str_remove_all("\\b[A-Z]?\\b") %>%
+    stringr::str_remove_all("\\b[A-Z]?\\b") %>%
     # convert to lower
-    str_to_lower() %>%
+    stringr::str_to_lower() %>%
     # remove the word "and"
-    str_remove_all(" and ") %>%
+    stringr::str_remove_all(" and ") %>%
     # Remove any whitespace
-    str_remove_all("[:space:]")
+    stringr::str_remove_all("[:space:]")
 
   return(clean_string)
 }

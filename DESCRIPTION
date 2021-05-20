@@ -5,6 +5,8 @@ Version: 0.1.0
 Author: person("Will", "Mackey", email = "wfmackey@gmail.com",
                 role = c("aut", "cre")),
         person(given = "Matt", family = "Johnson",
+                role = "aut")),
+        person(given = "David", family = "Diviny", email = "david.diviny@nousgroup.com.au"
                 role = "aut"))
 Maintainer: Will Mackey <wfmackey@gmail.com>
 License: GPL-3
