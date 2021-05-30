@@ -2,6 +2,7 @@
 
 library(tidyverse)
 library(glue)
+devtools::load_all()
 
 # include factor variants or nah?
 include_factor_variants <- FALSE
@@ -13,9 +14,9 @@ to_title <- function(x) str_to_title(x) %>% tools::toTitleCase()
 anzsco_url <- "https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&1220.0%20ANZSCO%20Version%201.2%20Structure%20v3.xls&1220.0&Data%20Cubes&6A8A6C9AC322D9ABCA257B9E0011956C&0&2013,%20Version%201.2&05.07.2013&Latest"
 
 temp_dir <- tempdir()
-temp_path <- glue("{temp_dir}/anzsco.zip")
+temp_path <- glue("{temp_dir}/anzsco.xls")
 
-download.file(anzsco_url, temp_path)
+download.file(anzsco_url, temp_path, mode = "wb")
 
 # Read
 raw <- readxl::read_excel(temp_path,
@@ -123,12 +124,12 @@ anzsco <- comb %>%
 if (include_factor_variants) {
   anzsco <- anzsco %>%
     mutate(
-         anzsco1_f = as_factor(anzsco1),
-         anzsco2_f = as_factor(anzsco2),
-         anzsco3_f = as_factor(anzsco3),
-         anzsco4_f = as_factor(anzsco4),
-         anzsco6_f = as_factor(anzsco6),
-         skill_level = as_factor(skill_level)) %>%
+      anzsco1_f = as_factor(anzsco1),
+      anzsco2_f = as_factor(anzsco2),
+      anzsco3_f = as_factor(anzsco3),
+      anzsco4_f = as_factor(anzsco4),
+      anzsco6_f = as_factor(anzsco6),
+      skill_level = as_factor(skill_level)) %>%
     # order
     select(anzsco1_code, anzsco1, anzsco1_f,
            anzsco2_code, anzsco2, anzsco2_f,
@@ -138,6 +139,9 @@ if (include_factor_variants) {
            skill_level)
 
 }
+
+anzsco_dictionary <- make_dictionary(anzsco)
+
 
 # Export
 usethis::use_data(anzsco, overwrite = TRUE)

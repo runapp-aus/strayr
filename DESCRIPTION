@@ -1,14 +1,16 @@
 Package: abscorr
 Type: Package
-Title: A catalogue of ready-to-use ABS coding structures
+Title: Ready-to-use Australian common structures and classifications and tools for working with them
 Version: 0.1.0
 Author: person("Will", "Mackey", email = "wfmackey@gmail.com",
                 role = c("aut", "cre")),
         person(given = "Matt", family = "Johnson",
+                role = "aut")),
+        person(given = "David", family = "Diviny", email = "david.diviny@nousgroup.com.au"
                 role = "aut"))
 Maintainer: Will Mackey <wfmackey@gmail.com>
 License: GPL-3
-Description: This package allows the user to access lazily-loaded tables containing common structures used by the Australian Bureau of Statistics (ABS).
+Description: This package provides data and functions for working with common structures and classifications used in Australia.
 Depends: 
 	R (>= 3.5),
   absmapsdata
@@ -17,7 +19,11 @@ Imports:
     lifecycle,
     purrr,
     readxl,
-    magrittr
+    magrittr,
+    stringr,
+    stringdist,
+    tidyr,
+    rlang
 Suggests: 
     testthat,
     here
