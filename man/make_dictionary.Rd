@@ -7,7 +7,7 @@
 make_dictionary(category_tbl)
 }
 \arguments{
-\item{category_tbl}{}
+\item{category_tbl}{a tibble of categories, e.g. \code{anzsco}}
 }
 \value{
 a named vector.

@@ -2,26 +2,38 @@
 % Please edit documentation in R/clean_helpers.R
 \name{clean_titles}
 \alias{clean_titles}
-\title{clean_titles}
+\title{clean_titles is a helper function for the clean}
 \usage{
 clean_titles(
-  dictionary,
-  .vector = vector,
-  .fuzzy_match = fuzzy_match,
-  .max_dist = max_dist,
-  .method = method,
-  .silent = silent
+  dictionary = NULL,
+  .vector = NULL,
+  .fuzzy_match = FALSE,
+  .max_dist = 0.4,
+  .method = "jw",
+  .silent = FALSE
 )
 }
 \arguments{
-\item{.silent}{}
+\item{dictionary}{a dictionary created with the make_dictionary function}
+
+\item{.vector}{a character vector}
+
+\item{.fuzzy_match}{logical; either TRUE which indicates that
+approximate/fuzzy string matching should be used, or FALSE (the default) which indicates that
+only exact matches should be used. If FALSE, then if no match is found, then NA is returned.}
+
+\item{.max_dist}{numeric, sets the maximum acceptable distance between your
+string and the matched string. Default is 0.4. Only relevant when fuzzy_match is TRUE.}
+
+\item{.method}{the method used for approximate/fuzzy string matching. Default
+is "jw", the Jaro-Winker distance; see `??stringdist-metrics` for more options.
+Only relevant when fuzzy_match is TRUE.}
+
+\item{.silent}{a boolean value. If FALSE (the default), the function will warn that  \code{NA}(s) were returned.}
 }
 \value{
-
+a character vector of cleaned values that have matches in the dictionary.
 }
 \description{
-clean_titles
-}
-\examples{
-
+clean_titles is a helper function for the clean
 }

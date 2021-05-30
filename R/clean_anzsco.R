@@ -3,7 +3,7 @@
 #' Under exact matching, if no match is found, NA is returned.
 #'
 #' @param x a (character) vector containing ANZSCO titles.
-#' Note that clean_anzsco always returns a character vector. If no match is found, then NA is returned.
+#' Note that \code{clean_anzsco} always returns a character vector. If no match is found, then \code{NA} is returned.
 #'
 #' @param fuzzy_match logical; either TRUE which indicates that
 #' approximate/fuzzy string matching should be used, or FALSE (the default) which indicates that
@@ -16,9 +16,13 @@
 #' is "jw", the Jaro-Winker distance; see `??stringdist-metrics` for more options.
 #' Only relevant when fuzzy_match is TRUE.
 #'
-#' @param silent a boolean value. If FALSE (the default), the function will warn that NAs were returned.
+#' @param silent a boolean value. If FALSE (the default), the function will warn that  \code{NA}(s) were returned.
 #'
-#' @return a character vector
+#' @return a character vector of cleaned values that have matches in the official format.
+#'
+#' @family cleaning functions
+#'
+#' @seealso \code{\link{clean_anzsic}} for ANZSIC.
 #'
 #' @examples
 #'
@@ -29,14 +33,14 @@
 #' @export
 #'
 #'
-clean_anzsco <- function(vector,
+clean_anzsco <- function(x,
                          fuzzy_match = FALSE,
                          max_dist = 0.4,
                          method = "jw",
                          silent = FALSE) {
   clean_titles(
     dictionary = anzsco_dictionary,
-    .vector = vector,
+    .vector = x,
     .fuzzy_match = fuzzy_match,
     .max_dist = max_dist,
     .method = method,

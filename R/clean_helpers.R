@@ -1,23 +1,28 @@
-#' clean_titles
+#' clean_titles is a helper function for the clean
 #'
-#' @param dictionary
-#' @param .vector
-#' @param .fuzzy_match
-#' @param .max_dist
-#' @param .method
-#' @param .silent
+#' @param dictionary a dictionary created with the make_dictionary function
+#' @param .vector a character vector
+#' @param .fuzzy_match logical; either TRUE which indicates that
+#' approximate/fuzzy string matching should be used, or FALSE (the default) which indicates that
+#' only exact matches should be used. If FALSE, then if no match is found, then NA is returned.
+#' @param .max_dist numeric, sets the maximum acceptable distance between your
+#' string and the matched string. Default is 0.4. Only relevant when fuzzy_match is TRUE.
+#' @param .method the method used for approximate/fuzzy string matching. Default
+#' is "jw", the Jaro-Winker distance; see `??stringdist-metrics` for more options.
+#' Only relevant when fuzzy_match is TRUE.
+#' @param .silent a boolean value. If FALSE (the default), the function will warn that  \code{NA}(s) were returned.
 #'
-#' @return
+#' @return a character vector of cleaned values that have matches in the dictionary.
+#'
 #' @importFrom stringdist amatch
 #'
-#' @examples
 #'
-clean_titles <- function(dictionary,
-                         .vector = vector,
-                         .fuzzy_match = fuzzy_match,
-                         .max_dist = max_dist,
-                         .method = method,
-                         .silent = silent) {
+clean_titles <- function(dictionary = NULL,
+                         .vector = NULL,
+                         .fuzzy_match = FALSE,
+                         .max_dist = 0.4,
+                         .method = "jw",
+                         .silent = FALSE) {
   if (!is.logical(.fuzzy_match)) {
     stop("`fuzzy_match` argument must be either `TRUE` or `FALSE`")
   }
@@ -88,7 +93,11 @@ clean_string <- function(string) {
 
 #' A helper function to create a dictionary for use in the clean family of functions
 #'
-#' @param category_tbl
+#' @param category_tbl a tibble of categories, e.g. \code{anzsco}
+#'
+#' @importFrom dplyr select contains pull everything distinct ends_with everything mutate
+#' @importFrom tidyr pivot_longer
+#' @importFrom rlang .data
 #'
 #' @return a named vector.
 
@@ -96,12 +105,12 @@ make_dictionary <- function(category_tbl) {
   dictionary_tbl <- category_tbl %>%
     select(!contains("code")) %>%
     pivot_longer(everything(), values_to = "title") %>%
-    mutate(clean_title = clean_string(title)) %>%
-    select(-name) %>%
+    mutate(clean_title = clean_string(.data$title)) %>%
+    select(-.data$name) %>%
     distinct()
 
   dictionary <- dictionary_tbl %>%
-    pull(clean_title)
+    pull(.data$clean_title)
 
   names(dictionary) <- dictionary_tbl$title
 

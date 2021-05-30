@@ -1,5 +1,5 @@
 
-# Reading and cleaning ANZSCO correspondence
+# Reading and cleaning ANZSIC correspondence
 
 library(tidyverse)
 library(glue)
@@ -71,7 +71,6 @@ anzsic_dictionary <- make_dictionary(anzsic)
 
 # Export
 usethis::use_data(anzsic, overwrite = TRUE)
-usethis::use_data(anzsic_dictionary, overwrite = TRUE)
 
 
 

@@ -20,6 +20,10 @@
 #'
 #' @return a character vector
 #'
+#' @family cleaning functions
+#'
+#' @seealso \code{\link{clean_anzsco}} for ANZSCO.
+#'
 #' @examples
 #'
 #' clean_anzsic("Agriculture forestry & Fishing")
@@ -29,14 +33,14 @@
 #' @export
 #'
 #'
-clean_anzsic <- function(vector,
+clean_anzsic <- function(x,
                          fuzzy_match = FALSE,
                          max_dist = 0.4,
                          method = "jw",
                          silent = FALSE) {
   clean_titles(
     dictionary = anzsic_dictionary,
-    .vector = vector,
+    .vector = x,
     .fuzzy_match = fuzzy_match,
     .max_dist = max_dist,
     .method = method,

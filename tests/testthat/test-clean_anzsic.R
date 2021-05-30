@@ -3,6 +3,8 @@ test_that("clean_anzsic works as intended", {
   expect_equal(clean_anzsic("Agriculture forestry & Fishing"), "Agriculture, Forestry and Fishing")
   # Check that it doesn't match when looking for exact match
   expect_equal(clean_anzsic("Agriculture, Forestry", silent = TRUE), NA_character_)
+  #check when includes codes
+  expect_equal(clean_anzsic("01. A-Agriculture, forestry & fishing"), clean_anzsic("Agriculture, forestry & fishing"))
   # Check that it does match when looking for fuzzy match
   expect_equal(clean_anzsic("Agriculture, Forestry", fuzzy_match = TRUE), "Agriculture, Forestry and Fishing")
   # Test class is as expected
