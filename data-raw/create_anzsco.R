@@ -140,6 +140,21 @@ if (include_factor_variants) {
 
 }
 
+# Rename using new conventions: https://github.com/runapp-aus/abscorr/issues/17
+anzsco <- anzsco %>%
+  rename(
+    anzsco_major = anzsco1,
+    anzsco_major_code = anzsco1_code,
+    anzsco_submajor = anzsco2,
+    anzsco_submajor_code = anzsco2_code,
+    anzsco_minor = anzsco3,
+    anzsco_minor_code = anzsco3_code,
+    anzsco_unit = anzsco4,
+    anzsco_unit_code = anzsco4_code,
+    anzsco_occupation = anzsco6,
+    anzsco_occupation_code = anzsco6_code
+  )
+
 anzsco_dictionary <- make_dictionary(anzsco)
 
 

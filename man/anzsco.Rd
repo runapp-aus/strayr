@@ -7,16 +7,16 @@
 \format{
 A \code{tibble} with 11 variables:
 \describe{
-\item{\code{anzsco1_code}}{Major ANZSCO group codes, e.g. "4"}
-\item{\code{anzsco1}}{Major ANZSCO group names in title case, e.g. "Community and Personal Service Workers"}
-\item{\code{anzsco2_code}}{Sub-major ANZSCO group codes, e.g. "45"}
-\item{\code{anzsco2}}{Sub-major ANZSCO group names in title case, e.g. "Sports and Personal Service Workers"}
-\item{\code{anzsco3_code}}{Minor ANZSCO group codes, e.g. "452"}
-\item{\code{anzsco3}}{Minor ANZSCO group names in title case, e.g. "Sports and Fitness Workers"}
-\item{\code{anzsco4_code}}{Unit ANZSCO group codes, e.g. "4523"}
-\item{\code{anzsco4}}{Unit ANZSCO group names in title case, e.g. "Sports Coaches, Instructors and Officials"}
-\item{\code{anzsco6_code}}{Occupation ANZSCO group codes, e.g. "452311"}
-\item{\code{anzsco6}}{Occupation ANZSCO group names in title case, e.g. "Diving Instructor (Open Water)"}
+\item{\code{anzsco_major_code}}{Major ANZSCO group codes, e.g. "4"}
+\item{\code{anzsco_major}}{Major ANZSCO group names in title case, e.g. "Community and Personal Service Workers"}
+\item{\code{anzsco_submajor_code}}{Sub-major ANZSCO group codes, e.g. "45"}
+\item{\code{anzsco_submajor}}{Sub-major ANZSCO group names in title case, e.g. "Sports and Personal Service Workers"}
+\item{\code{anzsco_minor_code}}{Minor ANZSCO group codes, e.g. "452"}
+\item{\code{anzsco_minor}}{Minor ANZSCO group names in title case, e.g. "Sports and Fitness Workers"}
+\item{\code{anzsco_unit_code}}{Unit ANZSCO group codes, e.g. "4523"}
+\item{\code{anzsco_unit}}{Unit ANZSCO group names in title case, e.g. "Sports Coaches, Instructors and Officials"}
+\item{\code{anzsco_occupation_code}}{Occupation ANZSCO group codes, e.g. "452311"}
+\item{\code{anzsco_occupation}}{Occupation ANZSCO group names in title case, e.g. "Diving Instructor (Open Water)"}
 \item{\code{skill_level}}{Skill level required for occupation, determined by the ABS (1 is highest, 5 is lowest).
 See \url{https://www.abs.gov.au/ausstats/abs@.nsf/Previousproducts/C4BECE1704987586CA257089001A9181 } for details.}
 }
