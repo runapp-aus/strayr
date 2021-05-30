@@ -33,7 +33,7 @@ data easier. This includes:
 -   tidy versions of common structures used by the Australian Bureau of
     Statistics (ABS), like ANZSIC and ANZSCO:
 
--   a function to tidy up state names (`clean_states()`; and
+-   a function to tidy up state names (`clean_states()`); and
 
 -   a function that knows whether particular dates are public holidays
     (`is_holiday()`).
@@ -193,7 +193,7 @@ str(auholidays)
 
 
 is_holiday('2020-01-01')
-is_holiday('2019-05-27', jurisdictions=c('ACT', 'TAS'))
+is_holiday('2019-05-27', jurisdictions = c('ACT', 'TAS'))
 
 h_df <- data.frame(dates = c('2020-01-01', '2020-01-10'))
 
