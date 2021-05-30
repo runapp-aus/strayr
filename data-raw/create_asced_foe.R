@@ -90,6 +90,17 @@ if (include_factor_variants) {
          foe6_code, foe6, foe6_f)
 }
 
+# Rename using new conventions: https://github.com/runapp-aus/abscorr/issues/17
+asced_foe <- asced_foe %>%
+  rename(
+    aced_foe_broad = foe2,
+    aced_foe_broad_code = foe2_code,
+    aced_foe_narrow = foe4,
+    aced_foe_narrow_code = foe4_code,
+    aced_foe_detailed = foe6,
+    aced_foe_detailed_code = foe6_code
+  )
+
 
 asced_foe_dictionary <- make_dictionary(asced_foe)
 

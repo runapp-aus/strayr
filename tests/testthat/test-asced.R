@@ -11,24 +11,24 @@ test_that("asced_foe is as-expected", {
   # Check title labels
   expect_equal(asced_foe[[2]][150], "Architecture and Building")
   # Check digit conversion
-  expect_identical(asced_foe$foe2_code,
-                   substr(asced_foe$foe6_code, 1, 2))
-  expect_identical(asced_foe$foe4_code,
-                   substr(asced_foe$foe6_code, 1, 4))
+  expect_identical(asced_foe$aced_foe_broad_code,
+                   substr(asced_foe$aced_foe_detailed_code, 1, 2))
+  expect_identical(asced_foe$aced_foe_narrow_code,
+                   substr(asced_foe$aced_foe_detailed_code, 1, 4))
   # Spotcheck occupations and skill levels
   expect_equal(asced_foe %>%
-                 filter(foe6_code == "091901") %>%
-                 pull(foe6),
+                 filter(aced_foe_detailed_code == "091901") %>%
+                 pull(aced_foe_detailed),
                "Economics")
 
   expect_equal(asced_foe %>%
-                 filter(foe6_code == "129999") %>%
-                 pull(foe6),
+                 filter(aced_foe_detailed_code == "129999") %>%
+                 pull(aced_foe_detailed),
                "Mixed Field Programmes, n.e.c.")
 
   expect_equal(asced_foe %>%
-                 filter(foe6_code == "040101") %>%
-                 pull(foe4),
+                 filter(aced_foe_detailed_code == "040101") %>%
+                 pull(aced_foe_narrow),
                "Architecture and Urban Environment")
 })
 
