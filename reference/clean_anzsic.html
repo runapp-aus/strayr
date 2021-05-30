@@ -6,7 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ASCED Level of Education — asced_qual • abscorr</title>
+<title>Convert ANZSIC names and abbreviations into the consistent format used by the Australian Bureau of Statistics.
+This function enables both exact (default) and fuzzy matching.
+Under exact matching, if no match is found, NA is returned. — clean_anzsic • abscorr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,9 +50,12 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="ASCED Level of Education — asced_qual" />
-<meta property="og:description" content="Wide table containing all levels of qualifications in the Australian Standard
-Classification of Education (ASCED), 2001. Cat. 1272.0." />
+<meta property="og:title" content="Convert ANZSIC names and abbreviations into the consistent format used by the Australian Bureau of Statistics.
+This function enables both exact (default) and fuzzy matching.
+Under exact matching, if no match is found, NA is returned. — clean_anzsic" />
+<meta property="og:description" content="Convert ANZSIC names and abbreviations into the consistent format used by the Australian Bureau of Statistics.
+This function enables both exact (default) and fuzzy matching.
+Under exact matching, if no match is found, NA is returned." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -122,32 +127,74 @@ Classification of Education (ASCED), 2001. Cat. 1272.0." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>ASCED Level of Education</h1>
-    <small class="dont-index">Source: <a href='https://github.com/runapp-aus/abscorr/blob/master/R/data_descriptions.R'><code>R/data_descriptions.R</code></a></small>
-    <div class="hidden name"><code>asced_qual.Rd</code></div>
+    <h1>Convert ANZSIC names and abbreviations into the consistent format used by the Australian Bureau of Statistics.
+This function enables both exact (default) and fuzzy matching.
+Under exact matching, if no match is found, NA is returned.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/runapp-aus/abscorr/blob/master/R/clean_anzsic.R'><code>R/clean_anzsic.R</code></a></small>
+    <div class="hidden name"><code>clean_anzsic.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Wide table containing all levels of qualifications in the Australian Standard
-Classification of Education (ASCED), 2001. Cat. 1272.0.</p>
+    <p>Convert ANZSIC names and abbreviations into the consistent format used by the Australian Bureau of Statistics.
+This function enables both exact (default) and fuzzy matching.
+Under exact matching, if no match is found, NA is returned.</p>
     </div>
 
-    <pre class="usage"><span class='va'>asced_qual</span></pre>
+    <pre class="usage"><span class='fu'>clean_anzsic</span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  fuzzy_match <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  max_dist <span class='op'>=</span> <span class='fl'>0.4</span>,
+  method <span class='op'>=</span> <span class='st'>"jw"</span>,
+  silent <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>a (character) vector containing ANZSIC titles or codes.
+Note that clean_anzsic always returns a character vector. If no match is found, then NA is returned.</p></td>
+    </tr>
+    <tr>
+      <th>fuzzy_match</th>
+      <td><p>logical; either TRUE which indicates that
+approximate/fuzzy string matching should be used, or FALSE (the default) which indicates that
+only exact matches should be used. If FALSE, then if no match is found, then NA is returned.</p></td>
+    </tr>
+    <tr>
+      <th>max_dist</th>
+      <td><p>numeric, sets the maximum acceptable distance between your
+string and the matched string. Default is 0.4. Only relevant when fuzzy_match is TRUE.</p></td>
+    </tr>
+    <tr>
+      <th>method</th>
+      <td><p>the method used for approximate/fuzzy string matching. Default
+is "jw", the Jaro-Winker distance; see `??stringdist-metrics` for more options.
+Only relevant when fuzzy_match is TRUE.</p></td>
+    </tr>
+    <tr>
+      <th>silent</th>
+      <td><p>a boolean value. If FALSE (the default), the function will warn that NAs were returned.</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>tibble</code> with 6 variables:</p><dl>
-<dt><code>qual1_code</code></dt><dd><p>Broad qualification level one-digit code, e.g. "1"</p></dd>
-<dt><code>qual1</code></dt><dd><p>Broad qualification level one-digit name in title case, e.g. "Postgraduate Degree Level"</p></dd>
-<dt><code>qual2_code</code></dt><dd><p>Narrow qualification level two-digit code, e.g. "12"</p></dd>
-<dt><code>qual2</code></dt><dd><p>Narrow qualification level two-digit name in title case, e.g. "Master Degree Level"</p></dd>
-<dt><code>qual3_code</code></dt><dd><p>Detailed qualification level three-digit code, e.g. "122"</p></dd>
-<dt><code>qual3</code></dt><dd><p>Detailed qualification level three-digit name in title case, e.g. "Master Degree by Coursework"</p></dd>
+    <p>a character vector</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-</dl>
+    <div class='dont-index'><p><code><a href='clean_anzsco.html'>clean_anzsco</a></code> for ANZSCO.</p>
+<p>Other cleaning functions: 
+<code><a href='clean_anzsco.html'>clean_anzsco</a>()</code></p></div>
 
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='fu'>clean_anzsic</span><span class='op'>(</span><span class='st'>"Agriculture forestry &amp; Fishing"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "Agriculture, Forestry and Fishing"</div><div class='input'>
+<span class='fu'>clean_anzsic</span><span class='op'>(</span><span class='st'>"Agriculture, Forestry"</span>, fuzzy_match <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "Agriculture, Forestry and Fishing"</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
