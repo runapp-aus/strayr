@@ -29,14 +29,14 @@
 #'
 #' @format A \code{tibble} with 8 variables:
 #' \describe{
-#' \item{\code{anzsic_division_code}}{ANZSCO division codes character, e.g. "A", "B"}
-#' \item{\code{anzsic_division}}{ANZSCO division title, e.g. "Agriculture, Forestry and Fishing"}
-#' \item{\code{anzsic_subdivision_code}}{ANZSCO subdivision codes integer, e.g. 1, 2}
-#' \item{\code{anzsic_subdivision}}{ANZSCO subdivision title, e.g. "Agriculture"}
-#' \item{\code{anzsic_group_code}}{ANZSCO group codes integer, e.g. 11, 12}
-#' \item{\code{anzsic_group}}{ANZSCO group title, e.g. "Mushroom and Vegetable Growing"}
-#' \item{\code{anzsic_class_code}}{ANZSCO class codes integer, e.g. 111, 112}
-#' \item{\code{anzsic_class}}{ANZSCO class title, e.g. "Vegetable Growing (Under Cover)"}
+#' \item{\code{anzsic_division_code}}{ANZSIC division codes character, e.g. "A", "B"}
+#' \item{\code{anzsic_division}}{ANZSIC division title, e.g. "Agriculture, Forestry and Fishing"}
+#' \item{\code{anzsic_subdivision_code}}{ANZSIC subdivision codes integer, e.g. 1, 2}
+#' \item{\code{anzsic_subdivision}}{ANZSIC subdivision title, e.g. "Agriculture"}
+#' \item{\code{anzsic_group_code}}{ANZSIC group codes integer, e.g. 11, 12}
+#' \item{\code{anzsic_group}}{ANZSIC group title, e.g. "Mushroom and Vegetable Growing"}
+#' \item{\code{anzsic_class_code}}{ANZSIC class codes integer, e.g. 111, 112}
+#' \item{\code{anzsic_class}}{ANZSIC class title, e.g. "Vegetable Growing (Under Cover)"}
 #' }
 "anzsic"
 
