@@ -7,4 +7,6 @@ purrr::walk(glue::glue("data-raw/{files}"),
            source)
 
 #save internal only datasets
-usethis::use_data(anzsco_dictionary, anzsic_dictionary, internal = TRUE, overwrite = TRUE)
+usethis::use_data(anzsco_dictionary, anzsic_dictionary,
+                  state_dict, state_table,
+                  internal = TRUE, overwrite = TRUE)
