@@ -32,9 +32,18 @@ reference:
     contents:
       - starts_with("anz")
       - starts_with("asced")
+      - auholidays
   - title: "Importing ABS Data"
     desc: >
       Functions for retrieving ABS data
     contents:
       - get_seifa
       - get_seifa_index_sheet
+  - title: "Helper functions"
+    desc: >
+      Functions for cleaning data and working with datasets
+      in the package
+    contents:
+      - is_holiday
+      - starts_with("clean_")
+      - starts_with("make_")
