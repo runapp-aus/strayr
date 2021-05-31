@@ -1,13 +1,15 @@
 Package: abscorr
 Type: Package
 Title: Ready-to-use Australian common structures and classifications and tools for working with them
-Version: 0.1.0
-Author: person("Will", "Mackey", email = "wfmackey@gmail.com",
+Version: 0.1.1
+Author: c(person("Will", "Mackey", email = "wfmackey@gmail.com",
                 role = c("aut", "cre")),
         person(given = "Matt", family = "Johnson",
                 role = c("aut", "cre")),
         person(given = "David", family = "Diviny", email = "david.diviny@nousgroup.com.au"
-                role = c("aut", "cre"))
+                role = c("aut", "cre")),
+        person("Matt", "Cowgill", role = c("aut"), email = "mattcowgill@gmail.com", comment = c(ORCID = "0000-0003-0422-3300")),
+        person("Bryce", "Roney", role = c("ctb")))
 Maintainer: Will Mackey <wfmackey@gmail.com>
 License: GPL-3
 Description: This package provides data and functions for working with common structures and classifications used in Australia.
@@ -21,9 +23,11 @@ Imports:
     readxl,
     magrittr,
     stringr,
-    stringdist,
     tidyr,
-    rlang
+    rlang,
+    stringdist (>= 0.9.5.1),
+    lubridate,
+    parsedate
 Suggests: 
     testthat,
     here

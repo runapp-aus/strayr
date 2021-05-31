@@ -32,3 +32,19 @@ test_that("asced_foe is as-expected", {
                "Architecture and Urban Environment")
 })
 
+
+test_that("clean_asced_foe works as intended", {
+  # Check that it matches with and &
+  expect_equal(clean_asced_foe("Architecture & urban environment"), "Architecture and Urban Environment")
+  # Check that it doesn't match when looking for exact match
+  expect_equal(clean_asced_foe("Maths", silent = TRUE), NA_character_)
+  # Check that it does match when looking for fuzzy match
+  expect_equal(clean_asced_foe("Maths", fuzzy_match = TRUE), "Mathematical Sciences")
+  # Test class is as expected
+  expect_is(clean_asced_foe("Architecture & urban environment"), "character")
+  # Test length
+  expect_length(clean_asced_foe(c("Architecture & urban environment", "mathematical sciences")), 2)
+})
+
+
+

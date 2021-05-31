@@ -9,14 +9,23 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R build
 status](https://github.com/runapp-aus/abscorr/workflows/R-CMD-check/badge.svg)](https://github.com/runapp-aus/abscorr/actions)
+
 <!-- badges: end -->
 
-The `abscorr` package provides tidy versions of common structures used
-by the Australian Bureau of Statistics (ABS).
+The `abscorr` package provides tools to make working with Australian
+data easier. This includes:
+
+-   tidy versions of common structures used by the Australian Bureau of
+    Statistics (ABS), like ANZSIC and ANZSCO:
+
+-   a function to tidy up state names (`clean_states()`); and
+
+-   a function that knows whether particular dates are public holidays
+    (`is_holiday()`).
 
 This package is currently **in development** and subject to change. The
-lifecycle badge will be changed to `stable` when structures are stable
-(should be relatively soon).
+lifecycle badge will be changed to `stable` when it is stable (should be
+relatively soon).
 
 **Contribute to this package**: people are actively encouraged to
 contribute to this package.
@@ -80,7 +89,7 @@ the following structures *and their geometry* as `sf` objects:
 -   `dz2011`: Census of Population and Housing Destination Zones 2011
 -   `dz2016`: Census of Population and Housing Destination Zones 2016
 
-## Using `abscorr`
+## Using ABS structures
 
 Loading the package will lazily load the structures listed above. Call
 them with their name:
@@ -157,4 +166,96 @@ glimpse(ced2018)
 #> $ cent_long     <dbl> 151.0465, 151.1274, 151.0985, 151.0385, 151.0090, 151.15…
 #> $ cent_lat      <dbl> -33.96482, -33.94082, -33.79360, -33.56993, -33.89634, -…
 #> $ geometry      <list> [151.01558, 151.01209, 151.00812, 151.00593, 151.00422,…
+```
+
+## Converting state names and abbreviations
+
+The `clean_state()` function makes it easy to wrangle vectors of State
+names and abbreviations - which might be in different forms and possibly
+misspelled.
+
+Let’s start with a character vector that includes some misspelled State
+names, some correctly spelled state names, as well as some abbreviations
+both malformed and correctly formed.
+
+``` r
+x <- c("western Straya", "w. A ", "new soth wailes", "SA", "tazz", "Victoria",
+       "northn territy")
+```
+
+To convert this character vector to a vector of abbreviations for State
+names, use `clean_state()`:
+
+``` r
+clean_state(x)
+#> [1] "WA"  "WA"  "NSW" "SA"  "Tas" "Vic" "NT"
+```
+
+If you want full names for the states rather than abbreviations:
+
+``` r
+clean_state(x, to = "state_name")
+#> [1] "Western Australia"  "Western Australia"  "New South Wales"   
+#> [4] "South Australia"    "Tasmania"           "Victoria"          
+#> [7] "Northern Territory"
+```
+
+By default, `clean_state()` uses fuzzy or approximate string matching to
+match the elements in your character vector to state
+names/abbreviations. If you only want to permit exact matching, you can
+disable fuzzy matching. This means you will never get false matches, but
+you will also fail to match misspelled state names or malformed
+abbreviations; you’ll get an `NA` if no match can be found.
+
+``` r
+ clean_state(x, fuzzy_match = FALSE)
+#> [1] NA    NA    NA    "SA"  NA    "Vic" NA
+```
+
+If your data is in a data frame, `clean_state()` works well within a
+`dplyr::mutate()` call:
+
+``` r
+ x_df <- data.frame(state = x, stringsAsFactors = FALSE)
+
+library(dplyr)
+ x_df %>% 
+   mutate(state_abbr = clean_state(state))
+#>             state state_abbr
+#> 1  western Straya         WA
+#> 2           w. A          WA
+#> 3 new soth wailes        NSW
+#> 4              SA         SA
+#> 5            tazz        Tas
+#> 6        Victoria        Vic
+#> 7  northn territy         NT
+```
+
+## Australian public holidays
+
+This package includes the `auholidays` dataset from the [Australian
+Public Holidays Dates Machine Readable
+Dataset](https://data.gov.au/data/dataset/australian-holidays-machine-readable-dataset)
+as well as a helper function `is_holiday`:
+
+``` r
+str(auholidays)
+#> tibble[,3] [879 × 3] (S3: tbl_df/tbl/data.frame)
+#>  $ Date        : Date[1:879], format: "2021-01-01" "2021-01-26" ...
+#>  $ Name        : chr [1:879] "New Year's Day" "Australia Day" "Canberra Day" "Good Friday" ...
+#>  $ Jurisdiction: chr [1:879] "ACT" "ACT" "ACT" "ACT" ...
+
+
+is_holiday('2020-01-01')
+#> [1] TRUE
+is_holiday('2019-05-27', jurisdictions = c('ACT', 'TAS'))
+#> [1] TRUE
+
+h_df <- data.frame(dates = c('2020-01-01', '2020-01-10'))
+
+h_df %>%
+  mutate(IsHoliday = is_holiday(dates))
+#>        dates IsHoliday
+#> 1 2020-01-01      TRUE
+#> 2 2020-01-10     FALSE
 ```
