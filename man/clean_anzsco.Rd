@@ -50,6 +50,8 @@ clean_anzsco("Driving", fuzzy_match = TRUE)
 \code{\link{clean_anzsic}} for ANZSIC.
 
 Other cleaning functions: 
-\code{\link{clean_anzsic}()}
+\code{\link{clean_anzsic}()},
+\code{\link{clean_asced_foe}()},
+\code{\link{clean_asced_qual}()}
 }
 \concept{cleaning functions}

@@ -12,9 +12,9 @@ asced_url <- "https://www.abs.gov.au/AUSSTATS/subscriber.nsf/log?openagent&1272.
 
 
 temp_dir <- tempdir()
-temp_path <- glue("{temp_dir}/asced.zip")
+temp_path <- glue("{temp_dir}/asced_qual.xls")
 
-download.file(asced_url, temp_path)
+download.file(asced_url, temp_path, mode = "wb")
 
 # Read long list
 raw <- readxl::read_excel(temp_path,
@@ -66,6 +66,7 @@ if (!include_factor_variants) {
            qual3_code, qual3)
 }
 
+asced_qual_dictionary <- make_dictionary(asced_qual)
 
 # Export
 usethis::use_data(asced_qual, overwrite = TRUE)

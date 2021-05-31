@@ -3,6 +3,8 @@
 export("%>%")
 export(clean_anzsco)
 export(clean_anzsic)
+export(clean_asced_foe)
+export(clean_asced_qual)
 export(clean_state)
 export(get_seifa)
 export(get_seifa_index_sheet)
