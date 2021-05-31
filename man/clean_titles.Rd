@@ -2,7 +2,7 @@
 % Please edit documentation in R/clean_helpers.R
 \name{clean_titles}
 \alias{clean_titles}
-\title{clean_titles is a helper function for the clean}
+\title{clean_titles is a helper function for the cleaning of titles}
 \usage{
 clean_titles(
   dictionary = NULL,
@@ -35,5 +35,5 @@ Only relevant when fuzzy_match is TRUE.}
 a character vector of cleaned values that have matches in the dictionary.
 }
 \description{
-clean_titles is a helper function for the clean
+clean_titles is a helper function for the cleaning of titles
 }

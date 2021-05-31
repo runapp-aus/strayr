@@ -1,6 +1,6 @@
-#' Convert ANZSCO names and abbreviations into the consistent format used by the Australian Bureau of Statistics.
-#' This function enables both exact (default) and fuzzy matching.
-#' Under exact matching, if no match is found, NA is returned.
+#' @title Convert ANZSCO names and abbreviations into the consistent format used by the Australian Bureau of Statistics.
+#'
+#' @description This function enables both exact (default) and fuzzy matching. Under exact matching, if no match is found, NA is returned.
 #'
 #' @param x a (character) vector containing ANZSCO titles.
 #' Note that \code{clean_anzsco} always returns a character vector. If no match is found, then \code{NA} is returned.

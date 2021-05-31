@@ -2,7 +2,7 @@
 % Please edit documentation in R/is_holiday.R
 \name{is_holiday}
 \alias{is_holiday}
-\title{is_holiday}
+\title{Identifies if a given date is a public holiday in Australia}
 \usage{
 is_holiday(date, jurisdictions = c())
 }
