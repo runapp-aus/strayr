@@ -1,0 +1,33 @@
+Australian Bureau of Statistics
+
+"2011 Census - Counting Persons, Place of Usual Residence"
+"INCP Total Personal Income (weekly)"
+"Counting: Persons, Place of Usual Residence"
+
+Filters:
+"Default Summation","Persons, Place of Usual Residence"
+
+"Counting","INCP Total Personal Income (weekly)","Count",
+"Persons, Place of Usual Residence","Negative income",102113
+"Persons, Place of Usual Residence","Nil income",1314280
+"Persons, Place of Usual Residence","$1-$199 ($1-$10,399)",1285555
+"Persons, Place of Usual Residence","$200-$299 ($10,400-$15,599)",1797355
+"Persons, Place of Usual Residence","$300-$399 ($15,600-$20,799)",1715818
+"Persons, Place of Usual Residence","$400-$599 ($20,800-$31,199)",2006075
+"Persons, Place of Usual Residence","$600-$799 ($31,200-$41,599)",1799649
+"Persons, Place of Usual Residence","$800-$999 ($41,600-$51,999)",1436397
+"Persons, Place of Usual Residence","$1,000-$1,249 ($52,000-$64,999)",1372001
+"Persons, Place of Usual Residence","$1,250-$1,499 ($65,000-$77,999)",959618
+"Persons, Place of Usual Residence","$1,500-$1,999 ($78,000-$103,999)",1120841
+"Persons, Place of Usual Residence","$2,000 or more ($104,000 or more)",1081278
+"Persons, Place of Usual Residence","Not stated",1372704
+"Persons, Place of Usual Residence","Not applicable",4144024
+"Persons, Place of Usual Residence","Total",21507719
+
+"Data Source: Census of Population and Housing, 2011, TableBuilder"
+
+"INFO","Cells in this table have been randomly adjusted to avoid the release of confidential data. No reliance should be placed on small cells."
+
+
+"Copyright Commonwealth of Australia, 2018, see abs.gov.au/copyright"
+"ABS data licensed under Creative Commons, see abs.gov.au/ccby"

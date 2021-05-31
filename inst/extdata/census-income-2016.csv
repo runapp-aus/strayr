@@ -1,0 +1,36 @@
+Australian Bureau of Statistics
+
+"2016 Census - Counting Persons, Place of Usual Residence (MB)"
+"INCP Total Personal Income (weekly)"
+"Counting: Persons Place of Usual Residence"
+
+Filters:
+"Default Summation","Persons Place of Usual Residence"
+
+"Counting","INCP Total Personal Income (weekly)","Count",
+"Persons Place of Usual Residence","Negative income",98946
+"Persons Place of Usual Residence","Nil income",1707462
+"Persons Place of Usual Residence","$1-$149 ($1-$7,799)",801377
+"Persons Place of Usual Residence","$150-$299 ($7,800-$15,599)",1344125
+"Persons Place of Usual Residence","$300-$399 ($15,600-$20,799)",1619525
+"Persons Place of Usual Residence","$400-$499 ($20,800-$25,999)",1554096
+"Persons Place of Usual Residence","$500-$649 ($26,000-$33,799)",1425333
+"Persons Place of Usual Residence","$650-$799 ($33,800-$41,599)",1426523
+"Persons Place of Usual Residence","$800-$999 ($41,600-$51,999)",1554828
+"Persons Place of Usual Residence","$1,000-$1,249 ($52,000-$64,999)",1588513
+"Persons Place of Usual Residence","$1,250-$1,499 ($65,000-$77,999)",1089740
+"Persons Place of Usual Residence","$1,500-$1,749 ($78,000-$90,999)",922808
+"Persons Place of Usual Residence","$1,750-$1,999 ($91,000-$103,999)",638966
+"Persons Place of Usual Residence","$2,000-$2,999 ($104,000-$155,999)",961768
+"Persons Place of Usual Residence","$3,000 or more ($156,000 or more)",596531
+"Persons Place of Usual Residence","Not stated",1706737
+"Persons Place of Usual Residence","Not applicable",4364610
+"Persons Place of Usual Residence","Total",23401891
+
+"Data Source: Census of Population and Housing, 2016, TableBuilder"
+
+"INFO","Cells in this table have been randomly adjusted to avoid the release of confidential data. No reliance should be placed on small cells."
+
+
+"Copyright Commonwealth of Australia, 2018, see abs.gov.au/copyright"
+"ABS data licensed under Creative Commons, see abs.gov.au/ccby"

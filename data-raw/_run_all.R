@@ -13,4 +13,6 @@ usethis::use_data(anzsco_dictionary,
                   asced_qual_dictionary,
                   state_dict,
                   state_table,
+                  income_census2016,
+                  income_census2011,
                   internal = TRUE, overwrite = TRUE)
