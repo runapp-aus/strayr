@@ -177,17 +177,17 @@
 <code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">anzsco</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 1,180</span>
 <span class="co">#&gt; Columns: 11</span>
-<span class="co">#&gt; $ anzsco1_code &lt;chr&gt; "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1…</span>
-<span class="co">#&gt; $ anzsco1      &lt;chr&gt; "Managers", "Managers", "Managers", "Managers", "Managers…</span>
-<span class="co">#&gt; $ anzsco2_code &lt;chr&gt; "10", "11", "11", "11", "11", "11", "11", "11", "11", "12…</span>
-<span class="co">#&gt; $ anzsco2      &lt;chr&gt; "Managers, nfd", "Chief Executives, General Managers and …</span>
-<span class="co">#&gt; $ anzsco3_code &lt;chr&gt; "100", "110", "111", "111", "111", "111", "111", "111", "…</span>
-<span class="co">#&gt; $ anzsco3      &lt;chr&gt; "Managers, nfd", "Chief Executives, General Managers and …</span>
-<span class="co">#&gt; $ anzsco4_code &lt;chr&gt; "1000", "1100", "1110", "1111", "1112", "1112", "1113", "…</span>
-<span class="co">#&gt; $ anzsco4      &lt;chr&gt; "Managers, nfd", "Chief Executives, General Managers and …</span>
-<span class="co">#&gt; $ anzsco6_code &lt;chr&gt; "100000", "110000", "111000", "111111", "111211", "111212…</span>
-<span class="co">#&gt; $ anzsco6      &lt;chr&gt; "Managers, nfd", "Chief Executives, General Managers and …</span>
-<span class="co">#&gt; $ skill_level  &lt;chr&gt; NA, NA, NA, "1", "1", "1", "1", "1", "1", NA, NA, "1", "1…</span>
+<span class="co">#&gt; $ anzsco_major_code      &lt;chr&gt; "1", "1", "1", "1", "1", "1", "1", "1", "1", "1…</span>
+<span class="co">#&gt; $ anzsco_major           &lt;chr&gt; "Managers", "Managers", "Managers", "Managers",…</span>
+<span class="co">#&gt; $ anzsco_submajor_code   &lt;chr&gt; "10", "11", "11", "11", "11", "11", "11", "11",…</span>
+<span class="co">#&gt; $ anzsco_submajor        &lt;chr&gt; "Managers, nfd", "Chief Executives, General Man…</span>
+<span class="co">#&gt; $ anzsco_minor_code      &lt;chr&gt; "100", "110", "111", "111", "111", "111", "111"…</span>
+<span class="co">#&gt; $ anzsco_minor           &lt;chr&gt; "Managers, nfd", "Chief Executives, General Man…</span>
+<span class="co">#&gt; $ anzsco_unit_code       &lt;chr&gt; "1000", "1100", "1110", "1111", "1112", "1112",…</span>
+<span class="co">#&gt; $ anzsco_unit            &lt;chr&gt; "Managers, nfd", "Chief Executives, General Man…</span>
+<span class="co">#&gt; $ anzsco_occupation_code &lt;chr&gt; "100000", "110000", "111000", "111111", "111211…</span>
+<span class="co">#&gt; $ anzsco_occupation      &lt;chr&gt; "Managers, nfd", "Chief Executives, General Man…</span>
+<span class="co">#&gt; $ skill_level            &lt;chr&gt; NA, NA, NA, "1", "1", "1", "1", "1", "1", NA, N…</span>
 <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">anzsic</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 506</span>
 <span class="co">#&gt; Columns: 8</span>
@@ -202,21 +202,21 @@
 <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">asced_foe</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 439</span>
 <span class="co">#&gt; Columns: 6</span>
-<span class="co">#&gt; $ foe2_code &lt;chr&gt; "01", "01", "01", "01", "01", "01", "01", "01", "01", "01", …</span>
-<span class="co">#&gt; $ foe2      &lt;chr&gt; "Natural and Physical Sciences", "Natural and Physical Scien…</span>
-<span class="co">#&gt; $ foe4_code &lt;chr&gt; "0100", "0101", "0101", "0101", "0101", "0103", "0103", "010…</span>
-<span class="co">#&gt; $ foe4      &lt;chr&gt; "Natural and Physical Sciences, nfd", "Mathematical Sciences…</span>
-<span class="co">#&gt; $ foe6_code &lt;chr&gt; "010000", "010100", "010101", "010103", "010199", "010300", …</span>
-<span class="co">#&gt; $ foe6      &lt;chr&gt; "Natural and Physical Sciences, nfd", "Mathematical Sciences…</span>
+<span class="co">#&gt; $ aced_foe_broad_code    &lt;chr&gt; "01", "01", "01", "01", "01", "01", "01", "01",…</span>
+<span class="co">#&gt; $ aced_foe_broad         &lt;chr&gt; "Natural and Physical Sciences", "Natural and P…</span>
+<span class="co">#&gt; $ aced_foe_narrow_code   &lt;chr&gt; "0100", "0101", "0101", "0101", "0101", "0103",…</span>
+<span class="co">#&gt; $ aced_foe_narrow        &lt;chr&gt; "Natural and Physical Sciences, nfd", "Mathemat…</span>
+<span class="co">#&gt; $ aced_foe_detailed_code &lt;chr&gt; "010000", "010100", "010101", "010103", "010199…</span>
+<span class="co">#&gt; $ aced_foe_detailed      &lt;chr&gt; "Natural and Physical Sciences, nfd", "Mathemat…</span>
 <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">asced_qual</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 64</span>
 <span class="co">#&gt; Columns: 6</span>
-<span class="co">#&gt; $ qual1_code &lt;chr&gt; "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "2",…</span>
-<span class="co">#&gt; $ qual1      &lt;chr&gt; "Postgraduate Degree Level", "Postgraduate Degree Level", "…</span>
-<span class="co">#&gt; $ qual2_code &lt;chr&gt; "11", "11", "11", "11", "11", "11", "12", "12", "12", "12",…</span>
-<span class="co">#&gt; $ qual2      &lt;chr&gt; "Doctoral Degree Level", "Doctoral Degree Level", "Doctoral…</span>
-<span class="co">#&gt; $ qual3_code &lt;chr&gt; "111", "112", "113", "114", "115", "116", "121", "122", "12…</span>
-<span class="co">#&gt; $ qual3      &lt;chr&gt; "Higher Doctorate", "Doctorate by Research", "Doctorate by …</span>
+<span class="co">#&gt; $ aced_qual_broad_code    &lt;chr&gt; "1", "1", "1", "1", "1", "1", "1", "1", "1", "…</span>
+<span class="co">#&gt; $ aced_qual_broad         &lt;chr&gt; "Postgraduate Degree Level", "Postgraduate Deg…</span>
+<span class="co">#&gt; $ aced_qual_narrow_code   &lt;chr&gt; "11", "11", "11", "11", "11", "11", "12", "12"…</span>
+<span class="co">#&gt; $ aced_qual_narrow        &lt;chr&gt; "Doctoral Degree Level", "Doctoral Degree Leve…</span>
+<span class="co">#&gt; $ aced_qual_detailed_code &lt;chr&gt; "111", "112", "113", "114", "115", "116", "121…</span>
+<span class="co">#&gt; $ aced_qual_detailed      &lt;chr&gt; "Higher Doctorate", "Doctorate by Research", "…</span>
 <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">sa42016</span><span class="op">)</span>
 <span class="co">#&gt; Rows: 107</span>
 <span class="co">#&gt; Columns: 10</span>
