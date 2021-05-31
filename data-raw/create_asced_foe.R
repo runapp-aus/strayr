@@ -15,9 +15,9 @@ asced_url <- "https://www.abs.gov.au/AUSSTATS/subscriber.nsf/log?openagent&1272.
 
 
 temp_dir <- tempdir()
-temp_path <- glue("{temp_dir}/asced.zip")
+temp_path <- glue("{temp_dir}/asced.xls")
 
-download.file(asced_url, temp_path)
+download.file(asced_url, temp_path, mode = "wb")
 
 # Read long list
 raw <- readxl::read_excel(temp_path,
@@ -90,6 +90,8 @@ if (include_factor_variants) {
          foe6_code, foe6, foe6_f)
 }
 
+
+asced_foe_dictionary <- make_dictionary(asced_foe)
 
 # Export
 usethis::use_data(asced_foe, overwrite = TRUE)

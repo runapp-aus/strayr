@@ -66,6 +66,7 @@ if (!include_factor_variants) {
            qual3_code, qual3)
 }
 
+asced_qual_dictionary <- make_dictionary(asced_qual)
 
 # Export
 usethis::use_data(asced_qual, overwrite = TRUE)

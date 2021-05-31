@@ -1,9 +1,9 @@
-#' Convert ANZSIC names and abbreviations into the consistent format used by the Australian Bureau of Statistics.
+#' Convert ASCED fields of education into the consistent format used by the Australian Bureau of Statistics.
 #' This function enables both exact (default) and fuzzy matching.
 #' Under exact matching, if no match is found, NA is returned.
 #'
-#' @param x a (character) vector containing ANZSIC titles.
-#' Note that clean_anzsic always returns a character vector. If no match is found, then NA is returned.
+#' @param x a (character) vector containing ASCED fields of education.
+#' Note that clean_asced_foe always returns a character vector. If no match is found, then NA is returned.
 #'
 #' @param fuzzy_match logical; either TRUE which indicates that
 #' approximate/fuzzy string matching should be used, or FALSE (the default) which indicates that
@@ -22,24 +22,24 @@
 #'
 #' @family cleaning functions
 #'
-#' @seealso \code{\link{clean_anzsco}} for ANZSCO.
+#' @seealso  \code{\link{clean_asced_qual}} for ASCED levels, \code{\link{clean_anzsco}} for ANZSCO, \code{\link{clean_anzsic}} for ANZSIC,  \code{\link{clean_state}} for Australian states and territories.
 #'
 #' @examples
 #'
-#' clean_anzsic("Agriculture forestry & Fishing")
+#' clean_asced_foe("Biochemistry & cell biology")
 #'
-#' clean_anzsic("Agriculture, Forestry", fuzzy_match = TRUE)
+#' clean_asced_foe("Maths", fuzzy_match = TRUE)
 #'
 #' @export
 #'
 #'
-clean_anzsic <- function(x,
+clean_asced_foe <- function(x,
                          fuzzy_match = FALSE,
                          max_dist = 0.4,
                          method = "jw",
                          silent = FALSE) {
   clean_titles(
-    dictionary = anzsic_dictionary,
+    dictionary = asced_foe_dictionary,
     .vector = x,
     .fuzzy_match = fuzzy_match,
     .max_dist = max_dist,
