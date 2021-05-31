@@ -2,12 +2,12 @@ Package: abscorr
 Type: Package
 Title: Ready-to-use Australian common structures and classifications and tools for working with them
 Version: 0.1.1
-Author: c(person("Will", "Mackey", email = "wfmackey@gmail.com",
+Authors@R: c(person("Will", "Mackey", email = "wfmackey@gmail.com",
                 role = c("aut", "cre")),
         person(given = "Matt", family = "Johnson",
-                role = c("aut", "cre")),
-        person(given = "David", family = "Diviny", email = "david.diviny@nousgroup.com.au"
-                role = c("aut", "cre")),
+                role = c("aut")),
+        person(given = "David", family = "Diviny", email = "david.diviny@nousgroup.com.au",
+                role = c("aut")),
         person("Matt", "Cowgill", role = c("aut"), email = "mattcowgill@gmail.com", comment = c(ORCID = "0000-0003-0422-3300")),
         person("Bryce", "Roney", role = c("ctb")))
 Maintainer: Will Mackey <wfmackey@gmail.com>
