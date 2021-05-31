@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">abscorr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -83,8 +83,14 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>The <code>abscorr</code> package provides tidy versions of common structures used by the Australian Bureau of Statistics (ABS).</p>
-<p>This package is currently <strong>in development</strong> and subject to change. The lifecycle badge will be changed to <code>stable</code> when structures are stable (should be relatively soon).</p>
+<!-- badges: end -->
+<p>The <code>abscorr</code> package provides tools to make working with Australian data easier. This includes:</p>
+<ul>
+<li><p>tidy versions of common structures used by the Australian Bureau of Statistics (ABS), like ANZSIC and ANZSCO:</p></li>
+<li><p>a function to tidy up state names (<code>clean_states()</code>); and</p></li>
+<li><p>a function that knows whether particular dates are public holidays (<code><a href="reference/is_holiday.html">is_holiday()</a></code>).</p></li>
+</ul>
+<p>This package is currently <strong>in development</strong> and subject to change. The lifecycle badge will be changed to <code>stable</code> when it is stable (should be relatively soon).</p>
 <p><strong>Contribute to this package</strong>: people are actively encouraged to contribute to this package.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
@@ -159,10 +165,9 @@
 <code>dz2016</code>: Census of Population and Housing Destination Zones 2016</li>
 </ul>
 </div>
-<div id="using-abscorr" class="section level2">
+<div id="using-abs-structures" class="section level2">
 <h2 class="hasAnchor">
-<a href="#using-abscorr" class="anchor"></a>Using <code>abscorr</code>
-</h2>
+<a href="#using-abs-structures" class="anchor"></a>Using ABS structures</h2>
 <p>Loading the package will lazily load the structures listed above. Call them with their name:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">abscorr</span><span class="op">)</span>
@@ -234,6 +239,69 @@
 <span class="co">#&gt; $ cent_long     &lt;dbl&gt; 151.0465, 151.1274, 151.0985, 151.0385, 151.0090, 151.15…</span>
 <span class="co">#&gt; $ cent_lat      &lt;dbl&gt; -33.96482, -33.94082, -33.79360, -33.56993, -33.89634, -…</span>
 <span class="co">#&gt; $ geometry      &lt;list&gt; [151.01558, 151.01209, 151.00812, 151.00593, 151.00422,…</span></code></pre></div>
+</div>
+<div id="converting-state-names-and-abbreviations" class="section level2">
+<h2 class="hasAnchor">
+<a href="#converting-state-names-and-abbreviations" class="anchor"></a>Converting state names and abbreviations</h2>
+<p>The <code><a href="reference/clean_state.html">clean_state()</a></code> function makes it easy to wrangle vectors of State names and abbreviations - which might be in different forms and possibly misspelled.</p>
+<p>Let’s start with a character vector that includes some misspelled State names, some correctly spelled state names, as well as some abbreviations both malformed and correctly formed.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"western Straya"</span>, <span class="st">"w. A "</span>, <span class="st">"new soth wailes"</span>, <span class="st">"SA"</span>, <span class="st">"tazz"</span>, <span class="st">"Victoria"</span>,
+       <span class="st">"northn territy"</span><span class="op">)</span></code></pre></div>
+<p>To convert this character vector to a vector of abbreviations for State names, use <code><a href="reference/clean_state.html">clean_state()</a></code>:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/clean_state.html">clean_state</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
+<span class="co">#&gt; [1] "WA"  "WA"  "NSW" "SA"  "Tas" "Vic" "NT"</span></code></pre></div>
+<p>If you want full names for the states rather than abbreviations:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/clean_state.html">clean_state</a></span><span class="op">(</span><span class="va">x</span>, to <span class="op">=</span> <span class="st">"state_name"</span><span class="op">)</span>
+<span class="co">#&gt; [1] "Western Australia"  "Western Australia"  "New South Wales"   </span>
+<span class="co">#&gt; [4] "South Australia"    "Tasmania"           "Victoria"          </span>
+<span class="co">#&gt; [7] "Northern Territory"</span></code></pre></div>
+<p>By default, <code><a href="reference/clean_state.html">clean_state()</a></code> uses fuzzy or approximate string matching to match the elements in your character vector to state names/abbreviations. If you only want to permit exact matching, you can disable fuzzy matching. This means you will never get false matches, but you will also fail to match misspelled state names or malformed abbreviations; you’ll get an <code>NA</code> if no match can be found.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"> <span class="fu"><a href="reference/clean_state.html">clean_state</a></span><span class="op">(</span><span class="va">x</span>, fuzzy_match <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="co">#&gt; [1] NA    NA    NA    "SA"  NA    "Vic" NA</span></code></pre></div>
+<p>If your data is in a data frame, <code><a href="reference/clean_state.html">clean_state()</a></code> works well within a <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">dplyr::mutate()</a></code> call:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"> <span class="va">x_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>state <span class="op">=</span> <span class="va">x</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+ <span class="va">x_df</span> <span class="op">%&gt;%</span> 
+   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>state_abbr <span class="op">=</span> <span class="fu"><a href="reference/clean_state.html">clean_state</a></span><span class="op">(</span><span class="va">state</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt;             state state_abbr</span>
+<span class="co">#&gt; 1  western Straya         WA</span>
+<span class="co">#&gt; 2           w. A          WA</span>
+<span class="co">#&gt; 3 new soth wailes        NSW</span>
+<span class="co">#&gt; 4              SA         SA</span>
+<span class="co">#&gt; 5            tazz        Tas</span>
+<span class="co">#&gt; 6        Victoria        Vic</span>
+<span class="co">#&gt; 7  northn territy         NT</span></code></pre></div>
+</div>
+<div id="australian-public-holidays" class="section level2">
+<h2 class="hasAnchor">
+<a href="#australian-public-holidays" class="anchor"></a>Australian public holidays</h2>
+<p>This package includes the <code>auholidays</code> dataset from the <a href="https://data.gov.au/data/dataset/australian-holidays-machine-readable-dataset">Australian Public Holidays Dates Machine Readable Dataset</a> as well as a helper function <code>is_holiday</code>:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">auholidays</span><span class="op">)</span>
+<span class="co">#&gt; tibble[,3] [879 × 3] (S3: tbl_df/tbl/data.frame)</span>
+<span class="co">#&gt;  $ Date        : Date[1:879], format: "2021-01-01" "2021-01-26" ...</span>
+<span class="co">#&gt;  $ Name        : chr [1:879] "New Year's Day" "Australia Day" "Canberra Day" "Good Friday" ...</span>
+<span class="co">#&gt;  $ Jurisdiction: chr [1:879] "ACT" "ACT" "ACT" "ACT" ...</span>
+
+
+<span class="fu"><a href="reference/is_holiday.html">is_holiday</a></span><span class="op">(</span><span class="st">'2020-01-01'</span><span class="op">)</span>
+<span class="co">#&gt; [1] TRUE</span>
+<span class="fu"><a href="reference/is_holiday.html">is_holiday</a></span><span class="op">(</span><span class="st">'2019-05-27'</span>, jurisdictions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'ACT'</span>, <span class="st">'TAS'</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] TRUE</span>
+
+<span class="va">h_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>dates <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'2020-01-01'</span>, <span class="st">'2020-01-10'</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">h_df</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>IsHoliday <span class="op">=</span> <span class="fu"><a href="reference/is_holiday.html">is_holiday</a></span><span class="op">(</span><span class="va">dates</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt;        dates IsHoliday</span>
+<span class="co">#&gt; 1 2020-01-01      TRUE</span>
+<span class="co">#&gt; 2 2020-01-10     FALSE</span></code></pre></div>
 </div>
 </div>
   </div>

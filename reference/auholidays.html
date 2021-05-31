@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Helper function to clean strings — clean_string • abscorr</title>
+<title>Australian Public Holidays — auholidays • abscorr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Helper function to clean strings — clean_string" />
-<meta property="og:description" content="Helper function to clean strings" />
+<meta property="og:title" content="Australian Public Holidays — auholidays" />
+<meta property="og:description" content="Tidy data set of Australian Public Holidays" />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -121,29 +121,30 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Helper function to clean strings</h1>
-    <small class="dont-index">Source: <a href='https://github.com/runapp-aus/abscorr/blob/master/R/clean_helpers.R'><code>R/clean_helpers.R</code></a></small>
-    <div class="hidden name"><code>clean_string.Rd</code></div>
+    <h1>Australian Public Holidays</h1>
+    <small class="dont-index">Source: <a href='https://github.com/runapp-aus/abscorr/blob/master/R/auholidays.R'><code>R/auholidays.R</code></a></small>
+    <div class="hidden name"><code>auholidays.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Helper function to clean strings</p>
+    <p>Tidy data set of Australian Public Holidays</p>
     </div>
 
-    <pre class="usage"><span class='fu'>clean_string</span><span class='op'>(</span><span class='va'>string</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='va'>auholidays</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>string</th>
-      <td><p>a character vector</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>a cleaned string with no punctuation, trailing letter s, numbers etc</p>
+    <p>A data frame with 776 rows and 3 variables:</p><dl>
+  <dt><code>Date</code></dt><dd><p>The date of the holiday</p></dd>
+  <dt><code>Name</code></dt><dd><p>The name of the holiday</p></dd>
+  <dt><code>Jurisdiction</code></dt><dd><p>Pipe seperated list of jurisdictions to which the holiday applies</p></dd>
+
+</dl>
+
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p><a href='https://data.gov.au/data/dataset/australian-holidays-machine-readable-dataset'>https://data.gov.au/data/dataset/australian-holidays-machine-readable-dataset</a></p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
