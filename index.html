@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ready-to-use Australian common structures and classifications and tools for working with them • abscorr</title>
+<title>Ready-to-use Australian common structures and classifications and tools for working with them • strayr</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
@@ -38,8 +38,8 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">abscorr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <a class="navbar-link" href="index.html">strayr</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -60,7 +60,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/runapp-aus/abscorr/">
+  <a href="https://github.com/runapp-aus/strayr/">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -77,14 +77,14 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="abscorr-" class="section level1">
+<div id="strayr-" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#abscorr-" class="anchor"></a>abscorr <img src="reference/figures/apple-touch-icon-152x152.png" align="right" style="height:150px">
+<a href="#strayr-" class="anchor"></a>strayr <img src="reference/figures/apple-touch-icon-152x152.png" align="right" style="height:150px">
 </h1></div>
 <!-- badges: start -->
 
 <!-- badges: end -->
-<p>The <code>abscorr</code> package provides tools to make working with Australian data easier. This includes:</p>
+<p>The <code>strayr</code> package provides tools to make working with Australian data easier. This includes:</p>
 <ul>
 <li><p>tidy versions of common structures used by the Australian Bureau of Statistics (ABS), like ANZSIC and ANZSCO:</p></li>
 <li><p>a function to tidy up state names (<code>clean_states()</code>); and</p></li>
@@ -95,14 +95,14 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the current version of <code>abscorr</code> with:</p>
+<p>You can install the current version of <code>strayr</code> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"runapp-aus/abscorr"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"runapp-aus/strayr"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="structures" class="section level2">
 <h2 class="hasAnchor">
 <a href="#structures" class="anchor"></a>Structures</h2>
-<p>Current structures stored in <code>abscorr</code> are:</p>
+<p>Current structures stored in <code>strayr</code> are:</p>
 <ul>
 <li>
 <code>anzsco</code>: occupation levels of the <a href="https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1220.0First%20Edition,%20Revision%201?OpenDocument">Australian and New Zealand Standard Classification of Occupations (ANZSCO), First Edition, Revision 1, 2009. Cat. 1220.0</a>.</li>
@@ -113,7 +113,7 @@
 <li>
 <code>asced_qual</code>: qualification levels of the <a href="https://www.abs.gov.au/ausstats/abs@.nsf/mf/1272.0">Australian Standard Classification of Education (ASCED), 2001. Cat. 1272.0</a>.</li>
 </ul>
-<p>The <code>abscorr</code> package also loads <a href="https://github.com/wfmackey/absmapsdata"><code>absmapsdata</code></a>, which contains the following structures <em>and their geometry</em> as <code>sf</code> objects:</p>
+<p>The <code>strayr</code> package also loads <a href="https://github.com/wfmackey/absmapsdata"><code>absmapsdata</code></a>, which contains the following structures <em>and their geometry</em> as <code>sf</code> objects:</p>
 <p><strong>ASGS Main Structures</strong></p>
 <ul>
 <li>
@@ -170,7 +170,7 @@
 <a href="#using-abs-structures" class="anchor"></a>Using ABS structures</h2>
 <p>Loading the package will lazily load the structures listed above. Call them with their name:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">abscorr</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">strayr</span><span class="op">)</span>
 <span class="co">#&gt; Loading required package: absmapsdata</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -310,7 +310,7 @@
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/runapp-aus/abscorr/">https://​github.com/​runapp-aus/​abscorr/​</a>
+<li>Browse source code at <br><a href="https://github.com/runapp-aus/strayr/">https://​github.com/​runapp-aus/​strayr/​</a>
 </li>
 </ul>
 </div>
@@ -342,7 +342,7 @@
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://github.com/runapp-aus/abscorr/actions"><img src="https://github.com/runapp-aus/abscorr/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
+<li><a href="https://github.com/runapp-aus/strayr/actions"><img src="https://github.com/runapp-aus/strayr/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 </ul>
 </div>
 </div>
