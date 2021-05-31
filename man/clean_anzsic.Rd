@@ -2,9 +2,7 @@
 % Please edit documentation in R/clean_anzsic.R
 \name{clean_anzsic}
 \alias{clean_anzsic}
-\title{Convert ANZSIC names and abbreviations into the consistent format used by the Australian Bureau of Statistics.
-This function enables both exact (default) and fuzzy matching.
-Under exact matching, if no match is found, NA is returned.}
+\title{Convert ANZSIC names and abbreviations into the consistent format used by the Australian Bureau of Statistics.}
 \usage{
 clean_anzsic(
   x,
@@ -35,9 +33,7 @@ Only relevant when fuzzy_match is TRUE.}
 a character vector
 }
 \description{
-Convert ANZSIC names and abbreviations into the consistent format used by the Australian Bureau of Statistics.
-This function enables both exact (default) and fuzzy matching.
-Under exact matching, if no match is found, NA is returned.
+This function enables both exact (default) and fuzzy matching. Under exact matching, if no match is found, NA is returned.
 }
 \examples{
 

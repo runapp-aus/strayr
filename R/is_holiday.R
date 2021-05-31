@@ -1,5 +1,4 @@
-#' @title is_holiday
-#' @description Identifies if a given date is a public holiday in Australia
+#' @title Identifies if a given date is a public holiday in Australia
 #' @param date Date, POSIXct object or a string that can be parsed with `parsedate::parse_date`
 #' @param jurisdictions Vector of state jurisdictions you wish to filter on, defaults to all of Australia
 #' @return logical(`TRUE` or `FALSE`) vector

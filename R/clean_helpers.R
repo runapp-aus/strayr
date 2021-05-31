@@ -1,4 +1,4 @@
-#' clean_titles is a helper function for the clean
+#' clean_titles is a helper function for the cleaning of titles
 #'
 #' @param dictionary a dictionary created with the make_dictionary function
 #' @param .vector a character vector
