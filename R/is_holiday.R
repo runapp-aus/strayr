@@ -37,9 +37,9 @@ do_is_holiday <- function(date, jurisdictions = c()) {
   }
 
   if (length(jurisdictions) == 0) {
-    ret <- abscorr::auholidays[abscorr::auholidays$Date == new_date, ]
+    ret <- strayr::auholidays[strayr::auholidays$Date == new_date, ]
   } else {
-    ret <- abscorr::auholidays[abscorr::auholidays$Date == new_date & (abscorr::auholidays$Jurisdiction %in% jurisdictions | abscorr::auholidays$Jurisdiction == "NAT"), ]
+    ret <- strayr::auholidays[strayr::auholidays$Date == new_date & (strayr::auholidays$Jurisdiction %in% jurisdictions | strayr::auholidays$Jurisdiction == "NAT"), ]
   }
 
   return(nrow(ret) > 0)

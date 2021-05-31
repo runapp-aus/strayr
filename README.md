@@ -1,19 +1,19 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# abscorr <img src="man/figures/apple-touch-icon-152x152.png" align="right" style="height:150px"/>
+# strayr <img src="man/figures/apple-touch-icon-152x152.png" align="right" style="height:150px"/>
 
 <!-- badges: start -->
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R build
-status](https://github.com/runapp-aus/abscorr/workflows/R-CMD-check/badge.svg)](https://github.com/runapp-aus/abscorr/actions)
+status](https://github.com/runapp-aus/strayr/workflows/R-CMD-check/badge.svg)](https://github.com/runapp-aus/strayr/actions)
 
 <!-- badges: end -->
 
-The `abscorr` package provides tools to make working with Australian
-data easier. This includes:
+The `strayr` package provides tools to make working with Australian data
+easier. This includes:
 
 -   tidy versions of common structures used by the Australian Bureau of
     Statistics (ABS), like ANZSIC and ANZSCO:
@@ -32,15 +32,15 @@ contribute to this package.
 
 ## Installation
 
-You can install the current version of `abscorr` with:
+You can install the current version of `strayr` with:
 
 ``` r
-remotes::install_github("runapp-aus/abscorr")
+remotes::install_github("runapp-aus/strayr")
 ```
 
 ## Structures
 
-Current structures stored in `abscorr` are:
+Current structures stored in `strayr` are:
 
 -   `anzsco`: occupation levels of the [Australian and New Zealand
     Standard Classification of Occupations (ANZSCO), First Edition,
@@ -57,7 +57,7 @@ Current structures stored in `abscorr` are:
     Classification of Education (ASCED), 2001. Cat.
     1272.0](https://www.abs.gov.au/ausstats/abs@.nsf/mf/1272.0).
 
-The `abscorr` package also loads
+The `strayr` package also loads
 [`absmapsdata`](https://github.com/wfmackey/absmapsdata), which contains
 the following structures *and their geometry* as `sf` objects:
 
@@ -95,7 +95,7 @@ Loading the package will lazily load the structures listed above. Call
 them with their name:
 
 ``` r
-library(abscorr)
+library(strayr)
 #> Loading required package: absmapsdata
 library(dplyr)
 ```

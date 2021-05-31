@@ -1,4 +1,4 @@
-URL: https://runapp-aus.github.io/abscorr/
+URL: https://runapp-aus.github.io/strayr/
 
 navbar:
   type: default
@@ -11,9 +11,9 @@ navbar:
 
 repo:
   url:
-    home: https://github.com/runapp-aus/abscorr/
-    source: https://github.com/runapp-aus/abscorr/blob/master/
-    issue: https://github.com/runapp-aus/abscorr/issues/
+    home: https://github.com/runapp-aus/strayr/
+    source: https://github.com/runapp-aus/strayr/blob/master/
+    issue: https://github.com/runapp-aus/strayr/issues/
     user: https://github.com/runapp-aus/
 
 development:
@@ -27,7 +27,7 @@ home:
   strip_header: false
 
 reference:
-  - title: "Runapp-aus abscorr Package"
+  - title: "Runapp-aus strayr Package"
     desc: "Internal Data Structures."
     contents:
       - starts_with("anz")

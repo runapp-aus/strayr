@@ -1,5 +1,5 @@
 library(testthat)
-library(abscorr)
+library(strayr)
 library(dplyr)
 
 

@@ -1,6 +1,6 @@
 library(testthat)
-library(abscorr)
+library(strayr)
 library(dplyr)
 library(here)
 
-test_check("abscorr")
+test_check("strayr")
