@@ -7,12 +7,12 @@
 \format{
 A \code{tibble} with 6 variables:
 \describe{
-\item{\code{foe2_code}}{Broad field of education two-digit code, e.g. "09"}
-\item{\code{foe2}}{Broad field of education two-digit name in title case, e.g. "Society and Culture"}
-\item{\code{foe4_code}}{Narrow field of education four-digit code, e.g. "0921"}
-\item{\code{foe4}}{Narrow field of education four-digit name in title case, e.g. "Sport and Recreation"}
-\item{\code{foe6_code}}{Detailed field of education six-digit code, e.g. "092103"}
-\item{\code{foe6}}{Detailed field of education six-digit name in title case, e.g. "Sports Coaching, Officiating and Instruction"}
+\item{\code{aced_foe_broad_code}}{Broad field of education two-digit code, e.g. "09"}
+\item{\code{aced_foe_broad}}{Broad field of education two-digit name in title case, e.g. "Society and Culture"}
+\item{\code{aced_foe_narrow_code}}{Narrow field of education four-digit code, e.g. "0921"}
+\item{\code{aced_foe_narrow}}{Narrow field of education four-digit name in title case, e.g. "Sport and Recreation"}
+\item{\code{aced_foe_detailed_code}}{Detailed field of education six-digit code, e.g. "092103"}
+\item{\code{aced_foe_detailed}}{Detailed field of education six-digit name in title case, e.g. "Sports Coaching, Officiating and Instruction"}
 }
 }
 \usage{

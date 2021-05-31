@@ -7,12 +7,12 @@
 \format{
 A \code{tibble} with 6 variables:
 \describe{
-\item{\code{qual1_code}}{Broad qualification level one-digit code, e.g. "1"}
-\item{\code{qual1}}{Broad qualification level one-digit name in title case, e.g. "Postgraduate Degree Level"}
-\item{\code{qual2_code}}{Narrow qualification level two-digit code, e.g. "12"}
-\item{\code{qual2}}{Narrow qualification level two-digit name in title case, e.g. "Master Degree Level"}
-\item{\code{qual3_code}}{Detailed qualification level three-digit code, e.g. "122"}
-\item{\code{qual3}}{Detailed qualification level three-digit name in title case, e.g. "Master Degree by Coursework"}
+\item{\code{aced_qual_broad_code}}{Broad qualification level one-digit code, e.g. "1"}
+\item{\code{aced_qual_broad}}{Broad qualification level one-digit name in title case, e.g. "Postgraduate Degree Level"}
+\item{\code{aced_qual_narrow_code}}{Narrow qualification level two-digit code, e.g. "12"}
+\item{\code{aced_qual_narrow}}{Narrow qualification level two-digit name in title case, e.g. "Master Degree Level"}
+\item{\code{aced_qual_detailed_code}}{Detailed qualification level three-digit code, e.g. "122"}
+\item{\code{aced_qual_detailed}}{Detailed qualification level three-digit name in title case, e.g. "Master Degree by Coursework"}
 }
 }
 \usage{
