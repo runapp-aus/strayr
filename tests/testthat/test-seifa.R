@@ -29,7 +29,7 @@ test_that("can Import SEIFA LGA scores", {
 test_that('sa1 spreadsheet can be parsed', {
   df <- get_seifa_index_sheet(system.file('extdata',
                                           'sa1_seifa_indexes_test.xls',
-                                          package = 'abscorr',
+                                          package = 'strayr',
                                           mustWork = TRUE),
                               'Table 2',
                               'sa1')
