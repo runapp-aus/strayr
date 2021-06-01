@@ -23,6 +23,7 @@ Imports:
     readxl,
     magrittr,
     stringr,
+    readr,
     tidyr,
     rlang,
     stringdist (>= 0.9.5.1),
