@@ -201,3 +201,23 @@ h_df %>%
   mutate(IsHoliday = is_holiday(dates))
 ```
 
+## Parsing income ranges
+
+The `parse_income_range` function provides some tools for extracting numbers from income ranges commonly used in Australian data. For example:
+
+```{r}
+
+parse_income_range("$1-$199 ($1-$10,399)", limit = "lower")
+parse_income_range("$1-$199 ($1-$10,399)", limit = "upper")
+parse_income_range("$1-$199 ($1-$10,399)", limit = "mid")
+
+parse_income_range("e. $180,001 or more", limit = "upper")
+parse_income_range("e. $180,001 or more", limit = "upper", max_income = 300e3)
+
+
+parse_income_range("Nil income")
+parse_income_range("Negative income")
+parse_income_range("Negative income", negative_as_zero = FALSE)
+
+```
+

@@ -259,3 +259,31 @@ h_df %>%
 #> 1 2020-01-01      TRUE
 #> 2 2020-01-10     FALSE
 ```
+
+## Parsing income ranges
+
+The `parse_income_range` function provides some tools for extracting
+numbers from income ranges commonly used in Australian data. For
+example:
+
+``` r
+parse_income_range("$1-$199 ($1-$10,399)", limit = "lower")
+#> [1] 1
+parse_income_range("$1-$199 ($1-$10,399)", limit = "upper")
+#> [1] 199
+parse_income_range("$1-$199 ($1-$10,399)", limit = "mid")
+#> [1] 100
+
+parse_income_range("e. $180,001 or more", limit = "upper")
+#> [1] NA
+parse_income_range("e. $180,001 or more", limit = "upper", max_income = 300e3)
+#> [1] 3e+05
+
+
+parse_income_range("Nil income")
+#> [1] 0
+parse_income_range("Negative income")
+#> [1] 0
+parse_income_range("Negative income", negative_as_zero = FALSE)
+#> [1] NA
+```
