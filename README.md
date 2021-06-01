@@ -275,7 +275,7 @@ parse_income_range("$1-$199 ($1-$10,399)", limit = "mid")
 #> [1] 100
 
 parse_income_range("e. $180,001 or more", limit = "upper")
-#> [1] NA
+#> [1] 180001
 parse_income_range("e. $180,001 or more", limit = "upper", max_income = 300e3)
 #> [1] 3e+05
 
@@ -286,4 +286,24 @@ parse_income_range("Negative income")
 #> [1] 0
 parse_income_range("Negative income", negative_as_zero = FALSE)
 #> [1] NA
+
+
+tibble(income_range = c("Negative income",
+                        "Nil income",
+                        "$1,500-$1,749 ($78,000-$90,999)",
+                        "$1,750-$1,999 ($91,000-$103,999)",
+                        "$2,000-$2,999 ($104,000-$155,999)",
+                        "$3,000 or more ($156,000 or more)")) %>% 
+  mutate(lower = parse_income_range(income_range),
+         mid   = parse_income_range(income_range, limit = "mid"),
+         upper = parse_income_range(income_range, limit = "upper"))
+#> # A tibble: 6 x 4
+#>   income_range                      lower   mid upper
+#>   <chr>                             <dbl> <dbl> <dbl>
+#> 1 Negative income                       0     0     0
+#> 2 Nil income                            0     0     0
+#> 3 $1,500-$1,749 ($78,000-$90,999)    1500  1625  1749
+#> 4 $1,750-$1,999 ($91,000-$103,999)   1750  1875  1999
+#> 5 $2,000-$2,999 ($104,000-$155,999)  2000  2500  2999
+#> 6 $3,000 or more ($156,000 or more)  3000  3000  3000
 ```

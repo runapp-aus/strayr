@@ -19,6 +19,7 @@
 #' @importFrom stringr str_detect str_split
 #' @importFrom readr parse_number
 #'
+#' @export
 #'
 parse_income_range <- function(income_range,
                                limit = "lower",
@@ -64,11 +65,14 @@ parse_income_range <- function(income_range,
   # Return NA if there is no number
   if (!stringr::str_detect(x, .dollar_prefix)) return(NA_real_)
 
+  # Remove cruft before .dollar_prefix
+  stripped_x <- str_remove_all(x, paste0("[^0-9", .dollar_prefix, "]*"))
+
   # 'or more' and 'or less'
   if (stringr::str_detect(x, " more")) { # 'X or more'
 
     # get first only
-    max_lower <- suppressWarnings(readr::parse_number(x))
+    max_lower <- suppressWarnings(readr::parse_number(stripped_x))
 
     # get max_upper
     if (!is.null(.max_income)) {
@@ -81,13 +85,14 @@ parse_income_range <- function(income_range,
   } else if (str_detect(x, " less")) { # 'X or less'
 
     # get first only
-    min_upper <- suppressWarnings(readr::parse_number(x))
+    min_upper <- suppressWarnings(readr::parse_number(stripped_x))
     all <- c(0, min_upper)
 
   } else {
     # otherwise, extract the $numerics
-    all <- stringr::str_split(x, pattern = .dollar_prefix) %>%
-      unlist()
+    all <- stringr::str_split(stripped_x, pattern = .dollar_prefix)
+    all <- unlist(all)
+
     all <- suppressWarnings(readr::parse_number(all))
     all <- all[!is.na(all)]
   }

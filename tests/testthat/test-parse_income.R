@@ -78,6 +78,9 @@ test_that("parse_income_range works on valid ranges", {
                                   limit = "mid"),
                1125)
   # max income
+  expect_equal(parse_income_range(or_more[3],
+                                  limit = "upper"),
+               180001)
   expect_equal(parse_income_range(or_more[1],
                                   limit = "upper",
                                   max_income = 3000),
@@ -95,6 +98,17 @@ test_that("parse_income_range works on valid ranges", {
                                   dollar_prefix = "AUD",
                                   limit = "upper"),
                90000)
+
+  # all valid should work:
+  expect_false(any(is.na(
+        parse_income_range(c(valid_income_ranges, or_more, or_less),
+                           limit = "lower"))
+        ))
+
+  expect_false(any(is.na(
+    parse_income_range(c(valid_income_ranges, or_more, or_less),
+                       limit = "upper"))
+  ))
 })
 
 
