@@ -30,9 +30,12 @@ Imports:
     parsedate
 Suggests: 
     testthat,
-    here
+    here,
+    knitr,
+    rmarkdown
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
 RdMacros: lifecycle
 Remotes: wfmackey/absmapsdata
+VignetteBuilder: knitr
