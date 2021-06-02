@@ -1,3 +1,7 @@
+#' @import absmapsdata
+NULL
+
+
 #' ANZSCO
 #'
 #' Wide table containing all levels of the Australian and New Zealand Standard
@@ -77,5 +81,149 @@
 "asced_qual"
 
 
-#' @import absmapsdata
-NULL
+#' Descriptions of ANZSCO used in the Australian Skills Classification (ASC)
+#'
+#' As described by the National Skills Commission: ANZSCO Occupation codes and descriptions.
+#'
+#' Note: this data includes content of the Australian Skills Classification by the National Skills Commission, Commonwealth of Australia. Used under CC BY 4.0 licence.
+#'
+#' @format A \code{tibble} with:
+#' \describe{
+#' \item{\code{anzsco_code}}{Character. An ANZSCO unit or occupation code}
+#' \item{\code{anzsco_name}}{Character. An ANZSCO unit or occupation name}
+#' \item{\code{anzsco_description}}{Character. A description of the ANZSCO unit or occupation, provided by the ABS}
+#' }
+"asc_descriptions"
+
+
+#' Australian Skills Classification (ASC) Core Competencies
+#'
+#' As described by the National Skills Commission:
+#' Core competencies are common to all jobs. They describe a set of non-specialist
+#' skills gained in early life and schooling and provide a base to further
+#' develop skills and specialties . Popular terms for these include ‘foundation
+#' skills’, ‘common skills’, ‘soft skills’, ‘core skills’ and ‘employability
+#' skills’. As part of the Australian Skills Classification work, the NSC
+#' identified 10 core competencies required for every occupation in Australia.
+#' The core competencies align to the definitions of foundation skills typically
+#' used in the Australian VET system – specifically, the Employability Skills
+#' Framework developed by the Australian Skills Quality Authority, with minor
+#' differences recommended by education system experts.
+#'
+#' Note: this data includes content of the Australian Skills Classification by
+#' the National Skills Commission, Commonwealth of Australia.
+#' Used under CC BY 4.0 licence.
+#'
+#' @format A \code{tibble} with:
+#' \describe{
+#' \item{\code{anzsco_code}}{Character. An ANZSCO unit or occupation code}
+#' \item{\code{anzsco_name}}{Character. An ANZSCO unit or occupation name}
+#' \item{\code{core_competencies}}{Character. One of "Numeracy", "Digital engagement", "Teamwork", "Writing", "Reading", "Learning", "Problem solving", "Oral communication", "Planning and organising", "Initiative and innovation". See description}
+#' \item{\code{score}}{Integer. See description}
+#' \item{\code{proficiency_level}}{Character. See description}
+#' \item{\code{anchor_value}}{Character. See description}
+#' }
+"asc_core_competencies"
+
+
+#' Australian Skills Classification (ASC) Core Competencies Descriptions
+#'
+#' As described by the National Skills Commission:
+#' Core competencies are common to all jobs. They describe a set of non-specialist
+#' skills gained in early life and schooling and provide a base to further develop
+#' skills and specialties . Popular terms for these include ‘foundation skills’,
+#' ‘common skills’, ‘soft skills’, ‘core skills’ and ‘employability skills’. As
+#' part of the Australian Skills Classification work, the NSC identified 10 core
+#' competencies required for every occupation in Australia.  The core
+#' competencies align to the definitions of foundation skills typically used in
+#' the Australian VET system – specifically, the Employability Skills Framework
+#' developed by the Australian Skills Quality Authority, with minor differences
+#' recommended by education system experts.
+#'
+#' Note: this data includes content of the Australian Skills Classification by
+#' the National Skills Commission, Commonwealth of Australia.
+#' Used under CC BY 4.0 licence.
+#'
+#' @format A \code{tibble} with:
+#' \describe{
+#' \item{\code{core_competencies}}{Character. One of "Numeracy", "Digital engagement", "Teamwork", "Writing", "Reading", "Learning", "Problem solving", "Oral communication", "Planning and organising", "Initiative and innovation". See description}
+#' \item{\code{competency_description}}{Character. See description}
+#' \item{\code{score}}{Integer. See description}
+#' \item{\code{proficiency_level}}{Character. See description}
+#' \item{\code{anchor_value}}{Character. See description}
+#' }
+"asc_core_competencies_descriptions"
+
+
+#' Australian Skills Classification (ASC) Specialist Tasks
+#'
+#' As described by the National Skills Commission:
+#' The specialist tasks are designed to describe day- to -day work within an
+#' occupation, and are work activities a person undertakes specific to a job.
+#' While these skills can be transferrable across occupations and sectors,
+#' unlike core competencies, they are not universal. The Australian Skills
+#' Classification identifies specialist tasks for occupations in the Australian
+#' labour market in a way that allows these tasks to be compared across
+#' different occupations.
+#'
+#' The skills clusters are clusters of similar specialist tasks. These tasks are
+#' considered to be broadly transferable – if you can do one task in the
+#' cluster, you can do the others. They show how skills are related and
+#' connected to one another, and illustrates the transferability of skills
+#' across occupations.
+#'
+#' Note: this data includes content of the Australian Skills Classification by
+#' the National Skills Commission, Commonwealth of Australia.
+#' Used under CC BY 4.0 licence.
+#'
+#' @format A \code{tibble} with:
+#' \describe{
+#' \item{\code{anzsco_code}}{Character. An ANZSCO unit or occupation code}
+#' \item{\code{anzsco_name}}{Character. An ANZSCO unit or occupation name}
+#' \item{\code{specialist_task}}{Character. See description}
+#' \item{\code{percent_of_time_spent_on_task}}{Numeric. See description}
+#' \item{\code{specialist_cluster}}{Character. See description}
+#' \item{\code{percent_of_time_spent_on_cluster}}{Numeric. See description}
+#' \item{\code{cluster_family}}{Character. See description}
+#' \item{\code{percent_of_time_spent_on_family}}{Numeric. See description}
+#' }
+"asc_specialist_tasks"
+
+
+#' Australian Skills Classification (ASC) Technology Tools
+#'
+#' As described by the National Skills Commission:
+#' Technology tools are a technology, such as software or hardware, that is used
+#' within an occupation. Common technology tools, (such as search engines and
+#' email,) are featured across most occupations, and these are captured in the
+#' core competency of digital engagement, rather than under this section. The
+#' remaining technology tools are highly specialised and occupation-specific.
+#'
+#' Note: this data includes content of the Australian Skills Classification by
+#' the National Skills Commission, Commonwealth of Australia.
+#' Used under CC BY 4.0 licence.
+#'
+#' @format A \code{tibble} with:
+#' \describe{
+#' \item{\code{anzsco_code}}{Character. An ANZSCO unit or occupation code}
+#' \item{\code{anzsco_name}}{Character. An ANZSCO unit or occupation name}
+#' \item{\code{technology_tool}}{Character. See description}
+#' }
+"asc_technology_tools"
+
+
+
+#' Australian Skills Classification (ASC) Technology Tools Ranking
+#'
+#' For each technology tool, examples of that tool that are used in Australia
+#' are provided.
+#'
+#' @format A \code{tibble} with:
+#' \describe{
+#' \item{\code{anzsco_code}}{Character. An ANZSCO unit or occupation code}
+#' \item{\code{anzsco_name}}{Character. An ANZSCO unit or occupation name}
+#' \item{\code{technology_tool_example}}{Character. See description}
+#' \item{\code{technology_tool_ranking}}{Integer. See description}
+#' }
+#'
+"asc_technology_tools_ranking"
