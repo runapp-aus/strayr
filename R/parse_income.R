@@ -16,7 +16,7 @@
 #'
 #' @return a numeric vector of incomes
 #'
-#' @importFrom stringr str_detect str_split
+#' @importFrom stringr str_detect str_split str_replace_all
 #' @importFrom readr parse_number
 #'
 #' @export
@@ -30,8 +30,8 @@ parse_income_range <- function(income_range,
                                .silent = TRUE) {
 
   # correct for use in regex
-  if (str_detect(dollar_prefix, "\\$")) {
-    dollar_prefix <- str_replace_all(dollar_prefix, "\\$", "\\\\$")
+  if (stringr::str_detect(dollar_prefix, "\\$")) {
+    dollar_prefix <- stringr::str_replace_all(dollar_prefix, "\\$", "\\\\$")
   }
 
   # run
@@ -66,7 +66,7 @@ parse_income_range <- function(income_range,
   if (!stringr::str_detect(x, .dollar_prefix)) return(NA_real_)
 
   # Remove cruft before .dollar_prefix
-  stripped_x <- str_remove_all(x, paste0("[^0-9", .dollar_prefix, "]*"))
+  stripped_x <- stringr::str_remove_all(x, paste0("[^0-9", .dollar_prefix, "]*"))
 
   # 'or more' and 'or less'
   if (stringr::str_detect(x, " more")) { # 'X or more'
@@ -82,7 +82,7 @@ parse_income_range <- function(income_range,
     }
     all <- c(max_lower, max_upper)
 
-  } else if (str_detect(x, " less")) { # 'X or less'
+  } else if (stringr::str_detect(x, " less")) { # 'X or less'
 
     # get first only
     min_upper <- suppressWarnings(readr::parse_number(stripped_x))
