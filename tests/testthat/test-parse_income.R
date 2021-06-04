@@ -80,6 +80,10 @@ test_that("parse_income_range works on valid ranges", {
   # max income
   expect_equal(parse_income_range(or_more[3],
                                   limit = "upper"),
+               Inf)
+  expect_equal(parse_income_range(or_more[3],
+                                  limit = "upper",
+                                  max_income = NULL),
                180001)
   expect_equal(parse_income_range(or_more[1],
                                   limit = "upper",

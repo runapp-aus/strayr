@@ -4,9 +4,9 @@
 #' @param income_range a character vector containing income ranges, e.g.
 #' \code{"b. $18,201 to $37,000"}, \code{"$400-$499 ($20,800-$25,999)"}
 #' @param limit either "lower" (the default) and "upper" bounds of the range, or "mid" to return the mid-point
-#' @param max_income numeric value of 'and over' value of the highest bracket.
-#' \code{NULL}, the default, returns a max_income value equal to the lower bound
-#' of the highest bracket. Important for \code{limit = "mid"} or \code{limit = "upper"}.
+#' @param max_income numeric value of 'and over' value of the highest bracket. \code{Inf} by default.
+#' If \code{NULL}, returns a max_income value equal to the lower bound of the
+#' highest bracket. Important for \code{limit = "mid"} or \code{limit = "upper"}.
 #' @param is_zero a character vector of values to be interpreted as zero. Defaults to \code{c("Nil income")}.
 #' @param negative_as_zero a boolean value. If TRUE (the default) the character
 #' @param dollar_prefix a character string to denote the dollar delimiter.
@@ -23,7 +23,7 @@
 #'
 parse_income_range <- function(income_range,
                                limit = "lower",
-                               max_income = NULL,
+                               max_income = Inf,
                                is_zero = c("Nil income"),
                                negative_as_zero = TRUE,
                                dollar_prefix = "$",

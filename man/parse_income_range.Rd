@@ -8,7 +8,7 @@ data and elsewhere}
 parse_income_range(
   income_range,
   limit = "lower",
-  max_income = NULL,
+  max_income = Inf,
   is_zero = c("Nil income"),
   negative_as_zero = TRUE,
   dollar_prefix = "$",
@@ -21,9 +21,9 @@ parse_income_range(
 
 \item{limit}{either "lower" (the default) and "upper" bounds of the range, or "mid" to return the mid-point}
 
-\item{max_income}{numeric value of 'and over' value of the highest bracket.
-\code{NULL}, the default, returns a max_income value equal to the lower bound
-of the highest bracket. Important for \code{limit = "mid"} or \code{limit = "upper"}.}
+\item{max_income}{numeric value of 'and over' value of the highest bracket. \code{Inf} by default.
+If \code{NULL}, returns a max_income value equal to the lower bound of the
+highest bracket. Important for \code{limit = "mid"} or \code{limit = "upper"}.}
 
 \item{is_zero}{a character vector of values to be interpreted as zero. Defaults to \code{c("Nil income")}.}
 
