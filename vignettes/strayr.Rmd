@@ -55,7 +55,7 @@ glimpse(ced2018)
 The `clean_state()` function makes it easy to wrangle vectors of State names and abbreviations - which might be in different forms and possibly
 misspelled.
 
-Let's start with a character vector that includes some misspelled State names,
+Let's start with a character vector that includes some misspelled state names,
 some correctly spelled state names, as well as some abbreviations both malformed
 and correctly formed.
 
