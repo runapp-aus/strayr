@@ -57,7 +57,6 @@ some correctly spelled state names, as well as some abbreviations both malformed
 and correctly formed.
 
 ```{r create-string}
-
 x <- c("western Straya", "w. A ", "new soth wailes", "SA", "tazz", "Victoria",
        "northn territy")
 
