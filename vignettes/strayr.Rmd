@@ -32,6 +32,8 @@ library(dplyr, warn.conflicts = FALSE)
 ```
 
 ```{r fake-load, eval=FALSE}
+library(sf)
+#> Linking to GEOS 3.9.0, GDAL 3.2.1, PROJ 7.2.1
 library(strayr)
 #> Loading required package: absmapsdata
 library(dplyr)
