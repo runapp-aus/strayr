@@ -22,8 +22,7 @@ knitr::opts_chunk$set(
 
 ## Using ABS structures
 
-Loading the package will lazily load the structures listed above. Call
-them with their name:
+Loading the package will lazily load a number of structures, a full list is available in the [reference](../reference/index.html)
 
 ```{r actual-load, include=FALSE}
 # use this to make sure README runs with current build
@@ -151,4 +150,3 @@ tibble(income_range = c("Negative income",
          upper = parse_income_range(income_range, limit = "upper"))
   
 ```
-
