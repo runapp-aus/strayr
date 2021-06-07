@@ -1,0 +1,154 @@
+---
+title: "StrayR"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{StrayR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+
+## Under Construction
+
+
+## Using ABS structures
+
+Loading the package will lazily load a number of structures, a full list is available in the [reference](../reference/index.html)
+
+```{r actual-load, include=FALSE}
+# use this to make sure README runs with current build
+# rather than installed version
+devtools::load_all()
+library(sf)
+library(dplyr, warn.conflicts = FALSE)
+```
+
+```{r fake-load, eval=FALSE}
+library(sf)
+#> Linking to GEOS 3.9.0, GDAL 3.2.1, PROJ 7.2.1
+library(strayr)
+#> Loading required package: absmapsdata
+library(dplyr)
+```
+
+```{r glimpse}
+glimpse(anzsco)
+glimpse(anzsic)
+glimpse(asced_foe)
+glimpse(asced_qual)
+glimpse(sa42016)
+glimpse(ced2018)
+```
+
+
+## Converting state names and abbreviations
+
+The `clean_state()` function makes it easy to wrangle vectors of State names and abbreviations - which might be in different forms and possibly
+misspelled.
+
+Let's start with a character vector that includes some misspelled state names,
+some correctly spelled state names, as well as some abbreviations both malformed
+and correctly formed.
+
+```{r create-string}
+x <- c("western Straya", "w. A ", "new soth wailes", "SA", "tazz", "Victoria",
+       "northn territy")
+
+```
+
+To convert this character vector to a vector of abbreviations for State names,
+ use `clean_state()`:
+
+```{r state}
+clean_state(x)
+
+```
+
+If you want full names for the states rather than abbreviations:
+
+```{r state-fullnames}
+
+clean_state(x, to = "state_name")
+
+```
+
+By default, `clean_state()` uses fuzzy or approximate string matching to match the 
+elements in your character vector to state names/abbreviations. If you only want
+to permit exact matching, you can disable fuzzy matching. This means you will 
+never get false matches, but you will also fail to match misspelled state names 
+or malformed abbreviations; you'll get an `NA` if no match can be found.
+
+```{r state-exact}
+ clean_state(x, fuzzy_match = FALSE)
+
+```
+
+If your data is in a data frame, `clean_state()` works well within a `dplyr::mutate()` call:
+
+```{r dplyr}
+
+ x_df <- data.frame(state = x, stringsAsFactors = FALSE)
+
+library(dplyr)
+ x_df %>% 
+   mutate(state_abbr = clean_state(state))
+```
+
+
+## Australian public holidays
+This package includes the `auholidays` dataset from the [Australian Public Holidays Dates Machine Readable Dataset](https://data.gov.au/data/dataset/australian-holidays-machine-readable-dataset) as well as a helper function `is_holiday`:
+
+```{r is_holiday_example}
+str(auholidays)
+
+
+is_holiday('2020-01-01')
+is_holiday('2019-05-27', jurisdictions = c('ACT', 'TAS'))
+
+h_df <- data.frame(dates = c('2020-01-01', '2020-01-10'))
+
+h_df %>%
+  mutate(IsHoliday = is_holiday(dates))
+```
+
+
+
+## Parsing income ranges
+
+The `parse_income_range` function provides some tools for extracting numbers from income ranges commonly used in Australian data. For example:
+
+```{r}
+
+parse_income_range("$1-$199 ($1-$10,399)", limit = "lower")
+parse_income_range("$1-$199 ($1-$10,399)", limit = "upper")
+parse_income_range("$1-$199 ($1-$10,399)", limit = "mid")
+
+parse_income_range("e. $180,001 or more", limit = "upper")
+parse_income_range("e. $180,001 or more", limit = "upper", max_income = 300e3)
+
+
+parse_income_range("Nil income")
+parse_income_range("Negative income")
+parse_income_range("Negative income", negative_as_zero = FALSE)
+
+
+tibble(income_range = c("Negative income",
+                        "Nil income",
+                        "$1,500-$1,749 ($78,000-$90,999)",
+                        "$1,750-$1,999 ($91,000-$103,999)",
+                        "$2,000-$2,999 ($104,000-$155,999)",
+                        "$3,000 or more ($156,000 or more)")) %>% 
+  mutate(lower = parse_income_range(income_range),
+         mid   = parse_income_range(income_range, limit = "mid"),
+         upper = parse_income_range(income_range, limit = "upper"))
+  
+```
