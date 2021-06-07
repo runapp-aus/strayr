@@ -28,6 +28,7 @@ Loading the package will lazily load a number of structures, a full list is avai
 # use this to make sure README runs with current build
 # rather than installed version
 devtools::load_all()
+library(sf)
 library(dplyr, warn.conflicts = FALSE)
 ```
 
