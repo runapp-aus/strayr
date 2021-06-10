@@ -4,7 +4,7 @@ Title: Ready-to-use Australian common structures and classifications and tools f
 Version: 0.1.2
 Authors@R: c(person("Will", "Mackey", email = "wfmackey@gmail.com",
                 role = c("aut", "cre")),
-        person(given = "Matt", family = "Johnson",
+        person(given = "Matt", family = "Johnson", email = "mrjoh3@gmail.com",
                 role = c("aut")),
         person(given = "David", family = "Diviny", email = "david.diviny@nousgroup.com.au",
                 role = c("aut")),
