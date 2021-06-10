@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ASCED Field of Education — asced_foe • strayr</title>
+<title>Descriptions of ANZSCO used in the Australian Skills Classification (ASC) — asc_descriptions • strayr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,9 +48,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="ASCED Field of Education — asced_foe" />
-<meta property="og:description" content="Wide table containing all levels of fields of education in the Australian
-Standard Classification of Education (ASCED), 2001. Cat. 1272.0." />
+<meta property="og:title" content="Descriptions of ANZSCO used in the Australian Skills Classification (ASC) — asc_descriptions" />
+<meta property="og:description" content="As described by the National Skills Commission: ANZSCO Occupation codes and descriptions." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -125,31 +124,30 @@ Standard Classification of Education (ASCED), 2001. Cat. 1272.0." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>ASCED Field of Education</h1>
+    <h1>Descriptions of ANZSCO used in the Australian Skills Classification (ASC)</h1>
     <small class="dont-index">Source: <a href='https://github.com/runapp-aus/strayr/blob/master/R/data_descriptions.R'><code>R/data_descriptions.R</code></a></small>
-    <div class="hidden name"><code>asced_foe.Rd</code></div>
+    <div class="hidden name"><code>asc_descriptions.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Wide table containing all levels of fields of education in the Australian
-Standard Classification of Education (ASCED), 2001. Cat. 1272.0.</p>
+    <p>As described by the National Skills Commission: ANZSCO Occupation codes and descriptions.</p>
     </div>
 
-    <pre class="usage"><span class='va'>asced_foe</span></pre>
+    <pre class="usage"><span class='va'>asc_descriptions</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A <code>tibble</code> with 6 variables:</p><dl>
-<dt><code>aced_foe_broad_code</code></dt><dd><p>Broad field of education two-digit code, e.g. "09"</p></dd>
-<dt><code>aced_foe_broad</code></dt><dd><p>Broad field of education two-digit name in title case, e.g. "Society and Culture"</p></dd>
-<dt><code>aced_foe_narrow_code</code></dt><dd><p>Narrow field of education four-digit code, e.g. "0921"</p></dd>
-<dt><code>aced_foe_narrow</code></dt><dd><p>Narrow field of education four-digit name in title case, e.g. "Sport and Recreation"</p></dd>
-<dt><code>aced_foe_detailed_code</code></dt><dd><p>Detailed field of education six-digit code, e.g. "092103"</p></dd>
-<dt><code>aced_foe_detailed</code></dt><dd><p>Detailed field of education six-digit name in title case, e.g. "Sports Coaching, Officiating and Instruction"</p></dd>
+    <p>A <code>tibble</code> with:</p><dl>
+<dt><code>anzsco_code</code></dt><dd><p>Character. An ANZSCO unit or occupation code</p></dd>
+<dt><code>anzsco_name</code></dt><dd><p>Character. An ANZSCO unit or occupation name</p></dd>
+<dt><code>anzsco_description</code></dt><dd><p>Character. A description of the ANZSCO unit or occupation, provided by the ABS</p></dd>
 
 </dl>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Note: this data includes content of the Australian Skills Classification by the National Skills Commission, Commonwealth of Australia. Used under CC BY 4.0 licence.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

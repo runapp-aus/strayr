@@ -52,6 +52,9 @@
   </a>
 </li>
 <li>
+  <a href="articles/strayr.html">Get started</a>
+</li>
+<li>
   <a href="reference/index.html">Reference</a>
 </li>
 <li>
@@ -165,188 +168,24 @@
 <code>dz2016</code>: Census of Population and Housing Destination Zones 2016</li>
 </ul>
 </div>
-<div id="using-abs-structures" class="section level2">
-<h2 class="hasAnchor">
-<a href="#using-abs-structures" class="anchor"></a>Using ABS structures</h2>
-<p>Loading the package will lazily load the structures listed above. Call them with their name:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">strayr</span><span class="op">)</span>
-<span class="co">#&gt; Loading required package: absmapsdata</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">anzsco</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 1,180</span>
-<span class="co">#&gt; Columns: 11</span>
-<span class="co">#&gt; $ anzsco_major_code      &lt;chr&gt; "1", "1", "1", "1", "1", "1", "1", "1", "1", "1…</span>
-<span class="co">#&gt; $ anzsco_major           &lt;chr&gt; "Managers", "Managers", "Managers", "Managers",…</span>
-<span class="co">#&gt; $ anzsco_submajor_code   &lt;chr&gt; "10", "11", "11", "11", "11", "11", "11", "11",…</span>
-<span class="co">#&gt; $ anzsco_submajor        &lt;chr&gt; "Managers, nfd", "Chief Executives, General Man…</span>
-<span class="co">#&gt; $ anzsco_minor_code      &lt;chr&gt; "100", "110", "111", "111", "111", "111", "111"…</span>
-<span class="co">#&gt; $ anzsco_minor           &lt;chr&gt; "Managers, nfd", "Chief Executives, General Man…</span>
-<span class="co">#&gt; $ anzsco_unit_code       &lt;chr&gt; "1000", "1100", "1110", "1111", "1112", "1112",…</span>
-<span class="co">#&gt; $ anzsco_unit            &lt;chr&gt; "Managers, nfd", "Chief Executives, General Man…</span>
-<span class="co">#&gt; $ anzsco_occupation_code &lt;chr&gt; "100000", "110000", "111000", "111111", "111211…</span>
-<span class="co">#&gt; $ anzsco_occupation      &lt;chr&gt; "Managers, nfd", "Chief Executives, General Man…</span>
-<span class="co">#&gt; $ skill_level            &lt;chr&gt; NA, NA, NA, "1", "1", "1", "1", "1", "1", NA, N…</span>
-<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">anzsic</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 506</span>
-<span class="co">#&gt; Columns: 8</span>
-<span class="co">#&gt; $ anzsic_division_code    &lt;chr&gt; "A", "A", "A", "A", "A", "A", "A", "A", "A", "…</span>
-<span class="co">#&gt; $ anzsic_division         &lt;chr&gt; "Agriculture, Forestry and Fishing", "Agricult…</span>
-<span class="co">#&gt; $ anzsic_subdivision_code &lt;chr&gt; "1", "1", "1", "1", "1", "1", "1", "1", "1", "…</span>
-<span class="co">#&gt; $ anzsic_subdivision      &lt;chr&gt; "Agriculture", "Agriculture", "Agriculture", "…</span>
-<span class="co">#&gt; $ anzsic_group_code       &lt;chr&gt; "11", "11", "11", "11", "11", "12", "12", "12"…</span>
-<span class="co">#&gt; $ anzsic_group            &lt;chr&gt; "Nursery and Floriculture Production", "Nurser…</span>
-<span class="co">#&gt; $ anzsic_class_code       &lt;chr&gt; "111", "112", "113", "114", "115", "121", "122…</span>
-<span class="co">#&gt; $ anzsic_class            &lt;chr&gt; "Nursery Production (Under Cover)", "Nursery P…</span>
-<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">asced_foe</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 439</span>
-<span class="co">#&gt; Columns: 6</span>
-<span class="co">#&gt; $ aced_foe_broad_code    &lt;chr&gt; "01", "01", "01", "01", "01", "01", "01", "01",…</span>
-<span class="co">#&gt; $ aced_foe_broad         &lt;chr&gt; "Natural and Physical Sciences", "Natural and P…</span>
-<span class="co">#&gt; $ aced_foe_narrow_code   &lt;chr&gt; "0100", "0101", "0101", "0101", "0101", "0103",…</span>
-<span class="co">#&gt; $ aced_foe_narrow        &lt;chr&gt; "Natural and Physical Sciences, nfd", "Mathemat…</span>
-<span class="co">#&gt; $ aced_foe_detailed_code &lt;chr&gt; "010000", "010100", "010101", "010103", "010199…</span>
-<span class="co">#&gt; $ aced_foe_detailed      &lt;chr&gt; "Natural and Physical Sciences, nfd", "Mathemat…</span>
-<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">asced_qual</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 64</span>
-<span class="co">#&gt; Columns: 6</span>
-<span class="co">#&gt; $ aced_qual_broad_code    &lt;chr&gt; "1", "1", "1", "1", "1", "1", "1", "1", "1", "…</span>
-<span class="co">#&gt; $ aced_qual_broad         &lt;chr&gt; "Postgraduate Degree Level", "Postgraduate Deg…</span>
-<span class="co">#&gt; $ aced_qual_narrow_code   &lt;chr&gt; "11", "11", "11", "11", "11", "11", "12", "12"…</span>
-<span class="co">#&gt; $ aced_qual_narrow        &lt;chr&gt; "Doctoral Degree Level", "Doctoral Degree Leve…</span>
-<span class="co">#&gt; $ aced_qual_detailed_code &lt;chr&gt; "111", "112", "113", "114", "115", "116", "121…</span>
-<span class="co">#&gt; $ aced_qual_detailed      &lt;chr&gt; "Higher Doctorate", "Doctorate by Research", "…</span>
-<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">sa42016</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 107</span>
-<span class="co">#&gt; Columns: 10</span>
-<span class="co">#&gt; $ sa4_code_2016   &lt;chr&gt; "101", "102", "103", "104", "105", "106", "107", "108"…</span>
-<span class="co">#&gt; $ sa4_name_2016   &lt;chr&gt; "Capital Region", "Central Coast", "Central West", "Co…</span>
-<span class="co">#&gt; $ gcc_code_2016   &lt;chr&gt; "1RNSW", "1GSYD", "1RNSW", "1RNSW", "1RNSW", "1RNSW", …</span>
-<span class="co">#&gt; $ gcc_name_2016   &lt;chr&gt; "Rest of NSW", "Greater Sydney", "Rest of NSW", "Rest …</span>
-<span class="co">#&gt; $ state_code_2016 &lt;chr&gt; "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1",…</span>
-<span class="co">#&gt; $ state_name_2016 &lt;chr&gt; "New South Wales", "New South Wales", "New South Wales…</span>
-<span class="co">#&gt; $ areasqkm_2016   &lt;dbl&gt; 51895.5631, 1681.0724, 70297.0604, 13229.7578, 339363.…</span>
-<span class="co">#&gt; $ cent_long       &lt;dbl&gt; 149.2450, 151.2855, 148.3558, 152.7739, 145.0269, 150.…</span>
-<span class="co">#&gt; $ cent_lat        &lt;dbl&gt; -35.56480, -33.30797, -33.21697, -29.81603, -30.98611,…</span>
-<span class="co">#&gt; $ geometry        &lt;list&gt; [150.31133, 150.31258, 150.30964, 150.31133, -35.6658…</span>
-<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">ced2018</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 169</span>
-<span class="co">#&gt; Columns: 6</span>
-<span class="co">#&gt; $ ced_code_2018 &lt;chr&gt; "101", "102", "103", "104", "105", "106", "107", "108", …</span>
-<span class="co">#&gt; $ ced_name_2018 &lt;chr&gt; "Banks", "Barton", "Bennelong", "Berowra", "Blaxland", "…</span>
-<span class="co">#&gt; $ areasqkm_2018 &lt;dbl&gt; 49.4460, 39.6466, 58.6052, 749.6359, 61.1166, 98.3974, 3…</span>
-<span class="co">#&gt; $ cent_long     &lt;dbl&gt; 151.0465, 151.1274, 151.0985, 151.0385, 151.0090, 151.15…</span>
-<span class="co">#&gt; $ cent_lat      &lt;dbl&gt; -33.96482, -33.94082, -33.79360, -33.56993, -33.89634, -…</span>
-<span class="co">#&gt; $ geometry      &lt;list&gt; [151.01558, 151.01209, 151.00812, 151.00593, 151.00422,…</span></code></pre></div>
-</div>
 <div id="converting-state-names-and-abbreviations" class="section level2">
 <h2 class="hasAnchor">
 <a href="#converting-state-names-and-abbreviations" class="anchor"></a>Converting state names and abbreviations</h2>
 <p>The <code><a href="reference/clean_state.html">clean_state()</a></code> function makes it easy to wrangle vectors of State names and abbreviations - which might be in different forms and possibly misspelled.</p>
-<p>Let’s start with a character vector that includes some misspelled State names, some correctly spelled state names, as well as some abbreviations both malformed and correctly formed.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"western Straya"</span>, <span class="st">"w. A "</span>, <span class="st">"new soth wailes"</span>, <span class="st">"SA"</span>, <span class="st">"tazz"</span>, <span class="st">"Victoria"</span>,
-       <span class="st">"northn territy"</span><span class="op">)</span></code></pre></div>
-<p>To convert this character vector to a vector of abbreviations for State names, use <code><a href="reference/clean_state.html">clean_state()</a></code>:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/clean_state.html">clean_state</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="co">#&gt; [1] "WA"  "WA"  "NSW" "SA"  "Tas" "Vic" "NT"</span></code></pre></div>
-<p>If you want full names for the states rather than abbreviations:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/clean_state.html">clean_state</a></span><span class="op">(</span><span class="va">x</span>, to <span class="op">=</span> <span class="st">"state_name"</span><span class="op">)</span>
-<span class="co">#&gt; [1] "Western Australia"  "Western Australia"  "New South Wales"   </span>
-<span class="co">#&gt; [4] "South Australia"    "Tasmania"           "Victoria"          </span>
-<span class="co">#&gt; [7] "Northern Territory"</span></code></pre></div>
-<p>By default, <code><a href="reference/clean_state.html">clean_state()</a></code> uses fuzzy or approximate string matching to match the elements in your character vector to state names/abbreviations. If you only want to permit exact matching, you can disable fuzzy matching. This means you will never get false matches, but you will also fail to match misspelled state names or malformed abbreviations; you’ll get an <code>NA</code> if no match can be found.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"> <span class="fu"><a href="reference/clean_state.html">clean_state</a></span><span class="op">(</span><span class="va">x</span>, fuzzy_match <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="co">#&gt; [1] NA    NA    NA    "SA"  NA    "Vic" NA</span></code></pre></div>
-<p>If your data is in a data frame, <code><a href="reference/clean_state.html">clean_state()</a></code> works well within a <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">dplyr::mutate()</a></code> call:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"> <span class="va">x_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>state <span class="op">=</span> <span class="va">x</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
- <span class="va">x_df</span> <span class="op">%&gt;%</span> 
-   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>state_abbr <span class="op">=</span> <span class="fu"><a href="reference/clean_state.html">clean_state</a></span><span class="op">(</span><span class="va">state</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt;             state state_abbr</span>
-<span class="co">#&gt; 1  western Straya         WA</span>
-<span class="co">#&gt; 2           w. A          WA</span>
-<span class="co">#&gt; 3 new soth wailes        NSW</span>
-<span class="co">#&gt; 4              SA         SA</span>
-<span class="co">#&gt; 5            tazz        Tas</span>
-<span class="co">#&gt; 6        Victoria        Vic</span>
-<span class="co">#&gt; 7  northn territy         NT</span></code></pre></div>
 </div>
 <div id="australian-public-holidays" class="section level2">
 <h2 class="hasAnchor">
 <a href="#australian-public-holidays" class="anchor"></a>Australian public holidays</h2>
 <p>This package includes the <code>auholidays</code> dataset from the <a href="https://data.gov.au/data/dataset/australian-holidays-machine-readable-dataset">Australian Public Holidays Dates Machine Readable Dataset</a> as well as a helper function <code>is_holiday</code>:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">auholidays</span><span class="op">)</span>
-<span class="co">#&gt; tibble[,3] [879 × 3] (S3: tbl_df/tbl/data.frame)</span>
-<span class="co">#&gt;  $ Date        : Date[1:879], format: "2021-01-01" "2021-01-26" ...</span>
-<span class="co">#&gt;  $ Name        : chr [1:879] "New Year's Day" "Australia Day" "Canberra Day" "Good Friday" ...</span>
-<span class="co">#&gt;  $ Jurisdiction: chr [1:879] "ACT" "ACT" "ACT" "ACT" ...</span>
-
-
-<span class="fu"><a href="reference/is_holiday.html">is_holiday</a></span><span class="op">(</span><span class="st">'2020-01-01'</span><span class="op">)</span>
-<span class="co">#&gt; [1] TRUE</span>
-<span class="fu"><a href="reference/is_holiday.html">is_holiday</a></span><span class="op">(</span><span class="st">'2019-05-27'</span>, jurisdictions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'ACT'</span>, <span class="st">'TAS'</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; [1] TRUE</span>
-
-<span class="va">h_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>dates <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'2020-01-01'</span>, <span class="st">'2020-01-10'</span><span class="op">)</span><span class="op">)</span>
-
-<span class="va">h_df</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>IsHoliday <span class="op">=</span> <span class="fu"><a href="reference/is_holiday.html">is_holiday</a></span><span class="op">(</span><span class="va">dates</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt;        dates IsHoliday</span>
-<span class="co">#&gt; 1 2020-01-01      TRUE</span>
-<span class="co">#&gt; 2 2020-01-10     FALSE</span></code></pre></div>
 </div>
 <div id="parsing-income-ranges" class="section level2">
 <h2 class="hasAnchor">
 <a href="#parsing-income-ranges" class="anchor"></a>Parsing income ranges</h2>
 <p>The <code>parse_income_range</code> function provides some tools for extracting numbers from income ranges commonly used in Australian data. For example:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"$1-$199 ($1-$10,399)"</span>, limit <span class="op">=</span> <span class="st">"lower"</span><span class="op">)</span>
-<span class="co">#&gt; [1] 1</span>
-<span class="fu"><a href="reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"$1-$199 ($1-$10,399)"</span>, limit <span class="op">=</span> <span class="st">"upper"</span><span class="op">)</span>
-<span class="co">#&gt; [1] 199</span>
-<span class="fu"><a href="reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"$1-$199 ($1-$10,399)"</span>, limit <span class="op">=</span> <span class="st">"mid"</span><span class="op">)</span>
-<span class="co">#&gt; [1] 100</span>
-
-<span class="fu"><a href="reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"e. $180,001 or more"</span>, limit <span class="op">=</span> <span class="st">"upper"</span><span class="op">)</span>
-<span class="co">#&gt; [1] 180001</span>
-<span class="fu"><a href="reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"e. $180,001 or more"</span>, limit <span class="op">=</span> <span class="st">"upper"</span>, max_income <span class="op">=</span> <span class="fl">300e3</span><span class="op">)</span>
-<span class="co">#&gt; [1] 3e+05</span>
-
-
-<span class="fu"><a href="reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"Nil income"</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0</span>
-<span class="fu"><a href="reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"Negative income"</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0</span>
-<span class="fu"><a href="reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"Negative income"</span>, negative_as_zero <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="co">#&gt; [1] NA</span>
-
-
-<span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>income_range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Negative income"</span>,
-                        <span class="st">"Nil income"</span>,
-                        <span class="st">"$1,500-$1,749 ($78,000-$90,999)"</span>,
-                        <span class="st">"$1,750-$1,999 ($91,000-$103,999)"</span>,
-                        <span class="st">"$2,000-$2,999 ($104,000-$155,999)"</span>,
-                        <span class="st">"$3,000 or more ($156,000 or more)"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>lower <span class="op">=</span> <span class="fu"><a href="reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="va">income_range</span><span class="op">)</span>,
-         mid   <span class="op">=</span> <span class="fu"><a href="reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="va">income_range</span>, limit <span class="op">=</span> <span class="st">"mid"</span><span class="op">)</span>,
-         upper <span class="op">=</span> <span class="fu"><a href="reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="va">income_range</span>, limit <span class="op">=</span> <span class="st">"upper"</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 4</span>
-<span class="co">#&gt;   income_range                      lower   mid upper</span>
-<span class="co">#&gt;   &lt;chr&gt;                             &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Negative income                       0     0     0</span>
-<span class="co">#&gt; 2 Nil income                            0     0     0</span>
-<span class="co">#&gt; 3 $1,500-$1,749 ($78,000-$90,999)    1500  1625  1749</span>
-<span class="co">#&gt; 4 $1,750-$1,999 ($91,000-$103,999)   1750  1875  1999</span>
-<span class="co">#&gt; 5 $2,000-$2,999 ($104,000-$155,999)  2000  2500  2999</span>
-<span class="co">#&gt; 6 $3,000 or more ($156,000 or more)  3000  3000  3000</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="fu"><a href="reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"$1-$199 ($1-$10,399)"</span>, limit <span class="op">=</span> <span class="st">"lower"</span><span class="op">)</span>
+<span class="co">#&gt; [1] 1</span></code></pre></div>
 </div>
 </div>
   </div>
