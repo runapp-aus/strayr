@@ -32,6 +32,7 @@ reference:
     contents:
       - starts_with("anz")
       - starts_with("asced")
+      - starts_with("asc")
       - auholidays
   - title: "Importing ABS Data"
     desc: >
@@ -47,3 +48,4 @@ reference:
       - is_holiday
       - starts_with("clean_")
       - starts_with("make_")
+      - starts_with("parse_")

@@ -18,6 +18,12 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@v1
 
+      - name: install udunits
+        run: brew install udunits
+        
+      - name: install gdal
+        run: brew install gdal
+        
       - name: Query dependencies
         run: |
           install.packages('remotes')
@@ -36,6 +42,8 @@ jobs:
         run: |
           remotes::install_deps(dependencies = TRUE)
           install.packages("pkgdown", type = "binary")
+          install.packages('devtools')
+          install.packages('sf', type = "binary")
         shell: Rscript {0}
 
       - name: Install package
