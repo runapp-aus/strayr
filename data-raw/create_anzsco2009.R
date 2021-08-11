@@ -114,7 +114,7 @@ nfd3 <- comb %>%
          anzsco6 = glue("{anzsco3}, nfd"),
          anzsco6_code = glue("{anzsco3_code}000"))
 
-anzsco <- comb %>%
+anzsco2009 <- comb %>%
   bind_rows(nfd1, nfd2, nfd3) %>%
   arrange(anzsco1_code, anzsco2_code, anzsco3_code,
           anzsco4_code, anzsco6_code) %>%
@@ -122,7 +122,7 @@ anzsco <- comb %>%
   arrange(anzsco6_code)
 
 if (include_factor_variants) {
-  anzsco <- anzsco %>%
+  anzsco2009 <- anzsco2009 %>%
     mutate(
       anzsco1_f = as_factor(anzsco1),
       anzsco2_f = as_factor(anzsco2),
@@ -141,7 +141,7 @@ if (include_factor_variants) {
 }
 
 # Rename using new conventions: https://github.com/runapp-aus/abscorr/issues/17
-anzsco <- anzsco %>%
+anzsco2009 <- anzsco2009 %>%
   rename(
     anzsco_major = anzsco1,
     anzsco_major_code = anzsco1_code,
@@ -155,8 +155,8 @@ anzsco <- anzsco %>%
     anzsco_occupation_code = anzsco6_code
   )
 
-anzsco_dictionary <- make_dictionary(anzsco)
+anzsco_dictionary <- make_dictionary(anzsco2009)
 
 
 # Export
-usethis::use_data(anzsco, overwrite = TRUE)
+usethis::use_data(anzsco2009, overwrite = TRUE)

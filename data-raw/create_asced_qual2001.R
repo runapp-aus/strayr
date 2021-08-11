@@ -53,23 +53,23 @@ qual3 <- raw %>%
 
 
 # Join into wide ascedupation list
-asced_qual <- qual1 %>%
+asced_qual2001 <- qual1 %>%
   left_join(qual2) %>%
   left_join(qual3) %>%
   mutate(qual1 = str_to_title(qual1),       # "Natural And Physical Sciences"
          qual1 = tools::toTitleCase(qual1)) # "Natural and Physical Sciences"
 
 if (!include_factor_variants) {
-  asced_qual <- asced_qual %>%
+  asced_qual2001 <- asced_qual2001 %>%
     select(qual1_code, qual1,
            qual2_code, qual2,
            qual3_code, qual3)
 }
 
-asced_qual_dictionary <- make_dictionary(asced_qual)
+asced_qual_dictionary <- make_dictionary(asced_qual2001)
 
 # Rename using new conventions: https://github.com/runapp-aus/abscorr/issues/17
-asced_qual <- asced_qual %>%
+asced_qual2001 <- asced_qual2001 %>%
   rename(
     aced_qual_broad = qual1,
     aced_qual_broad_code = qual1_code,
@@ -80,4 +80,4 @@ asced_qual <- asced_qual %>%
   )
 
 # Export
-usethis::use_data(asced_qual, overwrite = TRUE)
+usethis::use_data(asced_qual2001, overwrite = TRUE)

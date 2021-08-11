@@ -76,12 +76,12 @@ nfd4 <- comb %>%
          foe6_code = glue("{foe4_code}00"))
 
 
-asced_foe <- bind_rows(comb, nfd2, nfd4) %>%
+asced_foe2001 <- bind_rows(comb, nfd2, nfd4) %>%
   arrange(foe2_code, foe4_code, foe6_code) %>%
   mutate(across(.fns = as.character))
 
 if (include_factor_variants) {
-  asced_foe <- asced_foe %>%
+  asced_foe2001 <- asced_foe2001 %>%
     mutate(foe2_f = fct_inorder(foe2),
            foe4_f = fct_inorder(foe4),
            foe6_f = fct_inorder(foe6)) %>%
@@ -91,7 +91,7 @@ if (include_factor_variants) {
 }
 
 # Rename using new conventions: https://github.com/runapp-aus/abscorr/issues/17
-asced_foe <- asced_foe %>%
+asced_foe2001 <- asced_foe2001 %>%
   rename(
     aced_foe_broad = foe2,
     aced_foe_broad_code = foe2_code,
@@ -102,7 +102,7 @@ asced_foe <- asced_foe %>%
   )
 
 
-asced_foe_dictionary <- make_dictionary(asced_foe)
+asced_foe_dictionary <- make_dictionary(asced_foe2001)
 
 # Export
-usethis::use_data(asced_foe, overwrite = TRUE)
+usethis::use_data(asced_foe2001, overwrite = TRUE)

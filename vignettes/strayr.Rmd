@@ -41,10 +41,10 @@ library(dplyr)
 ```
 
 ```{r glimpse}
-glimpse(anzsco)
-glimpse(anzsic)
-glimpse(asced_foe)
-glimpse(asced_qual)
+glimpse(anzsco2009)
+glimpse(anzsic2006)
+glimpse(asced_foe2001)
+glimpse(asced_qual2001)
 glimpse(sa42016)
 glimpse(ced2018)
 ```

@@ -47,7 +47,7 @@ subdivision_nfd <- anzsic_raw %>%
          anzsic_class_code = anzsic_group_code * 10)
 
 # Finalise data frame; noting that we are avoiding the nfd complication for now
-anzsic <- anzsic_raw %>%
+anzsic2006 <- anzsic_raw %>%
   arrange(anzsic_division_code,
           anzsic_subdivision_code,
           anzsic_group_code,
@@ -55,11 +55,11 @@ anzsic <- anzsic_raw %>%
   mutate(across(.fns = as.character))
 
 if (include_factor_variants) {
-  anzsic <- anzsic %>%
+  anzsic2006 <- anzsic2006 %>%
     mutate(across(ends_with("title"), fct_inorder, .names = "{.col}_f"))
 }
 
-anzsic <- anzsic %>%
+anzsic2006 <- anzsic %>%
   rename_with(~ str_remove_all(., "\\_title"), everything()) %>%
   arrange(anzsic_division_code,
           anzsic_subdivision_code,
@@ -67,13 +67,7 @@ anzsic <- anzsic %>%
           anzsic_class_code)
 
 
-anzsic_dictionary <- make_dictionary(anzsic)
+anzsic_dictionary <- make_dictionary(anzsic2006)
 
 # Export
-usethis::use_data(anzsic, overwrite = TRUE)
-
-
-
-
-
-
+usethis::use_data(anzsic2006, overwrite = TRUE)
