@@ -1,7 +1,3 @@
-#' @import absmapsdata
-NULL
-
-
 #' ANZSCO
 #'
 #' Wide table containing all levels of the Australian and New Zealand Standard

@@ -19,9 +19,9 @@
 #'
 #' @examples
 #'
-#' read_absmap("sa42016")
+#' \dontrun{read_absmap("sa42016")}
 #'
-#' read_absmap(area = "sa4", year = 2016)
+#' \dontrun{read_absmap(area = "sa4", year = 2016)}
 #'
 #' @export
 #'
