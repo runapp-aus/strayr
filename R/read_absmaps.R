@@ -31,11 +31,11 @@ read_absmap <- function(name = NULL,
                         year = NULL) {
 
   if (all(is.null(name), is.null(area), is.null(year))) {
-    stop("Please enter a name or an area/name combination.")
+    stop("Please enter a name (eg name = 'sa32016') or an area/year combination (eg area = 'sa3', year = '2016').")
   }
 
   if (is.null(name) & (is.null(area) | is.null(year))) {
-    stop("Please enter a name or an area/name combination.")
+    stop("Please enter a name (eg name = 'sa32016') or an area/year combination (eg area = 'sa3', year = '2016').")
   }
 
   if (!is.null(name) & !is.null(area) & !is.null(year)) {
