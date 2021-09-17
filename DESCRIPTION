@@ -9,7 +9,8 @@ Authors@R: c(person("Will", "Mackey", email = "wfmackey@gmail.com",
         person(given = "David", family = "Diviny", email = "david.diviny@nousgroup.com.au",
                 role = c("aut")),
         person("Matt", "Cowgill", role = c("aut"), email = "mattcowgill@gmail.com", comment = c(ORCID = "0000-0003-0422-3300")),
-        person("Bryce", "Roney", role = c("ctb")))
+        person("Bryce", "Roney", role = c("ctb")),
+        person("William", "Lai", role = c("ctb")))
 Maintainer: Will Mackey <wfmackey@gmail.com>
 License: GPL-3
 Description: This package provides data and functions for working with common structures and classifications used in Australia.
