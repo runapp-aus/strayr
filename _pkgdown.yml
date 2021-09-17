@@ -27,7 +27,7 @@ home:
   strip_header: false
 
 reference:
-  - title: "Runapp-aus strayr Package"
+  - title: "runapp strayr Package"
     desc: "Internal Data Structures."
     contents:
       - starts_with("anz")
@@ -38,6 +38,7 @@ reference:
     desc: >
       Functions for retrieving ABS data
     contents:
+      - read_absmaps
       - get_seifa
       - get_seifa_index_sheet
   - title: "Helper functions"
