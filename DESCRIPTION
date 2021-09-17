@@ -32,7 +32,6 @@ Imports:
 Suggests: 
     testthat,
     sf,
-    devtools,
     here
 Encoding: UTF-8
 LazyData: true
