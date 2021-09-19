@@ -28,15 +28,11 @@ Loading the package will lazily load a number of structures, a full list is avai
 # use this to make sure README runs with current build
 # rather than installed version
 devtools::load_all()
-library(sf)
 library(dplyr, warn.conflicts = FALSE)
 ```
 
 ```{r fake-load, eval=FALSE}
-library(sf)
-#> Linking to GEOS 3.9.0, GDAL 3.2.1, PROJ 7.2.1
 library(strayr)
-#> Loading required package: absmapsdata
 library(dplyr)
 ```
 
@@ -45,8 +41,13 @@ glimpse(anzsco2009)
 glimpse(anzsic2006)
 glimpse(asced_foe2001)
 glimpse(asced_qual2001)
-glimpse(sa42016)
-glimpse(ced2018)
+```
+
+Objects stored in the [`absmapsdata`](https://github.com/wfmackey/absmapsdata) package can be accessed with the `read_absmap` function:
+
+```{r}
+library(sf) # loaded to handle sf objects
+read_absmap("sa42016")
 ```
 
 
