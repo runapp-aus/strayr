@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">strayr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
       </span>
     </div>
 
@@ -83,7 +83,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>StrayR</h1>
             
-            <h4 class="date">2021-09-17</h4>
+            <h4 class="date">2021-09-19</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/runapp-aus/strayr/blob/master/vignettes/strayr.Rmd"><code>vignettes/strayr.Rmd</code></a></small>
       <div class="hidden name"><code>strayr.Rmd</code></div>
@@ -101,10 +101,7 @@
 <a href="#using-abs-structures" class="anchor"></a>Using ABS structures</h2>
 <p>Loading the package will lazily load a number of structures, a full list is available in the <a href="../reference/index.html">reference</a></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span>
-<span class="co">#&gt; Linking to GEOS 3.9.0, GDAL 3.2.1, PROJ 7.2.1</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">strayr</span><span class="op">)</span>
-<span class="co">#&gt; Loading required package: absmapsdata</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">strayr</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">anzsco2009</span><span class="op">)</span>
@@ -149,54 +146,76 @@
 <span class="co">#&gt; $ aced_qual_narrow_code   &lt;chr&gt; "11", "11", "11", "11", "11", "11", "12", "12"…</span>
 <span class="co">#&gt; $ aced_qual_narrow        &lt;chr&gt; "Doctoral Degree Level", "Doctoral Degree Leve…</span>
 <span class="co">#&gt; $ aced_qual_detailed_code &lt;chr&gt; "111", "112", "113", "114", "115", "116", "121…</span>
-<span class="co">#&gt; $ aced_qual_detailed      &lt;chr&gt; "Higher Doctorate", "Doctorate by Research", "…</span>
-<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">sa42016</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 107</span>
-<span class="co">#&gt; Columns: 10</span>
-<span class="co">#&gt; $ sa4_code_2016   &lt;chr&gt; "101", "102", "103", "104", "105", "106", "107", "108"…</span>
-<span class="co">#&gt; $ sa4_name_2016   &lt;chr&gt; "Capital Region", "Central Coast", "Central West", "Co…</span>
-<span class="co">#&gt; $ gcc_code_2016   &lt;chr&gt; "1RNSW", "1GSYD", "1RNSW", "1RNSW", "1RNSW", "1RNSW", …</span>
-<span class="co">#&gt; $ gcc_name_2016   &lt;chr&gt; "Rest of NSW", "Greater Sydney", "Rest of NSW", "Rest …</span>
-<span class="co">#&gt; $ state_code_2016 &lt;chr&gt; "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1",…</span>
-<span class="co">#&gt; $ state_name_2016 &lt;chr&gt; "New South Wales", "New South Wales", "New South Wales…</span>
-<span class="co">#&gt; $ areasqkm_2016   &lt;dbl&gt; 51895.5631, 1681.0724, 70297.0604, 13229.7578, 339363.…</span>
-<span class="co">#&gt; $ cent_long       &lt;dbl&gt; 149.2450, 151.2855, 148.3558, 152.7739, 145.0269, 150.…</span>
-<span class="co">#&gt; $ cent_lat        &lt;dbl&gt; -35.56480, -33.30797, -33.21697, -29.81603, -30.98611,…</span>
-<span class="co">#&gt; $ geometry        &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((150.3113 -3..., MULTIPOLY…</span>
-<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">ced2018</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 169</span>
-<span class="co">#&gt; Columns: 6</span>
-<span class="co">#&gt; $ ced_code_2018 &lt;chr&gt; "101", "102", "103", "104", "105", "106", "107", "108", …</span>
-<span class="co">#&gt; $ ced_name_2018 &lt;chr&gt; "Banks", "Barton", "Bennelong", "Berowra", "Blaxland", "…</span>
-<span class="co">#&gt; $ areasqkm_2018 &lt;dbl&gt; 49.4460, 39.6466, 58.6052, 749.6359, 61.1166, 98.3974, 3…</span>
-<span class="co">#&gt; $ cent_long     &lt;dbl&gt; 151.0465, 151.1274, 151.0985, 151.0385, 151.0090, 151.15…</span>
-<span class="co">#&gt; $ cent_lat      &lt;dbl&gt; -33.96482, -33.94082, -33.79360, -33.56993, -33.89634, -…</span>
-<span class="co">#&gt; $ geometry      &lt;MULTIPOLYGON [°]&gt; MULTIPOLYGON (((151.0156 -3..., MULTIPOLYGO…</span></code></pre></div>
+<span class="co">#&gt; $ aced_qual_detailed      &lt;chr&gt; "Higher Doctorate", "Doctorate by Research", "…</span></code></pre></div>
+<p>Objects stored in the <a href="https://github.com/wfmackey/absmapsdata"><code>absmapsdata</code></a> package can be accessed with the <code>read_absmap</code> function:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span> <span class="co"># loaded to handle sf objects</span>
+<span class="co">#&gt; Linking to GEOS 3.8.1, GDAL 3.2.1, PROJ 7.2.1</span>
+<span class="fu"><a href="../reference/read_absmap.html">read_absmap</a></span><span class="op">(</span><span class="st">"sa42016"</span><span class="op">)</span>
+<span class="co">#&gt; Simple feature collection with 107 features and 9 fields (with 18 geometries empty)</span>
+<span class="co">#&gt; Geometry type: MULTIPOLYGON</span>
+<span class="co">#&gt; Dimension:     XY</span>
+<span class="co">#&gt; Bounding box:  xmin: 96.81695 ymin: -43.74048 xmax: 167.9969 ymax: -9.219937</span>
+<span class="co">#&gt; Geodetic CRS:  WGS 84</span>
+<span class="co">#&gt; First 10 features:</span>
+<span class="co">#&gt;    sa4_code_2016               sa4_name_2016 gcc_code_2016  gcc_name_2016</span>
+<span class="co">#&gt; 1            101              Capital Region         1RNSW    Rest of NSW</span>
+<span class="co">#&gt; 2            102               Central Coast         1GSYD Greater Sydney</span>
+<span class="co">#&gt; 3            103                Central West         1RNSW    Rest of NSW</span>
+<span class="co">#&gt; 4            104     Coffs Harbour - Grafton         1RNSW    Rest of NSW</span>
+<span class="co">#&gt; 5            105          Far West and Orana         1RNSW    Rest of NSW</span>
+<span class="co">#&gt; 6            106 Hunter Valley exc Newcastle         1RNSW    Rest of NSW</span>
+<span class="co">#&gt; 7            107                   Illawarra         1RNSW    Rest of NSW</span>
+<span class="co">#&gt; 8            108             Mid North Coast         1RNSW    Rest of NSW</span>
+<span class="co">#&gt; 9            109                      Murray         1RNSW    Rest of NSW</span>
+<span class="co">#&gt; 10           110  New England and North West         1RNSW    Rest of NSW</span>
+<span class="co">#&gt;    state_code_2016 state_name_2016 areasqkm_2016 cent_long  cent_lat</span>
+<span class="co">#&gt; 1                1 New South Wales     51895.563  149.2450 -35.56480</span>
+<span class="co">#&gt; 2                1 New South Wales      1681.072  151.2855 -33.30797</span>
+<span class="co">#&gt; 3                1 New South Wales     70297.060  148.3558 -33.21697</span>
+<span class="co">#&gt; 4                1 New South Wales     13229.758  152.7739 -29.81603</span>
+<span class="co">#&gt; 5                1 New South Wales    339363.693  145.0269 -30.98611</span>
+<span class="co">#&gt; 6                1 New South Wales     21491.291  150.9849 -32.35481</span>
+<span class="co">#&gt; 7                1 New South Wales      1538.919  150.7711 -34.43464</span>
+<span class="co">#&gt; 8                1 New South Wales     18851.500  152.3410 -31.56476</span>
+<span class="co">#&gt; 9                1 New South Wales     97797.675  144.0434 -34.42275</span>
+<span class="co">#&gt; 10               1 New South Wales     99145.916  150.7019 -30.06335</span>
+<span class="co">#&gt;                          geometry</span>
+<span class="co">#&gt; 1  MULTIPOLYGON (((150.3113 -3...</span>
+<span class="co">#&gt; 2  MULTIPOLYGON (((151.315 -33...</span>
+<span class="co">#&gt; 3  MULTIPOLYGON (((150.6107 -3...</span>
+<span class="co">#&gt; 4  MULTIPOLYGON (((153.2785 -2...</span>
+<span class="co">#&gt; 5  MULTIPOLYGON (((150.1106 -3...</span>
+<span class="co">#&gt; 6  MULTIPOLYGON (((152.3165 -3...</span>
+<span class="co">#&gt; 7  MULTIPOLYGON (((150.8783 -3...</span>
+<span class="co">#&gt; 8  MULTIPOLYGON (((159.0686 -3...</span>
+<span class="co">#&gt; 9  MULTIPOLYGON (((147.6165 -3...</span>
+<span class="co">#&gt; 10 MULTIPOLYGON (((152.4876 -2...</span></code></pre></div>
 </div>
 <div id="converting-state-names-and-abbreviations" class="section level2">
 <h2 class="hasAnchor">
 <a href="#converting-state-names-and-abbreviations" class="anchor"></a>Converting state names and abbreviations</h2>
 <p>The <code><a href="../reference/clean_state.html">clean_state()</a></code> function makes it easy to wrangle vectors of State names and abbreviations - which might be in different forms and possibly misspelled.</p>
 <p>Let’s start with a character vector that includes some misspelled state names, some correctly spelled state names, as well as some abbreviations both malformed and correctly formed.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"western Straya"</span>, <span class="st">"w. A "</span>, <span class="st">"new soth wailes"</span>, <span class="st">"SA"</span>, <span class="st">"tazz"</span>, <span class="st">"Victoria"</span>,
        <span class="st">"northn territy"</span><span class="op">)</span></code></pre></div>
 <p>To convert this character vector to a vector of abbreviations for State names, use <code><a href="../reference/clean_state.html">clean_state()</a></code>:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/clean_state.html">clean_state</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="co">#&gt; [1] "WA"  "WA"  "NSW" "SA"  "Tas" "Vic" "NT"</span></code></pre></div>
 <p>If you want full names for the states rather than abbreviations:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/clean_state.html">clean_state</a></span><span class="op">(</span><span class="va">x</span>, to <span class="op">=</span> <span class="st">"state_name"</span><span class="op">)</span>
 <span class="co">#&gt; [1] "Western Australia"  "Western Australia"  "New South Wales"   </span>
 <span class="co">#&gt; [4] "South Australia"    "Tasmania"           "Victoria"          </span>
 <span class="co">#&gt; [7] "Northern Territory"</span></code></pre></div>
 <p>By default, <code><a href="../reference/clean_state.html">clean_state()</a></code> uses fuzzy or approximate string matching to match the elements in your character vector to state names/abbreviations. If you only want to permit exact matching, you can disable fuzzy matching. This means you will never get false matches, but you will also fail to match misspelled state names or malformed abbreviations; you’ll get an <code>NA</code> if no match can be found.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"> <span class="fu"><a href="../reference/clean_state.html">clean_state</a></span><span class="op">(</span><span class="va">x</span>, fuzzy_match <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co">#&gt; [1] NA    NA    NA    "SA"  NA    "Vic" NA</span></code></pre></div>
 <p>If your data is in a data frame, <code><a href="../reference/clean_state.html">clean_state()</a></code> works well within a <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">dplyr::mutate()</a></code> call:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"> <span class="va">x_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>state <span class="op">=</span> <span class="va">x</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
@@ -215,7 +234,7 @@
 <h2 class="hasAnchor">
 <a href="#australian-public-holidays" class="anchor"></a>Australian public holidays</h2>
 <p>This package includes the <code>auholidays</code> dataset from the <a href="https://data.gov.au/data/dataset/australian-holidays-machine-readable-dataset">Australian Public Holidays Dates Machine Readable Dataset</a> as well as a helper function <code>is_holiday</code>:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">auholidays</span><span class="op">)</span>
 <span class="co">#&gt; tibble [879 × 3] (S3: tbl_df/tbl/data.frame)</span>
 <span class="co">#&gt;  $ Date        : Date[1:879], format: "2021-01-01" "2021-01-26" ...</span>
@@ -237,7 +256,7 @@
 <h2 class="hasAnchor">
 <a href="#parsing-income-ranges" class="anchor"></a>Parsing income ranges</h2>
 <p>The <code>parse_income_range</code> function provides some tools for extracting numbers from income ranges commonly used in Australian data. For example:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"$1-$199 ($1-$10,399)"</span>, limit <span class="op">=</span> <span class="st">"lower"</span><span class="op">)</span>
 <span class="co">#&gt; [1] 1</span>
 <span class="fu"><a href="../reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"$1-$199 ($1-$10,399)"</span>, limit <span class="op">=</span> <span class="st">"upper"</span><span class="op">)</span>

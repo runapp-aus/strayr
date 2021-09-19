@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ASCED Field of Education — asced_foe2001 • strayr</title>
+<title>Read ABS geographic data — read_absmap • strayr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,9 +48,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="ASCED Field of Education — asced_foe2001" />
-<meta property="og:description" content="Wide table containing all levels of fields of education in the Australian
-Standard Classification of Education (ASCED), 2001. Cat. 1272.0." />
+<meta property="og:title" content="Read ABS geographic data — read_absmap" />
+<meta property="og:description" content="Read ABS geographic data as sf objects from the [absmapsdata](https://github.com/wfmackey/absmapsdata) package." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -125,32 +124,52 @@ Standard Classification of Education (ASCED), 2001. Cat. 1272.0." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>ASCED Field of Education</h1>
-    <small class="dont-index">Source: <a href='https://github.com/runapp-aus/strayr/blob/master/R/data_descriptions.R'><code>R/data_descriptions.R</code></a></small>
-    <div class="hidden name"><code>asced_foe2001.Rd</code></div>
+    <h1>Read ABS geographic data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/runapp-aus/strayr/blob/master/R/read_absmaps.R'><code>R/read_absmaps.R</code></a></small>
+    <div class="hidden name"><code>read_absmap.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Wide table containing all levels of fields of education in the Australian
-Standard Classification of Education (ASCED), 2001. Cat. 1272.0.</p>
+    <p>Read ABS geographic data as sf objects from the [absmapsdata](https://github.com/wfmackey/absmapsdata) package.</p>
     </div>
 
-    <pre class="usage"><span class='va'>asced_foe2001</span></pre>
+    <pre class="usage"><span class='fu'>read_absmap</span><span class='op'>(</span>name <span class='op'>=</span> <span class='cn'>NULL</span>, area <span class='op'>=</span> <span class='cn'>NULL</span>, year <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>name</th>
+      <td><p>a character string containing absmapsdata file names in [<code>area</code>][<code>year</code>] format, eg "sa42016"; "gcc2021".
+See full list at https://github.com/wfmackey/absmapsdata.
+Note: if <code>name</code> is entered, then <code>area</code> and <code>year</code> values will be ignored.</p></td>
+    </tr>
+    <tr>
+      <th>area</th>
+      <td><p>a character string containing the concise absmapsdata area names, eg "sa4"; "gcc".
+See full list at https://github.com/wfmackey/absmapsdata.</p></td>
+    </tr>
+    <tr>
+      <th>year</th>
+      <td><p>a character string or numeric of the full source year of absmapsdata object, eg "2016"; 2021.
+See full list at https://github.com/wfmackey/absmapsdata.</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code>tibble</code> with 6 variables:</p><dl>
-<dt><code>aced_foe_broad_code</code></dt><dd><p>Broad field of education two-digit code, e.g. "09"</p></dd>
-<dt><code>aced_foe_broad</code></dt><dd><p>Broad field of education two-digit name in title case, e.g. "Society and Culture"</p></dd>
-<dt><code>aced_foe_narrow_code</code></dt><dd><p>Narrow field of education four-digit code, e.g. "0921"</p></dd>
-<dt><code>aced_foe_narrow</code></dt><dd><p>Narrow field of education four-digit name in title case, e.g. "Sport and Recreation"</p></dd>
-<dt><code>aced_foe_detailed_code</code></dt><dd><p>Detailed field of education six-digit code, e.g. "092103"</p></dd>
-<dt><code>aced_foe_detailed</code></dt><dd><p>Detailed field of education six-digit name in title case, e.g. "Sports Coaching, Officiating and Instruction"</p></dd>
+    <p>an sf object.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-</dl>
+    <div class='dont-index'><p>https://github.com/wfmackey/absmapsdata</p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='fu'>read_absmap</span><span class='op'>(</span><span class='st'>"sa42016"</span><span class='op'>)</span>
 
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='fu'>read_absmap</span><span class='op'>(</span>area <span class='op'>=</span> <span class='st'>"sa4"</span>, year <span class='op'>=</span> <span class='fl'>2016</span><span class='op'>)</span>
+
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
