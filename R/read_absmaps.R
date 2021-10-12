@@ -44,6 +44,7 @@ read_absmap <- function(name = NULL,
 
   # Define name
   if (is.null(name)) name <- paste0(area, year)
+  name <- stringr::str_to_lower(name)
 
   # Define url
   base_url <- "https://github.com/wfmackey/absmapsdata/raw/master/data/"
