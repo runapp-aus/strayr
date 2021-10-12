@@ -1,7 +1,3 @@
-#' @import absmapsdata
-NULL
-
-
 #' ANZSCO
 #'
 #' Wide table containing all levels of the Australian and New Zealand Standard
@@ -22,7 +18,7 @@ NULL
 #' \item{\code{skill_level}}{Skill level required for occupation, determined by the ABS (1 is highest, 5 is lowest).
 #' See \url{https://www.abs.gov.au/ausstats/abs@.nsf/Previousproducts/C4BECE1704987586CA257089001A9181 } for details.}
 #' }
-"anzsco"
+"anzsco2009"
 
 
 
@@ -42,7 +38,7 @@ NULL
 #' \item{\code{anzsic_class_code}}{ANZSIC class codes integer, e.g. 111, 112}
 #' \item{\code{anzsic_class}}{ANZSIC class title, e.g. "Vegetable Growing (Under Cover)"}
 #' }
-"anzsic"
+"anzsic2006"
 
 
 
@@ -62,7 +58,7 @@ NULL
 #' \item{\code{aced_foe_detailed_code}}{Detailed field of education six-digit code, e.g. "092103"}
 #' \item{\code{aced_foe_detailed}}{Detailed field of education six-digit name in title case, e.g. "Sports Coaching, Officiating and Instruction"}
 #' }
-"asced_foe"
+"asced_foe2001"
 
 #' ASCED Level of Education
 #'
@@ -78,7 +74,7 @@ NULL
 #' \item{\code{aced_qual_detailed_code}}{Detailed qualification level three-digit code, e.g. "122"}
 #' \item{\code{aced_qual_detailed}}{Detailed qualification level three-digit name in title case, e.g. "Master Degree by Coursework"}
 #' }
-"asced_qual"
+"asced_qual2001"
 
 
 #' Descriptions of ANZSCO used in the Australian Skills Classification (ASC)

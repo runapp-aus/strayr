@@ -1,3 +1,7 @@
+# strayr 0.1.3
+* `read_absmaps` function added
+* `absmapsdata` depend removed
+
 # strayr 0.1.2
 * Package renamed from `abscorr` to `strayr`.
 * `parse_income_range` added
