@@ -83,7 +83,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>StrayR</h1>
             
-            <h4 class="date">2021-09-19</h4>
+            <h4 class="date">2021-10-12</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/runapp-aus/strayr/blob/master/vignettes/strayr.Rmd"><code>vignettes/strayr.Rmd</code></a></small>
       <div class="hidden name"><code>strayr.Rmd</code></div>
@@ -206,7 +206,8 @@
 <span class="co">#&gt; [1] "WA"  "WA"  "NSW" "SA"  "Tas" "Vic" "NT"</span></code></pre></div>
 <p>If you want full names for the states rather than abbreviations:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/clean_state.html">clean_state</a></span><span class="op">(</span><span class="va">x</span>, to <span class="op">=</span> <span class="st">"state_name"</span><span class="op">)</span>
+<code class="sourceCode R">
+<span class="fu"><a href="../reference/clean_state.html">clean_state</a></span><span class="op">(</span><span class="va">x</span>, to <span class="op">=</span> <span class="st">"state_name"</span><span class="op">)</span>
 <span class="co">#&gt; [1] "Western Australia"  "Western Australia"  "New South Wales"   </span>
 <span class="co">#&gt; [4] "South Australia"    "Tasmania"           "Victoria"          </span>
 <span class="co">#&gt; [7] "Northern Territory"</span></code></pre></div>
@@ -216,7 +217,8 @@
 <span class="co">#&gt; [1] NA    NA    NA    "SA"  NA    "Vic" NA</span></code></pre></div>
 <p>If your data is in a data frame, <code><a href="../reference/clean_state.html">clean_state()</a></code> works well within a <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">dplyr::mutate()</a></code> call:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"> <span class="va">x_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>state <span class="op">=</span> <span class="va">x</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<code class="sourceCode R">
+ <span class="va">x_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>state <span class="op">=</span> <span class="va">x</span>, stringsAsFactors <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
  <span class="va">x_df</span> <span class="op">%&gt;%</span> 
@@ -240,10 +242,13 @@
 <span class="co">#&gt;  $ Date        : Date[1:879], format: "2021-01-01" "2021-01-26" ...</span>
 <span class="co">#&gt;  $ Name        : chr [1:879] "New Year's Day" "Australia Day" "Canberra Day" "Good Friday" ...</span>
 <span class="co">#&gt;  $ Jurisdiction: chr [1:879] "ACT" "ACT" "ACT" "ACT" ...</span>
+
+
 <span class="fu"><a href="../reference/is_holiday.html">is_holiday</a></span><span class="op">(</span><span class="st">'2020-01-01'</span><span class="op">)</span>
 <span class="co">#&gt; [1] TRUE</span>
 <span class="fu"><a href="../reference/is_holiday.html">is_holiday</a></span><span class="op">(</span><span class="st">'2019-05-27'</span>, jurisdictions <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'ACT'</span>, <span class="st">'TAS'</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] TRUE</span>
+
 <span class="va">h_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>dates <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'2020-01-01'</span>, <span class="st">'2020-01-10'</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">h_df</span> <span class="op">%&gt;%</span>
@@ -257,22 +262,28 @@
 <a href="#parsing-income-ranges" class="anchor"></a>Parsing income ranges</h2>
 <p>The <code>parse_income_range</code> function provides some tools for extracting numbers from income ranges commonly used in Australian data. For example:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"$1-$199 ($1-$10,399)"</span>, limit <span class="op">=</span> <span class="st">"lower"</span><span class="op">)</span>
+<code class="sourceCode R">
+<span class="fu"><a href="../reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"$1-$199 ($1-$10,399)"</span>, limit <span class="op">=</span> <span class="st">"lower"</span><span class="op">)</span>
 <span class="co">#&gt; [1] 1</span>
 <span class="fu"><a href="../reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"$1-$199 ($1-$10,399)"</span>, limit <span class="op">=</span> <span class="st">"upper"</span><span class="op">)</span>
 <span class="co">#&gt; [1] 199</span>
 <span class="fu"><a href="../reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"$1-$199 ($1-$10,399)"</span>, limit <span class="op">=</span> <span class="st">"mid"</span><span class="op">)</span>
 <span class="co">#&gt; [1] 100</span>
+
 <span class="fu"><a href="../reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"e. $180,001 or more"</span>, limit <span class="op">=</span> <span class="st">"upper"</span><span class="op">)</span>
 <span class="co">#&gt; [1] Inf</span>
 <span class="fu"><a href="../reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"e. $180,001 or more"</span>, limit <span class="op">=</span> <span class="st">"upper"</span>, max_income <span class="op">=</span> <span class="fl">300e3</span><span class="op">)</span>
 <span class="co">#&gt; [1] 3e+05</span>
+
+
 <span class="fu"><a href="../reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"Nil income"</span><span class="op">)</span>
 <span class="co">#&gt; [1] 0</span>
 <span class="fu"><a href="../reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"Negative income"</span><span class="op">)</span>
 <span class="co">#&gt; [1] 0</span>
 <span class="fu"><a href="../reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"Negative income"</span>, negative_as_zero <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co">#&gt; [1] NA</span>
+
+
 <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>income_range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Negative income"</span>,
                         <span class="st">"Nil income"</span>,
                         <span class="st">"$1,500-$1,749 ($78,000-$90,999)"</span>,
