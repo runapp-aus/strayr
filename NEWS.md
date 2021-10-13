@@ -1,5 +1,8 @@
+# strayr 0.1.4
+* `strip_year_suffix` function added and provided as an option in `read_absmap`.
+
 # strayr 0.1.3
-* `read_absmaps` function added
+* `read_absmap` function added
 * `absmapsdata` depend removed
 
 # strayr 0.1.2
