@@ -88,5 +88,5 @@ contained in [`absmapsdata`](https://github.com/wfmackey/absmapsdata).
 See `?strayr::read_absmaps`.
 
 ``` r
-read_absmaps("sa42021")
+read_absmaps("sa42021", strip_year_suffix = TRUE)
 ```

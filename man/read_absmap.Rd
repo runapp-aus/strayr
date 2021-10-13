@@ -4,7 +4,7 @@
 \alias{read_absmap}
 \title{Read ABS geographic data}
 \usage{
-read_absmap(name = NULL, area = NULL, year = NULL)
+read_absmap(name = NULL, area = NULL, year = NULL, remove_year_suffix = FALSE)
 }
 \arguments{
 \item{name}{a character string containing absmapsdata file names in [\code{area}][\code{year}] format, eg "sa42016"; "gcc2021".
@@ -16,6 +16,10 @@ See full list at https://github.com/wfmackey/absmapsdata.}
 
 \item{year}{a character string or numeric of the full source year of absmapsdata object, eg "2016"; 2021.
 See full list at https://github.com/wfmackey/absmapsdata.}
+
+\item{remove_year_suffix}{logical defaulting to FALSE.
+If TRUE, `strip_year_suffix` is run before returning the object, removing
+the `_year` suffix from variable names.}
 }
 \value{
 an sf object.
