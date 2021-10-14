@@ -107,14 +107,30 @@
 <a href="#structures" class="anchor"></a>Structures</h2>
 <p>Current structures stored in <code>strayr</code> are:</p>
 <ul>
+<li>Australian and New Zealand Standard Classification of Occupations (<strong>ANZSCO</strong>), Cat. 1220.0:
+<ul>
 <li>
-<code>anzsco2009</code>: occupation levels of the <a href="https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1220.0First%20Edition,%20Revision%201?OpenDocument">Australian and New Zealand Standard Classification of Occupations (ANZSCO), First Edition, Revision 1, 2009. Cat. 1220.0</a>.</li>
+<code>anzsco2019</code>: occupation levels of ANZSCO, <a href="https://www.abs.gov.au/AUSSTATS/abs@.nsf/allprimarymainfeatures/FCC055588D3EBA19CA2584A8000E7889?opendocument">2013, Version 1.3</a>.</li>
 <li>
-<code>anzsic2006</code>: industry levels of the <a href="https://www.abs.gov.au/ausstats/abs@.nsf/0/20C5B5A4F46DF95BCA25711F00146D75?opendocument">Australian and New Zealand Standard Industrial Classification (ANZSIC), 2006 (Revision 1.0). Cat. 1292.0</a>.</li>
+<code>anzsco2013</code>: occupation levels of ANZSCO, <a href="https://www.abs.gov.au/AUSSTATS/abs@.nsf/allprimarymainfeatures/4AF138F6DB4FFD4BCA2571E200096BAD?opendocument">2013, Version 1.2</a>.</li>
 <li>
-<code>asced_foe2001</code>: field of education levels of the <a href="https://www.abs.gov.au/ausstats/abs@.nsf/mf/1272.0">Australian Standard Classification of Education (ASCED), 2001. Cat. 1272.0</a>.</li>
+<code>anzsco2009</code>: occupation levels ANZSCO, <a href="https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1220.0First%20Edition,%20Revision%201?OpenDocument">First Edition, Revision 1, 2009</a>.</li>
+</ul>
+</li>
+<li>Australian and New Zealand Standard Industrial Classification (<strong>ANZSIC</strong>), Cat. 1292.0:
+<ul>
 <li>
-<code>asced_qual2001</code>: qualification levels of the <a href="https://www.abs.gov.au/ausstats/abs@.nsf/mf/1272.0">Australian Standard Classification of Education (ASCED), 2001. Cat. 1272.0</a>.</li>
+<code>anzsic2006</code>: industry levels of ANZSIC, <a href="https://www.abs.gov.au/ausstats/abs@.nsf/0/20C5B5A4F46DF95BCA25711F00146D75?opendocument">2006 (Revision 1.0)</a>.</li>
+</ul>
+</li>
+<li>Australian Standard Classification of Education (<strong>ASCED</strong>), Cat. 1272.0:
+<ul>
+<li>
+<code>asced_foe2001</code>: field of education levels of ASCED, <a href="https://www.abs.gov.au/ausstats/abs@.nsf/mf/1272.0">2001</a>.</li>
+<li>
+<code>asced_qual2001</code>: qualification levels of ASCED, <a href="https://www.abs.gov.au/ausstats/abs@.nsf/mf/1272.0">2001</a>.</li>
+</ul>
+</li>
 </ul>
 </div>
 <div id="converting-state-names-and-abbreviations" class="section level2">
@@ -140,7 +156,7 @@
 <a href="#accessing-abs-mapping-structures" class="anchor"></a>Accessing ABS mapping structures</h2>
 <p>The <code>strayr</code> package also loads provides tools to access <code>sf</code> objects contained in <a href="https://github.com/wfmackey/absmapsdata"><code>absmapsdata</code></a>. See <code>?strayr::read_absmaps</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">read_absmaps</span><span class="op">(</span><span class="st">"sa42021"</span>, strip_year_suffix <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">read_absmaps</span><span class="op">(</span><span class="st">"sa42021"</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
   </div>
