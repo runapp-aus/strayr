@@ -1,5 +1,6 @@
 # strayr 0.1.4
 * `strip_year_suffix` function added and provided as an option in `read_absmap`.
+* `anzsco2013` and `anzsco2019` added
 
 # strayr 0.1.3
 * `read_absmap` function added

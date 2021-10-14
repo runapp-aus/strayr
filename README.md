@@ -42,20 +42,25 @@ remotes::install_github("runapp-aus/strayr")
 
 Current structures stored in `strayr` are:
 
--   `anzsco2009`: occupation levels of the [Australian and New Zealand
-    Standard Classification of Occupations (ANZSCO), First Edition,
-    Revision 1, 2009. Cat.
-    1220.0](https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1220.0First%20Edition,%20Revision%201?OpenDocument).
--   `anzsic2006`: industry levels of the [Australian and New Zealand
-    Standard Industrial Classification (ANZSIC), 2006 (Revision 1.0).
-    Cat.
-    1292.0](https://www.abs.gov.au/ausstats/abs@.nsf/0/20C5B5A4F46DF95BCA25711F00146D75?opendocument).
--   `asced_foe2001`: field of education levels of the [Australian
-    Standard Classification of Education (ASCED), 2001. Cat.
-    1272.0](https://www.abs.gov.au/ausstats/abs@.nsf/mf/1272.0).
--   `asced_qual2001`: qualification levels of the [Australian Standard
-    Classification of Education (ASCED), 2001. Cat.
-    1272.0](https://www.abs.gov.au/ausstats/abs@.nsf/mf/1272.0).
+-   Australian and New Zealand Standard Classification of Occupations
+    (**ANZSCO**), Cat. 1220.0:
+    -   `anzsco2019`: occupation levels of ANZSCO, [2013, Version
+        1.3](https://www.abs.gov.au/AUSSTATS/abs@.nsf/allprimarymainfeatures/FCC055588D3EBA19CA2584A8000E7889?opendocument).
+    -   `anzsco2013`: occupation levels of ANZSCO, [2013, Version
+        1.2](https://www.abs.gov.au/AUSSTATS/abs@.nsf/allprimarymainfeatures/4AF138F6DB4FFD4BCA2571E200096BAD?opendocument).
+    -   `anzsco2009`: occupation levels ANZSCO, [First Edition, Revision
+        1,
+        2009](https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1220.0First%20Edition,%20Revision%201?OpenDocument).
+-   Australian and New Zealand Standard Industrial Classification
+    (**ANZSIC**), Cat. 1292.0:
+    -   `anzsic2006`: industry levels of ANZSIC, [2006 (Revision
+        1.0)](https://www.abs.gov.au/ausstats/abs@.nsf/0/20C5B5A4F46DF95BCA25711F00146D75?opendocument).
+-   Australian Standard Classification of Education (**ASCED**), Cat.
+    1272.0:
+    -   `asced_foe2001`: field of education levels of ASCED,
+        [2001](https://www.abs.gov.au/ausstats/abs@.nsf/mf/1272.0).
+    -   `asced_qual2001`: qualification levels of ASCED,
+        [2001](https://www.abs.gov.au/ausstats/abs@.nsf/mf/1272.0).
 
 ## Converting state names and abbreviations
 
@@ -88,5 +93,5 @@ contained in [`absmapsdata`](https://github.com/wfmackey/absmapsdata).
 See `?strayr::read_absmaps`.
 
 ``` r
-read_absmaps("sa42021", strip_year_suffix = TRUE)
+read_absmaps("sa42021")
 ```
