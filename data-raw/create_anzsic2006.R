@@ -11,9 +11,9 @@ include_factor_variants <- FALSE
 anzsic_url <- "https://raw.githubusercontent.com/asiripanich/anzsic/master/anzsic_2006.csv"
 
 temp_dir <- tempdir()
-temp_path <- glue("{temp_dir}/anzsic.csv")
 
-download.file(anzsic_url, temp_path)
+temp_path <- file.path(temp_dir, "anzsic.csv")
+
 
 # Read
 anzsic_raw <- read_csv(temp_path) %>%
@@ -59,7 +59,7 @@ if (include_factor_variants) {
     mutate(across(ends_with("title"), fct_inorder, .names = "{.col}_f"))
 }
 
-anzsic2006 <- anzsic %>%
+anzsic2006 <- anzsic2006  %>%
   rename_with(~ str_remove_all(., "\\_title"), everything()) %>%
   arrange(anzsic_division_code,
           anzsic_subdivision_code,
