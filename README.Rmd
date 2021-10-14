@@ -99,6 +99,6 @@ The `strayr` package also loads provides tools to access `sf` objects contained
 in [`absmapsdata`](https://github.com/wfmackey/absmapsdata). See `?strayr::read_absmaps`.
 
 ```{r, eval=FALSE}
-read_absmaps("sa42021")
+read_absmaps("sa42021", strip_year_suffix = TRUE)
 ```
 

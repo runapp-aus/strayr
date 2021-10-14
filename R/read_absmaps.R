@@ -12,6 +12,10 @@
 #' @param year a character string or numeric of the full source year of absmapsdata object, eg "2016"; 2021.
 #' See full list at https://github.com/wfmackey/absmapsdata.
 #'
+#' @param remove_year_suffix logical defaulting to FALSE.
+#' If TRUE, `strip_year_suffix` is run before returning the object, removing
+#' the `_year` suffix from variable names.
+#'
 #' @return an sf object.
 #'
 #'
@@ -28,7 +32,8 @@
 #'
 read_absmap <- function(name = NULL,
                         area = NULL,
-                        year = NULL) {
+                        year = NULL,
+                        remove_year_suffix = FALSE) {
 
   if (all(is.null(name), is.null(area), is.null(year))) {
     stop("Please enter a name (eg name = 'sa32016') or an area/year combination (eg area = 'sa3', year = '2016').")
@@ -57,5 +62,10 @@ read_absmap <- function(name = NULL,
 
   load(out_path)
 
-  get(name)
+  d <- get(name)
+
+  if (isTRUE(remove_year_suffix)) d <- strip_year_suffix(d)
+
+  return(d)
+
 }
