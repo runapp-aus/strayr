@@ -1,7 +1,8 @@
-test_that("read_absmaps() works", {
+test_that("read_absmaps() retrieves objects", {
 
   expect_type(read_absmap("sa42016"), "list")
-  expect_type(read_absmap("SA42016"), "list")
+  expect_identical(read_absmap("SA42016"),
+                   read_absmap("sa42016"))
 
   expect_identical(names(read_absmap("state2021")),
                    c("state_code_2021",
@@ -10,16 +11,40 @@ test_that("read_absmaps() works", {
                      "cent_lat",
                      "cent_long",
                      "geometry"))
+})
 
-  expect_identical(names(read_absmap("SA32016")),
-                   c("sa3_code_2016", "sa3_name_2016", "sa4_code_2016",
-                     "sa4_name_2016", "gcc_code_2016", "gcc_name_2016",
-                     "state_code_2016", "state_name_2016", "areasqkm_2016", "cent_long",
+test_that("read_absmaps() remove_year_suffix param works", {
+  expect_identical(names(read_absmap("sa42016", remove_year_suffix = TRUE)),
+                   c("sa4_code", "sa4_name", "gcc_code", "gcc_name",
+                     "state_code", "state_name", "areasqkm", "cent_long",
                      "cent_lat", "geometry"))
+})
 
+
+test_that("read_absmaps() input checking works", {
   # errors
   expect_error(read_absmap(), regexp = "Please")
   expect_error(read_absmap(area = "sa2"), regexp = "Please")
   expect_error(read_absmap(year = 2011), regexp = "Please")
+  expect_error(read_absmap(name = "sa42021", export_dir = "this-doesnt-exist"),
+               regexp = "does not exist")
+
+})
+
+test_that("caching for read_absmaps() works", {
+
+  new_dir <- file.path(tempdir(), "test-data")
+  dir.create(new_dir)
+
+  read_absmap("sa42021")
+  # will be cached
+  expect_message(read_absmap("sa42021"), regexp = "Reading")
+
+  # will have to download again
+  expect_silent(read_absmap("sa42021", export_dir = new_dir))
+  # will be cached
+  expect_message(read_absmap("sa42021", export_dir = new_dir))
+
+  unlink(new_dir)
 
 })

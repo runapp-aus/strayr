@@ -16,6 +16,8 @@
 #' If TRUE, `strip_year_suffix` is run before returning the object, removing
 #' the `_year` suffix from variable names.
 #'
+#' @param export_dir path to a directory to store the desired sf object. \code{tempdir()} by default.
+#'
 #' @return an sf object.
 #'
 #'
@@ -29,11 +31,12 @@
 #'
 #' @export
 #'
-#'
+
 read_absmap <- function(name = NULL,
                         area = NULL,
                         year = NULL,
-                        remove_year_suffix = FALSE) {
+                        remove_year_suffix = FALSE,
+                        export_dir = tempdir()) {
 
   if (all(is.null(name), is.null(area), is.null(year))) {
     stop("Please enter a name (eg name = 'sa32016') or an area/year combination (eg area = 'sa3', year = '2016').")
@@ -47,6 +50,10 @@ read_absmap <- function(name = NULL,
     warning("Both name and area/year entered. Defaulting to name value: ", name)
   }
 
+  if (!dir.exists(export_dir)) {
+    stop("export_dir provided does not exist: ", export_dir)
+  }
+
   # Define name
   if (is.null(name)) name <- paste0(area, year)
   name <- stringr::str_to_lower(name)
@@ -56,9 +63,19 @@ read_absmap <- function(name = NULL,
   url <- paste0(base_url, name, ".rda")
 
   # download to temporary file
-  out_path <- tempfile(fileext = ".rda")
-  download.file(url,
-                destfile = out_path)
+  out_path <- file.path(export_dir, paste0(name, ".rda"))
+
+  if (!file.exists(out_path)) {
+    download.file(url,
+                  destfile = out_path)
+  } else {
+    if (stringr::str_detect(export_dir, "var.folders")) {
+      message("Reading ", name, " file found in temporary folder")
+    } else {
+      message("Reading ", name, " file found in ", export_dir)
+    }
+
+  }
 
   load(out_path)
 
@@ -69,3 +86,4 @@ read_absmap <- function(name = NULL,
   return(d)
 
 }
+
