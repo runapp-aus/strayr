@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Helper function to clean strings — clean_string • strayr</title>
+<title>strip_year_suffix removes year suffixes from variable names — strip_year_suffix • strayr</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -48,8 +48,10 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Helper function to clean strings — clean_string" />
-<meta property="og:description" content="Helper function to clean strings" />
+<meta property="og:title" content="strip_year_suffix removes year suffixes from variable names — strip_year_suffix" />
+<meta property="og:description" content="Some structures in strayr contain variables with year
+suffixes (e.g. sa3_name_2011). This function removes these year
+suffixes from the dataset supplied." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -124,29 +126,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Helper function to clean strings</h1>
-    <small class="dont-index">Source: <a href='https://github.com/runapp-aus/strayr/blob/master/R/clean_helpers.R'><code>R/clean_helpers.R</code></a></small>
-    <div class="hidden name"><code>clean_string.Rd</code></div>
+    <h1>strip_year_suffix removes year suffixes from variable names</h1>
+    <small class="dont-index">Source: <a href='https://github.com/runapp-aus/strayr/blob/master/R/strip_year_suffix.R'><code>R/strip_year_suffix.R</code></a></small>
+    <div class="hidden name"><code>strip_year_suffix.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Helper function to clean strings</p>
+    <p>Some structures in strayr contain variables with year
+suffixes (e.g. <code>sa3_name_2011</code>). This function removes these year
+suffixes from the dataset supplied.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>clean_string</span><span class='op'>(</span><span class='va'>string</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>strip_year_suffix</span><span class='op'>(</span><span class='va'>.data</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>string</th>
-      <td><p>a character vector</p></td>
+      <th>.data</th>
+      <td><p>a dataframe</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a cleaned string with no punctuation, trailing letter s, numbers etc</p>
+    <p>a tibble</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -82,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">strayr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
       </span>
     </div>
 
@@ -133,7 +133,7 @@
     <p>Read ABS geographic data as sf objects from the [absmapsdata](https://github.com/wfmackey/absmapsdata) package.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>read_absmap</span><span class='op'>(</span>name <span class='op'>=</span> <span class='cn'>NULL</span>, area <span class='op'>=</span> <span class='cn'>NULL</span>, year <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>read_absmap</span><span class='op'>(</span>name <span class='op'>=</span> <span class='cn'>NULL</span>, area <span class='op'>=</span> <span class='cn'>NULL</span>, year <span class='op'>=</span> <span class='cn'>NULL</span>, remove_year_suffix <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,6 +153,12 @@ See full list at https://github.com/wfmackey/absmapsdata.</p></td>
       <th>year</th>
       <td><p>a character string or numeric of the full source year of absmapsdata object, eg "2016"; 2021.
 See full list at https://github.com/wfmackey/absmapsdata.</p></td>
+    </tr>
+    <tr>
+      <th>remove_year_suffix</th>
+      <td><p>logical defaulting to FALSE.
+If TRUE, `strip_year_suffix` is run before returning the object, removing
+the `_year` suffix from variable names.</p></td>
     </tr>
     </table>
 
@@ -181,7 +187,7 @@ See full list at https://github.com/wfmackey/absmapsdata.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by Will Mackey, Matt Johnson, David Diviny, Matt Cowgill.</p>
+  <p>Developed by Will Mackey, Matt Johnson, David Diviny, Matt Cowgill, Bryce Roney, William Lai.</p>
 </div>
 
 <div class="pkgdown">
