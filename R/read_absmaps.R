@@ -1,5 +1,7 @@
 #' @title Read ABS geographic data
 #'
+#' @name read_absmap
+#'
 #' @description Read ABS geographic data as sf objects from the [absmapsdata](https://github.com/wfmackey/absmapsdata) package.
 #'
 #' @param name a character string containing absmapsdata file names in [\code{area}][\code{year}] format, eg "sa42016"; "gcc2021".
@@ -18,6 +20,9 @@
 #'
 #' @param export_dir path to a directory to store the desired sf object. \code{tempdir()} by default.
 #'
+#' @param .validate_name logical defaulting to TRUE, which checks the name input (or area year combination) against
+#' a list of available objects in the \code{absmapsdata} package.
+#'
 #' @return an sf object.
 #'
 #'
@@ -32,11 +37,14 @@
 #' @export
 #'
 
+globalVariables("absmapsdata_file_list")
+
 read_absmap <- function(name = NULL,
                         area = NULL,
                         year = NULL,
                         remove_year_suffix = FALSE,
-                        export_dir = tempdir()) {
+                        export_dir = tempdir(),
+                        .validate_name = TRUE) {
 
   if (all(is.null(name), is.null(area), is.null(year))) {
     stop("Please enter a name (eg name = 'sa32016') or an area/year combination (eg area = 'sa3', year = '2016').")
@@ -66,15 +74,31 @@ read_absmap <- function(name = NULL,
   out_path <- file.path(export_dir, paste0(name, ".rda"))
 
   if (!file.exists(out_path)) {
-    download.file(url,
-                  destfile = out_path)
-  } else {
-    if (stringr::str_detect(export_dir, "var.folders")) {
-      message("Reading ", name, " file found in temporary folder")
-    } else {
-      message("Reading ", name, " file found in ", export_dir)
+
+    if (.validate_name) {
+    tryCatch(
+      download.file("https://github.com/wfmackey/absmapsdata/blob/master/data/absmapsdata_file_list.rda?raw=true",
+                    destfile = file.path(export_dir, "file_list.rda")),
+      error = "Error reading the absmapsdata file list. Check that you have access to the internet, or try disabling this check with .validate_name = FALSE"
+      )
+
+    load(file.path(export_dir, "file_list.rda"))
+
+    if (!name %in% absmapsdata_file_list$files) {
+      stop(name, " not found. Applicable files are:\n\t",
+           paste(absmapsdata_file_list$files, collapse = ", "))
     }
 
+    }
+
+    tryCatch(
+      download.file(url,
+                    destfile = out_path,
+                    mode = "wb"),
+      error = "Download failed. Check that you have access to the internet and that your requested object is available at https://github.com/wfmackey/absmapsdata/tree/master/data"
+      )
+  } else {
+      message("Reading ", name, " file found in ", export_dir)
   }
 
   load(out_path)

@@ -1,5 +1,8 @@
 test_that("read_absmaps() retrieves objects", {
 
+  skip_on_cran()
+  skip_if_offline()
+
   expect_type(read_absmap("sa42016"), "list")
   expect_identical(read_absmap("SA42016"),
                    read_absmap("sa42016"))
@@ -14,6 +17,10 @@ test_that("read_absmaps() retrieves objects", {
 })
 
 test_that("read_absmaps() remove_year_suffix param works", {
+
+  skip_on_cran()
+  skip_if_offline()
+
   expect_identical(names(read_absmap("sa42016", remove_year_suffix = TRUE)),
                    c("sa4_code", "sa4_name", "gcc_code", "gcc_name",
                      "state_code", "state_name", "areasqkm", "cent_long",
@@ -22,6 +29,7 @@ test_that("read_absmaps() remove_year_suffix param works", {
 
 
 test_that("read_absmaps() input checking works", {
+
   # errors
   expect_error(read_absmap(), regexp = "Please")
   expect_error(read_absmap(area = "sa2"), regexp = "Please")
@@ -31,7 +39,17 @@ test_that("read_absmaps() input checking works", {
 
 })
 
+test_that("read_absmaps() name checking works", {
+
+  # errors
+  expect_error(read_absmap(name = "hello"), regexp = "Applicable files")
+
+})
+
 test_that("caching for read_absmaps() works", {
+
+  skip_on_cran()
+  skip_if_offline()
 
   new_dir <- file.path(tempdir(), "test-data")
   dir.create(new_dir)
@@ -48,3 +66,5 @@ test_that("caching for read_absmaps() works", {
   unlink(new_dir)
 
 })
+
+
