@@ -133,7 +133,6 @@
     <p>Read ABS geographic data as sf objects from the [absmapsdata](https://github.com/wfmackey/absmapsdata) package.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>read_absmap</span><span class='op'>(</span>name <span class='op'>=</span> <span class='cn'>NULL</span>, area <span class='op'>=</span> <span class='cn'>NULL</span>, year <span class='op'>=</span> <span class='cn'>NULL</span>, remove_year_suffix <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -159,6 +158,15 @@ See full list at https://github.com/wfmackey/absmapsdata.</p></td>
       <td><p>logical defaulting to FALSE.
 If TRUE, `strip_year_suffix` is run before returning the object, removing
 the `_year` suffix from variable names.</p></td>
+    </tr>
+    <tr>
+      <th>export_dir</th>
+      <td><p>path to a directory to store the desired sf object. <code><a href='https://rdrr.io/r/base/tempfile.html'>tempdir()</a></code> by default.</p></td>
+    </tr>
+    <tr>
+      <th>.validate_name</th>
+      <td><p>logical defaulting to TRUE, which checks the name input (or area year combination) against
+a list of available objects in the <code>absmapsdata</code> package.</p></td>
     </tr>
     </table>
 
