@@ -78,7 +78,8 @@ read_absmap <- function(name = NULL,
     if (.validate_name) {
     tryCatch(
       download.file("https://github.com/wfmackey/absmapsdata/blob/master/data/absmapsdata_file_list.rda?raw=true",
-                    destfile = file.path(export_dir, "file_list.rda")),
+                    destfile = file.path(export_dir, "file_list.rda"),
+                    mode = "wb"),
       error = "Error reading the absmapsdata file list. Check that you have access to the internet, or try disabling this check with .validate_name = FALSE"
       )
 
