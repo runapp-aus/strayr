@@ -26,7 +26,8 @@ state_or_territory_palette <- c(
   'Tasmania'           = '#006a4e',
   'Northern Territory' = '#e65a00',
   'Australian Capital Territory' = '#94c949',
-  'Other Territories' = '#c0c0c0')
+  'Other Territories' = '#c0c0c0',
+  'Australia' = '#000000')
 
 
 state_or_territory_palette_tbl <- enframe(state_or_territory_palette, "state_name", "colour")
