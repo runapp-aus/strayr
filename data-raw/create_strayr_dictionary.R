@@ -46,7 +46,7 @@ state_table <- tibble::tribble(
   9, "Other Territories"
 ) %>%
   right_join(state_table, by = "state_name") %>%
-  right_join(state_or_territory_palette_tbl,  by = "state_name")
+  left_join(state_or_territory_palette_tbl,  by = "state_name")
 
 
 
