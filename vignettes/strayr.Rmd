@@ -29,11 +29,13 @@ Loading the package will lazily load a number of structures, a full list is avai
 # rather than installed version
 devtools::load_all()
 library(dplyr, warn.conflicts = FALSE)
+library(ggplot2, warn.conflicts = FALSE)
 ```
 
 ```{r fake-load, eval=FALSE}
 library(strayr)
 library(dplyr)
+library(ggplot2)
 ```
 
 ```{r glimpse}
@@ -112,18 +114,6 @@ clean_state("Queensland", to = "colour")
 
 
 ```
-# Unofficial state/territory colours
-
-The unofficial state/territory colours are available as a named vector for ease of use in `ggplot2` plotting. 
-
-```{state_or_territory_palette}
-
-
-
-
-```
-
-
 
 ## Australian public holidays
 This package includes the `auholidays` dataset from the [Australian Public Holidays Dates Machine Readable Dataset](https://data.gov.au/data/dataset/australian-holidays-machine-readable-dataset) as well as a helper function `is_holiday`:
