@@ -10,13 +10,8 @@ include_factor_variants <- FALSE
 # ty asiripanich
 anzsic_url <- "https://raw.githubusercontent.com/asiripanich/anzsic/master/anzsic_2006.csv"
 
-temp_dir <- tempdir()
-
-temp_path <- file.path(temp_dir, "anzsic.csv")
-
-
 # Read
-anzsic_raw <- read_csv(temp_path) %>%
+anzsic_raw <- read_csv(anzsic_url) %>%
     rename_all(~ glue("anzsic_{.}")) %>%
     mutate_if(is.double, as.integer) %>%
     as_tibble()

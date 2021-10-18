@@ -104,6 +104,26 @@ library(dplyr)
    mutate(state_abbr = clean_state(state))
 ```
 
+The function `clean_state` can also return an 'unofficial' state/territory colour for use in charts. 
+
+```{r colours}
+
+clean_state("Queensland", to = "colour")
+
+
+```
+# Unofficial state/territory colours
+
+The unofficial state/territory colours are available as a named vector for ease of use in `ggplot2` plotting. 
+
+```{state_or_territory_palette}
+
+
+
+
+```
+
+
 
 ## Australian public holidays
 This package includes the `auholidays` dataset from the [Australian Public Holidays Dates Machine Readable Dataset](https://data.gov.au/data/dataset/australian-holidays-machine-readable-dataset) as well as a helper function `is_holiday`:

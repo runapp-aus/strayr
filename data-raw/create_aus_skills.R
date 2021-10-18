@@ -14,7 +14,7 @@ to_title <- function(x) str_to_title(x) %>% tools::toTitleCase()
 # Set up
 asc_url <- "https://www.nationalskillscommission.gov.au/sites/default/files/2021-03/Australian%20Skills%20Classification%2012-03-2021.xlsx"
 
-temp_dir <- "data-raw/raw-data"
+temp_dir <- tempdir()
 temp_path <- glue("{temp_dir}/asc.xlsx")
 
 download.file(asc_url, temp_path, mode = "wb")
