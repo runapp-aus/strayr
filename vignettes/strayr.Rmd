@@ -29,11 +29,13 @@ Loading the package will lazily load a number of structures, a full list is avai
 # rather than installed version
 devtools::load_all()
 library(dplyr, warn.conflicts = FALSE)
+library(ggplot2, warn.conflicts = FALSE)
 ```
 
 ```{r fake-load, eval=FALSE}
 library(strayr)
 library(dplyr)
+library(ggplot2)
 ```
 
 ```{r glimpse}
@@ -103,6 +105,28 @@ library(dplyr)
  x_df %>% 
    mutate(state_abbr = clean_state(state))
 ```
+
+The function `clean_state` can also return an 'unofficial' state/territory colour for use in charts. 
+
+```{r colours}
+
+clean_state("Queensland", to = "colour")
+
+
+```
+
+The palette `palette_state_name_2016` can be used in ggplot2 for the unofficial colours of states. 
+
+```{r palette}
+read_absmap("state2016") %>% 
+    ggplot() + 
+    geom_sf(aes(fill = state_name_2016), colour = NA) +
+    scale_fill_manual(values = palette_state_name_2016) +
+    theme_void()
+    
+```
+
+
 
 
 ## Australian public holidays

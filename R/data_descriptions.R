@@ -271,3 +271,13 @@
 #' }
 #'
 "asc_technology_tools_ranking"
+
+
+#' palette_state_name_2016
+#'
+#' Named vector with the 'unofficial colours of each State and Territory in Australia.
+#'
+#' @format A named \code{vector} with hexadecimal colours.
+
+"palette_state_name_2016"
+
