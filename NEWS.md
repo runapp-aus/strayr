@@ -1,3 +1,7 @@
+# strayr 0.1.5
+* Addition of 'unofficial' colors as a return value to `clean_state`
+* Addition of 'unofficial' colors as palette_state_name_2016
+
 # strayr 0.1.4
 * `strip_year_suffix` function added and provided as an option in `read_absmap`.
 * `anzsco2013` and `anzsco2019` added

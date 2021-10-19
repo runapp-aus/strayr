@@ -17,7 +17,7 @@ state_table <- tibble::tribble(
 )
 
 
-state_or_territory_palette <- c(
+palette_state_name_2016 <- c(
   'New South Wales'    = '#87ceeb',
   'Victoria'           = '#000080',
   'Queensland'         = '#800000',
@@ -30,7 +30,7 @@ state_or_territory_palette <- c(
   'Australia' = '#000000')
 
 
-state_or_territory_palette_tbl <- enframe(state_or_territory_palette, "state_name", "colour")
+palette_state_name_2016_tbl <- enframe(palette_state_name_2016, "state_name", "colour")
 
 
 
@@ -47,7 +47,7 @@ state_table <- tibble::tribble(
   9, "Other Territories"
 ) %>%
   right_join(state_table, by = "state_name") %>%
-  left_join(state_or_territory_palette_tbl,  by = "state_name")
+  left_join(palette_state_name_2016_tbl,  by = "state_name")
 
 
 

@@ -115,6 +115,20 @@ clean_state("Queensland", to = "colour")
 
 ```
 
+The palette `palette_state_name_2016` can be used in ggplot2 for the unofficial colours of states. 
+
+```{r palette}
+read_absmap("state2016") %>% 
+    ggplot() + 
+    geom_sf(aes(fill = state_name_2016), colour = NA) +
+    scale_fill_manual(values = palette_state_name_2016) +
+    theme_void()
+    
+```
+
+
+
+
 ## Australian public holidays
 This package includes the `auholidays` dataset from the [Australian Public Holidays Dates Machine Readable Dataset](https://data.gov.au/data/dataset/australian-holidays-machine-readable-dataset) as well as a helper function `is_holiday`:
 
