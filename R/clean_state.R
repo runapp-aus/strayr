@@ -17,6 +17,8 @@
 #' @param method the method used for approximate/fuzzy string matching. Default
 #' is "jw", the Jaro-Winker distance; see `??stringdist-metrics` for more options.
 #'
+#' @param as_factor a logical, FALSE by default. If TRUE, a factor is returned.
+#'
 #' @param ... all arguments to `strayr` are passed to `clean_state`
 #'
 #' @return a character vector of state names, abbreviations, or codes.
@@ -50,18 +52,23 @@
 #' @importFrom stringdist amatch
 #' @export
 
-clean_state <- function(x, to = "state_abbr", fuzzy_match = TRUE, max_dist = 0.4, method = "jw"){
+clean_state <- function(x,
+                        to = "state_abbr",
+                        fuzzy_match = TRUE,
+                        max_dist = 0.4,
+                        method = "jw",
+                        as_factor = FALSE) {
 
 
-  if(!is.logical(fuzzy_match)){
+  if (!is.logical(fuzzy_match)) {
     stop("`fuzzy_match` argument must be either `TRUE` or `FALSE`")
   }
 
-  if(!is.numeric(x)) {
+  if (!is.numeric(x)) {
     x <- state_string_tidy(x)
   }
 
-  if(fuzzy_match){
+  if (fuzzy_match) {
     matched_abbr <- names(state_dict[stringdist::amatch(x, tolower(state_dict),
                                                method = method,
                                                matchNA = FALSE,
@@ -72,7 +79,11 @@ clean_state <- function(x, to = "state_abbr", fuzzy_match = TRUE, max_dist = 0.4
 
   ret <- state_table[[to]][match(matched_abbr, state_table$state_abbr)]
 
-  ret <- as.character(ret)
+  if (!isTRUE(as_factor)) {
+    ret <- as.character(ret)
+  } else {
+    ret <- factor(ret, levels = state_table[[to]])
+  }
 
   ret
 
