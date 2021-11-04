@@ -23,6 +23,3 @@ clean_nfd <- function(vector){
   
   return(cleaned_vec)
 }
-
-
-
