@@ -191,15 +191,18 @@ Only relevant when fuzzy_match is TRUE.</p></td>
 <p>Other cleaning functions: 
 <code><a href='clean_anzsco.html'>clean_anzsco</a>()</code>,
 <code><a href='clean_anzsic.html'>clean_anzsic</a>()</code>,
-<code><a href='clean_asced_qual.html'>clean_asced_qual</a>()</code></p></div>
+<code><a href='clean_asced_qual.html'>clean_asced_qual</a>()</code>,
+<code>clean_nfd()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='fu'>clean_asced_foe</span><span class='op'>(</span><span class='st'>"Biochemistry &amp; cell biology"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "Biochemistry and Cell Biology"</div><div class='input'>
-<span class='fu'>clean_asced_foe</span><span class='op'>(</span><span class='st'>"Maths"</span>, fuzzy_match <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "Mathematical Sciences"</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='fu'>clean_asced_foe</span><span class='op'>(</span><span class='st'>"Biochemistry &amp; cell biology"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Biochemistry and Cell Biology"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>clean_asced_foe</span><span class='op'>(</span><span class='st'>"Maths"</span>, fuzzy_match <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Mathematical Sciences"</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
