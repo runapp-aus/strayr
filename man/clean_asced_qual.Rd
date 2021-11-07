@@ -52,6 +52,7 @@ clean_asced_qual("Grad dip", fuzzy_match = TRUE)
 Other cleaning functions: 
 \code{\link{clean_anzsco}()},
 \code{\link{clean_anzsic}()},
-\code{\link{clean_asced_foe}()}
+\code{\link{clean_asced_foe}()},
+\code{\link{clean_nfd}()}
 }
 \concept{cleaning functions}
