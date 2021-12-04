@@ -38,7 +38,7 @@ reference:
     desc: >
       Functions for retrieving ABS data
     contents:
-      - read_absmaps
+      - read_absmap
       - get_seifa
       - get_seifa_index_sheet
   - title: "Helper functions"
@@ -50,3 +50,5 @@ reference:
       - starts_with("clean_")
       - starts_with("make_")
       - starts_with("parse_")
+      - strip_year_suffix
+      - palette_state_name_2016

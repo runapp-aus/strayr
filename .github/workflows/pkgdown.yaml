@@ -20,10 +20,10 @@ jobs:
 
       - name: install udunits
         run: brew install udunits
-        
+
       - name: install gdal
         run: brew install gdal
-        
+
       - name: Query dependencies
         run: |
           install.packages('remotes')
@@ -41,7 +41,7 @@ jobs:
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
-          install.packages("pkgdown", type = "binary")
+          install.packages("pkgdown", version="2.0.1")
           install.packages('devtools')
           install.packages('sf', type = "binary")
         shell: Rscript {0}
