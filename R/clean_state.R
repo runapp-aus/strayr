@@ -5,7 +5,7 @@
 #' 5 = WA, 6 = Tas, 7 = NT, 8 = ACT).
 #'
 #' @param to what form should the state names be converted to? Options are
-#' "state_name", "state_abbr" (the default), "iso", "postal", and "code".
+#' "state_name", "state_abbr" (the default), "iso", "postal", "code" and "colour".
 #'
 #' @param fuzzy_match logical; either TRUE (the default) which indicates that
 #' approximate/fuzzy string matching should be used, or FALSE which indicates that

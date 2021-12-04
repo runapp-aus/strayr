@@ -11,10 +11,10 @@ include_factor_variants <- FALSE
 to_title <- function(x) str_to_title(x) %>% tools::toTitleCase()
 
 # Set up
-anzsco_url <- "https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&1220.0%20ANZSCO%20Version%201.2%20Structure%20v3.xls&1220.0&Data%20Cubes&6A8A6C9AC322D9ABCA257B9E0011956C&0&2013,%20Version%201.2&05.07.2013&Latest"
+anzsco_url <- "https://www.ausstats.abs.gov.au/ausstats/subscriber.nsf/0/57FF3E8EFF92B344CA2584A8000FF375/$File/1220.0%20anzsco%20version%201.3%20structure%20v1.xlsx"
 
 temp_dir <- tempdir()
-temp_path <- file.path(temp_dir, "anzsco.xls")
+temp_path <- file.path(temp_dir, "anzsco.xlsx")
 
 download.file(anzsco_url, temp_path, mode = "wb")
 
@@ -114,7 +114,7 @@ nfd3 <- comb %>%
          anzsco6 = glue("{anzsco3}, nfd"),
          anzsco6_code = glue("{anzsco3_code}000"))
 
-anzsco2009 <- comb %>%
+anzsco2019 <- comb %>%
   bind_rows(nfd1, nfd2, nfd3) %>%
   arrange(anzsco1_code, anzsco2_code, anzsco3_code,
           anzsco4_code, anzsco6_code) %>%
@@ -122,7 +122,7 @@ anzsco2009 <- comb %>%
   arrange(anzsco6_code)
 
 if (include_factor_variants) {
-  anzsco2009 <- anzsco2009 %>%
+  anzsco2019 <- anzsco2019 %>%
     mutate(
       anzsco1_f = as_factor(anzsco1),
       anzsco2_f = as_factor(anzsco2),
@@ -141,7 +141,7 @@ if (include_factor_variants) {
 }
 
 # Rename using new conventions: https://github.com/runapp-aus/abscorr/issues/17
-anzsco2009 <- anzsco2009 %>%
+anzsco2019 <- anzsco2019 %>%
   rename(
     anzsco_major = anzsco1,
     anzsco_major_code = anzsco1_code,
@@ -155,7 +155,8 @@ anzsco2009 <- anzsco2009 %>%
     anzsco_occupation_code = anzsco6_code
   )
 
+anzsco_dictionary <- make_dictionary(anzsco2019)
 
 
 # Export
-usethis::use_data(anzsco2009, overwrite = TRUE)
+usethis::use_data(anzsco2019, overwrite = TRUE)

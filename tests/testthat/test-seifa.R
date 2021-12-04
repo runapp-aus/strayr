@@ -18,6 +18,10 @@ column_names <- c("seifa_index",
 
 
 test_that("can Import SEIFA LGA scores", {
+
+  skip_on_cran()
+  skip_if_offline()
+
   df <- get_seifa(structure = 'lga')
 
   expect_is(df, 'data.frame')
@@ -53,6 +57,9 @@ test_that('sa1 spreadsheet can be parsed', {
 
 test_that("can Import SEIFA postcode scores", {
 
+  skip_on_cran()
+  skip_if_offline()
+
   column_names <- c(column_names, 'caution_poor_sa1_representation')
   column_names <- column_names[-grep('area_name', column_names)]
   column_names <- c(column_names, 'postcode_crosses_state_boundary')
@@ -65,6 +72,10 @@ test_that("can Import SEIFA postcode scores", {
 })
 
 test_that("can Import SEIFA suburb scores", {
+
+  skip_on_cran()
+  skip_if_offline()
+
 
   column_names <- c(column_names, 'caution_poor_sa1_representation')
 

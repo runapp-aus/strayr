@@ -48,6 +48,7 @@ clean_anzsic("Agriculture, Forestry", fuzzy_match = TRUE)
 Other cleaning functions: 
 \code{\link{clean_anzsco}()},
 \code{\link{clean_asced_foe}()},
-\code{\link{clean_asced_qual}()}
+\code{\link{clean_asced_qual}()},
+\code{\link{clean_nfd}()}
 }
 \concept{cleaning functions}
