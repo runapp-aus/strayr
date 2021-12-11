@@ -1,14 +1,5 @@
 URL: https://runapp-aus.github.io/strayr/
 
-navbar:
-  type: default
-  logo:
-    image: logo.png
-    href: https://runapp-aus.github.io/runapp_website/
-  structure:
-    left:  [home, intro, articles, reference, news]
-    right: [github]
-
 repo:
   url:
     home: https://github.com/runapp-aus/strayr/
@@ -19,12 +10,14 @@ repo:
 development:
   mode: auto
 
-# template:
-#   params:
-#     bootswatch: cerulean
+template:
+  bootstrap: 5
+  bslib:
+    primary: "#3a496a"
+    navbar-bg: "#a8c5da"
 
-home:
-  strip_header: false
+navbar:
+  bg: "#a8c5da"
 
 reference:
   - title: "runapp strayr Package"
