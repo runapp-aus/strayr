@@ -19,7 +19,7 @@ library(strayr)
 
 ```
 
-# strayr <img src="man/figures/apple-touch-icon-152x152.png" align="right" style="height:150px"/>
+# strayr <img src="man/figures/logo.png" align="right" style="height:150px"/>
 
 <!-- badges: start -->
 

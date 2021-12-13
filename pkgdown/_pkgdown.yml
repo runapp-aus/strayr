@@ -1,14 +1,5 @@
 URL: https://runapp-aus.github.io/strayr/
 
-navbar:
-  type: default
-  logo:
-    image: logo.png
-    href: https://runapp-aus.github.io/runapp_website/
-  structure:
-    left:  [home, intro, articles, reference, news]
-    right: [github]
-
 repo:
   url:
     home: https://github.com/runapp-aus/strayr/
@@ -19,12 +10,14 @@ repo:
 development:
   mode: auto
 
-# template:
-#   params:
-#     bootswatch: cerulean
+template:
+  bootstrap: 5
+  bslib:
+    primary: "#3a496a"
+    navbar-bg: "#a8c5da"
 
-home:
-  strip_header: false
+navbar:
+  bg: "#a8c5da"
 
 reference:
   - title: "runapp strayr Package"
@@ -38,7 +31,7 @@ reference:
     desc: >
       Functions for retrieving ABS data
     contents:
-      - read_absmaps
+      - read_absmap
       - get_seifa
       - get_seifa_index_sheet
   - title: "Helper functions"
@@ -50,3 +43,5 @@ reference:
       - starts_with("clean_")
       - starts_with("make_")
       - starts_with("parse_")
+      - strip_year_suffix
+      - palette_state_name_2016
