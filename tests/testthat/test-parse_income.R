@@ -139,3 +139,17 @@ test_that("parse_income_range works as expected on invalid ranges", {
   expect_silent(parse_income_range(all_incomes))
   expect_message(parse_income_range(all_incomes, .silent = FALSE))
 })
+
+test_that("parse_income_range produces lookup table", {
+  # Output type
+  expect_equal(typeof(parse_income_range(valid_income_ranges,
+                                  limit = "upper",
+                                  .print = TRUE)),
+               "list")
+  
+  # Correct columns
+  expect_equal(ncol(parse_income_range(valid_income_ranges,
+                                         limit = "upper",
+                                         .print = TRUE)),
+               2)
+})
