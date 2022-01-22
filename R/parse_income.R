@@ -13,7 +13,7 @@
 #' \code{"$"} by default, but could be e.g. \code{"AUD"} or \code{"USD"}.
 #' string "Negative income" is interpreted as \code{0}. If FALSE, \code{NA} is returned.
 #' @param .silent a boolean value. If FALSE (the default), the function will warn that  \code{NA}(s) were returned.
-#' @param .print If TRUE prints lookup table displaying inputted income range and the returned parsed value
+#' @param .print If TRUE prints lookup table displaying inputted income range and the returned parsed value.
 #' 
 #' @return a numeric vector of incomes
 #'
