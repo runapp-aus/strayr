@@ -12,7 +12,8 @@ parse_income_range(
   is_zero = c("Nil income"),
   negative_as_zero = TRUE,
   dollar_prefix = "$",
-  .silent = TRUE
+  .silent = TRUE,
+  .print_lookup = FALSE
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ highest bracket. Important for \code{limit = "mid"} or \code{limit = "upper"}.}
 string "Negative income" is interpreted as \code{0}. If FALSE, \code{NA} is returned.}
 
 \item{.silent}{a boolean value. If FALSE (the default), the function will warn that  \code{NA}(s) were returned.}
+
+\item{.print}{If TRUE prints lookup table displaying inputted income range and the returned parsed value}
 }
 \value{
 a numeric vector of incomes

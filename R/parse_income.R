@@ -13,7 +13,8 @@
 #' \code{"$"} by default, but could be e.g. \code{"AUD"} or \code{"USD"}.
 #' string "Negative income" is interpreted as \code{0}. If FALSE, \code{NA} is returned.
 #' @param .silent a boolean value. If FALSE (the default), the function will warn that  \code{NA}(s) were returned.
-#'
+#' @param .print If TRUE prints lookup table displaying inputted income range and the returned parsed value
+#' 
 #' @return a numeric vector of incomes
 #'
 #' @importFrom stringr str_detect str_split str_replace_all
@@ -29,7 +30,8 @@ parse_income_range <- function(income_range,
                                 is_zero = c("Nil income"),
                                 negative_as_zero = TRUE,
                                 dollar_prefix = "$",
-                                .silent = TRUE) {
+                                .silent = TRUE,
+                                .print_lookup = FALSE) {
   
   parse_income_range_ <- function(income_range,
                                   limit = "lower",
@@ -143,11 +145,16 @@ lookup <- orig %>%
                                            dollar_prefix,
                                            .silent)) 
 
-x1 <- orig %>% 
+parsed_output <- orig %>% 
   left_join(lookup, by = 'raw_income') %>% 
   select(transformed) %>% 
   unlist() %>% 
   as.vector()
 
-return(x1)
+if (.print_lookup){
+lookup %>% rename(`Income Range` = raw_income,
+                  `Parsed Income Value` = transformed)
+} else {
+return(parsed_output)
+  }
 }
