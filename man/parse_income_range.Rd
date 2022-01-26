@@ -2,19 +2,7 @@
 % Please edit documentation in R/parse_income.R
 \name{parse_income_range}
 \alias{parse_income_range}
-\title{parse_income_range extracts dollar figures from income bucket ranges used in Census
-data and elsewhere}
-\usage{
-parse_income_range(
-  income_range,
-  limit = "lower",
-  max_income = Inf,
-  is_zero = c("Nil income"),
-  negative_as_zero = TRUE,
-  dollar_prefix = "$",
-  .silent = TRUE
-)
-}
+\title{Parse income ranges}
 \arguments{
 \item{income_range}{a character vector containing income ranges, e.g.
 \code{"b. $18,201 to $37,000"}, \code{"$400-$499 ($20,800-$25,999)"}}
@@ -34,6 +22,8 @@ highest bracket. Important for \code{limit = "mid"} or \code{limit = "upper"}.}
 string "Negative income" is interpreted as \code{0}. If FALSE, \code{NA} is returned.}
 
 \item{.silent}{a boolean value. If FALSE (the default), the function will warn that  \code{NA}(s) were returned.}
+
+\item{.print_lookup}{If TRUE prints lookup table displaying inputted income range and the returned parsed value.}
 }
 \value{
 a numeric vector of incomes

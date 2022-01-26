@@ -1,4 +1,8 @@
-#' parse_income_range extracts dollar figures from income bucket ranges used in Census
+#' @title Parse income ranges
+#'
+#' @name parse_income_range
+#'
+#' @description parse_income_range extracts dollar figures from income bucket ranges used in Census
 #' data and elsewhere
 #'
 #' @param income_range a character vector containing income ranges, e.g.
@@ -13,109 +17,151 @@
 #' \code{"$"} by default, but could be e.g. \code{"AUD"} or \code{"USD"}.
 #' string "Negative income" is interpreted as \code{0}. If FALSE, \code{NA} is returned.
 #' @param .silent a boolean value. If FALSE (the default), the function will warn that  \code{NA}(s) were returned.
+#' @param .print_lookup If TRUE prints lookup table displaying inputted income range and the returned parsed value.
 #'
 #' @return a numeric vector of incomes
 #'
 #' @importFrom stringr str_detect str_split str_replace_all
 #' @importFrom readr parse_number
+#' @importFrom dplyr left_join rename select
 #'
 #' @export
 #'
+
+globalVariables(c("transformed", "raw_income"))
+
 parse_income_range <- function(income_range,
-                               limit = "lower",
-                               max_income = Inf,
-                               is_zero = c("Nil income"),
-                               negative_as_zero = TRUE,
-                               dollar_prefix = "$",
-                               .silent = TRUE) {
+                                limit = "lower",
+                                max_income = Inf,
+                                is_zero = c("Nil income"),
+                                negative_as_zero = TRUE,
+                                dollar_prefix = "$",
+                                .silent = TRUE,
+                                .print_lookup = FALSE) {
 
-  # correct for use in regex
-  if (stringr::str_detect(dollar_prefix, "\\$")) {
-    dollar_prefix <- stringr::str_replace_all(dollar_prefix, "\\$", "\\\\$")
-  }
+  parse_income_range_ <- function(income_range,
+                                  limit = "lower",
+                                  max_income = Inf,
+                                  is_zero = c("Nil income"),
+                                  negative_as_zero = TRUE,
+                                  dollar_prefix = "$",
+                                  .silent = TRUE) {
 
-  # run
-  purrr::map_dbl(income_range,
-                 .parse_income_range_single,
-                 .limit = limit,
-                 .negative_as_zero = negative_as_zero,
-                 .is_zero = is_zero,
-                 .max_income = max_income,
-                 .dollar_prefix = dollar_prefix,
-                 silent = .silent)
-
-}
-
-.parse_income_range_single <- function(x,
-                                .limit,
-                                .negative_as_zero,
-                                .is_zero,
-                                .max_income,
-                                .dollar_prefix,
-                                silent) {
-
-  # Non-numeric specials
-  if (is.na(x)) return(NA_real_)
-  if (x %in% .is_zero) return(0)
-  if (stringr::str_detect(x, "(N|n)egative")) {
-    if (.negative_as_zero) return(0) else return(NA_real_)
-  }
-  if (x %in% c("Not stated", "Not applicable", "Total", "All")) return(NA_real_)
-
-  # Return NA if there is no number
-  if (!stringr::str_detect(x, .dollar_prefix)) return(NA_real_)
-
-  # Remove cruft before .dollar_prefix
-  stripped_x <- stringr::str_remove_all(x, paste0("[^0-9", .dollar_prefix, "]*"))
-
-  # 'or more' and 'or less'
-  if (stringr::str_detect(x, " more")) { # 'X or more'
-
-    # get first only
-    max_lower <- suppressWarnings(readr::parse_number(stripped_x))
-
-    # get max_upper
-    if (!is.null(.max_income)) {
-      max_upper <- .max_income
-    } else {
-      max_upper <- max_lower
+    # correct for use in regex
+    if (stringr::str_detect(dollar_prefix, "\\$")) {
+      dollar_prefix <- stringr::str_replace_all(dollar_prefix, "\\$", "\\\\$")
     }
-    all <- c(max_lower, max_upper)
 
-  } else if (stringr::str_detect(x, " less")) { # 'X or less'
+    # run
+    purrr::map_dbl(income_range,
+                   .parse_income_range_single,
+                   .limit = limit,
+                   .negative_as_zero = negative_as_zero,
+                   .is_zero = is_zero,
+                   .max_income = max_income,
+                   .dollar_prefix = dollar_prefix,
+                   silent = .silent)
 
-    # get first only
-    min_upper <- suppressWarnings(readr::parse_number(stripped_x))
-    all <- c(0, min_upper)
+  }
 
+  .parse_income_range_single <- function(x,
+                                         .limit,
+                                         .negative_as_zero,
+                                         .is_zero,
+                                         .max_income,
+                                         .dollar_prefix,
+                                         silent) {
+
+    # Non-numeric specials
+    if (is.na(x)) return(NA_real_)
+    if (x %in% .is_zero) return(0)
+    if (stringr::str_detect(x, "(N|n)egative")) {
+      if (.negative_as_zero) return(0) else return(NA_real_)
+    }
+    if (x %in% c("Not stated", "Not applicable", "Total", "All")) return(NA_real_)
+
+    # Return NA if there is no number
+    if (!stringr::str_detect(x, .dollar_prefix)) return(NA_real_)
+
+    # Remove cruft before .dollar_prefix
+    stripped_x <- stringr::str_remove_all(x, paste0("[^0-9", .dollar_prefix, "]*"))
+
+    # 'or more' and 'or less'
+    if (stringr::str_detect(x, " more")) { # 'X or more'
+
+      # get first only
+      max_lower <- suppressWarnings(readr::parse_number(stripped_x))
+
+      # get max_upper
+      if (!is.null(.max_income)) {
+        max_upper <- .max_income
+      } else {
+        max_upper <- max_lower
+      }
+      all <- c(max_lower, max_upper)
+
+    } else if (stringr::str_detect(x, " less")) { # 'X or less'
+
+      # get first only
+      min_upper <- suppressWarnings(readr::parse_number(stripped_x))
+      all <- c(0, min_upper)
+
+    } else {
+      # otherwise, extract the $numerics
+      all <- stringr::str_split(stripped_x, pattern = .dollar_prefix)
+      all <- unlist(all)
+
+      all <- suppressWarnings(readr::parse_number(all))
+      all <- all[!is.na(all)]
+    }
+
+    # too long or short?
+    len_all <- length(all)
+    # If too long, take the first 2
+    if (len_all > 2) {
+
+      if (!silent) message("More than two dollar figures found in ", x, "; using the first two")
+
+      all <-  all[1:2]
+
+      # If none found, return NA
+    } else if (len_all == 0) {
+
+      if (!silent) message("No dollar signs found in ", x, ". Returning NA")
+
+      return(NA_real_)
+    }
+
+    if (.limit == "lower") return(all[1])
+    if (.limit == "upper") return(all[2])
+    if (.limit == "mid")   return((sum(round(all, -1))) / 2)
+
+  }
+
+  orig <- as.data.frame(income_range)
+  colnames(orig) = c('raw_income')
+
+  lookup <- orig %>%
+    unique() %>%
+    mutate(transformed = parse_income_range_(income_range = raw_income,
+                                             limit,
+                                             max_income,
+                                             is_zero,
+                                             negative_as_zero,
+                                             dollar_prefix,
+                                             .silent))
+
+  parsed_output <- orig %>%
+    left_join(lookup, by = 'raw_income') %>%
+    select(transformed) %>%
+    unlist() %>%
+    as.vector()
+
+  if (.print_lookup) {
+    lookup %>% rename(`Income Range` = raw_income,
+                      `Parsed Income Value` = transformed)
   } else {
-    # otherwise, extract the $numerics
-    all <- stringr::str_split(stripped_x, pattern = .dollar_prefix)
-    all <- unlist(all)
-
-    all <- suppressWarnings(readr::parse_number(all))
-    all <- all[!is.na(all)]
+    return(parsed_output)
   }
-
-  # too long or short?
-  len_all <- length(all)
-  # If too long, take the first 2
-  if (len_all > 2) {
-
-    if (!silent) message("More than two dollar figures found in ", x, "; using the first two")
-
-    all <-  all[1:2]
-
-    # If none found, return NA
-  } else if (len_all == 0) {
-
-    if (!silent) message("No dollar signs found in ", x, ". Returning NA")
-
-    return(NA_real_)
-  }
-
-  if (.limit == "lower") return(all[1])
-  if (.limit == "upper") return(all[2])
-  if (.limit == "mid")   return((sum(round(all, -1))) / 2)
 
 }

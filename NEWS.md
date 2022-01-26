@@ -1,3 +1,6 @@
+# strayr 0.1.6
+* `parse_income_range` has been refactored to be quicker
+
 # strayr 0.1.5
 * Addition of 'unofficial' colors as a return value to `clean_state`
 * Addition of 'unofficial' colors as palette_state_name_2016
