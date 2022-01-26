@@ -33,6 +33,8 @@ valid_income_ranges <- c(
   "AU$2000-AU$3000"
 )
 
+large_valid_income_ranges <- sample(valid_income_ranges, 1e6, replace = TRUE)
+
 or_more <- c(
   "$2,000 or more ($104,000 or more)",
   "$3,000 or more ($156,000 or more)",
@@ -146,10 +148,19 @@ test_that("parse_income_range produces lookup table", {
                                   limit = "upper",
                                   .print = TRUE)),
                "list")
-  
+
   # Correct columns
   expect_equal(ncol(parse_income_range(valid_income_ranges,
                                          limit = "upper",
                                          .print = TRUE)),
                2)
+})
+
+test_that("parse_income_range works relatively quickly", {
+
+  tm <- bench::mark(
+    parse_income_range(large_valid_income_ranges)
+  )
+  expect_lt(tm$median, 2)
+
 })
