@@ -93,5 +93,5 @@ contained in [`absmapsdata`](https://github.com/wfmackey/absmapsdata).
 See `?strayr::read_absmap`.
 
 ``` r
-read_absmaps("sa42021")
+read_absmap("sa42021")
 ```
