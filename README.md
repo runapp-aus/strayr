@@ -90,7 +90,7 @@ parse_income_range("$1-$199 ($1-$10,399)", limit = "lower")
 
 The `strayr` package also loads provides tools to access `sf` objects
 contained in [`absmapsdata`](https://github.com/wfmackey/absmapsdata).
-See `?strayr::read_absmap`.
+See `?strayr::read_absmap` for more information.
 
 ``` r
 read_absmap("sa42021")

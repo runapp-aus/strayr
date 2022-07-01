@@ -91,9 +91,9 @@ parse_income_range("$1-$199 ($1-$10,399)", limit = "lower")
 ## Accessing ABS mapping structures
 
 The `strayr` package also loads provides tools to access `sf` objects contained 
-in [`absmapsdata`](https://github.com/wfmackey/absmapsdata). See `?strayr::read_absmap`.
+in [`absmapsdata`](https://github.com/wfmackey/absmapsdata). See `?strayr::read_absmap` for more information.
 
 ```{r, eval=FALSE}
-read_absmaps("sa42021")
+read_absmap("sa42021")
 ```
 
