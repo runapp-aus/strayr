@@ -59,25 +59,38 @@
 <dd><p>a character string containing absmapsdata file names in [<code>area</code>][<code>year</code>] format, eg "sa42016"; "gcc2021".
 See full list at https://github.com/wfmackey/absmapsdata.
 Note: if <code>name</code> is entered, then <code>area</code> and <code>year</code> values will be ignored.</p></dd>
+
+
 <dt>area</dt>
 <dd><p>a character string containing the concise absmapsdata area names, eg "sa4"; "gcc".
 See full list at https://github.com/wfmackey/absmapsdata.</p></dd>
+
+
 <dt>year</dt>
 <dd><p>a character string or numeric of the full source year of absmapsdata object, eg "2016"; 2021.
 See full list at https://github.com/wfmackey/absmapsdata.</p></dd>
+
+
 <dt>remove_year_suffix</dt>
 <dd><p>logical defaulting to FALSE.
 If TRUE, `strip_year_suffix` is run before returning the object, removing
 the `_year` suffix from variable names.</p></dd>
+
+
 <dt>export_dir</dt>
 <dd><p>path to a directory to store the desired sf object. <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir()</a></code> by default.</p></dd>
+
+
 <dt>.validate_name</dt>
 <dd><p>logical defaulting to TRUE, which checks the name input (or area year combination) against
 a list of available objects in the <code>absmapsdata</code> package.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>an sf object.</p>
+    
+
+<p>an sf object.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -86,11 +99,11 @@ a list of available objects in the <code>absmapsdata</code> package.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="fu">read_absmap</span><span class="op">(</span><span class="st">"sa42016"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="fu">read_absmap</span><span class="op">(</span>area <span class="op">=</span> <span class="st">"sa4"</span>, year <span class="op">=</span> <span class="fl">2016</span><span class="op">)</span></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="fu">read_absmap</span><span class="op">(</span><span class="st">"sa42016"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="fu">read_absmap</span><span class="op">(</span>area <span class="op">=</span> <span class="st">"sa4"</span>, year <span class="op">=</span> <span class="fl">2016</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -102,7 +115,7 @@ a list of available objects in the <code>absmapsdata</code> package.</p></dd>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer></div>

@@ -90,7 +90,7 @@
 </h2>
 <p>You can install the current version of <code>strayr</code> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"runapp-aus/strayr"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"runapp-aus/strayr"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="structures">Structures<a class="anchor" aria-label="anchor" href="#structures"></a>
@@ -133,15 +133,15 @@
 </h2>
 <p>The <code>parse_income_range</code> function provides some tools for extracting numbers from income ranges commonly used in Australian data. For example:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"$1-$199 ($1-$10,399)"</span>, limit <span class="op">=</span> <span class="st">"lower"</span><span class="op">)</span>
-<span class="co">#&gt; [1] 1</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/parse_income_range.html">parse_income_range</a></span><span class="op">(</span><span class="st">"$1-$199 ($1-$10,399)"</span>, limit <span class="op">=</span> <span class="st">"lower"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="accessing-abs-mapping-structures">Accessing ABS mapping structures<a class="anchor" aria-label="anchor" href="#accessing-abs-mapping-structures"></a>
 </h2>
-<p>The <code>strayr</code> package also loads provides tools to access <code>sf</code> objects contained in <a href="https://github.com/wfmackey/absmapsdata" class="external-link"><code>absmapsdata</code></a>. See <code><a href="reference/read_absmap.html">?strayr::read_absmap</a></code>.</p>
+<p>The <code>strayr</code> package also loads provides tools to access <code>sf</code> objects contained in <a href="https://github.com/wfmackey/absmapsdata" class="external-link"><code>absmapsdata</code></a>. See <code><a href="reference/read_absmap.html">?strayr::read_absmap</a></code> for more information.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">read_absmaps</span><span class="op">(</span><span class="st">"sa42021"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/read_absmap.html">read_absmap</a></span><span class="op">(</span><span class="st">"sa42021"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -205,7 +205,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer>

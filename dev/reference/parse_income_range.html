@@ -61,28 +61,45 @@ data and elsewhere</p>
     <dl><dt>income_range</dt>
 <dd><p>a character vector containing income ranges, e.g.
 <code>"b. $18,201 to $37,000"</code>, <code>"$400-$499 ($20,800-$25,999)"</code></p></dd>
+
+
 <dt>limit</dt>
 <dd><p>either "lower" (the default) and "upper" bounds of the range, or "mid" to return the mid-point</p></dd>
+
+
 <dt>max_income</dt>
 <dd><p>numeric value of 'and over' value of the highest bracket. <code>Inf</code> by default.
 If <code>NULL</code>, returns a max_income value equal to the lower bound of the
 highest bracket. Important for <code>limit = "mid"</code> or <code>limit = "upper"</code>.</p></dd>
+
+
 <dt>is_zero</dt>
 <dd><p>a character vector of values to be interpreted as zero. Defaults to <code>c("Nil income")</code>.</p></dd>
+
+
 <dt>negative_as_zero</dt>
 <dd><p>a boolean value. If TRUE (the default) the character</p></dd>
+
+
 <dt>dollar_prefix</dt>
 <dd><p>a character string to denote the dollar delimiter.
 <code>"$"</code> by default, but could be e.g. <code>"AUD"</code> or <code>"USD"</code>.
 string "Negative income" is interpreted as <code>0</code>. If FALSE, <code>NA</code> is returned.</p></dd>
+
+
 <dt>.silent</dt>
 <dd><p>a boolean value. If FALSE (the default), the function will warn that  <code>NA</code>(s) were returned.</p></dd>
+
+
 <dt>.print_lookup</dt>
 <dd><p>If TRUE prints lookup table displaying inputted income range and the returned parsed value.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>a numeric vector of incomes</p>
+    
+
+<p>a numeric vector of incomes</p>
     </div>
 
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -94,7 +111,7 @@ string "Negative income" is interpreted as <code>0</code>. If FALSE, <code>NA</c
 </div>
 
 <div class="pkgdown-footer-right">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
     </footer></div>
