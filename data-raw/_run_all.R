@@ -15,4 +15,7 @@ usethis::use_data(anzsco_dictionary,
                   state_table,
                   internal = TRUE, overwrite = TRUE)
 
-usethis::use_data(palette_state_name_2016, overwrite = TRUE)
+usethis::use_data(palette_state_name_2016,
+                  state_name_au,
+                  state_abb_au,
+                  overwrite = TRUE)

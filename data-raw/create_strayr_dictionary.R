@@ -91,3 +91,5 @@ state_dict <- state_dict[!duplicated(state_dict)]
 
 state_dict <- tolower(state_dict)
 
+state_name_au <- state_table$state_name[state_table$code %in% 1:8]
+state_abb_au <- state_table$postal[state_table$code %in% 1:8]

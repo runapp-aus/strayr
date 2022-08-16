@@ -1,3 +1,6 @@
+# strayr 0.1.6.9xx
+* `state_name_au` and `state_abb_au` added
+
 # strayr 0.1.6
 * `parse_income_range` has been refactored to be quicker
 

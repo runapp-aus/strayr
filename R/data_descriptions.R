@@ -301,3 +301,18 @@
 
 "palette_state_name_2016"
 
+#' state_name_au
+#'
+#' Vector of Australian State and Territory names. The Australian
+#' equivalent of `datasets::state.name`
+#' @format A character vector of Australian state and territory names.
+
+"state_name_au"
+
+#' state_abb_au
+#'
+#' Vector of Australian State and Territory abbreviations The Australian
+#' equivalent of `datasets::state.abb`. All capitalised, as in "VIC".
+#' @format A character vector of Australian state and territory abbreviations.
+
+"state_abb_au"
