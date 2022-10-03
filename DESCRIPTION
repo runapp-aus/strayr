@@ -1,7 +1,7 @@
 Package: strayr
 Type: Package
 Title: Ready-to-use Australian common structures and classifications and tools for working with them
-Version: 0.1.6.901
+Version: 0.1.6.902
 Authors@R: c(person("Will", "Mackey", email = "wfmackey@gmail.com", role = c("aut", "cre")),
         person("Matt", "Johnson", email = "mrjoh3@gmail.com", role = c("aut")),
         person("David", "Diviny", email = "david.diviny@nousgroup.com.au", role = c("aut")),
