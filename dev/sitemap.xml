@@ -115,6 +115,12 @@
     <loc>/dev/reference/read_absmap.html</loc>
   </url>
   <url>
+    <loc>/dev/reference/state_abb_au.html</loc>
+  </url>
+  <url>
+    <loc>/dev/reference/state_name_au.html</loc>
+  </url>
+  <url>
     <loc>/dev/reference/strip_year_suffix.html</loc>
   </url>
 </urlset>
