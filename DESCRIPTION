@@ -19,20 +19,19 @@ Imports:
     lifecycle,
     purrr,
     readxl,
-    magrittr,
     stringr,
     readr,
     tidyr,
     rlang,
     stringdist (>= 0.9.5.1),
     lubridate,
-    parsedate,
-    bench
+    parsedate
 Suggests: 
     testthat,
     sf,
     here,
-    ggplot2
+    ggplot2,
+    bench
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.1
