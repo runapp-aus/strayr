@@ -5,8 +5,6 @@ library(lubridate)
 #' It can return either "temperate" (4 seasons) or "tropical" (dry/wet) seasons
 #' @param dates vectors with dates. It supports Dates, POSIxt  or characters
 #' @param type either "temperate" (default) or "tropical"
-#' @importFrom lubridate as_date month
-#' @importFrom stringr str_remove
 #' @returns vector with season names
 #' @examples \dontrun{
 #' sample_dates <- c("2022-01-01","2018-10-04","2016-07-20")
@@ -31,8 +29,8 @@ aus_seasons <- function(dates, type="temperate"){
                           "Dry Season"=c(5,6,7,8,9,10))
 
 
-  dates <- as_date(dates)
-  dates_month <- month(dates)
+  dates <- lubridate::as_date(dates)
+  dates_month <- lubridate::month(dates)
 
   if(type=="tropical"){
     season_vector <- unlist(seasons_tropical)
