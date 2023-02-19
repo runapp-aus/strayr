@@ -1,11 +1,17 @@
-library(lubridate)
 
 #' @title Get Australian seasons for given dates
+#' 
 #' @description Small helper function that provided a vector with dates, returns the names of corresponding seasons, according to the Australian definition of seasons
-#' It can return either "temperate" (4 seasons) or "tropical" (dry/wet) seasons
-#' @param dates vectors with dates. It supports Dates, POSIxt  or characters
+#' It can return either "temperate" (4 seasons) or "tropical" (dry/wet) seasons.
+#' 
+#' @importFrom lubridate as_date month
+#' 
+#' @param dates vectors with dates. It supports Dates, POSIxt  or characters.
+#' 
 #' @param type either "temperate" (default) or "tropical"
+#' 
 #' @returns vector with season names
+#' 
 #' @examples \dontrun{
 #' sample_dates <- c("2022-01-01","2018-10-04","2016-07-20")
 #' # temperate seasons
