@@ -67,6 +67,9 @@
     <loc>/reference/auholidays.html</loc>
   </url>
   <url>
+    <loc>/reference/aus_seasons.html</loc>
+  </url>
+  <url>
     <loc>/reference/clean_anzsco.html</loc>
   </url>
   <url>
@@ -116,6 +119,12 @@
   </url>
   <url>
     <loc>/reference/read_absmap.html</loc>
+  </url>
+  <url>
+    <loc>/reference/state_abb_au.html</loc>
+  </url>
+  <url>
+    <loc>/reference/state_name_au.html</loc>
   </url>
   <url>
     <loc>/reference/strip_year_suffix.html</loc>
