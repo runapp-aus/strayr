@@ -1,5 +1,6 @@
-# strayr 0.1.6.9xx
+# strayr 0.1.7
 * `state_name_au` and `state_abb_au` added
+* aus_seasons() added by @carlosyanez. Thank you!
 
 # strayr 0.1.6
 * `parse_income_range` has been refactored to be quicker
