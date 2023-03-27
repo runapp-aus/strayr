@@ -7,7 +7,8 @@
 get_seifa_index_sheet(
   filename,
   sheetname,
-  structure = c("sa1", "sa2", "lga", "postcode", "suburb")
+  structure = c("sa1", "sa2", "lga", "postcode", "suburb"),
+  year
 )
 }
 \arguments{

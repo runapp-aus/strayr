@@ -6,7 +6,8 @@
 \usage{
 get_seifa(
   structure = c("sa1", "sa2", "lga", "postcode", "suburb"),
-  data_subclass = c("irsed", "irsead", "ier", "ieo")
+  data_subclass = c("irsed", "irsead", "ier", "ieo"),
+  year = NULL
 )
 }
 \arguments{
@@ -26,6 +27,8 @@ get_seifa(
   \item{ier}{ - Index of Economic Resources}
   \item{ieo}{ - Index of Education and Occupation}
 }}
+
+\item{year}{a character string or numeric of the release year of SEIFA object, eg "2016"; 2011.}
 }
 \value{
 `data.frame` if file successfully downloaded, else returns `NULL`.
@@ -43,7 +46,7 @@ For All ABS SEIFA spreadsheets go to \href{https://www.abs.gov.au/AUSSTATS/abs@.
 \examples{
 \dontrun{
 
-  get_seifa(structure = 'lga', data_subclass = 'irsed')
+  get_seifa(structure = 'lga', data_subclass = 'irsed', year = 2016)
 }
 
 }
