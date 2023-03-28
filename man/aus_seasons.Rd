@@ -7,7 +7,7 @@
 aus_seasons(dates, type = "temperate")
 }
 \arguments{
-\item{dates}{vectors with dates. It supports Dates, POSIxt  or characters}
+\item{dates}{vectors with dates. It supports Dates, POSIxt  or characters.}
 
 \item{type}{either "temperate" (default) or "tropical"}
 }
@@ -16,7 +16,7 @@ vector with season names
 }
 \description{
 Small helper function that provided a vector with dates, returns the names of corresponding seasons, according to the Australian definition of seasons
-It can return either "temperate" (4 seasons) or "tropical" (dry/wet) seasons
+It can return either "temperate" (4 seasons) or "tropical" (dry/wet) seasons.
 }
 \examples{
 \dontrun{
