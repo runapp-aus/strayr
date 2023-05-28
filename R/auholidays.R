@@ -4,7 +4,7 @@
 #' \describe{
 #'   \item{\code{Date}}{The date of the holiday}
 #'   \item{\code{Name}}{The name of the holiday}
-#'   \item{\code{Jurisdiction}}{Pipe seperated list of jurisdictions to which the holiday applies}
+#'   \item{\code{Jurisdiction}}{Pipe separated list of jurisdictions to which the holiday applies}
 #'}
 #' @source \url{https://data.gov.au/data/dataset/australian-holidays-machine-readable-dataset}
 "auholidays"
