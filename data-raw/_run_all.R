@@ -1,6 +1,6 @@
 # Run all files in data-raw
 
-files <- list.files("data-raw")
+files <- list.files("data-raw", pattern = ".R$")
 files <- files[!stringr::str_detect(files, "_run_all")]
 
 purrr::walk(glue::glue("data-raw/{files}"),
