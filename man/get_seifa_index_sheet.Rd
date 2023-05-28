@@ -18,6 +18,8 @@ get_seifa_index_sheet(
 
 \item{structure}{character spatial structure of the data to be parsed. The spatial structure is
 important as the shape of the data in the ABS spreadsheets if different for some structures.}
+
+\item{year}{a character string or numeric of the release year of SEIFA object, eg "2016"; 2011.}
 }
 \value{
 data.frame
