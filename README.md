@@ -18,10 +18,13 @@ easier. This includes:
 - tidy versions of common structures used by the Australian Bureau of
   Statistics (ABS), like ANZSIC and ANZSCO:
 
-- a function to tidy up state names (`clean_states()`); and
+- a function to tidy up state names (`clean_states()`);
 
 - a function that knows whether particular dates are public holidays
-  (`is_holiday()`).
+  (`is_holiday()`); and
+
+- a table containing the start and end dates of school terms in each
+  state and territory, back to 1978 (`school_terms`).
 
 This package is currently **in development** and subject to change. The
 lifecycle badge will be changed to `stable` when it is stable (should be
@@ -73,6 +76,29 @@ This package includes the `auholidays` dataset from the [Australian
 Public Holidays Dates Machine Readable
 Dataset](https://data.gov.au/data/dataset/australian-holidays-machine-readable-dataset)
 as well as a helper function `is_holiday`.
+
+## Australian school terms
+
+This package includes a dataset with the start and end dates of school
+terms in each Australian state and territory from 1978 to 2024:
+
+``` r
+school_terms
+#> # A tibble: 1,504 × 5
+#>    state  year  term start      end       
+#>    <chr> <int> <int> <date>     <date>    
+#>  1 NSW    1978     1 1978-02-01 1978-05-05
+#>  2 Vic    1978     1 1978-02-06 1978-05-12
+#>  3 Qld    1978     1 1978-01-23 1978-04-28
+#>  4 SA     1978     1 1978-02-06 1978-05-12
+#>  5 WA     1978     1 1978-02-06 1978-05-12
+#>  6 Tas    1978     1 1978-02-21 1978-05-26
+#>  7 NT     1978     1 1978-02-06 1978-05-12
+#>  8 ACT    1978     1 1978-02-01 1978-05-05
+#>  9 NSW    1978     2 1978-05-22 1978-08-25
+#> 10 Vic    1978     2 1978-05-29 1978-08-25
+#> # … with 1,494 more rows
+```
 
 ## Parsing income ranges
 
