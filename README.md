@@ -24,7 +24,7 @@ easier. This includes:
   (`is_holiday()`); and
 
 - a table containing the start and end dates of school terms in each
-  state and territory, back to 1978 (`school_terms`).
+  state and territory, from 1978 to 2024 (`school_terms`).
 
 This package is currently **in development** and subject to change. The
 lifecycle badge will be changed to `stable` when it is stable (should be
