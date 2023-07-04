@@ -1,14 +1,14 @@
 ---
 output: github_document
-editor_options: 
-  markdown: 
+editor_options:
+  markdown:
     wrap: 72
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
-knitr::opts_chunk$set( 
+knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
@@ -36,10 +36,12 @@ data easier. This includes:
 -   tidy versions of common structures used by the Australian Bureau of
     Statistics (ABS), like ANZSIC and ANZSCO:
 
--   a function to tidy up state names (`clean_states()`); and
+-   a function to tidy up state names (`clean_states()`);
 
 -   a function that knows whether particular dates are public holidays
-    (`is_holiday()`).
+    (`is_holiday()`); and
+
+-   a table containing the start and end dates of school terms in each state and territory, back to 1978 (`school_terms`).
 
 This package is currently **in development** and subject to change. The
 lifecycle badge will be changed to `stable` when it is stable (should be
@@ -60,7 +62,7 @@ remotes::install_github("runapp-aus/strayr")
 
 Current structures stored in `strayr` are:
 
-- Australian and New Zealand Standard Classification of Occupations (**ANZSCO**), Cat. 1220.0:  
+- Australian and New Zealand Standard Classification of Occupations (**ANZSCO**), Cat. 1220.0:
     - `anzsco2019`: occupation levels of ANZSCO, [2013, Version 1.3](https://www.abs.gov.au/AUSSTATS/abs@.nsf/allprimarymainfeatures/FCC055588D3EBA19CA2584A8000E7889?opendocument).
     - `anzsco2013`: occupation levels of ANZSCO, [2013, Version 1.2](https://www.abs.gov.au/AUSSTATS/abs@.nsf/allprimarymainfeatures/4AF138F6DB4FFD4BCA2571E200096BAD?opendocument).
     - `anzsco2009`: occupation levels ANZSCO, [First Edition, Revision 1, 2009](https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1220.0First%20Edition,%20Revision%201?OpenDocument).
@@ -79,6 +81,12 @@ misspelled.
 ## Australian public holidays
 This package includes the `auholidays` dataset from the [Australian Public Holidays Dates Machine Readable Dataset](https://data.gov.au/data/dataset/australian-holidays-machine-readable-dataset) as well as a helper function `is_holiday`.
 
+## Australian school terms
+This package includes a dataset with the start and end dates of school terms in each Australian state and territory from 1978 to 2024:
+
+```{r}
+school_terms
+```
 
 ## Parsing income ranges
 
@@ -90,10 +98,9 @@ parse_income_range("$1-$199 ($1-$10,399)", limit = "lower")
 
 ## Accessing ABS mapping structures
 
-The `strayr` package also loads provides tools to access `sf` objects contained 
+The `strayr` package also provides tools to access `sf` objects contained
 in [`absmapsdata`](https://github.com/wfmackey/absmapsdata). See `?strayr::read_absmap` for more information.
 
 ```{r, eval=FALSE}
 read_absmap("sa42021")
 ```
-

@@ -136,6 +136,7 @@ get_seifa <- function(structure = c('sa1','sa2','lga','postcode','suburb'),
 #' @param sheetname character name of the sheet to be imported
 #' @param structure character spatial structure of the data to be parsed. The spatial structure is
 #' important as the shape of the data in the ABS spreadsheets if different for some structures.
+#' @inheritParams get_seifa
 #'
 #' @import readxl
 #' @importFrom dplyr select mutate relocate across
@@ -219,5 +220,3 @@ get_seifa_index_sheet <- function(filename, sheetname, structure = c('sa1','sa2'
   return(df)
 
 }
-
-

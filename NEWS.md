@@ -1,3 +1,7 @@
+# strayr 0.2.0
+
+* adds `school_terms` dataset
+
 # strayr 0.1.7
 * `state_name_au` and `state_abb_au` added
 * aus_seasons() added by @carlosyanez. Thank you!
