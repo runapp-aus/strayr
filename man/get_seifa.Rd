@@ -2,7 +2,7 @@
 % Please edit documentation in R/seifa.R
 \name{get_seifa}
 \alias{get_seifa}
-\title{Import 2016 SEIFA Data from ABS}
+\title{Import SEIFA Data from ABS}
 \usage{
 get_seifa(
   structure = c("sa1", "sa2", "lga", "postcode", "suburb"),
@@ -38,14 +38,21 @@ The function will download all SEIFA data, for a specified spatial structure,
 to a temporary excel file and then merge sheets into a single `data.frame`. This `data.frame`
 also includes the ABS population count for the given spatial structure. For more information
 on SEIFA indexes go to
-\url{https://www.abs.gov.au/AUSSTATS/abs@.nsf/Lookup/2033.0.55.001Main+Features12016?OpenDocument}
+\url{https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia}
+
+To learn more about the individual data-sets for each year, please visit their respective pages:
+2011
+\url{https://www.abs.gov.au/AUSSTATS/abs@.nsf/allprimarymainfeatures/8C5F5BB699A0921CCA258259000BA619}
+2016
+\url{https://www.abs.gov.au/ausstats/abs@.nsf/mf/2033.0.55.001}
+2021
+\url{https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia/2021}
 }
 \note{
 For All ABS SEIFA spreadsheets go to \href{https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/2033.0.55.0012016?OpenDocument}{ABS website}
 }
 \examples{
 \dontrun{
-
   get_seifa(structure = 'lga', data_subclass = 'irsed', year = 2016)
 }
 
