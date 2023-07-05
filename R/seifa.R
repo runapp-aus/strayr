@@ -50,7 +50,9 @@ get_seifa <- function(structure = c('sa1','sa2','lga','postcode','suburb'),
                       data_subclass = c('irsed', 'irsead', 'ier', 'ieo'),
                       year = NULL) {
 
-  # 2006 only has data cubes.
+  # TODO: 2006 SEIFA has the Statistical Local Area (SLA) structure, not the
+  # Statistical Level Areas (SA1, SA2) structures. Would need to update logic to
+  # handle 2006.
   release_years = c(2011, 2016, 2021)
 
   stopifnot(all(data_subclass %in% c('irsed', 'irsead', 'ier', 'ieo')))
