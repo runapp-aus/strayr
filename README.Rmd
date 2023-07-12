@@ -63,6 +63,8 @@ remotes::install_github("runapp-aus/strayr")
 Current structures stored in `strayr` are:
 
 - Australian and New Zealand Standard Classification of Occupations (**ANZSCO**), Cat. 1220.0:
+    - `anzsco2022`: occupation levels of ANZSCO, [2022](https://www.abs.gov.au/statistics/classifications/anzsco-australian-and-new-zealand-standard-classification-occupations/2022).
+    - `anzsco2021`: occupation levels of ANZSCO, [2021](https://www.abs.gov.au/statistics/classifications/anzsco-australian-and-new-zealand-standard-classification-occupations/2021).
     - `anzsco2019`: occupation levels of ANZSCO, [2013, Version 1.3](https://www.abs.gov.au/AUSSTATS/abs@.nsf/allprimarymainfeatures/FCC055588D3EBA19CA2584A8000E7889?opendocument).
     - `anzsco2013`: occupation levels of ANZSCO, [2013, Version 1.2](https://www.abs.gov.au/AUSSTATS/abs@.nsf/allprimarymainfeatures/4AF138F6DB4FFD4BCA2571E200096BAD?opendocument).
     - `anzsco2009`: occupation levels ANZSCO, [First Edition, Revision 1, 2009](https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/1220.0First%20Edition,%20Revision%201?OpenDocument).

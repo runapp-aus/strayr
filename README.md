@@ -24,7 +24,7 @@ easier. This includes:
   (`is_holiday()`); and
 
 - a table containing the start and end dates of school terms in each
-  state and territory, from 1978 to 2024 (`school_terms`).
+  state and territory, back to 1978 (`school_terms`).
 
 This package is currently **in development** and subject to change. The
 lifecycle badge will be changed to `stable` when it is stable (should be
@@ -47,6 +47,10 @@ Current structures stored in `strayr` are:
 
 - Australian and New Zealand Standard Classification of Occupations
   (**ANZSCO**), Cat. 1220.0:
+  - `anzsco2022`: occupation levels of ANZSCO,
+    [2022](https://www.abs.gov.au/statistics/classifications/anzsco-australian-and-new-zealand-standard-classification-occupations/2022).
+  - `anzsco2021`: occupation levels of ANZSCO,
+    [2021](https://www.abs.gov.au/statistics/classifications/anzsco-australian-and-new-zealand-standard-classification-occupations/2021).
   - `anzsco2019`: occupation levels of ANZSCO, [2013, Version
     1.3](https://www.abs.gov.au/AUSSTATS/abs@.nsf/allprimarymainfeatures/FCC055588D3EBA19CA2584A8000E7889?opendocument).
   - `anzsco2013`: occupation levels of ANZSCO, [2013, Version
@@ -97,7 +101,7 @@ school_terms
 #>  8 ACT    1978     1 1978-02-01 1978-05-05
 #>  9 NSW    1978     2 1978-05-22 1978-08-25
 #> 10 Vic    1978     2 1978-05-29 1978-08-25
-#> # … with 1,494 more rows
+#> # ℹ 1,494 more rows
 ```
 
 ## Parsing income ranges
