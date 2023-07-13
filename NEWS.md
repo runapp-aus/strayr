@@ -1,5 +1,7 @@
-# strayr 0.2.0
+# strayr 0.2.1
+* adds `anzsco2022` dataset
 
+# strayr 0.2.0
 * adds `school_terms` dataset
 
 # strayr 0.1.7
