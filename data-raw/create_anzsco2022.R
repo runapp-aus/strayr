@@ -11,7 +11,7 @@ include_factor_variants <- FALSE
 to_title <- function(x) str_to_title(x) %>% tools::toTitleCase()
 
 # Set up
-anzsco_url <- "https://www.abs.gov.au/statistics/classifications/anzsco-australian-and-new-zealand-standard-classification-occupations/2022/anzsco%202022%20structure.xlsx"
+anzsco_url <- "https://www.abs.gov.au/statistics/classifications/anzsco-australian-and-new-zealand-standard-classification-occupations/2022/anzsco%202022%20structure%20062023.xlsx"
 
 temp_dir <- tempdir()
 temp_path <- file.path(temp_dir, "anzsco.xlsx")
@@ -21,7 +21,7 @@ download.file(anzsco_url, temp_path, mode = "wb")
 # Read
 raw <- readxl::read_excel(temp_path,
                           sheet = 6,
-                          range = "A11:G1601",
+                          range = "A11:G1607",
                           col_names = FALSE) %>%
   janitor::clean_names()
 
