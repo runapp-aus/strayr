@@ -1,3 +1,6 @@
+# strayr 0.2.2
+* `anzsco2022` updated to reflect changes made by the ABS
+
 # strayr 0.2.1
 * adds `anzsco2022` dataset
 
