@@ -1,4 +1,6 @@
 # strayr (development version)
+* `create read_correspondence_tbl()` reads correspondence tables from
+`absmapsdata` similarly to `read_absmap()`
 
 # strayr 0.2.2
 * `anzsco2022` updated to reflect changes made by the ABS
