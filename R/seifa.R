@@ -1,12 +1,20 @@
 
 
-#' @title Import 2016 SEIFA Data from ABS
+#' @title Import SEIFA Data from ABS
 #' @description The function will download all SEIFA data, for a specified spatial structure,
 #' to a temporary excel file and then merge sheets into a single `data.frame`. This `data.frame`
 #' also includes the ABS population count for the given spatial structure. For more information
 #' on SEIFA indexes go to
-#' \url{https://www.abs.gov.au/AUSSTATS/abs@.nsf/Lookup/2033.0.55.001Main+Features12016?OpenDocument}
+#' \url{https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia}
 #'
+#' To learn more about the individual data-sets for each year, please visit their respective pages:
+#' 2011
+#' \url{https://www.abs.gov.au/AUSSTATS/abs@.nsf/allprimarymainfeatures/8C5F5BB699A0921CCA258259000BA619}
+#' 2016
+#' \url{https://www.abs.gov.au/ausstats/abs@.nsf/mf/2033.0.55.001}
+#' 2021
+#' \url{https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia/2021}
+
 #' @param structure character value for the desired spatial area. Must be one of:
 #' \itemize{
 #'   \item{sa1}{ - download size 51.6 MB}
@@ -23,6 +31,7 @@
 #'   \item{ieo}{ - Index of Education and Occupation}
 #' }
 #' @param year a character string or numeric of the release year of SEIFA object, eg "2016"; 2011.
+#'
 #' @importFrom purrr map
 #' @importFrom purrr list_rbind
 #' @importFrom utils download.file
@@ -34,7 +43,6 @@
 #'
 #' @examples
 #' \dontrun{
-#'
 #'   get_seifa(structure = 'lga', data_subclass = 'irsed', year = 2016)
 #' }
 #'
@@ -42,7 +50,10 @@ get_seifa <- function(structure = c('sa1','sa2','lga','postcode','suburb'),
                       data_subclass = c('irsed', 'irsead', 'ier', 'ieo'),
                       year = NULL) {
 
-  release_years = c(2011, 2016)
+  # TODO: 2006 SEIFA has the Statistical Local Area (SLA) structure, not the
+  # Statistical Level Areas (SA1, SA2) structures. Would need to update logic to
+  # handle 2006.
+  release_years = c(2011, 2016, 2021)
 
   stopifnot(all(data_subclass %in% c('irsed', 'irsead', 'ier', 'ieo')))
 
@@ -67,7 +78,14 @@ get_seifa <- function(structure = c('sa1','sa2','lga','postcode','suburb'),
                             'sa2' = 'https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&2033055001%20-%20sa2%20indexes.xls&2033.0.55.001&Data%20Cubes&C9F7AD36397CB43DCA25825D000F917C&0&2016&27.03.2018&Latest',
                             'lga' = 'https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&2033055001%20-%20lga%20indexes.xls&2033.0.55.001&Data%20Cubes&5604C75C214CD3D0CA25825D000F91AE&0&2016&27.03.2018&Latest',
                             'postcode' = 'https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&2033055001%20-%20poa%20indexes.xls&2033.0.55.001&Data%20Cubes&DC124D1DAC3D9FDDCA25825D000F9267&0&2016&27.03.2018&Latest',
-                            'suburb' = 'https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&2033055001%20-%20ssc%20indexes.xls&2033.0.55.001&Data%20Cubes&863031D939DE8105CA25825D000F91D2&0&2016&27.03.2018&Latest')
+                            'suburb' = 'https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&2033055001%20-%20ssc%20indexes.xls&2033.0.55.001&Data%20Cubes&863031D939DE8105CA25825D000F91D2&0&2016&27.03.2018&Latest'),
+
+                '2021' = c( 'sa1' = 'https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia/2021/Statistical%20Area%20Level%201%2C%20Indexes%2C%20SEIFA%202021.xlsx',
+                            'sa2' = 'https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia/2021/Statistical%20Area%20Level%202%2C%20Indexes%2C%20SEIFA%202021.xlsx',
+                            'lga' = 'https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia/2021/Local%20Government%20Area%2C%20Indexes%2C%20SEIFA%202021.xlsx',
+                            'postcode' = 'https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia/2021/Postal%20Area%2C%20Indexes%2C%20SEIFA%202021.xlsx',
+                            'suburb' = 'https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia/2021/Suburbs%20and%20Localities%2C%20Indexes%2C%20SEIFA%202021.xlsx' )
+
                 )
 
 
@@ -86,7 +104,11 @@ get_seifa <- function(structure = c('sa1','sa2','lga','postcode','suburb'),
 
   url <- urls[[year]][structure]
 
-  filename <- tempfile(fileext = '.xls')
+  # Get file extension if possible, otherwise assume xls.
+  url_ext <- tools::file_ext(sub("\\?.+", "", url))
+  if(url_ext == ""){url_ext <- 'xls'}
+
+  filename <- tempfile(fileext = paste0('.',url_ext) )
 
   try({
     download.file(url, destfile = filename, mode = 'wb')
@@ -180,6 +202,8 @@ get_seifa_index_sheet <- function(filename, sheetname, structure = c('sa1','sa2'
     # remove sa1_11_code column for 2011 release.
     if( year == 2011) {
       column_names <- column_names[-grep('sa1_11_code', column_names)]
+    }else if( year == 2021) {
+      column_names <- column_names[-grep('sa1_7_code', column_names)]
     }
   }
 
