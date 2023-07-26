@@ -1,9 +1,10 @@
 #' Read in ASGC/ASGS 2016 population-weighted correspondence tables from the ABS.
+#' @source <https://data.gov.au/dataset/ds-dga-23fe168c-09a7-42d2-a2f9-fd08fbd0a4ce>
 #'
-#' @param fromArea The area you want to correspond FROM (ie the areas your data are currently in). For example: "sa1", "sa2, "sa3", "sa4".
-#' @param fromYear The year you want to correspond FROM. For example: 2011, 2016.
-#' @param toArea The area you want to correspond TO (ie the areas you want your data to be in).
-#' @param toYear The year you want to correspond TO.
+#' @param from_area The area you want to correspond FROM (ie the areas your data are currently in). For example: "sa1", "sa2, "sa3", "sa4".
+#' @param from_year The year you want to correspond FROM. For example: 2011, 2016.
+#' @param to_area The area you want to correspond TO (ie the areas you want your data to be in).
+#' @param to_year The year you want to correspond TO.
 #' @param export_dir path to a directory to store the desired sf object. \code{tempdir()} by default.
 #'
 #' @return A \code{tibble} object.
@@ -14,10 +15,10 @@
 #' sa4_corr <- read_correspondence_tbl("sa4", 2011, "sa4", 2016)
 #' lga2011_to_2018 <- read_correspondence_tbl("LGA", 2011, "LGA", 2018)
 #' }
-read_correspondence_tbl <- function(fromArea,
-                                    fromYear,
-                                    toArea,
-                                    toYear,
+read_correspondence_tbl <- function(from_area,
+                                    from_year,
+                                    to_area,
+                                    to_year,
                                     export_dir = tempdir()) {
   if (!dir.exists(export_dir)) {
     stop("export_dir provided does not exist: ", export_dir)
@@ -43,8 +44,8 @@ read_correspondence_tbl <- function(fromArea,
 
   filename <- paste(
     "CG",
-    toupper(fromArea), fromYear,
-    toupper(toArea), toYear,
+    toupper(from_area), from_year,
+    toupper(to_area), to_year,
     sep = "_"
   )
 

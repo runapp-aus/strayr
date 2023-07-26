@@ -3,23 +3,26 @@
 \name{read_correspondence_tbl}
 \alias{read_correspondence_tbl}
 \title{Read in ASGC/ASGS 2016 population-weighted correspondence tables from the ABS.}
+\source{
+<https://data.gov.au/dataset/ds-dga-23fe168c-09a7-42d2-a2f9-fd08fbd0a4ce>
+}
 \usage{
 read_correspondence_tbl(
-  fromArea,
-  fromYear,
-  toArea,
-  toYear,
+  from_area,
+  from_year,
+  to_area,
+  to_year,
   export_dir = tempdir()
 )
 }
 \arguments{
-\item{fromArea}{The area you want to correspond FROM (ie the areas your data are currently in). For example: "sa1", "sa2, "sa3", "sa4".}
+\item{from_area}{The area you want to correspond FROM (ie the areas your data are currently in). For example: "sa1", "sa2, "sa3", "sa4".}
 
-\item{fromYear}{The year you want to correspond FROM. For example: 2011, 2016.}
+\item{from_year}{The year you want to correspond FROM. For example: 2011, 2016.}
 
-\item{toArea}{The area you want to correspond TO (ie the areas you want your data to be in).}
+\item{to_area}{The area you want to correspond TO (ie the areas you want your data to be in).}
 
-\item{toYear}{The year you want to correspond TO.}
+\item{to_year}{The year you want to correspond TO.}
 
 \item{export_dir}{path to a directory to store the desired sf object. \code{tempdir()} by default.}
 }
