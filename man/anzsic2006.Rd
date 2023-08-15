@@ -3,7 +3,7 @@
 \docType{data}
 \name{anzsic2006}
 \alias{anzsic2006}
-\title{ANZSIC}
+\title{ANZSIC 2006}
 \format{
 A \code{tibble} with 8 variables:
 \describe{
@@ -22,6 +22,6 @@ anzsic2006
 }
 \description{
 Wide table containing all levels of the Australian and New Zealand Standard
-Industrial Classification (ANZSIC), 2006 (Revision 1.0). Cat. 1292.0.
+Industrial Classification (ANZSIC), 2006 (Revision 2.0). Cat. 1292.0.
 }
 \keyword{datasets}

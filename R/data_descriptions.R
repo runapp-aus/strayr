@@ -21,6 +21,29 @@
 "anzsco2009"
 
 
+#' ANZSCO 2013
+#'
+#' Wide table containing all levels of the Australian and New Zealand Standard
+#' Classification of Occupations (ANZSCO), Version 1.2, 2013
+#'
+#' @format A \code{tibble} with 11 variables:
+#' \describe{
+#' \item{\code{anzsco_major_code}}{Major ANZSCO group codes, e.g. "4"}
+#' \item{\code{anzsco_major}}{Major ANZSCO group names in title case, e.g. "Community and Personal Service Workers"}
+#' \item{\code{anzsco_submajor_code}}{Sub-major ANZSCO group codes, e.g. "45"}
+#' \item{\code{anzsco_submajor}}{Sub-major ANZSCO group names in title case, e.g. "Sports and Personal Service Workers"}
+#' \item{\code{anzsco_minor_code}}{Minor ANZSCO group codes, e.g. "452"}
+#' \item{\code{anzsco_minor}}{Minor ANZSCO group names in title case, e.g. "Sports and Fitness Workers"}
+#' \item{\code{anzsco_unit_code}}{Unit ANZSCO group codes, e.g. "4523"}
+#' \item{\code{anzsco_unit}}{Unit ANZSCO group names in title case, e.g. "Sports Coaches, Instructors and Officials"}
+#' \item{\code{anzsco_occupation_code}}{Occupation ANZSCO group codes, e.g. "452311"}
+#' \item{\code{anzsco_occupation}}{Occupation ANZSCO group names in title case, e.g. "Diving Instructor (Open Water)"}
+#' \item{\code{skill_level}}{Skill level required for occupation, determined by the ABS (1 is highest, 5 is lowest).
+#' See \url{https://www.abs.gov.au/ausstats/abs@.nsf/Previousproducts/C4BECE1704987586CA257089001A9181 } for details.}
+#' }
+"anzsco2013"
+
+
 #' ANZSCO 2019
 #'
 #' Wide table containing all levels of the Australian and New Zealand Standard
@@ -44,29 +67,6 @@
 "anzsco2019"
 
 
-
-#' ANZSCO 2013
-#'
-#' Wide table containing all levels of the Australian and New Zealand Standard
-#' Classification of Occupations (ANZSCO), Version 1.2, 2013
-#'
-#' @format A \code{tibble} with 11 variables:
-#' \describe{
-#' \item{\code{anzsco_major_code}}{Major ANZSCO group codes, e.g. "4"}
-#' \item{\code{anzsco_major}}{Major ANZSCO group names in title case, e.g. "Community and Personal Service Workers"}
-#' \item{\code{anzsco_submajor_code}}{Sub-major ANZSCO group codes, e.g. "45"}
-#' \item{\code{anzsco_submajor}}{Sub-major ANZSCO group names in title case, e.g. "Sports and Personal Service Workers"}
-#' \item{\code{anzsco_minor_code}}{Minor ANZSCO group codes, e.g. "452"}
-#' \item{\code{anzsco_minor}}{Minor ANZSCO group names in title case, e.g. "Sports and Fitness Workers"}
-#' \item{\code{anzsco_unit_code}}{Unit ANZSCO group codes, e.g. "4523"}
-#' \item{\code{anzsco_unit}}{Unit ANZSCO group names in title case, e.g. "Sports Coaches, Instructors and Officials"}
-#' \item{\code{anzsco_occupation_code}}{Occupation ANZSCO group codes, e.g. "452311"}
-#' \item{\code{anzsco_occupation}}{Occupation ANZSCO group names in title case, e.g. "Diving Instructor (Open Water)"}
-#' \item{\code{skill_level}}{Skill level required for occupation, determined by the ABS (1 is highest, 5 is lowest).
-#' See \url{https://www.abs.gov.au/ausstats/abs@.nsf/Previousproducts/C4BECE1704987586CA257089001A9181 } for details.}
-#' }
-"anzsco2013"
-
 #' ANZSCO 2021
 #'
 #' Wide table containing all levels of the Australian and New Zealand Standard
@@ -88,6 +88,7 @@
 #' See \url{https://www.abs.gov.au/ausstats/abs@.nsf/Previousproducts/C4BECE1704987586CA257089001A9181 } for details.}
 #' }
 "anzsco2021"
+
 
 #' ANZSCO 2022
 #'
@@ -113,10 +114,10 @@
 "anzsco2022"
 
 
-#' ANZSIC
+#' ANZSIC 2006
 #'
 #' Wide table containing all levels of the Australian and New Zealand Standard
-#' Industrial Classification (ANZSIC), 2006 (Revision 1.0). Cat. 1292.0.
+#' Industrial Classification (ANZSIC), 2006 (Revision 2.0). Cat. 1292.0.
 #'
 #' @format A \code{tibble} with 8 variables:
 #' \describe{
@@ -132,7 +133,22 @@
 "anzsic2006"
 
 
-
+#' ANZSIC 2006 - ISIC Rev. 4
+#'
+#' Wide table containing all levels of the Australian and New Zealand Standard
+#' Industrial Classification (ANZSIC), 2006 (Revision 2.0). Cat. 1292.0.
+#' and corresponding codes and titles for the International Standard
+#' Industrial Classification of All Economic Activities (ISIC) Revision 4
+#'
+#' @format A \code{tibble} with 8 variables:
+#' \describe{
+#' \item{\code{anzsic_class_code}}{ANZSIC class codes 4-digit character, e.g. 0111, 0112}
+#' \item{\code{anzsic_class}}{ANZSIC class title, e.g. "Vegetable Growing (Under Cover)"}
+#' \item{\code{isic_class_code}}{ISIC class codes 4-digit character ('p' Indicates part of the class), e.g. 0121, 0125p}
+#' \item{\code{isic_class}}{ISIC class title, e.g. "Growing of grapes","Growing of other tree and bush fruits and nuts"}
+#' }
+#' @source \url{https://www.abs.gov.au/statistics/classifications/australian-and-new-zealand-standard-industrial-classification-anzsic/2006-revision-2-0/correspondences/anzsic-2006-isic-rev-4}
+"anzsic_isic"
 
 
 #' ASCED Field of Education

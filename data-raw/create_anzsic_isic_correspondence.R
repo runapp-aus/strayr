@@ -51,7 +51,7 @@ anzsic_isic <- anzsic_isic  %>%
           isic_class_code)
 
 
-anzsic__isic_dictionary <- make_dictionary(anzsic_isic)
+anzsic_isic_dictionary <- make_dictionary(anzsic_isic)
 
 # Export
 usethis::use_data(anzsic_isic, overwrite = TRUE)
