@@ -119,7 +119,7 @@ get_seifa <- function(structure = c('sa1','sa2','lga','postcode','suburb'),
 
   if (file.exists(filename)) {
     ind <- map(sheet_names, ~ get_seifa_index_sheet(filename, .x, structure, year), .id = 'seifa_index') %>%
-      list_rbind()
+      list_rbind(names_to = 'data_subclass')
     return(ind)
   } else {
     warning('Download of ABS file failed. Please check your internet connection and try again.')
