@@ -27,6 +27,7 @@ reference:
       - starts_with("asced")
       - starts_with("asc")
       - auholidays
+      - school_terms
   - title: "Importing ABS Data"
     desc: >
       Functions for retrieving ABS data
@@ -34,6 +35,7 @@ reference:
       - read_absmap
       - get_seifa
       - get_seifa_index_sheet
+      - read_correspondence_tbl
   - title: "Helper functions"
     desc: >
       Functions for cleaning data and working with datasets
