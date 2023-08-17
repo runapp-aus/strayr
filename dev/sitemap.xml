@@ -34,7 +34,13 @@
     <loc>/dev/reference/anzsco2021.html</loc>
   </url>
   <url>
+    <loc>/dev/reference/anzsco2022.html</loc>
+  </url>
+  <url>
     <loc>/dev/reference/anzsic2006.html</loc>
+  </url>
+  <url>
+    <loc>/dev/reference/anzsic_isic.html</loc>
   </url>
   <url>
     <loc>/dev/reference/asc_core_competencies.html</loc>
@@ -62,6 +68,9 @@
   </url>
   <url>
     <loc>/dev/reference/auholidays.html</loc>
+  </url>
+  <url>
+    <loc>/dev/reference/aus_seasons.html</loc>
   </url>
   <url>
     <loc>/dev/reference/clean_anzsco.html</loc>
@@ -113,6 +122,12 @@
   </url>
   <url>
     <loc>/dev/reference/read_absmap.html</loc>
+  </url>
+  <url>
+    <loc>/dev/reference/read_correspondence_tbl.html</loc>
+  </url>
+  <url>
+    <loc>/dev/reference/school_terms.html</loc>
   </url>
   <url>
     <loc>/dev/reference/state_abb_au.html</loc>
