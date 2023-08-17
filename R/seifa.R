@@ -226,8 +226,8 @@ get_seifa_index_sheet <- function(filename, sheetname, structure = c("sa1", "sa2
   if (length(data_subclass) == 1) {
     if (data_subclass == "summary") {
       if ((year == 2011) |
-          (year == 2021 & structure == "sa1" )
-          ){
+        (year == 2021 & structure == "sa1")
+      ) {
         column_names <- c(
           "area_code",
           "irsed_score",
@@ -240,8 +240,7 @@ get_seifa_index_sheet <- function(filename, sheetname, structure = c("sa1", "sa2
           "ieo_decile",
           "population"
         )
-      }
-      else if(year == 2016 & structure == 'suburb'){
+      } else if (year == 2016 & structure == "suburb") {
         column_names <- c(
           "area_code",
           "area_name",
@@ -254,10 +253,9 @@ get_seifa_index_sheet <- function(filename, sheetname, structure = c("sa1", "sa2
           "ieo_score",
           "ieo_decile",
           "population",
-          'data_warning'
+          "data_warning"
         )
-      }
-      else if (year %in% c(2016,2021) & structure == 'postcode') {
+      } else if (year %in% c(2016, 2021) & structure == "postcode") {
         column_names <- c(
           "area_code",
           "irsed_score",
@@ -269,11 +267,10 @@ get_seifa_index_sheet <- function(filename, sheetname, structure = c("sa1", "sa2
           "ieo_score",
           "ieo_decile",
           "population",
-          'data_warning',
-          'postcode_crosses_state_boundaries'
+          "data_warning",
+          "postcode_crosses_state_boundaries"
         )
-      }
-      else {
+      } else {
         column_names <- c(
           "area_code",
           "area_name",
@@ -298,12 +295,14 @@ get_seifa_index_sheet <- function(filename, sheetname, structure = c("sa1", "sa2
       sheetname,
       skip = 6,
       col_names = column_names,
-      na = c("", "NA",'-')
+      na = c("", "NA", "-")
     ) %>%
       dplyr::filter(across(ends_with("_code"), ~ !is.na(.x))) %>%
       select(-starts_with("blank")) %>%
-      mutate(structure = structure,
-             year = year) %>%
+      mutate(
+        structure = structure,
+        year = year
+      ) %>%
       relocate(structure)
   })
 
