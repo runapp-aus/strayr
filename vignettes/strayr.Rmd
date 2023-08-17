@@ -41,6 +41,7 @@ library(ggplot2)
 ```{r glimpse}
 glimpse(anzsco2009)
 glimpse(anzsic2006)
+glimpse(anzsic_isic)
 glimpse(asced_foe2001)
 glimpse(asced_qual2001)
 ```

@@ -134,6 +134,24 @@
 "anzsic2006"
 
 
+#' ANZSIC 2006 - ISIC Rev. 4
+#'
+#' Wide table containing all levels of the Australian and New Zealand Standard
+#' Industrial Classification (ANZSIC), 2006 (Revision 2.0). Cat. 1292.0.
+#' and corresponding codes and titles for the International Standard
+#' Industrial Classification of All Economic Activities (ISIC) Revision 4
+#'
+#' @format A \code{tibble} with 8 variables:
+#' \describe{
+#' \item{\code{anzsic_class_code}}{ANZSIC class codes 4-digit character, e.g. 0111, 0112}
+#' \item{\code{anzsic_class}}{ANZSIC class title, e.g. "Vegetable Growing (Under Cover)"}
+#' \item{\code{isic_class_code}}{ISIC class codes 4-digit character ('p' Indicates part of the class), e.g. 0121, 0125p}
+#' \item{\code{isic_class}}{ISIC class title, e.g. "Growing of grapes","Growing of other tree and bush fruits and nuts"}
+#' }
+#' @source \url{https://www.abs.gov.au/statistics/classifications/australian-and-new-zealand-standard-industrial-classification-anzsic/2006-revision-2-0/correspondences/anzsic-2006-isic-rev-4}
+"anzsic_isic"
+
+
 #' ASCED Field of Education
 #'
 #' Wide table containing all levels of fields of education in the Australian
@@ -149,6 +167,7 @@
 #' \item{\code{aced_foe_detailed}}{Detailed field of education six-digit name in title case, e.g. "Sports Coaching, Officiating and Instruction"}
 #' }
 "asced_foe2001"
+
 
 #' ASCED Level of Education
 #'
