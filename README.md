@@ -60,7 +60,7 @@ Current structures stored in `strayr` are:
 - Australian and New Zealand Standard Industrial Classification
   (**ANZSIC**), Cat. 1292.0:
   - `anzsic2006`: industry levels of ANZSIC, [2006 (Revision
-    2.0)](https://www.abs.gov.au/statistics/classifications/australian-and-new-zealand-standard-industrial-classification-anzsic/latest-release).
+    2.0)](https://www.abs.gov.au/statistics/classifications/australian-and-new-zealand-standard-industrial-classification-anzsic/2006-revision-2-0).
 - Australian Standard Classification of Education (**ASCED**), Cat.
   1272.0:
   - `asced_foe2001`: field of education levels of ASCED,
