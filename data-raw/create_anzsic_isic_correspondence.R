@@ -20,7 +20,7 @@ anzsic_isic_temp <-
   rename(anzsic_class_code = 2,
          anzsic_class_title = 3,
          isic_class_code = 4,
-         isic_title = 5) %>%
+         isic_class_title = 5) %>%
   select(2:5)
 
 anzsic_isic_temp[anzsic_isic_temp == ""] <- NA
