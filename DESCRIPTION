@@ -22,7 +22,7 @@ Depends:
 Imports:
     dplyr (>= 0.7),
     lifecycle,
-    purrr,
+    purrr (>= 1.0.0),
     readxl,
     stringr,
     readr,

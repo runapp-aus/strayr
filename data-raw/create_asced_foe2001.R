@@ -2,7 +2,7 @@
 
 library(tidyverse)
 library(glue)
-
+devtools::load_all()
 
 # include factor variants or nah?
 include_factor_variants <- FALSE
@@ -11,11 +11,11 @@ include_factor_variants <- FALSE
 to_title <- function(x) str_to_title(x) %>% tools::toTitleCase()
 
 
-asced_url <- "https://www.abs.gov.au/AUSSTATS/subscriber.nsf/log?openagent&1272.0%20australian%20standard%20classification%20of%20education%20(asced)%20structures.xls&1272.0&Data%20Cubes&B286FC6C1777688DCA257ECB001657BC&0&2001&29.09.2015&Latest"
+asced_url <- "https://www.abs.gov.au/statistics/classifications/australian-standard-classification-education-asced/2001/1272.0%20australian%20standard%20classification%20of%20education%20%28asced%29%20structures.xlsx"
 
 
 temp_dir <- tempdir()
-temp_path <- glue("{temp_dir}/asced_foe.xls")
+temp_path <- glue("{temp_dir}/asced_foe.xlsx")
 
 download.file(asced_url, temp_path, mode = "wb")
 

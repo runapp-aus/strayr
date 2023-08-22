@@ -12,7 +12,8 @@ raw_data <- package$resources %>%
     x[["url"]]
   }) %>%
   unlist() %>%
-  map_dfr(read_csv)
+  map(read_csv) %>%
+  list_rbind()
 
 auholidays <- raw_data %>%
   transmute(
