@@ -78,7 +78,7 @@
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>StrayR</h1>
             
-            <h4 data-toc-skip class="date">2023-08-17</h4>
+            <h4 data-toc-skip class="date">2023-08-22</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/runapp-aus/strayr/blob/master/vignettes/strayr.Rmd" class="external-link"><code>vignettes/strayr.Rmd</code></a></small>
       <div class="d-none name"><code>strayr.Rmd</code></div>
@@ -131,7 +131,7 @@ list is available in the <a href="../reference/index.html">reference</a></p>
 <span><span class="co">#&gt; $ anzsic_class_code <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "0111", "0111", "0112", "0112", "0113", "0114", "011…</span></span>
 <span><span class="co">#&gt; $ anzsic_class      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Nursery Production (Under Cover)", "Nursery Product…</span></span>
 <span><span class="co">#&gt; $ isic_class_code   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "0129p", "0130p", "0129p", "0130p", "0130p", "0119p"…</span></span>
-<span><span class="co">#&gt; $ isic              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Growing of other perennial crops", "Plant propagati…</span></span>
+<span><span class="co">#&gt; $ isic_class        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "Growing of other perennial crops", "Plant propagati…</span></span>
 <span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">asced_foe2001</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 439</span></span>
 <span><span class="co">#&gt; Columns: 6</span></span>
@@ -271,10 +271,10 @@ Public Holidays Dates Machine Readable Dataset</a> as well as a helper
 function <code>is_holiday</code>:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">auholidays</span><span class="op">)</span></span>
-<span><span class="co">#&gt; tibble [879 × 3] (S3: tbl_df/tbl/data.frame)</span></span>
-<span><span class="co">#&gt;  $ Date        : Date[1:879], format: "2021-01-01" "2021-01-26" ...</span></span>
-<span><span class="co">#&gt;  $ Name        : chr [1:879] "New Year's Day" "Australia Day" "Canberra Day" "Good Friday" ...</span></span>
-<span><span class="co">#&gt;  $ Jurisdiction: chr [1:879] "ACT" "ACT" "ACT" "ACT" ...</span></span>
+<span><span class="co">#&gt; tibble [1,292 × 3] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ Date        : Date[1:1292], format: "2021-01-01" "2021-01-26" ...</span></span>
+<span><span class="co">#&gt;  $ Name        : chr [1:1292] "New Year's Day" "Australia Day" "Canberra Day" "Good Friday" ...</span></span>
+<span><span class="co">#&gt;  $ Jurisdiction: chr [1:1292] "ACT" "ACT" "ACT" "ACT" ...</span></span>
 <span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/is_holiday.html">is_holiday</a></span><span class="op">(</span><span class="st">'2020-01-01'</span><span class="op">)</span></span>
