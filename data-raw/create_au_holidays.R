@@ -21,7 +21,7 @@ auholidays <- raw_data %>%
     Name = coalesce(`Holiday Name`),
     Jurisdiction = coalesce(`Applicable To`, Jurisdiction),
     Jurisdiction = str_to_upper(Jurisdiction)
-  )
-
+  ) |>
+  distinct()
 
 usethis::use_data(auholidays, internal = FALSE, overwrite = TRUE)
