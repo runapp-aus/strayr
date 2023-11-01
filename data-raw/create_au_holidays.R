@@ -22,6 +22,7 @@ auholidays <- raw_data %>%
     Jurisdiction = coalesce(`Applicable To`, Jurisdiction),
     Jurisdiction = str_to_upper(Jurisdiction)
   ) |>
-  distinct()
+  distinct() |>
+  arrange(Date, Jurisdiction)
 
 usethis::use_data(auholidays, internal = FALSE, overwrite = TRUE)

@@ -18,4 +18,6 @@ usethis::use_data(anzsco_dictionary,
 usethis::use_data(palette_state_name_2016,
                   state_name_au,
                   state_abb_au,
+                  auholidays,
+                  internal = FALSE,
                   overwrite = TRUE)
