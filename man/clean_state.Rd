@@ -9,7 +9,7 @@ clean_state(
   x,
   to = "state_abbr",
   fuzzy_match = TRUE,
-  max_dist = 0.4,
+  max_dist = 0.2,
   method = "jw"
 )
 
