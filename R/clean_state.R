@@ -50,7 +50,7 @@
 #' @importFrom stringdist amatch
 #' @export
 
-clean_state <- function(x, to = "state_abbr", fuzzy_match = TRUE, max_dist = 0.4, method = "jw"){
+clean_state <- function(x, to = "state_abbr", fuzzy_match = TRUE, max_dist = 0.2, method = "jw"){
 
 
   if(!is.logical(fuzzy_match)){
