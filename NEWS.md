@@ -1,6 +1,9 @@
 # strayr (development version)
+* Threshold for fuzzy matching (`max_dist`) in clean_state() has been reduced to 0.2 from 0.4
 * `create read_correspondence_tbl()` reads correspondence tables from
 `absmapsdata` similarly to `read_absmap()`
+* updated `anzsco2006` to include leading zeros in codes (see ). This is a backwards incompatible change that may cause issues (not enough for a major version progression)
+* fixed duplication in auholidays
 
 # strayr 0.2.2
 * `anzsco2022` updated to reflect changes made by the ABS

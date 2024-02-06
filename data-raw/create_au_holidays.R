@@ -12,7 +12,8 @@ raw_data <- package$resources %>%
     x[["url"]]
   }) %>%
   unlist() %>%
-  map_dfr(read_csv)
+  map(read_csv) %>%
+  list_rbind()
 
 auholidays <- raw_data %>%
   transmute(
@@ -20,7 +21,7 @@ auholidays <- raw_data %>%
     Name = coalesce(`Holiday Name`),
     Jurisdiction = coalesce(`Applicable To`, Jurisdiction),
     Jurisdiction = str_to_upper(Jurisdiction)
-  )
-
+  ) |>
+  distinct()
 
 usethis::use_data(auholidays, internal = FALSE, overwrite = TRUE)

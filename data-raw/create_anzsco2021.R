@@ -11,7 +11,7 @@ include_factor_variants <- FALSE
 to_title <- function(x) str_to_title(x) %>% tools::toTitleCase()
 
 # Set up
-anzsco_url <- "https://www.abs.gov.au/statistics/classifications/anzsco-australian-and-new-zealand-standard-classification-occupations/2021/anzsco%202021%20structure.xlsx"
+anzsco_url <- "https://www.abs.gov.au/statistics/classifications/anzsco-australian-and-new-zealand-standard-classification-occupations/2021/anzsco%202021%20structure%20v1.2%20062023.xlsx"
 
 temp_dir <- tempdir()
 temp_path <- file.path(temp_dir, "anzsco.xlsx")

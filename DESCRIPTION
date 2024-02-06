@@ -1,7 +1,7 @@
 Package: strayr
 Type: Package
 Title: Ready-to-use Australian common structures and classifications and tools for working with them
-Version: 0.2.2.9000
+Version: 0.2.2.9002
 Authors@R: c(person("Will", "Mackey", email = "wfmackey@gmail.com", role = c("aut", "cre")),
         person("Matt", "Johnson", email = "mrjoh3@gmail.com", role = c("aut")),
         person("David", "Diviny", email = "david.diviny@nousgroup.com.au", role = c("aut")),
@@ -11,7 +11,8 @@ Authors@R: c(person("Will", "Mackey", email = "wfmackey@gmail.com", role = c("au
         person("Benjamin", "Wee", role = c("aut")),
         person("Carlos", "Yanez", role = "ctb"),
         person("Bas", "Latcham", role = "ctb"),
-        person("Rex", "Parsons", role = "ctb", comment = c(ORCID = "0000-0002-6053-8174"))
+        person("Rex", "Parsons", role = "ctb", comment = c(ORCID = "0000-0002-6053-8174")),
+        person("Pete", "Owen", role = "ctb")
         )
 Maintainer: Will Mackey <wfmackey@gmail.com>
 License: GPL-3
@@ -21,7 +22,7 @@ Depends:
 Imports:
     dplyr (>= 0.7),
     lifecycle,
-    purrr,
+    purrr (>= 1.0.0),
     readxl,
     stringr,
     readr,
