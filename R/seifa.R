@@ -297,15 +297,18 @@ get_seifa_index_sheet <- function(filename, sheetname, structure = c("sa1", "sa2
       col_names = column_names,
       na = c("", "NA", "-")
     ) %>%
-      dplyr::filter(across(ends_with("_code"), ~ !is.na(.x))) %>%
+      dplyr::filter(if_any(ends_with("_code"), ~ !is.na(.x))) %>%
       select(-starts_with("blank")) %>%
       mutate(
-        area_code = as.character(area_code),
         structure = structure,
         year = year
       ) %>%
+      mutate(across(
+        .cols = any_of("area_code"),  # Specify the column name
+        .fns = ~ as.character(.)  # Conditionally convert to character
+      )) %>%
       relocate(structure)
   })
-
+  
   return(df)
 }
