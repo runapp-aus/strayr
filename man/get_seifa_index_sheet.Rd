@@ -8,6 +8,7 @@ get_seifa_index_sheet(
   filename,
   sheetname,
   structure = c("sa1", "sa2", "lga", "postcode", "suburb"),
+  data_subclass,
   year
 )
 }
@@ -18,6 +19,14 @@ get_seifa_index_sheet(
 
 \item{structure}{character spatial structure of the data to be parsed. The spatial structure is
 important as the shape of the data in the ABS spreadsheets if different for some structures.}
+
+\item{data_subclass}{character vector matching available SEIFA indexes:
+\itemize{
+  \item{irsed}{ - Index of Relative Socio-economic Disadvantage}
+  \item{irsead}{ - Index of Relative Socio-economic Advantage and Disadvantage}
+  \item{ier}{ - Index of Economic Resources}
+  \item{ieo}{ - Index of Education and Occupation}
+}}
 
 \item{year}{a character string or numeric of the release year of SEIFA object, eg "2016"; 2011.}
 }
@@ -32,7 +41,7 @@ from \url{https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/2033.0.55.0012016
 \examples{
 \dontrun{
 
-  get_seifa_index_sheet('downloaded_filename.xls', sheetname = 'Table 2', structure = 'lga')
+get_seifa_index_sheet("downloaded_filename.xls", sheetname = "Table 2", structure = "lga")
 }
 
 }
