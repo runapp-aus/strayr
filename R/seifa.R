@@ -300,6 +300,7 @@ get_seifa_index_sheet <- function(filename, sheetname, structure = c("sa1", "sa2
       dplyr::filter(across(ends_with("_code"), ~ !is.na(.x))) %>%
       select(-starts_with("blank")) %>%
       mutate(
+        area_code = as.character(area_code),
         structure = structure,
         year = year
       ) %>%
