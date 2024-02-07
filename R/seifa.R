@@ -297,7 +297,7 @@ get_seifa_index_sheet <- function(filename, sheetname, structure = c("sa1", "sa2
       col_names = column_names,
       na = c("", "NA", "-")
     ) %>%
-      dplyr::filter(if_any(ends_with(c("_name","_code")), ~ !is.na(.x))) %>%
+      dplyr::filter(if_all(ends_with(c("_name","_code")), ~ !is.na(.x))) %>%
       select(-starts_with("blank")) %>%
       mutate(
         structure = structure,
