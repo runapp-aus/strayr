@@ -1,5 +1,3 @@
-
-
 #' @title Import SEIFA Data from ABS
 #' @description The function will download all SEIFA data, for a specified spatial structure,
 #' to a temporary excel file and then merge sheets into a single `data.frame`. This `data.frame`
@@ -43,62 +41,75 @@
 #'
 #' @examples
 #' \dontrun{
-#'   get_seifa(structure = 'lga', data_subclass = 'irsed', year = 2016)
+#' get_seifa(structure = "lga", data_subclass = "irsed", year = 2016)
 #' }
 #'
-get_seifa <- function(structure = c('sa1','sa2','lga','postcode','suburb'),
-                      data_subclass = c('irsed', 'irsead', 'ier', 'ieo'),
+get_seifa <- function(structure = c("sa1", "sa2", "lga", "postcode", "suburb"),
+                      data_subclass = c("irsed", "irsead", "ier", "ieo"),
                       year = NULL) {
-
   # TODO: 2006 SEIFA has the Statistical Local Area (SLA) structure, not the
   # Statistical Level Areas (SA1, SA2) structures. Would need to update logic to
   # handle 2006.
-  release_years = c(2011, 2016, 2021)
+  release_years <- c(2011, 2016, 2021)
 
-  stopifnot(all(data_subclass %in% c('irsed', 'irsead', 'ier', 'ieo')))
+  stopifnot(
+    "data_subclass must be either:
+            1. some combination of: 'irsed', 'irsead', 'ier', 'ieo'
+            2. just the value 'summary'" =
+      all(data_subclass %in% c("irsed", "irsead", "ier", "ieo")) |
+        (data_subclass == "summary" & length(data_subclass) == 1)
+  )
+
 
   # match excel sheet names to data_subclass
-  sheet_names <- c('irsed'   = 'Table 2',
-                   'irsead'  = 'Table 3',
-                   'ier'     = 'Table 4',
-                   'ieo'     = 'Table 5')
+  sheet_names <- c(
+    "summary" = "Table 1",
+    "irsed" = "Table 2",
+    "irsead" = "Table 3",
+    "ier" = "Table 4",
+    "ieo" = "Table 5"
+  )
 
   sheet_names <- sheet_names[data_subclass]
 
-    # match spatial structures to specific urls
+  # match spatial structures to specific urls
   structure <- match.arg(structure, several.ok = FALSE)
 
-  urls <- list( '2011' = c( 'sa1' = 'https://www.abs.gov.au/AUSSTATS/subscriber.nsf/log?openagent&2033.0.55.001%20sa1%20indexes.xls&2033.0.55.001&Data%20Cubes&9828E2819C30D96DCA257B43000E923E&0&2011&05.04.2013&Latest',
-                            'sa2' = 'https://www.abs.gov.au/AUSSTATS/subscriber.nsf/log?openagent&2033.0.55.001%20SA2%20Indexes.xls&2033.0.55.001&Data%20Cubes&76D0BC44356DC34ACA257B3B001A4913&0&2011&12.11.2014&Latest',
-                            'lga' = 'https://www.abs.gov.au/AUSSTATS/subscriber.nsf/log?openagent&2033.0.55.001%20lga%20indexes.xls&2033.0.55.001&Data%20Cubes&28EF8569335AC7CDCA257BAB00136B0F&0&2011&18.07.2013&Latest',
-                            'postcode' = 'https://www.abs.gov.au/AUSSTATS/subscriber.nsf/log?openagent&2033.0.55.001%20POA%20Indexes.xls&2033.0.55.001&Data%20Cubes&209B3364525C82CCCA257B3B001A4D56&0&2011&12.11.2014&Latest',
-                            'suburb' = 'https://www.abs.gov.au/AUSSTATS/subscriber.nsf/log?openagent&2033.0.55.001%20ssc%20indexes.xls&2033.0.55.001&Data%20Cubes&F40D0630B245D5DCCA257B43000EA0F1&0&2011&05.04.2013&Latest'),
+  urls <- list(
+    "2011" = c(
+      "sa1" = "https://www.abs.gov.au/AUSSTATS/subscriber.nsf/log?openagent&2033.0.55.001%20sa1%20indexes.xls&2033.0.55.001&Data%20Cubes&9828E2819C30D96DCA257B43000E923E&0&2011&05.04.2013&Latest",
+      "sa2" = "https://www.abs.gov.au/AUSSTATS/subscriber.nsf/log?openagent&2033.0.55.001%20SA2%20Indexes.xls&2033.0.55.001&Data%20Cubes&76D0BC44356DC34ACA257B3B001A4913&0&2011&12.11.2014&Latest",
+      "lga" = "https://www.abs.gov.au/AUSSTATS/subscriber.nsf/log?openagent&2033.0.55.001%20lga%20indexes.xls&2033.0.55.001&Data%20Cubes&28EF8569335AC7CDCA257BAB00136B0F&0&2011&18.07.2013&Latest",
+      "postcode" = "https://www.abs.gov.au/AUSSTATS/subscriber.nsf/log?openagent&2033.0.55.001%20POA%20Indexes.xls&2033.0.55.001&Data%20Cubes&209B3364525C82CCCA257B3B001A4D56&0&2011&12.11.2014&Latest",
+      "suburb" = "https://www.abs.gov.au/AUSSTATS/subscriber.nsf/log?openagent&2033.0.55.001%20ssc%20indexes.xls&2033.0.55.001&Data%20Cubes&F40D0630B245D5DCCA257B43000EA0F1&0&2011&05.04.2013&Latest"
+    ),
+    "2016" = c(
+      "sa1" = "https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&2033055001%20-%20sa1%20indexes.xls&2033.0.55.001&Data%20Cubes&40A0EFDE970A1511CA25825D000F8E8D&0&2016&27.03.2018&Latest",
+      "sa2" = "https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&2033055001%20-%20sa2%20indexes.xls&2033.0.55.001&Data%20Cubes&C9F7AD36397CB43DCA25825D000F917C&0&2016&27.03.2018&Latest",
+      "lga" = "https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&2033055001%20-%20lga%20indexes.xls&2033.0.55.001&Data%20Cubes&5604C75C214CD3D0CA25825D000F91AE&0&2016&27.03.2018&Latest",
+      "postcode" = "https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&2033055001%20-%20poa%20indexes.xls&2033.0.55.001&Data%20Cubes&DC124D1DAC3D9FDDCA25825D000F9267&0&2016&27.03.2018&Latest",
+      "suburb" = "https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&2033055001%20-%20ssc%20indexes.xls&2033.0.55.001&Data%20Cubes&863031D939DE8105CA25825D000F91D2&0&2016&27.03.2018&Latest"
+    ),
+    "2021" = c(
+      "sa1" = "https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia/2021/Statistical%20Area%20Level%201%2C%20Indexes%2C%20SEIFA%202021.xlsx",
+      "sa2" = "https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia/2021/Statistical%20Area%20Level%202%2C%20Indexes%2C%20SEIFA%202021.xlsx",
+      "lga" = "https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia/2021/Local%20Government%20Area%2C%20Indexes%2C%20SEIFA%202021.xlsx",
+      "postcode" = "https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia/2021/Postal%20Area%2C%20Indexes%2C%20SEIFA%202021.xlsx",
+      "suburb" = "https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia/2021/Suburbs%20and%20Localities%2C%20Indexes%2C%20SEIFA%202021.xlsx"
+    )
+  )
 
-                '2016' = c( 'sa1' = 'https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&2033055001%20-%20sa1%20indexes.xls&2033.0.55.001&Data%20Cubes&40A0EFDE970A1511CA25825D000F8E8D&0&2016&27.03.2018&Latest',
-                            'sa2' = 'https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&2033055001%20-%20sa2%20indexes.xls&2033.0.55.001&Data%20Cubes&C9F7AD36397CB43DCA25825D000F917C&0&2016&27.03.2018&Latest',
-                            'lga' = 'https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&2033055001%20-%20lga%20indexes.xls&2033.0.55.001&Data%20Cubes&5604C75C214CD3D0CA25825D000F91AE&0&2016&27.03.2018&Latest',
-                            'postcode' = 'https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&2033055001%20-%20poa%20indexes.xls&2033.0.55.001&Data%20Cubes&DC124D1DAC3D9FDDCA25825D000F9267&0&2016&27.03.2018&Latest',
-                            'suburb' = 'https://www.abs.gov.au/ausstats/subscriber.nsf/log?openagent&2033055001%20-%20ssc%20indexes.xls&2033.0.55.001&Data%20Cubes&863031D939DE8105CA25825D000F91D2&0&2016&27.03.2018&Latest'),
 
-                '2021' = c( 'sa1' = 'https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia/2021/Statistical%20Area%20Level%201%2C%20Indexes%2C%20SEIFA%202021.xlsx',
-                            'sa2' = 'https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia/2021/Statistical%20Area%20Level%202%2C%20Indexes%2C%20SEIFA%202021.xlsx',
-                            'lga' = 'https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia/2021/Local%20Government%20Area%2C%20Indexes%2C%20SEIFA%202021.xlsx',
-                            'postcode' = 'https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia/2021/Postal%20Area%2C%20Indexes%2C%20SEIFA%202021.xlsx',
-                            'suburb' = 'https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia/2021/Suburbs%20and%20Localities%2C%20Indexes%2C%20SEIFA%202021.xlsx' )
-
-                )
-
-
-  if( is.null(year) ){
-    year = as.character(max(release_years))
-  }else{
-    if(! (is.numeric(year) | is.character(year) ) ){
-      stop('year must either be an integer or character string.')
+  if (is.null(year)) {
+    year <- as.character(max(release_years))
+  } else {
+    if (!(is.numeric(year) | is.character(year))) {
+      stop("year must either be an integer or character string.")
     }
     year <- as.character(year)
 
-    if(! any(year %in% as.character(release_years))){
-      stop('year is not a valid release year, please check SEIFA webpage.')
+    if (!any(year %in% as.character(release_years))) {
+      stop("year is not a valid release year, please check SEIFA webpage.")
     }
   }
 
@@ -106,26 +117,28 @@ get_seifa <- function(structure = c('sa1','sa2','lga','postcode','suburb'),
 
   # Get file extension if possible, otherwise assume xls.
   url_ext <- tools::file_ext(sub("\\?.+", "", url))
-  if(url_ext == ""){url_ext <- 'xls'}
+  if (url_ext == "") {
+    url_ext <- "xls"
+  }
 
-  filename <- tempfile(fileext = paste0('.',url_ext) )
+  filename <- tempfile(fileext = paste0(".", url_ext))
 
   try({
-    download.file(url, destfile = filename, mode = 'wb')
-    message(paste0('ABS ', toupper(structure),' file downloaded to: \n'),
-            paste0('    ', filename),
-            appendLF = TRUE)
+    download.file(url, destfile = filename, mode = "wb")
+    message(paste0("ABS ", toupper(structure), " file downloaded to: \n"),
+      paste0("    ", filename),
+      appendLF = TRUE
+    )
   })
 
   if (file.exists(filename)) {
-    ind <- map(sheet_names, ~ get_seifa_index_sheet(filename, .x, structure, year), .id = 'seifa_index') %>%
-      list_rbind()
+    ind <- map(sheet_names, ~ get_seifa_index_sheet(filename, .x, structure, data_subclass, year), .id = "seifa_index") %>%
+      list_rbind(names_to = "data_subclass")
     return(ind)
   } else {
-    warning('Download of ABS file failed. Please check your internet connection and try again.')
+    warning("Download of ABS file failed. Please check your internet connection and try again.")
     return(NULL)
   }
-
 }
 
 
@@ -148,77 +161,154 @@ get_seifa <- function(structure = c('sa1','sa2','lga','postcode','suburb'),
 #' @examples
 #' \dontrun{
 #'
-#'   get_seifa_index_sheet('downloaded_filename.xls', sheetname = 'Table 2', structure = 'lga')
+#' get_seifa_index_sheet("downloaded_filename.xls", sheetname = "Table 2", structure = "lga")
 #' }
 #'
-get_seifa_index_sheet <- function(filename, sheetname, structure = c('sa1','sa2','lga','postcode','suburb'), year) {
-
+get_seifa_index_sheet <- function(filename, sheetname, structure = c("sa1", "sa2", "lga", "postcode", "suburb"), data_subclass, year) {
   structure <- match.arg(structure, several.ok = FALSE)
 
-  column_names <- c('area_code',
-                    'area_name',
-                    'population',
-                    'score',
-                    'blank1',
-                    'rank_aus',
-                    'decile_aus',
-                    'percentile_aus',
-                    'blank2',
-                    'state',
-                    'rank_state',
-                    'decile_state',
-                    'percentile_state',
-                    'min_score_sa1_area',
-                    'max_score_sa1_area',
-                    'percent_usual_resident_pop_without_sa1_score')
+  column_names <- c(
+    "area_code",
+    "area_name",
+    "population",
+    "score",
+    "blank1",
+    "rank_aus",
+    "decile_aus",
+    "percentile_aus",
+    "blank2",
+    "state",
+    "rank_state",
+    "decile_state",
+    "percentile_state",
+    "min_score_sa1_area",
+    "max_score_sa1_area",
+    "percent_usual_resident_pop_without_sa1_score"
+  )
 
   # Add column for SEIFA releases >= 2016 with structures suburb or postcode.
-  if (structure %in% c('suburb','postcode') && year >= 2016 ) {
-    column_names <- c(column_names, 'caution_poor_sa1_representation')
+  if (structure %in% c("suburb", "postcode") && year >= 2016) {
+    column_names <- c(column_names, "caution_poor_sa1_representation")
   }
 
-  if (structure == 'postcode') {
-    column_names <- column_names[-grep('area_name', column_names)]
-    if(year >= 2016){
-      column_names <- c(column_names, 'postcode_crosses_state_boundary')
+  if (structure == "postcode") {
+    column_names <- column_names[-grep("area_name", column_names)]
+    if (year >= 2016) {
+      column_names <- c(column_names, "postcode_crosses_state_boundary")
     }
   }
 
-  if (structure == 'sa1') {
-    column_names <- c('sa1_7_code',
-                      'sa1_11_code',
-                      'population',
-                      'score',
-                      'blank1',
-                      'rank_aus',
-                      'decile_aus',
-                      'percentile_aus',
-                      'blank2',
-                      'state',
-                      'rank_state',
-                      'decile_state',
-                      'percentile_state')
+  if (structure == "sa1") {
+    column_names <- c(
+      "sa1_7_code",
+      "sa1_11_code",
+      "population",
+      "score",
+      "blank1",
+      "rank_aus",
+      "decile_aus",
+      "percentile_aus",
+      "blank2",
+      "state",
+      "rank_state",
+      "decile_state",
+      "percentile_state"
+    )
 
     # remove sa1_11_code column for 2011 release.
-    if( year == 2011) {
-      column_names <- column_names[-grep('sa1_11_code', column_names)]
-    }else if( year == 2021) {
-      column_names <- column_names[-grep('sa1_7_code', column_names)]
+    if (year == 2011) {
+      column_names <- column_names[-grep("sa1_11_code", column_names)]
+    } else if (year == 2021) {
+      column_names <- column_names[-grep("sa1_7_code", column_names)]
     }
   }
+
+  if (length(data_subclass) == 1) {
+    if (data_subclass == "summary") {
+      if ((year == 2011) |
+        (year == 2021 & structure == "sa1")
+      ) {
+        column_names <- c(
+          "area_code",
+          "irsed_score",
+          "irsed_decile",
+          "irsead_score",
+          "irsead_decile",
+          "ier_score",
+          "ier_decile",
+          "ieo_score",
+          "ieo_decile",
+          "population"
+        )
+      } else if (year == 2016 & structure == "suburb") {
+        column_names <- c(
+          "area_code",
+          "area_name",
+          "irsed_score",
+          "irsed_decile",
+          "irsead_score",
+          "irsead_decile",
+          "ier_score",
+          "ier_decile",
+          "ieo_score",
+          "ieo_decile",
+          "population",
+          "data_warning"
+        )
+      } else if (year %in% c(2016, 2021) & structure == "postcode") {
+        column_names <- c(
+          "area_code",
+          "irsed_score",
+          "irsed_decile",
+          "irsead_score",
+          "irsead_decile",
+          "ier_score",
+          "ier_decile",
+          "ieo_score",
+          "ieo_decile",
+          "population",
+          "data_warning",
+          "postcode_crosses_state_boundaries"
+        )
+      } else {
+        column_names <- c(
+          "area_code",
+          "area_name",
+          "irsed_score",
+          "irsed_decile",
+          "irsead_score",
+          "irsead_decile",
+          "ier_score",
+          "ier_decile",
+          "ieo_score",
+          "ieo_decile",
+          "population"
+        )
+      }
+    }
+  }
+
+
 
   suppressWarnings({
     df <- read_excel(filename,
-                     sheetname,
-                     skip = 6,
-                     col_names = column_names,
-                     na = c("", "NA") ) %>%
-      dplyr::filter(across(ends_with('_code'), ~ !is.na(.x))) %>%
-      select(-starts_with('blank')) %>%
-      mutate(structure = structure) %>%
+      sheetname,
+      skip = 6,
+      col_names = column_names,
+      na = c("", "NA", "-")
+    ) %>%
+      dplyr::filter(if_all(ends_with(c("_name","_code")), ~ !is.na(.x))) %>%
+      select(-starts_with("blank")) %>%
+      mutate(
+        structure = structure,
+        year = year
+      ) %>%
+      mutate(across(
+        .cols = any_of(ends_with("_code")),  # Specify the column name
+        .fns = ~ as.character(.)  # Conditionally convert to character
+      )) %>%
       relocate(structure)
   })
-
+  
   return(df)
-
 }

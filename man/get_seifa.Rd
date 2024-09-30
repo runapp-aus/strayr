@@ -53,7 +53,7 @@ For All ABS SEIFA spreadsheets go to \href{https://www.abs.gov.au/AUSSTATS/abs@.
 }
 \examples{
 \dontrun{
-  get_seifa(structure = 'lga', data_subclass = 'irsed', year = 2016)
+get_seifa(structure = "lga", data_subclass = "irsed", year = 2016)
 }
 
 }
