@@ -16,6 +16,7 @@ raw_data <- package$resources %>%
   list_rbind()
 
 auholidays <- raw_data %>%
+  dplyr::filter(!is.na(Date)) %>% # 'Friday before the AFL Grand Final' not given a date in VIC holiday data
   transmute(
     Date = ymd(Date),
     Name = coalesce(`Holiday Name`),

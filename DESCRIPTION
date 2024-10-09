@@ -18,7 +18,7 @@ Maintainer: Will Mackey <wfmackey@gmail.com>
 License: GPL-3
 Description: This package provides data and functions for working with common structures and classifications used in Australia.
 Depends: 
-	R (>= 3.5)
+    R (>= 3.5)
 Imports:
     dplyr (>= 0.7),
     lifecycle,
@@ -33,11 +33,14 @@ Imports:
     parsedate
 Suggests: 
     testthat,
+    curl,
     sf,
     here,
     ggplot2,
     bench
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
+URL: https://runapp-aus.github.io/strayr/
+BugReports: https://github.com/runapp-aus/strayr/issues/
 RdMacros: lifecycle

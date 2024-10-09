@@ -12,7 +12,7 @@ get_seifa(
 }
 \arguments{
 \item{structure}{character value for the desired spatial area. Must be one of:
-\itemize{
+\describe{
   \item{sa1}{ - download size 51.6 MB}
   \item{sa2}{ - download size 1.9 MB}
   \item{lga}{ - download size 660 KB}
@@ -21,7 +21,7 @@ get_seifa(
 }}
 
 \item{data_subclass}{character vector matching available SEIFA indexes:
-\itemize{
+\describe{
   \item{irsed}{ - Index of Relative Socio-economic Disadvantage}
   \item{irsead}{ - Index of Relative Socio-economic Advantage and Disadvantage}
   \item{ier}{ - Index of Economic Resources}

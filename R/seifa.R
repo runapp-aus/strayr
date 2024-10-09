@@ -14,7 +14,7 @@
 #' \url{https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia/2021}
 
 #' @param structure character value for the desired spatial area. Must be one of:
-#' \itemize{
+#' \describe{
 #'   \item{sa1}{ - download size 51.6 MB}
 #'   \item{sa2}{ - download size 1.9 MB}
 #'   \item{lga}{ - download size 660 KB}
@@ -22,7 +22,7 @@
 #'   \item{suburb}{ - download size 11.3 MB}
 #' }
 #' @param data_subclass character vector matching available SEIFA indexes:
-#' \itemize{
+#' \describe{
 #'   \item{irsed}{ - Index of Relative Socio-economic Disadvantage}
 #'   \item{irsead}{ - Index of Relative Socio-economic Advantage and Disadvantage}
 #'   \item{ier}{ - Index of Economic Resources}
@@ -297,18 +297,18 @@ get_seifa_index_sheet <- function(filename, sheetname, structure = c("sa1", "sa2
       col_names = column_names,
       na = c("", "NA", "-")
     ) %>%
-      dplyr::filter(if_all(ends_with(c("_name","_code")), ~ !is.na(.x))) %>%
-      select(-starts_with("blank")) %>%
-      mutate(
+      dplyr::filter(dplyr::if_all(dplyr::ends_with(c("_name","_code")), ~ !is.na(.x))) %>%
+      dplyr::select(-dplyr::starts_with("blank")) %>%
+      dplyr::mutate(
         structure = structure,
         year = year
       ) %>%
-      mutate(across(
-        .cols = any_of(ends_with("_code")),  # Specify the column name
+      dplyr::mutate(dplyr::across(
+        .cols = dplyr::any_of(ends_with("_code")),  # Specify the column name
         .fns = ~ as.character(.)  # Conditionally convert to character
       )) %>%
-      relocate(structure)
+      dplyr::relocate(structure)
   })
-  
+
   return(df)
 }
