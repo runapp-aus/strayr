@@ -118,7 +118,7 @@ anzsco2021 <- comb %>%
   bind_rows(nfd1, nfd2, nfd3) %>%
   arrange(anzsco1_code, anzsco2_code, anzsco3_code,
           anzsco4_code, anzsco6_code) %>%
-  mutate(across(.fns = as.character)) %>%
+  mutate(across(everything(), .fns = as.character)) %>%
   arrange(anzsco6_code)
 
 if (include_factor_variants) {
