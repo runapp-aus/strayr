@@ -1,4 +1,3 @@
-
 # Reading and cleaning ANZSIC correspondence
 
 library(tidyverse)
@@ -74,23 +73,27 @@ anzsic_2006_final <-
 
 # Finalise data frame; noting that we are avoiding the nfd complication for now
 anzsic2006 <- anzsic_2006_final %>%
-  arrange(anzsic_division_code,
-          anzsic_subdivision_code,
-          anzsic_group_code,
-          anzsic_class_code) %>%
-  mutate(across(.fns = as.character))
+  arrange(
+    anzsic_division_code,
+    anzsic_subdivision_code,
+    anzsic_group_code,
+    anzsic_class_code
+  ) %>%
+  mutate(across(everything(), .fns = as.character))
 
 if (include_factor_variants) {
   anzsic2006 <- anzsic2006 %>%
     mutate(across(ends_with("title"), fct_inorder, .names = "{.col}_f"))
 }
 
-anzsic2006 <- anzsic2006  %>%
+anzsic2006 <- anzsic2006 %>%
   rename_with(~ str_remove_all(., "\\_title"), everything()) %>%
-  arrange(anzsic_division_code,
-          anzsic_subdivision_code,
-          anzsic_group_code,
-          anzsic_class_code)
+  arrange(
+    anzsic_division_code,
+    anzsic_subdivision_code,
+    anzsic_group_code,
+    anzsic_class_code
+  )
 
 
 anzsic_dictionary <- make_dictionary(anzsic2006)

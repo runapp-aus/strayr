@@ -21,7 +21,7 @@ get_seifa_index_sheet(
 important as the shape of the data in the ABS spreadsheets if different for some structures.}
 
 \item{data_subclass}{character vector matching available SEIFA indexes:
-\itemize{
+\describe{
   \item{irsed}{ - Index of Relative Socio-economic Disadvantage}
   \item{irsead}{ - Index of Relative Socio-economic Advantage and Disadvantage}
   \item{ier}{ - Index of Economic Resources}

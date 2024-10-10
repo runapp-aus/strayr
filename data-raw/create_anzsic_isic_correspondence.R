@@ -1,4 +1,3 @@
-
 # Reading and cleaning ANZSIC correspondence
 
 library(tidyverse)
@@ -17,10 +16,12 @@ df <- url %>%
 # bind tables together
 anzsic_isic_temp <-
   purrr::list_rbind(df) %>%
-  rename(anzsic_class_code = 2,
-         anzsic_class_title = 3,
-         isic_class_code = 4,
-         isic_class_title = 5) %>%
+  rename(
+    anzsic_class_code = 2,
+    anzsic_class_title = 3,
+    isic_class_code = 4,
+    isic_class_title = 5
+  ) %>%
   select(2:5)
 
 anzsic_isic_temp[anzsic_isic_temp == ""] <- NA
@@ -36,19 +37,23 @@ anzsic_isic_fill <-
 
 # Finalise data frame; noting that we are avoiding the nfd complication for now
 anzsic_isic <- anzsic_isic_fill %>%
-  arrange(anzsic_class_code,
-          isic_class_code) %>%
-  mutate(across(.fns = as.character))
+  arrange(
+    anzsic_class_code,
+    isic_class_code
+  ) %>%
+  mutate(across(everything(), .fns = as.character))
 
 if (include_factor_variants) {
   anzsic_isic <- anzsic_isic %>%
     mutate(across(ends_with("title"), fct_inorder, .names = "{.col}_f"))
 }
 
-anzsic_isic <- anzsic_isic  %>%
+anzsic_isic <- anzsic_isic %>%
   rename_with(~ str_remove_all(., "\\_title"), everything()) %>%
-  arrange(anzsic_class_code,
-          isic_class_code)
+  arrange(
+    anzsic_class_code,
+    isic_class_code
+  )
 
 
 anzsic_isic_dictionary <- make_dictionary(anzsic_isic)
