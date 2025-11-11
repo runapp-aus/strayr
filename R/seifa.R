@@ -30,6 +30,22 @@
 #' }
 #' @param year a character string or numeric of the release year of SEIFA object, eg "2016"; 2011.
 #'
+#' @param method character, default taken from
+#'   \code{Sys.getenv("R_STRAYR_DL_METHOD", unset = "auto")}. The value is
+#'   passed to \code{download.file(method = ...)} when retrieving files from
+#'   GitHub. This is provided to help users on corporate networks where only a
+#'   specific download method is permitted by the proxy. For example on Windows,
+#'   \code{method = "wininet"} may be required.
+#'
+#' @details
+#'   Some corporate networks restrict downloads from or require a specific
+#'   HTTP stack. If \code{read_absmap()} times out when
+#'   validating or downloading, set the environment variable
+#'   \code{R_STRAYR_DL_METHOD} before calling this function, for example:
+#'   \preformatted{Sys.setenv(R_STRAYR_DL_METHOD = "wininet")}
+#'   You can add \code{R_STRAYR_DL_METHOD = "wininet"} to your \code{.Renviron}
+#'   to persist across sessions.
+#'
 #' @importFrom purrr map
 #' @importFrom purrr list_rbind
 #' @importFrom utils download.file
@@ -46,7 +62,8 @@
 #'
 get_seifa <- function(structure = c("sa1", "sa2", "lga", "postcode", "suburb"),
                       data_subclass = c("irsed", "irsead", "ier", "ieo"),
-                      year = NULL) {
+                      year = NULL,
+                      method = Sys.getenv("R_STRAYR_DL_METHOD", unset = "auto")) {
   # TODO: 2006 SEIFA has the Statistical Local Area (SLA) structure, not the
   # Statistical Level Areas (SA1, SA2) structures. Would need to update logic to
   # handle 2006.
@@ -124,7 +141,7 @@ get_seifa <- function(structure = c("sa1", "sa2", "lga", "postcode", "suburb"),
   filename <- tempfile(fileext = paste0(".", url_ext))
 
   try({
-    download.file(url, destfile = filename, mode = "wb")
+    download.file(url, destfile = filename, mode = "wb", method = method)
     message(paste0("ABS ", toupper(structure), " file downloaded to: \n"),
       paste0("    ", filename),
       appendLF = TRUE

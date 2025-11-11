@@ -22,12 +22,28 @@ the `_year` suffix from variable names.}
 
 \item{.validate_name}{logical defaulting to TRUE, which checks the name input (or area year combination) against
 a list of available objects in the \code{absmapsdata} package.}
+
+\item{method}{character, default taken from
+\code{Sys.getenv("R_STRAYR_DL_METHOD", unset = "auto")}. The value is
+passed to \code{download.file(method = ...)} when retrieving files from
+GitHub. This is provided to help users on corporate networks where only a
+specific download method is permitted by the proxy. For example on Windows,
+\code{method = "wininet"} may be required.}
 }
 \value{
 an sf object.
 }
 \description{
 Read ABS geographic data as sf objects from the [absmapsdata](https://github.com/wfmackey/absmapsdata) package.
+}
+\details{
+Some corporate networks restrict downloads from or require a specific
+  HTTP stack. If \code{read_absmap()} times out when
+  validating or downloading, set the environment variable
+  \code{R_STRAYR_DL_METHOD} before calling this function, for example:
+  \preformatted{Sys.setenv(R_STRAYR_DL_METHOD = "wininet")}
+  You can add \code{R_STRAYR_DL_METHOD = "wininet"} to your \code{.Renviron}
+  to persist across sessions.
 }
 \examples{
 

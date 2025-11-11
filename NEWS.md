@@ -1,3 +1,6 @@
+# strayr 0.2.3.9xx development version
+* New environment variable `R_STRAYR_DL_METHOD` can be set. When set, this is passed to the `method` argument of `download.file()`. Useful on networks where a method such as "wininet" must be used.
+
 # strayr 0.2.3
 * Threshold for fuzzy matching (`max_dist`) in clean_state() has been reduced to 0.2 from 0.4
 * `create read_correspondence_tbl()` reads correspondence tables from

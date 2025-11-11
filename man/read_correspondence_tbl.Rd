@@ -12,7 +12,8 @@ read_correspondence_tbl(
   from_year,
   to_area,
   to_year,
-  export_dir = tempdir()
+  export_dir = tempdir(),
+  method = Sys.getenv("R_STRAYR_DL_METHOD", unset = "auto")
 )
 }
 \arguments{
@@ -25,12 +26,28 @@ read_correspondence_tbl(
 \item{to_year}{The year you want to correspond TO.}
 
 \item{export_dir}{path to a directory to store the desired sf object. \code{tempdir()} by default.}
+
+\item{method}{character, default taken from
+\code{Sys.getenv("R_STRAYR_DL_METHOD", unset = "auto")}. The value is
+passed to \code{download.file(method = ...)} when retrieving files from
+GitHub. This is provided to help users on corporate networks where only a
+specific download method is permitted by the proxy. For example on Windows,
+\code{method = "wininet"} may be required.}
 }
 \value{
 A \code{tibble} object.
 }
 \description{
 Read in ASGC/ASGS 2016 population-weighted correspondence tables from the ABS.
+}
+\details{
+Some corporate networks restrict downloads from or require a specific
+  HTTP stack. If \code{read_absmap()} times out when
+  validating or downloading, set the environment variable
+  \code{R_STRAYR_DL_METHOD} before calling this function, for example:
+  \preformatted{Sys.setenv(R_STRAYR_DL_METHOD = "wininet")}
+  You can add \code{R_STRAYR_DL_METHOD = "wininet"} to your \code{.Renviron}
+  to persist across sessions.
 }
 \examples{
 \dontrun{

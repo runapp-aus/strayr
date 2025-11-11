@@ -23,6 +23,22 @@
 #' @param .validate_name logical defaulting to TRUE, which checks the name input (or area year combination) against
 #' a list of available objects in the \code{absmapsdata} package.
 #'
+#' @param method character, default taken from
+#'   \code{Sys.getenv("R_STRAYR_DL_METHOD", unset = "auto")}. The value is
+#'   passed to \code{download.file(method = ...)} when retrieving files from
+#'   GitHub. This is provided to help users on corporate networks where only a
+#'   specific download method is permitted by the proxy. For example on Windows,
+#'   \code{method = "wininet"} may be required.
+#'
+#' @details
+#'   Some corporate networks restrict downloads from or require a specific
+#'   HTTP stack. If \code{read_absmap()} times out when
+#'   validating or downloading, set the environment variable
+#'   \code{R_STRAYR_DL_METHOD} before calling this function, for example:
+#'   \preformatted{Sys.setenv(R_STRAYR_DL_METHOD = "wininet")}
+#'   You can add \code{R_STRAYR_DL_METHOD = "wininet"} to your \code{.Renviron}
+#'   to persist across sessions.
+
 #' @return an sf object.
 #'
 #'
@@ -44,7 +60,8 @@ read_absmap <- function(name = NULL,
                         year = NULL,
                         remove_year_suffix = FALSE,
                         export_dir = tempdir(),
-                        .validate_name = TRUE) {
+                        .validate_name = TRUE,
+                        method = Sys.getenv("R_STRAYR_DL_METHOD", unset = "auto")) {
 
   if (all(is.null(name), is.null(area), is.null(year))) {
     stop("Please enter a name (eg name = 'sa32016') or an area/year combination (eg area = 'sa3', year = '2016').")
@@ -79,7 +96,8 @@ read_absmap <- function(name = NULL,
     tryCatch(
       download.file("https://github.com/wfmackey/absmapsdata/blob/master/data/absmapsdata_file_list.rda?raw=true",
                     destfile = file.path(export_dir, "file_list.rda"),
-                    mode = "wb"),
+                    mode = "wb",
+                    method = method),
       error = "Error reading the absmapsdata file list. Check that you have access to the internet, or try disabling this check with .validate_name = FALSE"
       )
 
@@ -95,7 +113,8 @@ read_absmap <- function(name = NULL,
     tryCatch(
       download.file(url,
                     destfile = out_path,
-                    mode = "wb"),
+                    mode = "wb",
+                    method = method),
       error = "Download failed. Check that you have access to the internet and that your requested object is available at https://github.com/wfmackey/absmapsdata/tree/master/data"
       )
   } else {

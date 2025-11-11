@@ -7,7 +7,8 @@
 get_seifa(
   structure = c("sa1", "sa2", "lga", "postcode", "suburb"),
   data_subclass = c("irsed", "irsead", "ier", "ieo"),
-  year = NULL
+  year = NULL,
+  method = Sys.getenv("R_STRAYR_DL_METHOD", unset = "auto")
 )
 }
 \arguments{
@@ -29,6 +30,13 @@ get_seifa(
 }}
 
 \item{year}{a character string or numeric of the release year of SEIFA object, eg "2016"; 2011.}
+
+\item{method}{character, default taken from
+\code{Sys.getenv("R_STRAYR_DL_METHOD", unset = "auto")}. The value is
+passed to \code{download.file(method = ...)} when retrieving files from
+GitHub. This is provided to help users on corporate networks where only a
+specific download method is permitted by the proxy. For example on Windows,
+\code{method = "wininet"} may be required.}
 }
 \value{
 `data.frame` if file successfully downloaded, else returns `NULL`.
@@ -47,6 +55,15 @@ To learn more about the individual data-sets for each year, please visit their r
 \url{https://www.abs.gov.au/ausstats/abs@.nsf/mf/2033.0.55.001}
 2021
 \url{https://www.abs.gov.au/statistics/people/people-and-communities/socio-economic-indexes-areas-seifa-australia/2021}
+}
+\details{
+Some corporate networks restrict downloads from or require a specific
+  HTTP stack. If \code{read_absmap()} times out when
+  validating or downloading, set the environment variable
+  \code{R_STRAYR_DL_METHOD} before calling this function, for example:
+  \preformatted{Sys.setenv(R_STRAYR_DL_METHOD = "wininet")}
+  You can add \code{R_STRAYR_DL_METHOD = "wininet"} to your \code{.Renviron}
+  to persist across sessions.
 }
 \note{
 For All ABS SEIFA spreadsheets go to \href{https://www.abs.gov.au/AUSSTATS/abs@.nsf/DetailsPage/2033.0.55.0012016?OpenDocument}{ABS website}

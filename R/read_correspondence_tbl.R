@@ -7,6 +7,22 @@
 #' @param to_year The year you want to correspond TO.
 #' @param export_dir path to a directory to store the desired sf object. \code{tempdir()} by default.
 #'
+#' @param method character, default taken from
+#'   \code{Sys.getenv("R_STRAYR_DL_METHOD", unset = "auto")}. The value is
+#'   passed to \code{download.file(method = ...)} when retrieving files from
+#'   GitHub. This is provided to help users on corporate networks where only a
+#'   specific download method is permitted by the proxy. For example on Windows,
+#'   \code{method = "wininet"} may be required.
+#'
+#' @details
+#'   Some corporate networks restrict downloads from or require a specific
+#'   HTTP stack. If \code{read_absmap()} times out when
+#'   validating or downloading, set the environment variable
+#'   \code{R_STRAYR_DL_METHOD} before calling this function, for example:
+#'   \preformatted{Sys.setenv(R_STRAYR_DL_METHOD = "wininet")}
+#'   You can add \code{R_STRAYR_DL_METHOD = "wininet"} to your \code{.Renviron}
+#'   to persist across sessions.
+#'
 #' @return A \code{tibble} object.
 #' @export
 #'
@@ -19,7 +35,8 @@ read_correspondence_tbl <- function(from_area,
                                     from_year,
                                     to_area,
                                     to_year,
-                                    export_dir = tempdir()) {
+                                    export_dir = tempdir(),
+                                    method = Sys.getenv("R_STRAYR_DL_METHOD", unset = "auto")) {
   if (!dir.exists(export_dir)) {
     stop("export_dir provided does not exist: ", export_dir)
   }
@@ -33,7 +50,8 @@ read_correspondence_tbl <- function(from_area,
     tryCatch(
       download.file(url,
                     destfile = out_path,
-                    mode = "wb"),
+                    mode = "wb",
+                    method = method),
       error = "Download failed. Check that you have access to the internet and that your requested object is available at https://github.com/wfmackey/absmapsdata/tree/master/data"
     )
   } else {

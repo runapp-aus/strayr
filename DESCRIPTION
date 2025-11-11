@@ -1,7 +1,7 @@
 Package: strayr
 Type: Package
 Title: Ready-to-use Australian common structures and classifications and tools for working with them
-Version: 0.2.3
+Version: 0.2.3.900
 Authors@R: c(person("Will", "Mackey", email = "wfmackey@gmail.com", role = c("aut", "cre")),
         person("Matt", "Johnson", email = "mrjoh3@gmail.com", role = c("aut")),
         person("David", "Diviny", email = "david.diviny@nousgroup.com.au", role = c("aut")),
@@ -13,7 +13,7 @@ Authors@R: c(person("Will", "Mackey", email = "wfmackey@gmail.com", role = c("au
         person("Bas", "Latcham", role = "ctb"),
         person("Rex", "Parsons", role = "ctb", comment = c(ORCID = "0000-0002-6053-8174")),
         person("Pete", "Owen", role = "ctb"),
-        person("Johan", "Wagner", role = "ctb")
+        person("Johann", "Wagner", role = "ctb")
         )
 Maintainer: Will Mackey <wfmackey@gmail.com>
 License: GPL-3
@@ -41,7 +41,7 @@ Suggests:
     bench
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 URL: https://runapp-aus.github.io/strayr/
 BugReports: https://github.com/runapp-aus/strayr/issues/
 RdMacros: lifecycle
