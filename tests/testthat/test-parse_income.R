@@ -157,6 +157,7 @@ test_that("parse_income_range produces lookup table", {
 })
 
 test_that("parse_income_range works relatively quickly", {
+  skip_if_not_installed("bench")
 
   tm <- bench::mark(
     parse_income_range(large_valid_income_ranges)

@@ -38,10 +38,11 @@ Suggests:
     sf,
     here,
     ggplot2,
+    ckanr,
     bench
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 URL: https://runapp-aus.github.io/strayr/
 BugReports: https://github.com/runapp-aus/strayr/issues/
 RdMacros: lifecycle

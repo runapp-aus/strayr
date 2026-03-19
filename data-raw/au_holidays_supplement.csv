@@ -1,0 +1,362 @@
+Date,Holiday Name,Jurisdiction
+2025-01-01,New Year's Day,SA
+2025-01-27,Australia Day public holiday,SA
+2025-03-10,Adelaide Cup Day,SA
+2025-04-18,Good Friday,SA
+2025-04-19,Easter Saturday,SA
+2025-04-20,Easter Sunday,SA
+2025-04-21,Easter Monday,SA
+2025-04-25,ANZAC Day,SA
+2025-06-09,King's Birthday,SA
+2025-10-06,Labour Day,SA
+2025-12-24,Christmas Eve,SA
+2025-12-25,Christmas Day,SA
+2025-12-25,Christmas Day,TAS
+2025-12-26,Proclamation Day holiday and Boxing Day,SA
+2025-12-26,Boxing Day,TAS
+2025-12-31,New Year's Eve,SA
+2026-01-01,New Year's Day,ACT
+2026-01-01,New Year's Day,NSW
+2026-01-01,New Year's Day,NT
+2026-01-01,New Year's Day,QLD
+2026-01-01,New Year's Day,SA
+2026-01-01,New Year's Day,TAS
+2026-01-01,New Year's Day,VIC
+2026-01-01,New Year's Day,WA
+2026-01-26,Australia Day,ACT
+2026-01-26,Australia Day,NSW
+2026-01-26,Australia Day,NT
+2026-01-26,Australia Day,QLD
+2026-01-26,Australia Day,SA
+2026-01-26,Australia Day,TAS
+2026-01-26,Australia Day,VIC
+2026-01-26,Australia Day,WA
+2026-03-02,Labour Day,WA
+2026-03-09,Canberra Day,ACT
+2026-03-09,Adelaide Cup,SA
+2026-03-09,Adelaide Cup Day,SA
+2026-03-09,Eight Hours Day,TAS
+2026-03-09,Labour Day,VIC
+2026-04-03,Good Friday,ACT
+2026-04-03,Good Friday,NSW
+2026-04-03,Good Friday,NT
+2026-04-03,Good Friday,QLD
+2026-04-03,Good Friday,SA
+2026-04-03,Good Friday,TAS
+2026-04-03,Good Friday,VIC
+2026-04-03,Melbourne Cup,VIC
+2026-04-03,Good Friday,WA
+2026-04-04,Easter Saturday,ACT
+2026-04-04,Easter Saturday – the day after Good Friday,ACT
+2026-04-04,Easter Saturday,NSW
+2026-04-04,Easter Saturday,NT
+2026-04-04,Easter Saturday,QLD
+2026-04-04,Easter Saturday,SA
+2026-04-04,Easter Saturday,TAS
+2026-04-04,Easter Saturday*,TAS
+2026-04-04,Easter Saturday,VIC
+2026-04-04,Saturday before Easter Sunday,VIC
+2026-04-05,Easter Sunday,ACT
+2026-04-05,Easter Sunday,NSW
+2026-04-05,Easter Sunday,NT
+2026-04-05,Easter Sunday,QLD
+2026-04-05,Easter Sunday,SA
+2026-04-05,Easter Sunday,TAS
+2026-04-05,Easter Sunday*,TAS
+2026-04-05,Easter Sunday,VIC
+2026-04-05,Easter Sunday,WA
+2026-04-06,Easter Monday,ACT
+2026-04-06,Easter Monday,NSW
+2026-04-06,Easter Monday,NT
+2026-04-06,Easter Monday,QLD
+2026-04-06,Easter Monday,SA
+2026-04-06,Easter Monday,TAS
+2026-04-06,Easter Monday,VIC
+2026-04-06,Easter Monday,WA
+2026-04-07,Easter Tuesday**,TAS
+2026-04-25,Anzac Day,NSW
+2026-04-25,Anzac Day,NT
+2026-04-25,Anzac Day,QLD
+2026-04-25,Anzac Day,SA
+2026-04-25,ANZAC Day,SA
+2026-04-25,Anzac Day,TAS
+2026-04-25,ANZAC Day,TAS
+2026-04-25,Anzac Day,VIC
+2026-04-25,ANZAC Day,VIC
+2026-04-25,Anzac Day,WA
+2026-04-27,Anzac Day,ACT
+2026-04-27,ANZAC Day,ACT
+2026-04-27,Anzac Day,NSW
+2026-04-27,Additional Day,NSW
+2026-04-27,Anzac Day,WA
+2026-05-04,May Day,NT
+2026-05-04,Labour Day,QLD
+2026-06-01,Reconciliation Day,ACT
+2026-06-01,Western Australia Day,WA
+2026-06-08,King's Birthday,ACT
+2026-06-08,King's Birthday,NSW
+2026-06-08,King's Birthday,NT
+2026-06-08,King's Birthday,SA
+2026-06-08,King's Birthday,TAS
+2026-06-08,King's Birthday,VIC
+2026-07-03,Alice Springs Show Day,NT
+2026-07-10,Tennant Creek Show Day,NT
+2026-07-17,Katherine Show Day,NT
+2026-07-24,Darwin Show Day,NT
+2026-08-03,Bank Holiday,NSW
+2026-08-03,Picnic Day,NT
+2026-08-12,Royal Queensland Show,QLD
+2026-08-14,Borroloola Show Day,NT
+2026-09-28,King's Birthday,WA
+2026-10-05,Labour Day,ACT
+2026-10-05,Labour Day,NSW
+2026-10-05,King's Birthday,QLD
+2026-10-05,Labour Day,SA
+2026-11-03,Melbourne Cup,VIC
+2026-12-24,Christmas Eve,NT
+2026-12-24,Christmas Eve,QLD
+2026-12-24,Christmas Eve,SA
+2026-12-25,Christmas Day,ACT
+2026-12-25,Christmas Day,NSW
+2026-12-25,Christmas Day,NT
+2026-12-25,Christmas Day,QLD
+2026-12-25,Christmas Day,SA
+2026-12-25,Christmas Day,TAS
+2026-12-25,Christmas Day,VIC
+2026-12-25,Christmas Day,WA
+2026-12-26,Boxing Day,ACT
+2026-12-26,Boxing Day,NSW
+2026-12-26,Boxing Day,NT
+2026-12-26,Boxing Day,QLD
+2026-12-26,Proclamation Day,SA
+2026-12-26,Proclamation Day holiday,SA
+2026-12-26,Boxing Day,TAS
+2026-12-26,Boxing Day,VIC
+2026-12-26,Boxing Day,WA
+2026-12-28,Boxing Day,ACT
+2026-12-28,Christmas Day,ACT
+2026-12-28,Boxing Day,NSW
+2026-12-28,Additional Day,NSW
+2026-12-28,Boxing Day,NT
+2026-12-28,Boxing Day Monday,NT
+2026-12-28,Boxing Day,QLD
+2026-12-28,Proclamation Day,SA
+2026-12-28,Boxing Day,VIC
+2026-12-28,Boxing Day,WA
+2026-12-31,New Year's Eve,NT
+2026-12-31,New Year's Eve,SA
+2027-01-01,New Year's Day,ACT
+2027-01-01,New Year's Day,NSW
+2027-01-01,New Year's Day,NT
+2027-01-01,New Year's Day,QLD
+2027-01-01,New Year's Day,SA
+2027-01-01,New Year's Day,VIC
+2027-01-01,New Year's Day,WA
+2027-01-26,Australia Day,ACT
+2027-01-26,Australia Day,NSW
+2027-01-26,Australia Day,NT
+2027-01-26,Australia Day,QLD
+2027-01-26,Australia Day,SA
+2027-01-26,Australia Day,VIC
+2027-01-26,Australia Day,WA
+2027-02-25,ANZAC Day,VIC
+2027-03-01,Labour Day,WA
+2027-03-08,Canberra Day,ACT
+2027-03-08,Adelaide Cup,SA
+2027-03-08,Adelaide Cup Day,SA
+2027-03-08,Labour Day,VIC
+2027-03-26,Good Friday,ACT
+2027-03-26,Good Friday,NSW
+2027-03-26,Good Friday,NT
+2027-03-26,Good,NT
+2027-03-26,Good Friday,QLD
+2027-03-26,Good Friday,SA
+2027-03-26,Good Friday,VIC
+2027-03-26,Good Friday,WA
+2027-03-27,Easter Saturday – the day after Good Friday,ACT
+2027-03-27,Easter Saturday,NSW
+2027-03-27,Easter Saturday,NT
+2027-03-27,Easter,NT
+2027-03-27,Easter Saturday,QLD
+2027-03-27,Easter Saturday,SA
+2027-03-27,Saturday before Easter Sunday,VIC
+2027-03-28,Easter Sunday,ACT
+2027-03-28,Easter Sunday,NSW
+2027-03-28,Easter Sunday,NT
+2027-03-28,Easter,NT
+2027-03-28,Easter Sunday,QLD
+2027-03-28,Easter Sunday,SA
+2027-03-28,Easter Saturday,SA
+2027-03-28,Easter Sunday,VIC
+2027-03-28,Easter Sunday,WA
+2027-03-29,Easter Monday,ACT
+2027-03-29,Easter Monday,NSW
+2027-03-29,Easter Monday,NT
+2027-03-29,Easter,NT
+2027-03-29,Easter Monday,QLD
+2027-03-29,Easter Monday,SA
+2027-03-29,Easter Monday,VIC
+2027-03-29,Easter Monday,WA
+2027-04-02,Melbourne Cup,VIC
+2027-04-25,Anzac Day,NSW
+2027-04-25,Anzac Day,QLD
+2027-04-25,Anzac Day,SA
+2027-04-25,ANZAC Day,SA
+2027-04-25,ANZAC Day,VIC
+2027-04-25,Anzac Day,WA
+2027-04-26,ANZAC Day,ACT
+2027-04-26,Anzac Day,NSW
+2027-04-26,Additional Day,NSW
+2027-04-26,Anzac Day,NT
+2027-04-26,Anzac Day,QLD
+2027-04-26,Anzac Day,WA
+2027-05-03,May Day,NT
+2027-05-03,Labour Day,QLD
+2027-05-31,Reconciliation Day,ACT
+2027-06-07,Western Australia Day,WA
+2027-06-14,King's Birthday,ACT
+2027-06-14,King's Birthday,NSW
+2027-06-14,King's Birthday,NT
+2027-06-14,King's Birthday,SA
+2027-06-14,King's Birthday,VIC
+2027-08-02,Bank Holiday,NSW
+2027-08-02,Picnic Day,NT
+2027-08-11,Royal Queensland Show,QLD
+2027-09-27,King's Birthday,WA
+2027-10-04,Labour Day,ACT
+2027-10-04,Labour Day,NSW
+2027-10-04,King's Birthday,QLD
+2027-10-04,Labour Day,SA
+2027-11-02,Melbourne Cup,VIC
+2027-12-24,Christmas Eve,NT
+2027-12-24,Christmas Eve,QLD
+2027-12-24,Christmas Eve,SA
+2027-12-25,Christmas Day,NSW
+2027-12-25,Christmas Day,NT
+2027-12-25,Christmas Day,QLD
+2027-12-25,Christmas Day,SA
+2027-12-25,Christmas Day,VIC
+2027-12-25,Christmas Day,WA
+2027-12-25,Christmas Day,WA
+2027-12-26,Boxing Day,NSW
+2027-12-26,Boxing Day,NT
+2027-12-26,Boxing Day,QLD
+2027-12-26,Proclamation Day,SA
+2027-12-26,Proclamation Day holiday and Boxing Day,SA
+2027-12-26,Boxing Day,WA
+2027-12-27,Labour Day,ACT
+2027-12-27,Christmas Day,NSW
+2027-12-27,Additional Day,NSW
+2027-12-27,Christmas Day,NT
+2027-12-27,Christmas Day,QLD
+2027-12-27,Christmas Day,SA
+2027-12-27,Christmas Day,WA
+2027-12-28,Labour Day,ACT
+2027-12-28,Boxing Day,NSW
+2027-12-28,Additional Day,NSW
+2027-12-28,Boxing Day,NT
+2027-12-28,Boxing Day,QLD
+2027-12-28,Proclamation Day,SA
+2027-12-28,Boxing Day,WA
+2027-12-31,New Year's Eve,NT
+2027-12-31,New Year's Eve,SA
+2028-01-01,New Year's Day,NT
+2028-01-01,New Year's Day,QLD
+2028-01-01,New Year's Day,SA
+2028-01-03,New Year's Day,NT
+2028-01-03,New Year's Day,QLD
+2028-01-03,New Year's Day,SA
+2028-01-26,Australia Day,ACT
+2028-01-26,Australia Day,NT
+2028-01-26,Australia Day,QLD
+2028-01-26,Australia Day,SA
+2028-01-26,Australia Day,VIC
+2028-03-01,New Year's Day,VIC
+2028-03-13,Canberra Day,ACT
+2028-03-13,Adelaide Cup,SA
+2028-03-13,Adelaide Cup Day,SA
+2028-03-13,Labour Day,VIC
+2028-03-25,ANZAC Day,VIC
+2028-04-14,Good Friday,ACT
+2028-04-14,Good Friday,NT
+2028-04-14,Good Friday,QLD
+2028-04-14,Good Friday,SA
+2028-04-14,Good Friday,VIC
+2028-04-15,Easter Saturday – the day after Good Friday,ACT
+2028-04-15,Easter Saturday,NT
+2028-04-15,Easter Saturday,QLD
+2028-04-15,Easter Saturday,SA
+2028-04-15,Saturday before Easter Sunday,VIC
+2028-04-16,Easter Sunday,ACT
+2028-04-16,Easter Sunday,NT
+2028-04-16,Easter Sunday,QLD
+2028-04-16,Easter Sunday,SA
+2028-04-16,Easter Sunday,VIC
+2028-04-17,Easter Monday,ACT
+2028-04-17,Easter Monday,NT
+2028-04-17,Easter Monday,QLD
+2028-04-17,Easter Monday,SA
+2028-04-17,Easter Monday,VIC
+2028-04-25,ANZAC Day,ACT
+2028-04-25,Anzac Day,NT
+2028-04-25,Anzac Day,QLD
+2028-04-25,Anzac Day,SA
+2028-04-25,ANZAC Day,SA
+2028-04-25,ANZAC Day,VIC
+2028-05-01,May Day,NT
+2028-05-01,Labour Day,QLD
+2028-05-07,Melbourne Cup,VIC
+2028-05-29,Reconciliation Day,ACT
+2028-06-12,King's Birthday,ACT
+2028-06-12,King's Birthday,NT
+2028-06-12,King's Birthday,SA
+2028-06-12,King's Birthday,VIC
+2028-08-07,Picnic Day,NT
+2028-08-16,Royal Queensland Show,QLD
+2028-10-02,Labour Day,ACT
+2028-10-02,King's Birthday,QLD
+2028-10-02,Labour Day,SA
+2028-11-07,Melbourne Cup,VIC
+2028-12-24,Christmas Eve,NT
+2028-12-24,Christmas Eve,QLD
+2028-12-24,Christmas Eve,SA
+2028-12-25,Christmas Day,ACT
+2028-12-25,Christmas Day,NT
+2028-12-25,Christmas Day,QLD
+2028-12-25,Christmas Day,SA
+2028-12-25,Christmas Day,VIC
+2028-12-26,Boxing Day,ACT
+2028-12-26,Boxing Day,NT
+2028-12-26,Boxing Day,QLD
+2028-12-26,Proclamation Day,SA
+2028-12-26,Boxing Day,VIC
+2028-12-26,Boxing Day,WA
+2028-12-26,Boxing Day,WA
+2028-12-31,New Year's Eve,NT
+2028-12-31,New Year's Eve,SA
+2029-01-01,New Year's Day,ACT
+2029-01-01,New Year's Day,QLD
+2029-01-26,Australia Day,ACT
+2029-01-26,Australia Day,QLD
+2029-03-12,Canberra Day,ACT
+2029-03-30,Good Friday,ACT
+2029-03-30,Good Friday,QLD
+2029-03-31,Easter Saturday – the day after Good Friday,ACT
+2029-03-31,Easter Saturday,QLD
+2029-04-01,Easter Sunday,ACT
+2029-04-01,Easter Sunday,QLD
+2029-04-02,Easter Monday,ACT
+2029-04-02,Easter Monday,QLD
+2029-04-25,ANZAC Day,ACT
+2029-04-25,Anzac Day,QLD
+2029-05-07,Labour Day,QLD
+2029-05-28,Reconciliation Day,ACT
+2029-06-11,King's Birthday,ACT
+2029-08-15,Royal Queensland Show,QLD
+2029-10-01,Labour Day,ACT
+2029-10-01,King's Birthday,QLD
+2029-12-24,Christmas Eve,QLD
+2029-12-25,Christmas Day,ACT
+2029-12-25,Christmas Day,QLD
+2029-12-26,Boxing Day,ACT
+2029-12-26,Boxing Day,QLD
